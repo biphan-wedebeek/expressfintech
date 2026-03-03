@@ -20,9 +20,16 @@ class PageController extends Controller
     public function articleHomeInsurance(){ return view('pages.articles.home-insurance-premiums'); }
 
     // Insurance Fundamentals
-    public function insurancePrinciples()        { return view('pages.articles.insurance.principles'); }
-    public function insuranceRiskAssessment()    { return view('pages.articles.insurance.risk-assessment'); }
-    public function insuranceUnderwriting()      { return view('pages.articles.insurance.underwriting'); }
-    public function insurancePremiumCalculation(){ return view('pages.articles.insurance.premium-calculation'); }
-    public function insuranceRegulatory()        { return view('pages.articles.insurance.regulatory'); }
+    public function insurancePrinciples()        { return view('pages.articles.insurance.fundamentals.principles'); }
+    public function insuranceRiskAssessment()    { return view('pages.articles.insurance.fundamentals.risk-assessment'); }
+    public function insuranceUnderwriting()      { return view('pages.articles.insurance.fundamentals.underwriting'); }
+    public function insurancePremiumCalculation(){ return view('pages.articles.insurance.fundamentals.premium-calculation'); }
+    public function insuranceRegulatory()        { return view('pages.articles.insurance.fundamentals.regulatory'); }
+    
+    // Insurance Categories
+    public function insuranceCatLife()        { return view('pages.articles.insurance.categories.life'); }
+    public function insuranceCatHealth()      { return view('pages.articles.insurance.categories.health'); }
+    public function insuranceCatProperty()    { return view('pages.articles.insurance.categories.property'); }
+    public function insuranceCatAuto()        { return view('pages.articles.insurance.categories.auto'); }
+    public function insuranceCatReinsurance() { return view('pages.articles.insurance.categories.reinsurance'); }
 }

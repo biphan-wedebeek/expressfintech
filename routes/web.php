@@ -26,8 +26,15 @@ Route::get('/articles/emergency-fund-vs-savings-2026', [PageController::class, '
 Route::get('/articles/home-insurance-premiums-2026',   [PageController::class, 'articleHomeInsurance'])->name('article.home-insurance');
 
 // Insurance Fundamentals sub-pages
-Route::get('/insurance/fundamentals/principles',          [PageController::class, 'insurancePrinciples'])->name('insurance.principles');
-Route::get('/insurance/fundamentals/risk-assessment',     [PageController::class, 'insuranceRiskAssessment'])->name('insurance.risk-assessment');
-Route::get('/insurance/fundamentals/underwriting',        [PageController::class, 'insuranceUnderwriting'])->name('insurance.underwriting');
-Route::get('/insurance/fundamentals/premium-calculation', [PageController::class, 'insurancePremiumCalculation'])->name('insurance.premium-calculation');
-Route::get('/insurance/fundamentals/regulatory',          [PageController::class, 'insuranceRegulatory'])->name('insurance.regulatory');
+Route::get('/insurance/fundamentals/principles',          [PageController::class, 'insurancePrinciples'])->name('insurance.fundamentals.principles');
+Route::get('/insurance/fundamentals/risk-assessment',     [PageController::class, 'insuranceRiskAssessment'])->name('insurance.fundamentals.risk-assessment');
+Route::get('/insurance/fundamentals/underwriting',        [PageController::class, 'insuranceUnderwriting'])->name('insurance.fundamentals.underwriting');
+Route::get('/insurance/fundamentals/premium-calculation', [PageController::class, 'insurancePremiumCalculation'])->name('insurance.fundamentals.premium-calculation');
+Route::get('/insurance/fundamentals/regulatory',          [PageController::class, 'insuranceRegulatory'])->name('insurance.fundamentals.regulatory');
+
+// Insurance Categories sub-pages
+Route::get('/insurance/categories/life',         [PageController::class, 'insuranceCatLife'])->name('insurance.categories.life');
+Route::get('/insurance/categories/health',       [PageController::class, 'insuranceCatHealth'])->name('insurance.categories.health');
+Route::get('/insurance/categories/property',     [PageController::class, 'insuranceCatProperty'])->name('insurance.categories.property');
+Route::get('/insurance/categories/auto',         [PageController::class, 'insuranceCatAuto'])->name('insurance.categories.auto');
+Route::get('/insurance/categories/reinsurance',  [PageController::class, 'insuranceCatReinsurance'])->name('insurance.categories.reinsurance');

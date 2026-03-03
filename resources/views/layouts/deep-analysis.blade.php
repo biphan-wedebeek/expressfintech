@@ -80,11 +80,11 @@
 
                     <ul class="space-y-2 text-sm">
                         @foreach([
-                        ['Insurance Principles', 'insurance.principles'],
-                        ['Risk Assessment Models', 'insurance.risk-assessment'],
-                        ['Underwriting Process', 'insurance.underwriting'],
-                        ['Premium Calculation Methods', 'insurance.premium-calculation'],
-                        ['Regulatory Framework', 'insurance.regulatory'],
+                        ['Insurance Principles', 'insurance.fundamentals.principles'],
+                        ['Risk Assessment Models', 'insurance.fundamentals.risk-assessment'],
+                        ['Underwriting Process', 'insurance.fundamentals.underwriting'],
+                        ['Premium Calculation Methods', 'insurance.fundamentals.premium-calculation'],
+                        ['Regulatory Framework', 'insurance.fundamentals.regulatory'],
                         ] as [$label,$routeName])
                         <li>
                             <a href="{{ route($routeName) }}"

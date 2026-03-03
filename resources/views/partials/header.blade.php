@@ -65,34 +65,41 @@
 <script>
     (function () {
          const R = {
-        'insurance.principles':       '{{ route("insurance.principles") }}',
-        'insurance.risk-assessment':  '{{ route("insurance.risk-assessment") }}',
-        'insurance.underwriting':     '{{ route("insurance.underwriting") }}',
-        'insurance.premium-calculation': '{{ route("insurance.premium-calculation") }}',
-        'insurance.regulatory':       '{{ route("insurance.regulatory") }}',
-        'insurance':    '{{ route("insurance") }}',
-        'banking':      '{{ route("banking") }}',
-        'credit-cards': '{{ route("credit-cards") }}',
-        'mortgages':    '{{ route("mortgages") }}',
-        'personal-finance': '{{ route("personal-finance") }}',
-        'reviews':      '{{ route("reviews") }}',
-    };
-        /* ─── DATA ──────────────────────────────────────────────── */
+            'insurance.principles':       '{{ route("insurance.fundamentals.principles") }}',
+            'insurance.risk-assessment':  '{{ route("insurance.fundamentals.risk-assessment") }}',
+            'insurance.underwriting':     '{{ route("insurance.fundamentals.underwriting") }}',
+            'insurance.premium-calculation': '{{ route("insurance.fundamentals.premium-calculation") }}',
+            'insurance.regulatory':       '{{ route("insurance.fundamentals.regulatory") }}',
+
+            'insurance':    '{{ route("insurance") }}',
+            'banking':      '{{ route("banking") }}',
+            'credit-cards': '{{ route("credit-cards") }}',
+            'mortgages':    '{{ route("mortgages") }}',
+            'personal-finance': '{{ route("personal-finance") }}',
+            'reviews':      '{{ route("reviews") }}',
+
+            'insurance.categories.life':        '{{ route("insurance.categories.life") }}',
+            'insurance.categories.health':      '{{ route("insurance.categories.health") }}',
+            'insurance.categories.property':    '{{ route("insurance.categories.property") }}',
+            'insurance.categories.auto':        '{{ route("insurance.categories.auto") }}',
+            'insurance.categories.reinsurance': '{{ route("insurance.categories.reinsurance") }}',
+        };
+        
         const MENUS = {
             insurance: {
-             c1:{ title:'Insurance Fundamentals', items:[
-                {t:'Insurance Principles',        h: R['insurance.principles']},
-                {t:'Risk Assessment Models',      h: R['insurance.risk-assessment']},
-                {t:'Underwriting Process',        h: R['insurance.underwriting']},
-                {t:'Premium Calculation Methods', h: R['insurance.premium-calculation']},
-                {t:'Regulatory Framework',        h: R['insurance.regulatory']},
-            ]},
+                c1:{ title:'Insurance Fundamentals', items:[
+                    {t:'Insurance Principles',        h: R['insurance.principles']},
+                    {t:'Risk Assessment Models',      h: R['insurance.risk-assessment']},
+                    {t:'Underwriting Process',        h: R['insurance.underwriting']},
+                    {t:'Premium Calculation Methods', h: R['insurance.premium-calculation']},
+                    {t:'Regulatory Framework',        h: R['insurance.regulatory']},
+                ]},
                 c2: { title:' Insurance Categories', items:[
-                    {l:'Life Insurance Analysis',     h:'#'},
-                    {l:'Health Insurance Systems',    h:'#'},
-                    {l:'Property & Casualty',         h:'#'},
-                    {l:'Auto Insurance Market',       h:'#'},
-                    {l:'Reinsurance Structure',       h:'#'},
+                    {l:'Life Insurance Analysis',     h:R['insurance.categories.life']},
+                    {l:'Health Insurance Systems',    h:R['insurance.categories.health']},
+                    {l:'Property & Casualty',         h:R['insurance.categories.property']},
+                    {l:'Auto Insurance Market',       h:R['insurance.categories.auto']},
+                    {l:'Reinsurance Structure',       h:R['insurance.categories.reinsurance']},
                 ]},
                 c3: { title:' Industry Insights', items:[
                     {l:'Insurance Market Trends',  h:'#'},
