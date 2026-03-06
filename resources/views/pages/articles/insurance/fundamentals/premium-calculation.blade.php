@@ -8,18 +8,18 @@
 @section('hero_subtitle', 'From pure premium to final charged premium — a complete walkthrough of ratemaking methodology, rating factors, expense loading, and profit margin construction.')
 @section('meta', 'February 2026 · FinReview Research · 13 min read')
 @section('extra_badges')
-    <span class="text-[#6b6560] bg-white text-[11px] font-medium px-3 py-1.5 rounded-lg border border-white/10">Ratemaking</span>
+    <span class="bg-white/10 text-navy text-[11px] font-medium px-3 py-1.5 rounded-lg border border-white/10">Ratemaking</span>
 @endsection
 @section('sidebar_toc')
-    <li><a href="#components" class="text-[13px] text-[#6b6560] hover:text-[#c9a96e] transition-colors">Premium Components</a></li>
-    <li><a href="#formula"    class="text-[13px] text-[#6b6560] hover:text-[#c9a96e] transition-colors">The Pricing Formula</a></li>
-    <li><a href="#factors"    class="text-[13px] text-[#6b6560] hover:text-[#c9a96e] transition-colors">Rating Factors</a></li>
-    <li><a href="#methods"    class="text-[13px] text-[#6b6560] hover:text-[#c9a96e] transition-colors">Ratemaking Methods</a></li>
+    <li><a href="#components" class="text-[13px] text-[#888] hover:text-[#4f46e5] transition-colors">Premium Components</a></li>
+    <li><a href="#formula"    class="text-[13px] text-[#888] hover:text-[#4f46e5] transition-colors">The Pricing Formula</a></li>
+    <li><a href="#factors"    class="text-[13px] text-[#888] hover:text-[#4f46e5] transition-colors">Rating Factors</a></li>
+    <li><a href="#methods"    class="text-[13px] text-[#888] hover:text-[#4f46e5] transition-colors">Ratemaking Methods</a></li>
 @endsection
 @section('page_content')
 
 <section id="components" class="mb-20 scroll-mt-28">
-    <h2 class="text-[28px] font-bold text-[#1a1a1a] border-l-4 border-[#c9a96e] pl-4 mb-6 familyfont">Premium Components</h2>
+    <h2 class="familyfont text-[28px] font-boldborder-l-4 border-[#4f46e5] pl-4 mb-6">Premium Components</h2>
     <div class="space-y-3">
         @foreach([
             ['Pure Premium (Expected Loss)', 'The actuarial estimate of expected claims cost per unit of exposure. This is the technical floor — below this, the insurer expects to lose money on underwriting alone.', '~60–65%'],
@@ -27,16 +27,16 @@
             ['Underwriting Expenses', 'Agent commissions (15–20%), policy issuance costs, marketing, overhead. Major driver of expense ratio.', '~20%'],
             ['Profit & Contingency Loading', 'Target underwriting profit margin plus reserve for model uncertainty. Regulators scrutinize this component in rate filings.', '~5%'],
         ] as $idx => $row)
-        <div class="rounded-xl border border-[#2a2f3a] p-5 flex items-start gap-5" style="background:#1a1d24">
+        <div class="bg-white rounded-xl border border-[#e5e7eb] p-5 flex items-start gap-5">
             <div class="text-right w-12 shrink-0">
-                <span class="text-[#c9a96e] font-black text-[15px]" style="font-family:'Playfair Display',serif">{{ sprintf('%02d', $idx+1) }}</span>
+                <span class="text-[#4f46e5] font-black text-[15px]" style="font-family:'Playfair Display',serif">{{ sprintf('%02d', $idx+1) }}</span>
             </div>
             <div class="flex-1">
                 <div class="flex items-center justify-between mb-1.5">
-                    <span class="text-[15px] font-bold text-white">{{ $row[0] }}</span>
-                    <span class="text-[13px] font-bold text-[#c9a96e]">{{ $row[2] }}</span>
+                    <span class="text-[15px] font-bold text-navy">{{ $row[0] }}</span>
+                    <span class="text-[13px] font-bold text-[#4f46e5]">{{ $row[2] }}</span>
                 </div>
-                <div class="text-[13.5px] text-[#6b6560] leading-relaxed">{{ $row[1] }}</div>
+                <div class="text-[13.5px] text-[#6b7280] leading-relaxed">{{ $row[1] }}</div>
             </div>
         </div>
         @endforeach
@@ -44,21 +44,21 @@
 </section>
 
 <section id="formula" class="mb-20 scroll-mt-28">
-    <h2 class="text-[28px] font-bold text-[#1a1a1a] border-l-4 border-[#c9a96e] pl-4 mb-6 familyfont">The Pricing Formula</h2>
-    <div class="rounded-2xl border border-[#2a2f3a] p-10 text-center mb-8" style="background:linear-gradient(145deg,#1a1d24,#12151b)">
+    <h2 class="familyfont text-[28px] font-bold border-l-4 border-[#4f46e5] pl-4 mb-6">The Pricing Formula</h2>
+    <div class="bg-white rounded-2xl border border-[#e5e7eb] p-10 text-center mb-8">
         <p class="text-[12px] uppercase text-[#666] tracking-widest mb-4">Standard Ratemaking Formula</p>
-        <div class="text-[22px] font-bold text-white mb-6" style="font-family:'Playfair Display',serif">
-            Indicated Rate = <span class="text-[#c9a96e]">Pure Premium + LAE</span> ÷ <span class="text-green-400">(1 − Expense % − Profit %)</span>
+        <div class="familyfont text-[22px] font-bold">
+            Indicated Rate = <span class="text-[#4f46e5]">Pure Premium + LAE</span> ÷ <span class="text-green-400">(1 − Expense % − Profit %)</span>
         </div>
-        <div class="grid grid-cols-3 gap-6 mt-8 text-left">
+        <div class="grid grid-cols-3 gap-6 text-left">
             @foreach([['Example: Auto Policy',''],['Pure Premium + LAE','$620'],['÷ (1 − 28% − 5%)','÷ 0.67'],['= Indicated Rate','$925']] as $r)
             <div></div>
             @endforeach
         </div>
-        <div class="inline-block text-left rounded-xl border border-[#2a2f3a] p-6 mt-4" style="background:#15181f">
+        <div class="inline-block text-left rounded-xl border border-[#e5e7eb] p-6 mt-4" style="background:#ffffff">
             <p class="text-[12px] uppercase text-[#666] tracking-widest mb-3">Worked Example — Auto Insurance</p>
-            @foreach([['Pure Premium + LAE','$620','text-[#6b6560]'],['Expense loading (28%)','included in denominator','text-[#888]'],['Profit loading (5%)','included in denominator','text-[#888]'],['Indicated Rate','$620 ÷ 0.67 = $925','text-[#c9a96e] font-bold']] as $row)
-            <div class="flex justify-between gap-8 py-2 border-b border-[#2a2f3a] last:border-0 text-[13.5px]">
+            @foreach([['Pure Premium + LAE','$620','text-[#6b7280]'],['Expense loading (28%)','included in denominator','text-[#888]'],['Profit loading (5%)','included in denominator','text-[#888]'],['Indicated Rate','$620 ÷ 0.67 = $925','text-[#4f46e5] font-bold']] as $row)
+            <div class="flex justify-between gap-8 py-2 border-b border-[#e5e7eb] last:border-0 text-[13.5px]">
                 <span class="text-[#888]">{{ $row[0] }}</span>
                 <span class="{{ $row[2] }}">{{ $row[1] }}</span>
             </div>
@@ -68,20 +68,20 @@
 </section>
 
 <section id="factors" class="mb-20 scroll-mt-28">
-    <h2 class="text-[28px] font-bold text-[#1a1a1a] border-l-4 border-[#c9a96e] pl-4 mb-6 familyfont">Rating Factors</h2>
-    <p class="text-[#6b6560] text-[15.5px] leading-[1.85] mb-6">Individual rates are the base rate multiplied by a series of rating factors reflecting the risk characteristics of each policyholder. These factors are actuarially derived from historical loss experience.</p>
-    <div class="rounded-xl border border-[#2a2f3a] overflow-hidden">
-        <div class="px-6 py-3 border-b border-[#2a2f3a]" style="background:#12151b">
-            <span class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#c9a96e]">Common Rating Factors — Homeowners Insurance</span>
+    <h2 class="text-[28px] font-bold text-white border-l-4 border-[#4f46e5] pl-4 mb-6" style="font-family:'Playfair Display',serif">Rating Factors</h2>
+    <p class="text-[#6b7280] text-[15.5px] leading-[1.85] mb-6">Individual rates are the base rate multiplied by a series of rating factors reflecting the risk characteristics of each policyholder. These factors are actuarially derived from historical loss experience.</p>
+    <div class="rounded-xl border border-[#e5e7eb] overflow-hidden">
+        <div class="px-6 py-3 border-b border-[#e5e7eb]" style="background:#f8f9fb">
+            <span class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#4f46e5]">Common Rating Factors — Homeowners Insurance</span>
         </div>
         <div class="overflow-x-auto">
             <table class="w-full text-[13.5px]">
-                <thead style="background:#12151b"><tr class="border-b border-[#2a2f3a]">
+                <thead style="background:#f8f9fb"><tr class="border-b border-[#e5e7eb]">
                     <th class="text-left px-6 py-3 text-[11px] font-bold uppercase text-[#888] tracking-wider">Factor</th>
                     <th class="text-left px-6 py-3 text-[11px] font-bold uppercase text-[#888] tracking-wider">Range</th>
                     <th class="text-right px-6 py-3 text-[11px] font-bold uppercase text-[#888] tracking-wider">Rate Impact</th>
                 </tr></thead>
-                <tbody class="divide-y divide-[#2a2f3a]">
+                <tbody class="divide-y divide-[#e5e7eb]">
                     @foreach([
                         ['Geographic territory','Coastal vs. inland zone','±40–60%'],
                         ['Construction type','Frame vs. masonry vs. fire-resistive','±15–25%'],
@@ -92,10 +92,10 @@
                         ['Deductible','$500 vs. $2,500','-15 to -22%'],
                         ['Protective devices','Alarm, sprinkler, deadbolt','-5 to -15%'],
                     ] as $row)
-                    <tr style="background:#15181f" class="hover:bg-[#1a1d24] transition-colors">
-                        <td class="px-6 py-4 font-medium text-[#e6e6e6]">{{ $row[0] }}</td>
+                    <tr style="background:#ffffff" class="hover:bg-[#f0f1f5] transition-colors">
+                        <td class="px-6 py-4 font-medium text-navy">{{ $row[0] }}</td>
                         <td class="px-6 py-4 text-[#888]">{{ $row[1] }}</td>
-                        <td class="px-6 py-4 text-right font-bold text-[#c9a96e]">{{ $row[2] }}</td>
+                        <td class="px-6 py-4 text-right font-bold text-[#4f46e5]">{{ $row[2] }}</td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -105,7 +105,7 @@
 </section>
 
 <section id="methods" class="scroll-mt-28">
-    <h2 class="text-[28px] font-bold text-[#1a1a1a] border-l-4 border-[#c9a96e] pl-4 mb-6 familyfont">Ratemaking Methods</h2>
+    <h2 class="familyfont text-[28px] font-bold border-l-4 border-[#4f46e5] pl-4 mb-6">Ratemaking Methods</h2>
     <div class="space-y-4">
         @foreach([
             ['Pure Premium Method','Calculates rate directly from loss costs per unit of exposure. Most intuitive method; works well with homogeneous, high-volume books.'],
@@ -113,12 +113,12 @@
             ['Experience Rating','Adjusts individual account rates based on their own loss history vs. expected. Common in commercial lines. Formula: Modified Rate = Manual Rate × (Z·A/E + (1-Z))'],
             ['Schedule Rating','Manual adjustments (credits/debits) applied by underwriters for risk characteristics not captured in formula — management quality, risk control, unusual hazards.'],
         ] as $idx => $row)
-        <div class="rounded-xl border border-[#2a2f3a] overflow-hidden" style="background:#15181f">
-            <div class="px-6 py-3 border-b border-[#2a2f3a] flex items-center gap-3" style="background:#1a1d24">
-                <span class="text-[#c9a96e] font-black text-[13px]">{{ sprintf('%02d', $idx+1) }}</span>
-                <span class="text-[14px] font-bold text-white">{{ $row[0] }}</span>
+        <div class="bg-white rounded-xl border border-[#e5e7eb] overflow-hidden">
+            <div class="px-6 py-3 border-b border-[#e5e7eb] flex items-center gap-3" style="background:#f0f1f5">
+                <span class="text-[#4f46e5] font-black text-[13px]">{{ sprintf('%02d', $idx+1) }}</span>
+                <span class="text-[14px] font-bold text-navy">{{ $row[0] }}</span>
             </div>
-            <div class="px-6 py-4 text-[13.5px] text-[#6b6560] leading-relaxed">{{ $row[1] }}</div>
+            <div class="px-6 py-4 text-[13.5px] text-[#6b7280] leading-relaxed">{{ $row[1] }}</div>
         </div>
         @endforeach
     </div>
@@ -127,9 +127,9 @@
 @endsection
 @section('insight_cards')
     @foreach([['Credibility Weighting','The more data, the more weight given to own experience. Small accounts rely heavily on industry manual rates.'],['Investment Income Credit','Insurers earn investment income on held reserves — regulators allow this to offset premiums, reducing charged rates.'],['Rate Adequacy Monitoring','Actuaries track loss ratio development quarterly — deterioration triggers rate action before reserve deficiency emerges.']] as $c)
-    <div class="rounded-2xl border border-[#2a2f3a] p-10 transition-all duration-300 hover:-translate-y-2 hover:border-[#c9a96e]" style="background:#1a1d24">
-        <h4 class="text-[17px] font-bold text-[#c9a96e] mb-4" style="font-family:'Playfair Display',serif">{{ $c[0] }}</h4>
-        <p class="text-[#6b6560] text-[14px] leading-relaxed">{{ $c[1] }}</p>
+    <div class="bg-white rounded-2xl border border-[#e5e7eb] p-10 transition-all duration-300 hover:-translate-y-2 hover:border-[#4f46e5]">
+        <h4 class="familyfont text-[17px] font-bold mb-4">{{ $c[0] }}</h4>
+        <p class="text-[#6b7280] text-[14px] leading-relaxed">{{ $c[1] }}</p>
     </div>
     @endforeach
 @endsection

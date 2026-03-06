@@ -32,4 +32,9 @@ class PageController extends Controller
     public function insuranceCatProperty()    { return view('pages.articles.insurance.categories.property'); }
     public function insuranceCatAuto()        { return view('pages.articles.insurance.categories.auto'); }
     public function insuranceCatReinsurance() { return view('pages.articles.insurance.categories.reinsurance'); }
+
+    // Insurance Industry Insights
+    public function insuranceInsightsTrends()  { return view('pages.articles.insurance.insights.market-trends'); }
+    public function insuranceInsightsTech()    { return view('pages.articles.insurance.insights.insurtech'); }
+    public function insuranceInsightsReports() { return view('pages.articles.insurance.insights.global-reports'); }
 }

@@ -1,165 +1,132 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="{{ asset('finreview.png') }}">
-    <meta name="description" content="@yield('description', 'Expert financial reviews you can trust – FinReview')">
-    <title>@yield('title', 'FinReview – Deep Analysis')</title>
-
+    <title>@yield('title', 'Express Fintech – Deep Analysis')</title>
+    <link rel="icon" type="image/png" href="{{ asset('expressfintech.png') }}">
+    <meta name="description" content="@yield('description')">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @stack('styles')
 </head>
+<body>
 
-<body class="bg-[#0f1115] text-white">
+@include('partials.header')
 
-    @include('partials.header')
+<div class="bg-navy border-b border-white/[0.08] py-[10px] text-center text-[13px] tracking-[0.3px] text-white/55">
+    Featured Research:
+    <span class="font-semibold" style="color:#818cf8">@yield('feature_label','Express Fintech Industry Research 2026')</span>
+</div>
 
-    {{-- TOP FEATURE STRIP --}}
-    <div class="bg-gradient-to-r from-[#111] to-[#1a1d24] border-b border-[#2a2f3a] py-4 text-center text-sm tracking-wide text-[#6b6560]">
-        Featured Research:
-        <span class="text-[#c9a96e] font-semibold">
-            @yield('feature_label','FinReview Industry Research 2026')
-        </span>
-    </div>
+<div class="max-w-screen-xl mx-auto">
+    <div class="py-14 pb-12">
+        <nav class="flex items-center gap-2 text-xs text-[#9ca3af] mb-6">
+            <a href="{{ route('home') }}" class="text-[#9ca3af] hover:text-[var(--indigo)] transition-colors duration-200">Home</a>
+            <span>/</span>
+            <a href="{{ route('insurance') }}" class="text-[#9ca3af] hover:text-[var(--indigo)] transition-colors duration-200">Insurance</a>
+            <span>/</span>
+            <span class="text-[#6b7280]">@yield('breadcrumb')</span>
+        </nav>
 
-    {{-- HERO --}}
-    <div class="bg-[#f5f0eb] py-8 max-w-screen-xl mx-auto">
-        <div>
-            {{-- Breadcrumb --}}
-            <nav class="flex items-center gap-2 text-xs text-[#6b6560] mb-7">
-                <a href="{{ route('home') }}" class="hover:text-[#c9a96e] transition">Home</a>
-                <span>/</span>
-                <a href="{{ route('insurance') }}" class="hover:text-[#c9a96e] transition">Insurance</a>
-                <span>/</span>
-                <span class="text-[#6b6560]">@yield('breadcrumb')</span>
-            </nav>
-
-            {{-- Badges --}}
-            <div class="flex items-center gap-3 mb-5">
-                <span class="bg-[#c9a96e] text-black text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg">
-                    @yield('badge','Insurance Fundamentals')
-                </span>
+        <div class="flex items-center gap-[10px] mb-[18px]">
+            <span class="badge badge-indigo">@yield('badge','Insurance Fundamentals')</span>
+            <span class="inline-flex items-center text-[11px] font-medium text-[#6b7280] px-3 py-[6px] rounded-lg border border-[var(--border)] bg-white">
                 @yield('extra_badges')
-            </div>
-
-            <h1 class="text-[36px] font-bold text-[#1a1a1a] leading-tight mb-3 familyfont ">
-                @yield('hero_title')
-            </h1>
-
-            <p class="max-w-3xl text-[#6b6560] text-[17px] leading-relaxed">
-                @yield('hero_subtitle')
-            </p>
-
-            <p class="mt-3 text-sm text-neutral-500">
-                @yield('meta')
-            </p>
+            </span>
         </div>
+
+        <h1 class="familyfont text-[clamp(28px,3.8vw,44px)] leading-[1.18] mb-4 text-navy">
+            @yield('hero_title')
+        </h1>
+
+        <p class="max-w-[800px] text-muted text-[17px] leading-[1.75]">
+            @yield('hero_subtitle')
+        </p>
+
+        <p class="mt-3 text-xs text-[#9ca3af]">
+            @yield('meta')
+        </p>
     </div>
+</div>
 
-    {{-- SIDEBAR + CONTENT --}}
-    <div class="max-w-screen-xl mx-auto">
-        <div class="flex gap-16 items-start pt-8 pb-24">
+<div class="max-w-screen-xl mx-auto">
+    <div class="flex gap-14 items-start py-12 pb-24">
+        <aside class="w-56 shrink-0 sticky top-24">
+            <p class="text-[11px] uppercase text-[#9ca3af] tracking-[.1em] font-bold mb-[14px]">Contents</p>
+            <ul class="list-none">@yield('sidebar_toc')</ul>
 
-            {{-- SIDEBAR --}}
-            <aside class="w-[240px] shrink-0 sticky top-[110px] hidden lg:block">
-
-                <p class="text-xs uppercase tracking-widest font-bold text-neutral-500 mb-4">
-                    Contents
-                </p>
-
-                <ul class="space-y-3 text-sm">
-                    @yield('sidebar_toc')
-                </ul>
-
-                <div class="mt-9 pt-7 border-t border-[#2a2f3a]">
-                    <p class="text-xs uppercase tracking-widest font-bold text-neutral-500 mb-4">
-                        Insurance Fundamentals
-                    </p>
-
-                    <ul class="space-y-2 text-sm">
-                        @foreach([
+            <div class="mt-8 pt-6 border-t border-[var(--border)]">
+                <p class="text-[11px] uppercase text-[#9ca3af] tracking-[.1em] font-bold mb-[14px]">Insurance Fundamentals</p>
+                <ul class="list-none">
+                    @foreach([
                         ['Insurance Principles', 'insurance.fundamentals.principles'],
                         ['Risk Assessment Models', 'insurance.fundamentals.risk-assessment'],
                         ['Underwriting Process', 'insurance.fundamentals.underwriting'],
                         ['Premium Calculation Methods', 'insurance.fundamentals.premium-calculation'],
                         ['Regulatory Framework', 'insurance.fundamentals.regulatory'],
-                        ] as [$label,$routeName])
-                        <li>
-                            <a href="{{ route($routeName) }}"
-                                class="transition hover:text-[#c9a96e] {{ request()->routeIs($routeName) ? 'text-[#c9a96e] font-semibold' : 'text-[#6b6560]' }}">
-                                {{ $label }}
-                            </a>
-                        </li>
-                        @endforeach
-                    </ul>
+                    ] as [$label,$routeName])
+                    <li class="mb-2">
+                        <a href="{{ route($routeName) }}"
+                           class="block text-[13px] py-[3px] transition-colors duration-200
+                                  {{ request()->routeIs($routeName)
+                                     ? 'text-[var(--indigo)] font-semibold'
+                                     : 'text-muted hover:text-[var(--indigo)]' }}">
+                        </a>
+                    </li>
+                    @endforeach
+                </ul>
 
-                    <a href="{{ route('consultation') }}"
-                        class="block mt-6 text-center bg-[#c9a96e] text-black font-bold text-sm py-3 rounded-xl hover:bg-[#b8934a] transition">
-                        Get Free Consultation
-                    </a>
-                </div>
-            </aside>
+                <a href="{{ route('consultation') }}"
+                   class="btn-primary justify-center w-full mt-6 text-[13px] py-[11px]">
+                    Get Free Consultation
+                </a>
+            </div>
+        </aside>
 
-            {{-- MAIN CONTENT --}}
-            <main class="flex-1 min-w-0 pt-2">
-                @yield('page_content')
-            </main>
+        <main class="flex-1 min-w-0 pt-[6px]">
+            @yield('page_content')
+        </main>
+    </div>
+</div>
 
+@hasSection('insight_cards')
+<div class="bg-[#f0f1f5] border-t border-b border-[var(--border)] py-12">
+    <div class="max-w-screen-xl mx-auto">
+        <div class="grid grid-cols-3 gap-8">
+            @yield('insight_cards')
         </div>
     </div>
+</div>
+@endif
 
-    {{-- INSIGHT STRIP --}}
-    @hasSection('insight_cards')
-    <div class="bg-[#15181f] border-y border-[#2a2f3a] py-24">
-        <div class="max-w-[1200px] mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-10">
-                @yield('insight_cards')
+<div class="max-w-screen-xl mx-auto">
+    <div class="py-12">
+        <h2 class="familyfont text-[32px] text-navy mb-6">
+            @yield('cta_title','Extended Industry Research')
+        </h2>
+
+        <div class="card relative overflow-hidden px-[52px] py-12">
+            <div class="pointer-events-none absolute top-0 right-0 w-[220px] h-[220px]"
+                 style="background:radial-gradient(circle,rgba(79,70,229,.05),transparent)"></div>
+
+            <p class="text-muted max-w-[700px] text-[15px] leading-[1.8]">
+                @yield('cta_desc','Access deeper analysis frameworks, industry data models, and expert commentary used by financial professionals.')
+            </p>
+
+            <div class="flex items-center gap-[14px] mt-7 flex-wrap">
+                <a href="{{ route('reviews') }}" class="btn-primary text-[14.5px] px-7 py-[13px]">
+                    @yield('cta_btn','View All Research')
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="{{ route('consultation') }}" class="btn-secondary text-[14.5px] px-7 py-[13px]">
+                    Free Consultation
+                </a>
             </div>
         </div>
     </div>
-    @endif
+</div>
 
-    {{-- BOTTOM CTA --}}
-    <div class="max-w-[1200px] mx-auto px-6">
-        <div class="py-28">
-            <h2 class="font-serif text-3xl mb-7">
-                @yield('cta_title','Extended Industry Research')
-            </h2>
-
-            <div class="bg-gradient-to-br from-[#1a1d24] to-[#12151b] border border-[#2a2f3a] rounded-2xl p-16">
-                <p class="text-[#6b6560] max-w-2xl text-[15px] leading-relaxed">
-                    @yield('cta_desc','Access deeper analysis frameworks, industry data models, and expert commentary used by financial professionals.')
-                </p>
-
-                <div class="flex flex-wrap items-center gap-4 mt-8">
-
-                    <a href="{{ route('reviews') }}"
-                        class="inline-flex items-center gap-2 bg-[#c9a96e] text-black font-bold text-[15px] px-7 py-3.5 rounded-xl hover:bg-[#b8934a] hover:-translate-y-0.5 transition">
-
-                        @yield('cta_btn','View All Research')
-
-                        <svg width="16" height="16" viewBox="0 0 24 24"
-                            fill="none" stroke="currentColor" stroke-width="2.5"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M5 12h14M12 5l7 7-7 7" />
-                        </svg>
-                    </a>
-
-                    <a href="{{ route('consultation') }}"
-                        class="inline-flex items-center gap-2 border border-[#2a2f3a] text-[#6b6560] px-7 py-3.5 rounded-xl hover:border-[#c9a96e] hover:text-[#c9a96e] transition">
-                        Free Consultation
-                    </a>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    @include('partials.footer')
-    @stack('scripts')
-
+@include('partials.footer')
 </body>
-
 </html>

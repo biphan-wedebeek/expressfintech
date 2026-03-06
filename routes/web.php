@@ -38,3 +38,8 @@ Route::get('/insurance/categories/health',       [PageController::class, 'insura
 Route::get('/insurance/categories/property',     [PageController::class, 'insuranceCatProperty'])->name('insurance.categories.property');
 Route::get('/insurance/categories/auto',         [PageController::class, 'insuranceCatAuto'])->name('insurance.categories.auto');
 Route::get('/insurance/categories/reinsurance',  [PageController::class, 'insuranceCatReinsurance'])->name('insurance.categories.reinsurance');
+
+// Insurance Industry Insights
+Route::get('/insurance/insights/market-trends',  [PageController::class, 'insuranceInsightsTrends'])->name('insurance.insights.trends');
+Route::get('/insurance/insights/insurtech',      [PageController::class, 'insuranceInsightsTech'])->name('insurance.insights.insurtech');
+Route::get('/insurance/insights/global-reports', [PageController::class, 'insuranceInsightsReports'])->name('insurance.insights.reports');
