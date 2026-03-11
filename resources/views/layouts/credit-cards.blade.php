@@ -368,7 +368,7 @@
 
                 {{-- Right panel --}}
                 @hasSection('right_panel')
-                <div class="w-[230px] shrink-0 space-y-4">
+                <div class="w-[280px] shrink-0 space-y-4">
                     @yield('right_panel')
                 </div>
                 @endif
