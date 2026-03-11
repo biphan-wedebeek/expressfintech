@@ -56,3 +56,21 @@ Route::get('/banking/products/lending-framework',    [PageController::class, 'ba
 Route::get('/banking/products/corporate-banking',    [PageController::class, 'bankingProductsCorporate'])->name('banking.products.corporate');
 Route::get('/banking/products/cross-border-payments',[PageController::class, 'bankingProductsCrossBorder'])->name('banking.products.cross-border');
 Route::get('/banking/products/treasury-services',    [PageController::class, 'bankingProductsTreasury'])->name('banking.products.treasury');
+
+// Credit Cards Mechanics
+Route::get('/credit-cards/mechanics/credit-scoring',     [PageController::class, 'cardsMechanicsScoring'])->name('cards.mechanics-scoring');
+Route::get('/credit-cards/mechanics/apr-interest',       [PageController::class, 'cardsMechanicsApr'])->name('cards.mechanics-apr');
+Route::get('/credit-cards/mechanics/interchange-fees',   [PageController::class, 'cardsMechanicsInterchange'])->name('cards.mechanics-interchange');
+Route::get('/credit-cards/mechanics/credit-limits',      [PageController::class, 'cardsMechanicsCredit'])->name('cards.mechanics-credit');
+Route::get('/credit-cards/mechanics/risk-based-pricing', [PageController::class, 'cardsMechanicsRiskBased'])->name('cards.mechanics-risk_based');
+
+// Credit Cards Strategy
+Route::get('/credit-cards/strategy/reward-programs',         [PageController::class, 'cardsStrategyReward'])->name('cards.strategy-reward');
+Route::get('/credit-cards/strategy/cashback-vs-points',      [PageController::class, 'cardsStrategyCashback'])->name('cards.strategy-cashback');
+Route::get('/credit-cards/strategy/balance-transfer',        [PageController::class, 'cardsStrategyAnalysis'])->name('cards.strategy-analysis');
+Route::get('/credit-cards/strategy/credit-utilization',      [PageController::class, 'cardsStrategyStrategy'])->name('cards.strategy-strategy');
+Route::get('/credit-cards/strategy/card-churning',           [PageController::class, 'cardsStrategyTactics'])->name('cards.strategy-tactics');
+
+// Credit Cards — Market & Regulation
+Route::get('/credit-cards/market/network-comparison',    [PageController::class, 'cardsMarketComparison'])->name('cards.market-comparison');
+Route::get('/credit-cards/market/consumer-protection',   [PageController::class, 'cardsMarketConsumer'])->name('cards.market-consumer');
