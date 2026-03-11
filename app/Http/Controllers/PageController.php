@@ -50,4 +50,22 @@ class PageController extends Controller
     public function bankingProductsCorporate()   { return view('pages.articles.banking.products.corporate-banking'); }
     public function bankingProductsCrossBorder() { return view('pages.articles.banking.products.cross-banking'); }
     public function bankingProductsTreasury()    { return view('pages.articles.banking.products.treasury-banking'); }
+
+    // Credit Cards Mechanics
+    public function cardsMechanicsScoring()   { return view('pages.articles.cards.mechanics-scoring'); }
+    public function cardsMechanicsApr()       { return view('pages.articles.cards.mechanics-apr'); }
+    public function cardsMechanicsInterchange(){ return view('pages.articles.cards.mechanics-interchange'); }
+    public function cardsMechanicsCredit()    { return view('pages.articles.cards.mechanics-credit'); }
+    public function cardsMechanicsRiskBased() { return view('pages.articles.cards.mechanics-risk_based'); }
+
+    // Credit Cards Strategy
+    public function cardsStrategyReward()    { return view('pages.articles.cards.strategy-reward'); }
+    public function cardsStrategyCashback()  { return view('pages.articles.cards.strategy-cashback'); }
+    public function cardsStrategyAnalysis()  { return view('pages.articles.cards.strategy-analysis'); }
+    public function cardsStrategyStrategy()  { return view('pages.articles.cards.strategy-strategy'); }
+    public function cardsStrategyTactics()   { return view('pages.articles.cards.strategy-tactics'); }
+
+    // Credit Cards — Market & Regulation
+    public function cardsMarketComparison() { return view('pages.articles.cards.market-comparison'); }
+    public function cardsMarketConsumer()   { return view('pages.articles.cards.market-consumer'); }
 }

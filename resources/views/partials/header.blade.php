@@ -110,6 +110,21 @@
         'banking.products.corporate':    '{{ route("banking.products.corporate") }}',
         'banking.products.cross-border': '{{ route("banking.products.cross-border") }}',
         'banking.products.treasury':     '{{ route("banking.products.treasury") }}',
+
+        'cards.mechanics.scoring':    '{{ route("cards.mechanics-scoring") }}',
+        'cards.mechanics.apr':        '{{ route("cards.mechanics-apr") }}',
+        'cards.mechanics.interchange':'{{ route("cards.mechanics-interchange") }}',
+        'cards.mechanics.credit':     '{{ route("cards.mechanics-credit") }}',
+        'cards.mechanics.risk_based': '{{ route("cards.mechanics-risk_based") }}',
+
+        'cards.strategy.reward':    '{{ route("cards.strategy-reward") }}',
+        'cards.strategy.cashback':  '{{ route("cards.strategy-cashback") }}',
+        'cards.strategy.analysis':  '{{ route("cards.strategy-analysis") }}',
+        'cards.strategy.strategy':  '{{ route("cards.strategy-strategy") }}',
+        'cards.strategy.tactics':   '{{ route("cards.strategy-tactics") }}',
+
+        'cards.market.comparison': '{{ route("cards.market-comparison") }}',
+        'cards.market.consumer':   '{{ route("cards.market-consumer") }}',
     };
 
     const MENUS = {
@@ -164,24 +179,27 @@
         },
         'credit-cards':{
             c1:{title:'Card Mechanics',items:[
-                {t:'Credit Scoring Models',     h:'#'},
-                {t:'APR & Interest Calculation',h:'#'},
-                {t:'Interchange Fees',          h:'#'},
-                {t:'Credit Limits',             h:'#'},
-                {t:'Risk-based Pricing',        h:'#'},
+                {t:'Credit Scoring Models',     h:R['cards.mechanics.scoring']},
+                {t:'APR & Interest Calculation',h:R['cards.mechanics.apr']},
+                {t:'Interchange Fees',          h:R['cards.mechanics.interchange']},
+                {t:'Credit Limits',             h:R['cards.mechanics.credit']},
+                {t:'Risk-based Pricing',        h:R['cards.mechanics.risk_based']},
             ]},
-            c2:{title:'Card Strategy',items:[
-                {l:'Reward Program Economics',   h:'#'},
-                {l:'Cashback vs Points',         h:'#'},
-                {l:'Balance Transfer Analysis',  h:'#'},
-                {l:'Credit Utilization Strategy',h:'#'},
-                {l:'Card Churning Tactics',      h:'#'},
+             c2:{title:'Card Strategy',items:[
+                {l:'Reward Program Economics',   h:R['cards.strategy.reward']},
+                {l:'Cashback vs Points',         h:R['cards.strategy.cashback']},
+                {l:'Balance Transfer Analysis',  h:R['cards.strategy.analysis']},
+                {l:'Credit Utilization Strategy',h:R['cards.strategy.strategy']},
+                {l:'Card Churning Tactics',      h:R['cards.strategy.tactics']},
             ]},
             c3:{title:'Market & Regulation',items:[
-                {l:'Card Network Comparison',  h:'#'},
-                {l:'Consumer Protection Laws', h:'#'},
+                {l:'Card Network Comparison',  h:R['cards.market.comparison']},
+                {l:'Consumer Protection Laws', h:R['cards.market.consumer']},
             ]},
-            featured:[]
+            featured:[
+                {badge:'TOP PICK',  title:'Chase Sapphire Preferred Review 2026', h:'#'},
+                {badge:'BEST VALUE',title:'Citi Double Cash Review 2026',          h:'#'},
+            ]
         },
         mortgages:{
             c1:{title:'Mortgage Fundamentals',items:[
