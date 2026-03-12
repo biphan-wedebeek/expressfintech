@@ -65,7 +65,28 @@ class PageController extends Controller
     public function cardsStrategyStrategy()  { return view('pages.articles.cards.strategy-strategy'); }
     public function cardsStrategyTactics()   { return view('pages.articles.cards.strategy-tactics'); }
 
-    // Credit Cards — Market & Regulation
+    // Credit Cards  Market & Regulation
     public function cardsMarketComparison() { return view('pages.articles.cards.market-comparison'); }
     public function cardsMarketConsumer()   { return view('pages.articles.cards.market-consumer'); }
+
+    // ── Mortgages — Fundamentals ──
+    public function mortgagesFundamentalsFixedVsVariable() { return view('pages.articles.mortgages.fundamentals-fixed_vs_variable'); }
+    public function mortgagesFundamentalsAmortizationStructure()  { return view('pages.articles.mortgages.fundamentals-amortization_structure'); }
+    public function mortgagesFundamentalsUnderwriting(){ return view('pages.articles.mortgages.fundamentals-underwriting'); }
+    public function mortgagesFundamentalsRatio()       { return view('pages.articles.mortgages.fundamentals-ratio'); }
+    public function mortgagesFundamentalsInterestRate(){ return view('pages.articles.mortgages.fundamentals-interest_rate'); }
+ 
+    // ── Mortgages — Products ──
+    public function mortgagesProductsConventional()   { return view('pages.articles.mortgages.products-conventional_loans'); }
+    public function mortgagesProductsFhaVa()          { return view('pages.articles.mortgages.products-fha_va'); }
+    public function mortgagesProductsJumbo()          { return view('pages.articles.mortgages.products-jumbo_loans'); }
+    public function mortgagesProductsRefinance()      { return view('pages.articles.mortgages.products-refinance'); }
+    public function mortgagesProductsAdjustableRate() { return view('pages.articles.mortgages.products-adjustable_rate'); }
+ 
+    // ── Mortgages — Market Analysis ──
+    public function mortgagesAnalysisPriceTrends() { return view('pages.articles.mortgages.analysis-price_trends'); }
+    public function mortgagesAnalysisSecurities()  { return view('pages.articles.mortgages.analysis-securities'); }
+    public function mortgagesAnalysisForecasting() { return view('pages.articles.mortgages.analysis-forecasting'); }
+    public function mortgagesAnalysisEstateCycles(){ return view('pages.articles.mortgages.analysis-estate_cycles'); }
+    public function mortgagesAnalysisRegulatory()  { return view('pages.articles.mortgages.analysis-regulatory'); }
 }
