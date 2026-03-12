@@ -90,6 +90,7 @@
         'personal-finance':  '{{ route("personal-finance") }}',
         'reviews':           '{{ route("reviews") }}',
 
+        // Insurance
         'insurance.categories.life':        '{{ route("insurance.categories.life") }}',
         'insurance.categories.health':      '{{ route("insurance.categories.health") }}',
         'insurance.categories.property':    '{{ route("insurance.categories.property") }}',
@@ -100,6 +101,7 @@
         'insurance.insights.insurtech':     '{{ route("insurance.insights.insurtech") }}',
         'insurance.insights.reports':       '{{ route("insurance.insights.reports") }}',
 
+        // Banking
         'banking.structure.retail-commercial': '{{ route("banking.structure.retail-commercial") }}',
         'banking.structure.central-banking':   '{{ route("banking.structure.central-banking") }}',
         'banking.structure.digital-banking':   '{{ route("banking.structure.digital-banking") }}',
@@ -111,6 +113,7 @@
         'banking.products.cross-border': '{{ route("banking.products.cross-border") }}',
         'banking.products.treasury':     '{{ route("banking.products.treasury") }}',
 
+        // Cards
         'cards.mechanics.scoring':    '{{ route("cards.mechanics-scoring") }}',
         'cards.mechanics.apr':        '{{ route("cards.mechanics-apr") }}',
         'cards.mechanics.interchange':'{{ route("cards.mechanics-interchange") }}',
@@ -125,6 +128,27 @@
 
         'cards.market.comparison': '{{ route("cards.market-comparison") }}',
         'cards.market.consumer':   '{{ route("cards.market-consumer") }}',
+
+        // Mortgages Fundamentals
+        'mortgages.fundamentals.fixed_vs_variable': '{{ route("mortgages.fundamentals.fixed_vs_variable") }}',
+        'mortgages.fundamentals.amortization_structure':   '{{ route("mortgages.fundamentals.amortization_structure") }}',
+        'mortgages.fundamentals.underwriting': '{{ route("mortgages.fundamentals.underwriting") }}',
+        'mortgages.fundamentals.ratio':        '{{ route("mortgages.fundamentals.ratio") }}',
+        'mortgages.fundamentals.interest_rate':'{{ route("mortgages.fundamentals.interest_rate") }}',
+        
+        // Mortgages Products
+        'mortgages.products.conventional':   '{{ route("mortgages.products.conventional") }}',
+        'mortgages.products.fha_va':         '{{ route("mortgages.products.fha_va") }}',
+        'mortgages.products.jumbo':          '{{ route("mortgages.products.jumbo") }}',
+        'mortgages.products.refinance':      '{{ route("mortgages.products.refinance") }}',
+        'mortgages.products.adjustable_rate':'{{ route("mortgages.products.adjustable_rate") }}',
+        
+        // Mortgages Analysis
+        'mortgages.analysis.price_trends': '{{ route("mortgages.analysis.price_trends") }}',
+        'mortgages.analysis.securities':   '{{ route("mortgages.analysis.securities") }}',
+        'mortgages.analysis.forecasting':  '{{ route("mortgages.analysis.forecasting") }}',
+        'mortgages.analysis.estate_cycles':'{{ route("mortgages.analysis.estate_cycles") }}',
+        'mortgages.analysis.regulatory':   '{{ route("mortgages.analysis.regulatory") }}',
     };
 
     const MENUS = {
@@ -203,29 +227,29 @@
         },
         mortgages:{
             c1:{title:'Mortgage Fundamentals',items:[
-                {t:'Fixed vs Variable Rate',   h:'#'},
-                {t:'Amortization Structure',   h:'#'},
-                {t:'Mortgage Underwriting',    h:'#'},
-                {t:'Loan-to-Value Ratio',      h:'#'},
-                {t:'Interest Rate Mechanisms', h:'#'},
+                {t:'Fixed vs Variable Rate',   h:R['mortgages.fundamentals.fixed_vs_variable']},
+                {t:'Amortization Structure',   h:R['mortgages.fundamentals.amortization_structure']},
+                {t:'Mortgage Underwriting',    h:R['mortgages.fundamentals.underwriting']},
+                {t:'Loan-to-Value Ratio',      h:R['mortgages.fundamentals.ratio']},
+                {t:'Interest Rate Mechanisms', h:R['mortgages.fundamentals.interest_rate']},
             ]},
             c2:{title:'Mortgage Products',items:[
-                {l:'Conventional Loans',       h:'#'},
-                {l:'FHA / VA Loans',           h:'#'},
-                {l:'Jumbo Loans',              h:'#'},
-                {l:'Refinance Strategies',     h:'#'},
-                {l:'Adjustable-Rate Mortgages',h:'#'},
+                {l:'Conventional Loans',        h:R['mortgages.products.conventional']},
+                {l:'FHA / VA Loans',            h:R['mortgages.products.fha_va']},
+                {l:'Jumbo Loans',               h:R['mortgages.products.jumbo']},
+                {l:'Refinance Strategies',      h:R['mortgages.products.refinance']},
+                {l:'Adjustable-Rate Mortgages', h:R['mortgages.products.adjustable_rate']},
             ]},
             c3:{title:'Housing Market Analysis',items:[
-                {l:'Housing Price Trends',        h:'#'},
-                {l:'Mortgage-backed Securities',  h:'#'},
-                {l:'Rate Forecasting',            h:'#'},
-                {l:'Real Estate Cycles',          h:'#'},
-                {l:'Regulatory Impact',           h:'#'},
+                {l:'Housing Price Trends',        h:R['mortgages.analysis.price_trends']},
+                {l:'Mortgage-backed Securities',  h:R['mortgages.analysis.securities']},
+                {l:'Rate Forecasting',            h:R['mortgages.analysis.forecasting']},
+                {l:'Real Estate Cycles',          h:R['mortgages.analysis.estate_cycles']},
+                {l:'Regulatory Impact',           h:R['mortgages.analysis.regulatory']},
             ]},
             featured:[
-                {badge:null,       title:'Home Depot Project Loan Review 2026',h:'#'},
-                {badge:'TRENDING', title:'Mortgage Rate Trends 2026',          h:'#'},
+                {badge:null,       title:'Home Depot Project Loan Review 2026', h:'#'},
+                {badge:'TRENDING', title:'Mortgage Rate Trends 2026',           h:'#'},
             ]
         },
         'personal-finance':{

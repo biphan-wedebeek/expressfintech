@@ -71,6 +71,28 @@ Route::get('/credit-cards/strategy/balance-transfer',        [PageController::cl
 Route::get('/credit-cards/strategy/credit-utilization',      [PageController::class, 'cardsStrategyStrategy'])->name('cards.strategy-strategy');
 Route::get('/credit-cards/strategy/card-churning',           [PageController::class, 'cardsStrategyTactics'])->name('cards.strategy-tactics');
 
-// Credit Cards — Market & Regulation
+// Credit Cards Market & Regulation
 Route::get('/credit-cards/market/network-comparison',    [PageController::class, 'cardsMarketComparison'])->name('cards.market-comparison');
 Route::get('/credit-cards/market/consumer-protection',   [PageController::class, 'cardsMarketConsumer'])->name('cards.market-consumer');
+
+
+// Mortgages Fundamentals
+Route::get('/mortgages/fundamentals/fixed-vs-variable',     [PageController::class, 'mortgagesFundamentalsFixedVsVariable'])->name('mortgages.fundamentals.fixed_vs_variable');
+Route::get('/mortgages/fundamentals/amortization',          [PageController::class, 'mortgagesFundamentalsAmortizationStructure'])->name('mortgages.fundamentals.amortization_structure');
+Route::get('/mortgages/fundamentals/underwriting',          [PageController::class, 'mortgagesFundamentalsUnderwriting'])->name('mortgages.fundamentals.underwriting');
+Route::get('/mortgages/fundamentals/loan-to-value',         [PageController::class, 'mortgagesFundamentalsRatio'])->name('mortgages.fundamentals.ratio');
+Route::get('/mortgages/fundamentals/interest-rate-mechanics',[PageController::class, 'mortgagesFundamentalsInterestRate'])->name('mortgages.fundamentals.interest_rate');
+ 
+// Mortgages Products
+Route::get('/mortgages/products/conventional-loans',    [PageController::class, 'mortgagesProductsConventional'])->name('mortgages.products.conventional');
+Route::get('/mortgages/products/fha-va-loans',          [PageController::class, 'mortgagesProductsFhaVa'])->name('mortgages.products.fha_va');
+Route::get('/mortgages/products/jumbo-loans',           [PageController::class, 'mortgagesProductsJumbo'])->name('mortgages.products.jumbo');
+Route::get('/mortgages/products/refinance-strategies',  [PageController::class, 'mortgagesProductsRefinance'])->name('mortgages.products.refinance');
+Route::get('/mortgages/products/adjustable-rate',       [PageController::class, 'mortgagesProductsAdjustableRate'])->name('mortgages.products.adjustable_rate');
+ 
+// Mortgages Market Analysis
+Route::get('/mortgages/analysis/housing-price-trends',     [PageController::class, 'mortgagesAnalysisPriceTrends'])->name('mortgages.analysis.price_trends');
+Route::get('/mortgages/analysis/mortgage-backed-securities',[PageController::class, 'mortgagesAnalysisSecurities'])->name('mortgages.analysis.securities');
+Route::get('/mortgages/analysis/rate-forecasting',         [PageController::class, 'mortgagesAnalysisForecasting'])->name('mortgages.analysis.forecasting');
+Route::get('/mortgages/analysis/real-estate-cycles',       [PageController::class, 'mortgagesAnalysisEstateCycles'])->name('mortgages.analysis.estate_cycles');
+Route::get('/mortgages/analysis/regulatory-impact',        [PageController::class, 'mortgagesAnalysisRegulatory'])->name('mortgages.analysis.regulatory');
