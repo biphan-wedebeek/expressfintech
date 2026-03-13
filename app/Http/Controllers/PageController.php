@@ -90,4 +90,24 @@ class PageController extends Controller
     public function mortgagesAnalysisEstateCycles(){ return view('pages.articles.mortgages.analysis-estate_cycles'); }
     public function mortgagesAnalysisRegulatory()  { return view('pages.articles.mortgages.analysis-regulatory'); }
 
+    // Financial Planning
+    public function financePlanningBudget()         { return view('pages.articles.finance.planning-budget'); }
+    public function financePlanningEmergencyFund()  { return view('pages.articles.finance.planning-emergency_fund'); }
+    public function financePlanningRetirement()     { return view('pages.articles.finance.planning-retirement'); }
+    public function financePlanningTax()            { return view('pages.articles.finance.planning-tax'); }
+    public function financePlanningNetWorth()       { return view('pages.articles.finance.planning-net_worth'); }
+ 
+    // Financial Wealth Building
+    public function financeBuildingPassiveIncome()    { return view('pages.articles.finance.building-passive_income'); }
+    public function financeBuildingLongTerm()         { return view('pages.articles.finance.building-long_term'); }
+    public function financeBuildingDebt()             { return view('pages.articles.finance.building-debt'); }
+    public function financeBuildingIndependence()     { return view('pages.articles.finance.building-independence'); }
+    public function financeBuildingDiversification()  { return view('pages.articles.finance.building-diversification'); }
+ 
+    // Financial Behavior
+    public function financeBehaviorPsychology()     { return view('pages.articles.finance.behavior-psychology'); }
+    public function financeBehaviorSpending()       { return view('pages.articles.finance.behavior-spending'); }
+    public function financeBehaviorRiskTolerance()  { return view('pages.articles.finance.behavior-risk_tolerance'); }
+    public function financeBehaviorDecisionBias()   { return view('pages.articles.finance.behavior-decision_bias'); }
+    public function financeBehaviorConsumerTrends() { return view('pages.articles.finance.behavior-consumer_trends'); }
 }

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>@yield('title','Mortgage Analysis') — Express Fintech</title>
+    <link rel="icon" type="image/png" href="{{ asset('expressfintech.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
      @vite(['resources/css/app.css', 'resources/js/app.js'])
     
@@ -315,18 +316,8 @@
 </section>
 @endif
 
-{{-- FOOTER --}}
-<footer style="border-top:1px solid #e5e7eb;padding:28px 0;background:#fff;">
-    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;font-size:12px;color:#9ca3af;">
-        <span>© 2026 Express Fintech. All rights reserved.</span>
-        <div style="display:flex;gap:20px;">
-            <a href="#" style="color:#9ca3af;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#4f46e5'" onmouseout="this.style.color='#9ca3af'">Privacy Policy</a>
-            <a href="#" style="color:#9ca3af;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#4f46e5'" onmouseout="this.style.color='#9ca3af'">Terms of Use</a>
-            <a href="{{ route('consultation') }}" style="color:#9ca3af;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#4f46e5'" onmouseout="this.style.color='#9ca3af'">Contact</a>
-        </div>
-    </div>
-</footer>
+@include('partials.footer')
 
-@stack('scripts')
+    @stack('scripts')
 </body>
 </html>
