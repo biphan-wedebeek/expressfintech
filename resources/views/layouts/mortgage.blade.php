@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>@yield('title','Mortgage Analysis') — Express Fintech</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])@vite(['resources/css/app.css', 'resources/js/app.js'])
+     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <style>
         :root{--navy:#0c1f35;--indigo:#4f46e5;--indigo-light:#eef2ff;--gold:#b8973f;--text:#374151;--muted:#6b7280;--border:#e5e7eb;--bg:#f6f7fb;}
