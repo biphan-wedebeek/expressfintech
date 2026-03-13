@@ -96,3 +96,24 @@ Route::get('/mortgages/analysis/mortgage-backed-securities',[PageController::cla
 Route::get('/mortgages/analysis/rate-forecasting',         [PageController::class, 'mortgagesAnalysisForecasting'])->name('mortgages.analysis.forecasting');
 Route::get('/mortgages/analysis/real-estate-cycles',       [PageController::class, 'mortgagesAnalysisEstateCycles'])->name('mortgages.analysis.estate_cycles');
 Route::get('/mortgages/analysis/regulatory-impact',        [PageController::class, 'mortgagesAnalysisRegulatory'])->name('mortgages.analysis.regulatory');
+
+// Financial Planning
+Route::get('/finance/planning/budget-systems',    [PageController::class, 'financePlanningBudget'])->name('finance.planning.budget');
+Route::get('/finance/planning/emergency-fund',    [PageController::class, 'financePlanningEmergencyFund'])->name('finance.planning.emergency_fund');
+Route::get('/finance/planning/retirement',        [PageController::class, 'financePlanningRetirement'])->name('finance.planning.retirement');
+Route::get('/finance/planning/tax-strategies',    [PageController::class, 'financePlanningTax'])->name('finance.planning.tax');
+Route::get('/finance/planning/net-worth',         [PageController::class, 'financePlanningNetWorth'])->name('finance.planning.net_worth');
+ 
+// Financial Wealth Building
+Route::get('/finance/building/passive-income',      [PageController::class, 'financeBuildingPassiveIncome'])->name('finance.building.passive_income');
+Route::get('/finance/building/long-term-compounding',[PageController::class, 'financeBuildingLongTerm'])->name('finance.building.long_term');
+Route::get('/finance/building/debt-optimization',   [PageController::class, 'financeBuildingDebt'])->name('finance.building.debt');
+Route::get('/finance/building/financial-independence',[PageController::class, 'financeBuildingIndependence'])->name('finance.building.independence');
+Route::get('/finance/building/income-diversification',[PageController::class, 'financeBuildingDiversification'])->name('finance.building.diversification');
+ 
+// Financial Behavior
+Route::get('/finance/behavior/psychology-of-money',[PageController::class, 'financeBehaviorPsychology'])->name('finance.behavior.psychology');
+Route::get('/finance/behavior/spending-patterns',  [PageController::class, 'financeBehaviorSpending'])->name('finance.behavior.spending');
+Route::get('/finance/behavior/risk-tolerance',     [PageController::class, 'financeBehaviorRiskTolerance'])->name('finance.behavior.risk_tolerance');
+Route::get('/finance/behavior/decision-bias',      [PageController::class, 'financeBehaviorDecisionBias'])->name('finance.behavior.decision_bias');
+Route::get('/finance/behavior/consumer-trends',    [PageController::class, 'financeBehaviorConsumerTrends'])->name('finance.behavior.consumer_trends');

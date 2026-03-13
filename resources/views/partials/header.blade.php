@@ -147,6 +147,27 @@
         'mortgages.analysis.forecasting':  '{{ route("mortgages.analysis.forecasting") }}',
         'mortgages.analysis.estate_cycles':'{{ route("mortgages.analysis.estate_cycles") }}',
         'mortgages.analysis.regulatory':   '{{ route("mortgages.analysis.regulatory") }}',
+
+        // Financial Planning
+        'finance.planning.budget':         '{{ route("finance.planning.budget") }}',
+        'finance.planning.emergency_fund': '{{ route("finance.planning.emergency_fund") }}',
+        'finance.planning.retirement':     '{{ route("finance.planning.retirement") }}',
+        'finance.planning.tax':            '{{ route("finance.planning.tax") }}',
+        'finance.planning.net_worth':      '{{ route("finance.planning.net_worth") }}',
+        
+        // Financial Wealth Building
+        'finance.building.passive_income':   '{{ route("finance.building.passive_income") }}',
+        'finance.building.long_term':        '{{ route("finance.building.long_term") }}',
+        'finance.building.debt':             '{{ route("finance.building.debt") }}',
+        'finance.building.independence':     '{{ route("finance.building.independence") }}',
+        'finance.building.diversification':  '{{ route("finance.building.diversification") }}',
+        
+        // Financial Behavior
+        'finance.behavior.psychology':     '{{ route("finance.behavior.psychology") }}',
+        'finance.behavior.spending':       '{{ route("finance.behavior.spending") }}',
+        'finance.behavior.risk_tolerance': '{{ route("finance.behavior.risk_tolerance") }}',
+        'finance.behavior.decision_bias':  '{{ route("finance.behavior.decision_bias") }}',
+        'finance.behavior.consumer_trends':'{{ route("finance.behavior.consumer_trends") }}',
     };
 
     const MENUS = {
@@ -195,9 +216,7 @@
                 {l:'Risk & Liquidity Management', h:'#'},
                 {l:'Global Banking Outlook',      h:'#'},
             ]},
-            featured:[
-                {badge:'EDITOR CHOICE',title:'Ally Bank High-Yield Savings Review 2026',h:'#'},
-            ]
+            featured:[ ]
         },
         'credit-cards':{
             c1:{title:'Card Mechanics',items:[
@@ -218,10 +237,7 @@
                 {l:'Card Network Comparison',  h:R['cards.market.comparison']},
                 {l:'Consumer Protection Laws', h:R['cards.market.consumer']},
             ]},
-            featured:[
-                {badge:'TOP PICK',  title:'Chase Sapphire Preferred Review 2026', h:'#'},
-                {badge:'BEST VALUE',title:'Citi Double Cash Review 2026',          h:'#'},
-            ]
+            featured:[ ]
         },
         mortgages:{
             c1:{title:'Mortgage Fundamentals',items:[
@@ -245,34 +261,31 @@
                 {l:'Real Estate Cycles',          h:R['mortgages.analysis.estate_cycles']},
                 {l:'Regulatory Impact',           h:R['mortgages.analysis.regulatory']},
             ]},
-            featured:[
-                {badge:null,       title:'Home Depot Project Loan Review 2026', h:'#'},
-                {badge:'TRENDING', title:'Mortgage Rate Trends 2026',           h:'#'},
-            ]
+            featured:[ ]
         },
-        'personal-finance':{
-            c1:{title:'Financial Planning',items:[
-                {t:'Budget Systems',          h:'#'},
-                {t:'Emergency Fund Modeling', h:'#'},
-                {t:'Retirement Planning',     h:'#'},
-                {t:'Tax Planning Strategies', h:'#'},
-                {t:'Net Worth Analysis',      h:'#'},
+        'personal-finance': {
+            c1: { title: 'Financial Planning', items: [
+                { t: 'Budget Systems',          h: R['finance.planning.budget'] },
+                { t: 'Emergency Fund Modeling', h: R['finance.planning.emergency_fund'] },
+                { t: 'Retirement Planning',     h: R['finance.planning.retirement'] },
+                { t: 'Tax Planning Strategies', h: R['finance.planning.tax'] },
+                { t: 'Net Worth Analysis',      h: R['finance.planning.net_worth'] },
             ]},
-            c2:{title:'Wealth Building',items:[
-                {l:'Passive Income Models',  h:'#'},
-                {l:'Long-term Compounding',  h:'#'},
-                {l:'Debt Optimization',      h:'#'},
-                {l:'Financial Independence', h:'#'},
-                {l:'Income Diversification', h:'#'},
+            c2: { title: 'Wealth Building', items: [
+                { l: 'Passive Income Models',    h: R['finance.building.passive_income'] },
+                { l: 'Long-term Compounding',    h: R['finance.building.long_term'] },
+                { l: 'Debt Optimization',        h: R['finance.building.debt'] },
+                { l: 'Financial Independence',   h: R['finance.building.independence'] },
+                { l: 'Income Diversification',   h: R['finance.building.diversification'] },
             ]},
-            c3:{title:'Financial Behavior',items:[
-                {l:'Psychology of Money',     h:'#'},
-                {l:'Spending Patterns',       h:'#'},
-                {l:'Risk Tolerance',          h:'#'},
-                {l:'Financial Decision Bias', h:'#'},
-                {l:'Consumer Trends',         h:'#'},
+            c3: { title: 'Financial Behavior', items: [
+                { l: 'Psychology of Money',      h: R['finance.behavior.psychology'] },
+                { l: 'Spending Patterns',        h: R['finance.behavior.spending'] },
+                { l: 'Risk Tolerance',           h: R['finance.behavior.risk_tolerance'] },
+                { l: 'Financial Decision Bias',  h: R['finance.behavior.decision_bias'] },
+                { l: 'Consumer Trends',          h: R['finance.behavior.consumer_trends'] },
             ]},
-            featured:[]
+            featured: []
         },
     };
 
