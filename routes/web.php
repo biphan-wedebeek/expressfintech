@@ -26,23 +26,23 @@ Route::get('/articles/emergency-fund-vs-savings-2026', [PageController::class, '
 Route::get('/articles/home-insurance-premiums-2026',   [PageController::class, 'articleHomeInsurance'])->name('article.home-insurance');
 
 // Insurance Fundamentals sub-pages
-Route::get('/insurance/fundamentals/principles',          [PageController::class, 'insurancePrinciples'])->name('insurance.fundamentals.principles');
-Route::get('/insurance/fundamentals/risk-assessment',     [PageController::class, 'insuranceRiskAssessment'])->name('insurance.fundamentals.risk-assessment');
-Route::get('/insurance/fundamentals/underwriting',        [PageController::class, 'insuranceUnderwriting'])->name('insurance.fundamentals.underwriting');
-Route::get('/insurance/fundamentals/premium-calculation', [PageController::class, 'insurancePremiumCalculation'])->name('insurance.fundamentals.premium-calculation');
-Route::get('/insurance/fundamentals/regulatory',          [PageController::class, 'insuranceRegulatory'])->name('insurance.fundamentals.regulatory');
+Route::get('/insurance/fundamentals/principles',          [PageController::class, 'insuranceFundamentalsPrinciples'])->name('insurance.fundamentals.principles');
+Route::get('/insurance/fundamentals/risk-assessment',     [PageController::class, 'insuranceFundamentalsRiskAssessment'])->name('insurance.fundamentals.risk-assessment');
+Route::get('/insurance/fundamentals/underwriting',        [PageController::class, 'insuranceFundamentalsUnderwriting'])->name('insurance.fundamentals.underwriting');
+Route::get('/insurance/fundamentals/premium-calculation', [PageController::class, 'insuranceFundamentalsPremiumCalculation'])->name('insurance.fundamentals.premium-calculation');
+Route::get('/insurance/fundamentals/regulatory',          [PageController::class, 'insuranceFundamentalsRegulatory'])->name('insurance.fundamentals.regulatory');
 
 // Insurance Categories sub-pages
-Route::get('/insurance/categories/life',         [PageController::class, 'insuranceCatLife'])->name('insurance.categories.life');
-Route::get('/insurance/categories/health',       [PageController::class, 'insuranceCatHealth'])->name('insurance.categories.health');
-Route::get('/insurance/categories/property',     [PageController::class, 'insuranceCatProperty'])->name('insurance.categories.property');
-Route::get('/insurance/categories/auto',         [PageController::class, 'insuranceCatAuto'])->name('insurance.categories.auto');
-Route::get('/insurance/categories/reinsurance',  [PageController::class, 'insuranceCatReinsurance'])->name('insurance.categories.reinsurance');
+Route::get('/insurance/categories/life',         [PageController::class, 'insuranceCategoriesLifeAnalysis'])->name('insurance.categories.life');
+Route::get('/insurance/categories/health',       [PageController::class, 'insuranceCategoriesHealthSystems'])->name('insurance.categories.health');
+Route::get('/insurance/categories/property',     [PageController::class, 'insuranceCategoriesProperty'])->name('insurance.categories.property');
+Route::get('/insurance/categories/auto',         [PageController::class, 'insuranceCategoriesAutoMarket'])->name('insurance.categories.auto');
+Route::get('/insurance/categories/reinsurance',  [PageController::class, 'insuranceCategoriesReinsurance'])->name('insurance.categories.reinsurance');
 
 // Insurance Industry Insights
-Route::get('/insurance/insights/market-trends',  [PageController::class, 'insuranceInsightsTrends'])->name('insurance.insights.trends');
-Route::get('/insurance/insights/insurtech',      [PageController::class, 'insuranceInsightsTech'])->name('insurance.insights.insurtech');
-Route::get('/insurance/insights/global-reports', [PageController::class, 'insuranceInsightsReports'])->name('insurance.insights.reports');
+Route::get('/insurance/insights/market-trends',  [PageController::class, 'insuranceInsightsMarketTrends'])->name('insurance.insights.trends');
+Route::get('/insurance/insights/insurtech',      [PageController::class, 'insuranceInsightsInsurtech'])->name('insurance.insights.insurtech');
+Route::get('/insurance/insights/global-reports', [PageController::class, 'insuranceInsightsGlobalReports'])->name('insurance.insights.reports');
 
 // Banking Structure
 Route::get('/banking/structure/retail-vs-commercial', [PageController::class, 'bankingStructureRetailCommercial'])->name('banking.structure.retail-commercial');

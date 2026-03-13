@@ -20,23 +20,23 @@ class PageController extends Controller
     public function articleHomeInsurance(){ return view('pages.articles.home-insurance-premiums'); }
 
     // Insurance Fundamentals
-    public function insurancePrinciples()        { return view('pages.articles.insurance.fundamentals.principles'); }
-    public function insuranceRiskAssessment()    { return view('pages.articles.insurance.fundamentals.risk-assessment'); }
-    public function insuranceUnderwriting()      { return view('pages.articles.insurance.fundamentals.underwriting'); }
-    public function insurancePremiumCalculation(){ return view('pages.articles.insurance.fundamentals.premium-calculation'); }
-    public function insuranceRegulatory()        { return view('pages.articles.insurance.fundamentals.regulatory'); }
+    public function insuranceFundamentalsPrinciples()        { return view('pages.articles.insurance.fundamentals-principles'); }
+    public function insuranceFundamentalsRiskAssessment()    { return view('pages.articles.insurance.fundamentals-risk_assessment'); }
+    public function insuranceFundamentalsUnderwriting()      { return view('pages.articles.insurance.fundamentals-underwriting'); }
+    public function insuranceFundamentalsPremiumCalculation(){ return view('pages.articles.insurance.fundamentals-premium_calculation'); }
+    public function insuranceFundamentalsRegulatory()        { return view('pages.articles.insurance.fundamentals-regulatory'); }
     
     // Insurance Categories
-    public function insuranceCatLife()        { return view('pages.articles.insurance.categories.life'); }
-    public function insuranceCatHealth()      { return view('pages.articles.insurance.categories.health'); }
-    public function insuranceCatProperty()    { return view('pages.articles.insurance.categories.property'); }
-    public function insuranceCatAuto()        { return view('pages.articles.insurance.categories.auto'); }
-    public function insuranceCatReinsurance() { return view('pages.articles.insurance.categories.reinsurance'); }
+    public function insuranceCategoriesLifeAnalysis()  { return view('pages.articles.insurance.categories-life_analysis'); }
+    public function insuranceCategoriesHealthSystems() { return view('pages.articles.insurance.categories-health_systems'); }
+    public function insuranceCategoriesProperty()      { return view('pages.articles.insurance.categories-property'); }
+    public function insuranceCategoriesAutoMarket()    { return view('pages.articles.insurance.categories-auto_market'); }
+    public function insuranceCategoriesReinsurance()   { return view('pages.articles.insurance.categories-reinsurance'); }
 
     // Insurance Industry Insights
-    public function insuranceInsightsTrends()  { return view('pages.articles.insurance.insights.market-trends'); }
-    public function insuranceInsightsTech()    { return view('pages.articles.insurance.insights.insurtech'); }
-    public function insuranceInsightsReports() { return view('pages.articles.insurance.insights.global-reports'); }
+    public function insuranceInsightsMarketTrends()  { return view('pages.articles.insurance.insights-market_trends'); }
+    public function insuranceInsightsInsurtech()    { return view('pages.articles.insurance.insights-insurtech'); }
+    public function insuranceInsightsGlobalReports() { return view('pages.articles.insurance.insights-global_reports'); }
 
     // Banking Structure
     public function bankingStructureRetailCommercial() { return view('pages.articles.banking.structure.retail-commercial'); }
@@ -69,24 +69,25 @@ class PageController extends Controller
     public function cardsMarketComparison() { return view('pages.articles.cards.market-comparison'); }
     public function cardsMarketConsumer()   { return view('pages.articles.cards.market-consumer'); }
 
-    // ── Mortgages — Fundamentals ──
+    // Mortgages — Fundamentals
     public function mortgagesFundamentalsFixedVsVariable() { return view('pages.articles.mortgages.fundamentals-fixed_vs_variable'); }
     public function mortgagesFundamentalsAmortizationStructure()  { return view('pages.articles.mortgages.fundamentals-amortization_structure'); }
     public function mortgagesFundamentalsUnderwriting(){ return view('pages.articles.mortgages.fundamentals-underwriting'); }
     public function mortgagesFundamentalsRatio()       { return view('pages.articles.mortgages.fundamentals-ratio'); }
     public function mortgagesFundamentalsInterestRate(){ return view('pages.articles.mortgages.fundamentals-interest_rate'); }
  
-    // ── Mortgages — Products ──
+    // Mortgages — Products
     public function mortgagesProductsConventional()   { return view('pages.articles.mortgages.products-conventional_loans'); }
     public function mortgagesProductsFhaVa()          { return view('pages.articles.mortgages.products-fha_va'); }
     public function mortgagesProductsJumbo()          { return view('pages.articles.mortgages.products-jumbo_loans'); }
     public function mortgagesProductsRefinance()      { return view('pages.articles.mortgages.products-refinance'); }
     public function mortgagesProductsAdjustableRate() { return view('pages.articles.mortgages.products-adjustable_rate'); }
  
-    // ── Mortgages — Market Analysis ──
+    // Mortgages — Market Analysis
     public function mortgagesAnalysisPriceTrends() { return view('pages.articles.mortgages.analysis-price_trends'); }
     public function mortgagesAnalysisSecurities()  { return view('pages.articles.mortgages.analysis-securities'); }
     public function mortgagesAnalysisForecasting() { return view('pages.articles.mortgages.analysis-forecasting'); }
     public function mortgagesAnalysisEstateCycles(){ return view('pages.articles.mortgages.analysis-estate_cycles'); }
     public function mortgagesAnalysisRegulatory()  { return view('pages.articles.mortgages.analysis-regulatory'); }
+
 }

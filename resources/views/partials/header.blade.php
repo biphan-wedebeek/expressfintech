@@ -1,4 +1,3 @@
-{{-- ── TOP BAR ── --}}
 <div class="bg-navy text-white text-xs py-2 relative z-50">
     <div class="max-w-screen-xl mx-auto px-8 flex items-center justify-between">
         <span class="flex items-center gap-2 opacity-70 tracking-wide">
@@ -18,7 +17,6 @@
     </div>
 </div>
 
-{{-- ── MAIN NAV ── --}}
 <nav id="siteNavbar" class="bg-white border-b border-[#e5e7eb] sticky top-0 z-50" style="box-shadow:0 1px 3px rgba(15,31,53,.06)">
     <div class="max-w-screen-xl mx-auto flex items-center h-[68px] gap-8">
 
@@ -66,7 +64,6 @@
     </div>
 </nav>
 
-{{-- ── MEGA PANEL ── --}}
 <div id="megaPanel" class="absolute left-0 right-0 z-40 hidden" style="top:68px">
     <div id="megaBackdrop" class="fixed inset-0 bg-black/20" style="top:108px;z-index:-1"></div>
     <div class="bg-white border-b border-[#e5e7eb] w-full" style="box-shadow:0 8px 32px rgba(15,31,53,.10)">
@@ -77,12 +74,7 @@
 <script>
 (function(){
     const R = {
-        'insurance.principles':          '{{ route("insurance.fundamentals.principles") }}',
-        'insurance.risk-assessment':     '{{ route("insurance.fundamentals.risk-assessment") }}',
-        'insurance.underwriting':        '{{ route("insurance.fundamentals.underwriting") }}',
-        'insurance.premium-calculation': '{{ route("insurance.fundamentals.premium-calculation") }}',
-        'insurance.regulatory':          '{{ route("insurance.fundamentals.regulatory") }}',
-
+        
         'insurance':         '{{ route("insurance") }}',
         'banking':           '{{ route("banking") }}',
         'credit-cards':      '{{ route("credit-cards") }}',
@@ -91,6 +83,12 @@
         'reviews':           '{{ route("reviews") }}',
 
         // Insurance
+        'insurance.principles':          '{{ route("insurance.fundamentals.principles") }}',
+        'insurance.risk-assessment':     '{{ route("insurance.fundamentals.risk-assessment") }}',
+        'insurance.underwriting':        '{{ route("insurance.fundamentals.underwriting") }}',
+        'insurance.premium-calculation': '{{ route("insurance.fundamentals.premium-calculation") }}',
+        'insurance.regulatory':          '{{ route("insurance.fundamentals.regulatory") }}',
+        
         'insurance.categories.life':        '{{ route("insurance.categories.life") }}',
         'insurance.categories.health':      '{{ route("insurance.categories.health") }}',
         'insurance.categories.property':    '{{ route("insurance.categories.property") }}',
