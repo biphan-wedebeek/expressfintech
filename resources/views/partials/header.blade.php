@@ -100,16 +100,21 @@
         'insurance.insights.reports':       '{{ route("insurance.insights.reports") }}',
 
         // Banking
-        'banking.structure.retail-commercial': '{{ route("banking.structure.retail-commercial") }}',
-        'banking.structure.central-banking':   '{{ route("banking.structure.central-banking") }}',
-        'banking.structure.digital-banking':   '{{ route("banking.structure.digital-banking") }}',
-        'banking.structure.open-banking':      '{{ route("banking.structure.open-banking") }}',
+        'banking.structure.retail-commercial': '{{ route("banking.structure-retail_commercial") }}',
+        'banking.structure.central-banking':   '{{ route("banking.structure-central_banking") }}',
+        'banking.structure.digital-evolution': '{{ route("banking.structure-digital_evolution") }}',
+        'banking.structure.open-banking':      '{{ route("banking.structure-open_banking") }}',
 
-        'banking.products.deposit':      '{{ route("banking.products.deposit") }}',
-        'banking.products.lending':      '{{ route("banking.products.lending") }}',
-        'banking.products.corporate':    '{{ route("banking.products.corporate") }}',
-        'banking.products.cross-border': '{{ route("banking.products.cross-border") }}',
-        'banking.products.treasury':     '{{ route("banking.products.treasury") }}',
+        'banking.products.deposit':      '{{ route("banking.products-deposit_analysis") }}',
+        'banking.products.lending':      '{{ route("banking.products-lending_framework") }}',
+        'banking.products.corporate':    '{{ route("banking.products-corporate_services") }}',
+        'banking.products.cross-border': '{{ route("banking.products-crossborder_payments") }}',
+        'banking.products.treasury':     '{{ route("banking.products-treasury_services") }}',
+
+        'banking.analysis.global-outlook':        '{{ route("banking.analysis-global_outlook") }}',
+        'banking.analysis.nim-capital':           '{{ route("banking.analysis-nim_capital") }}',
+        'banking.analysis.profitability-metrics': '{{ route("banking.analysis-profitability_metrics") }}',
+        'banking.analysis.risk-liquidity':        '{{ route("banking.analysis-risk_liquidity") }}',
 
         // Cards
         'cards.mechanics.scoring':    '{{ route("cards.mechanics-scoring") }}',
@@ -200,7 +205,7 @@
             c1:{title:'Banking Structure',items:[
                 {t:'Retail vs Commercial Banking',h:R['banking.structure.retail-commercial']},
                 {t:'Central Banking Systems',     h:R['banking.structure.central-banking']},
-                {t:'Digital Banking Evolution',   h:R['banking.structure.digital-banking']},
+                {t:'Digital Banking Evolution',   h:R['banking.structure.digital-evolution']},
                 {t:'Open Banking',                h:R['banking.structure.open-banking']},
             ]},
             c2:{title:'Banking Products',items:[
@@ -211,10 +216,10 @@
                 {l:'Treasury Services',         h:R['banking.products.treasury']},
             ]},
             c3:{title:'Banking Industry Analysis',items:[
-                {l:'Profitability Metrics',       h:'#'},
-                {l:'NIM & Capital Ratios',        h:'#'},
-                {l:'Risk & Liquidity Management', h:'#'},
-                {l:'Global Banking Outlook',      h:'#'},
+                {l:'Profitability Metrics',       h:R['banking.analysis.profitability-metrics']},
+                {l:'NIM & Capital Ratios',        h:R['banking.analysis.nim-capital']},
+                {l:'Risk & Liquidity Management', h:R['banking.analysis.risk-liquidity']},
+                {l:'Global Banking Outlook',      h:R['banking.analysis.global-outlook']},
             ]},
             featured:[ ]
         },

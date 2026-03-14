@@ -39,17 +39,23 @@ class PageController extends Controller
     public function insuranceInsightsGlobalReports() { return view('pages.articles.insurance.insights-global_reports'); }
 
     // Banking Structure
-    public function bankingStructureRetailCommercial() { return view('pages.articles.banking.structure.retail-commercial'); }
-    public function bankingStructureCentralBanking()   { return view('pages.articles.banking.structure.central-banking'); }
-    public function bankingStructureDigitalBanking()   { return view('pages.articles.banking.structure.digital-banking'); }
-    public function bankingStructureOpenBanking()      { return view('pages.articles.banking.structure.open-banking'); }
+    public function bankingStructureRetailCommercial() { return view('pages.articles.banking.structure-retail_commercial'); }
+    public function bankingStructureCentralBanking()   { return view('pages.articles.banking.structure-central_banking'); }
+    public function bankingStructureDigitalEvolution()   { return view('pages.articles.banking.structure-digital_evolution'); }
+    public function bankingStructureOpenBanking()      { return view('pages.articles.banking.structure-open_banking'); }
 
     // Banking Products
-    public function bankingProductsDeposit()     { return view('pages.articles.banking.products.deposit-banking'); }
-    public function bankingProductsLending()     { return view('pages.articles.banking.products.lending-banking'); }
-    public function bankingProductsCorporate()   { return view('pages.articles.banking.products.corporate-banking'); }
-    public function bankingProductsCrossBorder() { return view('pages.articles.banking.products.cross-banking'); }
-    public function bankingProductsTreasury()    { return view('pages.articles.banking.products.treasury-banking'); }
+    public function bankingProductsDepositAnalysis()     { return view('pages.articles.banking.products-deposit_analysis'); }
+    public function bankingProductsLendingFramework()    { return view('pages.articles.banking.products-lending_framework'); }
+    public function bankingProductsCorporateServices()   { return view('pages.articles.banking.products-corporate_services'); }
+    public function bankingProductsCrossBorderPayments() { return view('pages.articles.banking.products-crossborder_payments'); }
+    public function bankingProductsTreasuryServices()    { return view('pages.articles.banking.products-treasury_services'); }
+
+    // Backing Analysis
+    public function bankingAnalysisGlobalOutlook()        {return view ('pages.articles.banking.analysis-global_outlook');}
+    public function bankingAnalysisNimCapital()           {return view ('pages.articles.banking.analysis-nim_capital');}
+    public function bankingAnalysisProfitabilityMetrics() {return view ('pages.articles.banking.analysis-profitability_metrics');}
+    public function bankingAnalysisRiskLiquidity()        {return view ('pages.articles.banking.analysis-risk_liquidity');}
 
     // Credit Cards Mechanics
     public function cardsMechanicsScoring()   { return view('pages.articles.cards.mechanics-scoring'); }
