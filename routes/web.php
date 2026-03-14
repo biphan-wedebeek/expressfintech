@@ -45,17 +45,23 @@ Route::get('/insurance/insights/insurtech',      [PageController::class, 'insura
 Route::get('/insurance/insights/global-reports', [PageController::class, 'insuranceInsightsGlobalReports'])->name('insurance.insights.reports');
 
 // Banking Structure
-Route::get('/banking/structure/retail-vs-commercial', [PageController::class, 'bankingStructureRetailCommercial'])->name('banking.structure.retail-commercial');
-Route::get('/banking/structure/central-banking',      [PageController::class, 'bankingStructureCentralBanking'])->name('banking.structure.central-banking');
-Route::get('/banking/structure/digital-banking',      [PageController::class, 'bankingStructureDigitalBanking'])->name('banking.structure.digital-banking');
-Route::get('/banking/structure/open-banking',         [PageController::class, 'bankingStructureOpenBanking'])->name('banking.structure.open-banking');
+Route::get('/banking/structure/retail-vs-commercial', [PageController::class, 'bankingStructureRetailCommercial'])->name('banking.structure-retail_commercial');
+Route::get('/banking/structure/central-banking',      [PageController::class, 'bankingStructureCentralBanking'])->name('banking.structure-central_banking');
+Route::get('/banking/structure/digital-evolution',      [PageController::class, 'bankingStructureDigitalEvolution'])->name('banking.structure-digital_evolution');
+Route::get('/banking/structure/open-banking',         [PageController::class, 'bankingStructureOpenBanking'])->name('banking.structure-open_banking');
 
 // Banking Products
-Route::get('/banking/products/deposit-products',     [PageController::class, 'bankingProductsDeposit'])->name('banking.products.deposit');
-Route::get('/banking/products/lending-framework',    [PageController::class, 'bankingProductsLending'])->name('banking.products.lending');
-Route::get('/banking/products/corporate-banking',    [PageController::class, 'bankingProductsCorporate'])->name('banking.products.corporate');
-Route::get('/banking/products/cross-border-payments',[PageController::class, 'bankingProductsCrossBorder'])->name('banking.products.cross-border');
-Route::get('/banking/products/treasury-services',    [PageController::class, 'bankingProductsTreasury'])->name('banking.products.treasury');
+Route::get('/banking/products/deposit-products',     [PageController::class, 'bankingProductsDepositAnalysis'])->name('banking.products-deposit_analysis');
+Route::get('/banking/products/lending-framework',    [PageController::class, 'bankingProductsLendingFramework'])->name('banking.products-lending_framework');
+Route::get('/banking/products/corporate-banking',    [PageController::class, 'bankingProductsCorporateServices'])->name('banking.products-corporate_services');
+Route::get('/banking/products/cross-border-payments',[PageController::class, 'bankingProductsCrossBorderPayments'])->name('banking.products-crossborder_payments');
+Route::get('/banking/products/treasury-services',    [PageController::class, 'bankingProductsTreasuryServices'])->name('banking.products-treasury_services');
+
+// banking Analysis
+Route::get('/banking/analysis/global-outlook',        [PageController::class, 'bankingAnalysisGlobalOutlook'])->name('banking.analysis-global_outlook');
+Route::get('/banking/analysis/nim-capital',           [PageController::class, 'bankingAnalysisNimCapital'])->name('banking.analysis-nim_capital');
+Route::get('/banking/analysis/profitability-metrics', [PageController::class, 'bankingAnalysisProfitabilityMetrics'])->name('banking.analysis-profitability_metrics');
+Route::get('/banking/analysis/risk-liquidity',        [PageController::class, 'bankingAnalysisRiskLiquidity'])->name('banking.analysis-risk_liquidity');
 
 // Credit Cards Mechanics
 Route::get('/credit-cards/mechanics/credit-scoring',     [PageController::class, 'cardsMechanicsScoring'])->name('cards.mechanics-scoring');

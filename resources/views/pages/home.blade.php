@@ -3,21 +3,10 @@
 
 @section('content')
 
-{{-- ══ HERO ══════════════════════════════════════════════════════ --}}
-<section class="relative overflow-hidden flex flex-col items-center justify-center text-center px-6 pt-16 pb-24"
-         style="background:linear-gradient(160deg,#0f1f35 0%,#1a3050 55%,#0f1f35 100%)">
-
-    {{-- subtle grid texture --}}
-    <div class="absolute inset-0 pointer-events-none opacity-[.04]"
-         style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:48px 48px"></div>
-
-    {{-- indigo glow --}}
-    <div class="absolute pointer-events-none"
-         style="top:-120px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,transparent 70%);"></div>
-
-    {{-- Badge --}}
-    <div class="relative inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.14em] px-4 py-1.5 rounded-full mb-8"
-         style="background:rgba(79,70,229,.18);border:1px solid rgba(79,70,229,.35);color:#a5b4fc">
+<section class="relative overflow-hidden flex flex-col items-center justify-center text-center px-6 pt-16 pb-24" style="background:linear-gradient(160deg,#0f1f35 0%,#1a3050 55%,#0f1f35 100%)">
+    <div class="absolute inset-0 pointer-events-none opacity-[.04]" style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:48px 48px"></div>
+    <div class="absolute pointer-events-none" style="top:-120px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(79,70,229,.18) 0%,transparent 70%);"></div>
+    <div class="relative inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[.14em] px-4 py-1.5 rounded-full mb-8" style="background:rgba(79,70,229,.18);border:1px solid rgba(79,70,229,.35);color:#a5b4fc">
         ✦ Evidence-Based Financial Analysis
     </div>
 
@@ -31,28 +20,26 @@
         banking services, and credit cards — built on data, not sponsored opinion.
     </p>
 
-    {{-- CTA Buttons --}}
     <div class="relative flex items-center gap-4 flex-wrap justify-center mb-14">
-        <a href="{{ route('reviews') }}"
-           class="inline-flex items-center gap-2.5 font-bold text-[14.5px] px-8 py-[14px] rounded-xl transition-all hover:-translate-y-0.5"
-           style="background:#4f46e5;color:#fff;box-shadow:0 8px 24px rgba(79,70,229,.35)"
-           onmouseover="this.style.background='#4338ca';this.style.boxShadow='0 12px 32px rgba(79,70,229,.45)'"
-           onmouseout="this.style.background='#4f46e5';this.style.boxShadow='0 8px 24px rgba(79,70,229,.35)'">
+        <a href="{{ route('reviews') }}" class="inline-flex items-center gap-2.5 font-bold text-[14.5px] px-8 py-[14px] rounded-xl transition-all hover:-translate-y-0.5"
+            style="background:#4f46e5;color:#fff;box-shadow:0 8px 24px rgba(79,70,229,.35)"
+            onmouseover="this.style.background='#4338ca';this.style.boxShadow='0 12px 32px rgba(79,70,229,.45)'"
+            onmouseout="this.style.background='#4f46e5';this.style.boxShadow='0 8px 24px rgba(79,70,229,.35)'">
             Explore Reviews
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
         </a>
-        <a href="{{ route('consultation') }}"
-           class="inline-flex items-center gap-2.5 font-medium text-[14.5px] px-8 py-[14px] rounded-xl transition-all"
-           style="border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8)"
-           onmouseover="this.style.borderColor='rgba(129,140,248,.6)';this.style.color='#a5b4fc';this.style.background='rgba(79,70,229,.12)'"
-           onmouseout="this.style.borderColor='rgba(255,255,255,.2)';this.style.color='rgba(255,255,255,.8)';this.style.background='transparent'">
+        <a href="{{ route('consultation') }}" class="inline-flex items-center gap-2.5 font-medium text-[14.5px] px-8 py-[14px] rounded-xl transition-all"
+            style="border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8)"
+            onmouseover="this.style.borderColor='rgba(129,140,248,.6)';this.style.color='#a5b4fc';this.style.background='rgba(79,70,229,.12)'"
+            onmouseout="this.style.borderColor='rgba(255,255,255,.2)';this.style.color='rgba(255,255,255,.8)';this.style.background='transparent'">
             Get Free Consultation
         </a>
     </div>
 
-    {{-- Stats strip --}}
     <div class="relative flex items-stretch w-full max-w-[720px] rounded-2xl overflow-hidden"
-         style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);backdrop-filter:blur(12px)">
+        style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);backdrop-filter:blur(12px)">
         @foreach([['1,200+','Reviews Published'],['100K+','Monthly Readers'],['98%','Accuracy Rate'],['210+','Products Compared']] as $i=>$s)
         <div class="flex-1 text-center py-6 px-4 {{ $i<3?'border-r':''}}" style="{{ $i<3?'border-color:rgba(255,255,255,.08)':'' }}">
             <div class="font-extrabold leading-none mb-2 familyfont text-[34px]" style="color:#818cf8">{{ $s[0] }}</div>
@@ -60,13 +47,10 @@
         </div>
         @endforeach
     </div>
-
 </section>
 
-{{-- ══ FEATURED REVIEWS ══════════════════════════════════════════ --}}
 <section class="bg-white py-16 px-6">
     <div class="max-w-screen-xl mx-auto">
-
         <div class="flex items-end justify-between mb-12">
             <div>
                 <div class="section-label">Editor's Pick</div>
@@ -75,27 +59,25 @@
                     Hand-picked by our editorial team for accuracy, depth, and real-world relevance.
                 </p>
             </div>
-            <a href="{{ route('reviews') }}"
-               class="hidden lg:inline-flex items-center gap-2 text-[13.5px] font-semibold px-5 py-2.5 rounded-lg transition-all shrink-0"
-               style="color:#4f46e5;border:1.5px solid rgba(79,70,229,.3);background:#eef2ff"
-               onmouseover="this.style.background='#e0e7ff';this.style.borderColor='#4f46e5'"
-               onmouseout="this.style.background='#eef2ff';this.style.borderColor='rgba(79,70,229,.3)'">
+            <a href="{{ route('reviews') }}" class="hidden lg:inline-flex items-center gap-2 text-[13.5px] font-semibold px-5 py-2.5 rounded-lg transition-all shrink-0"
+                style="color:#4f46e5;border:1.5px solid rgba(79,70,229,.3);background:#eef2ff"
+                onmouseover="this.style.background='#e0e7ff';this.style.borderColor='#4f46e5'"
+                onmouseout="this.style.background='#eef2ff';this.style.borderColor='rgba(79,70,229,.3)'">
                 View All Reviews
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
             </a>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] gap-6 items-stretch">
-
-            {{-- Featured large card --}}
-            <a href="{{ route('article.fed-rate') }}"
-               class="group bg-white rounded-2xl overflow-hidden flex flex-col transition-all duration-300"
-               style="border:1px solid #e5e7eb;box-shadow:0 2px 8px rgba(15,31,53,.06)"
-               onmouseover="this.style.boxShadow='0 20px 48px rgba(15,31,53,.12)';this.style.transform='translateY(-4px)';this.style.borderColor='rgba(79,70,229,.2)'"
-               onmouseout="this.style.boxShadow='0 2px 8px rgba(15,31,53,.06)';this.style.transform='';this.style.borderColor='#e5e7eb'">
+            <a href="{{ route('article.fed-rate') }}" class="group bg-white rounded-2xl overflow-hidden flex flex-col transition-all duration-300"
+                style="border:1px solid #e5e7eb;box-shadow:0 2px 8px rgba(15,31,53,.06)"
+                onmouseover="this.style.boxShadow='0 20px 48px rgba(15,31,53,.12)';this.style.transform='translateY(-4px)';this.style.borderColor='rgba(79,70,229,.2)'"
+                onmouseout="this.style.boxShadow='0 2px 8px rgba(15,31,53,.06)';this.style.transform='';this.style.borderColor='#e5e7eb'">
                 <div class="relative overflow-hidden shrink-0" style="height:240px">
                     <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&auto=format&fit=crop"
-                         alt="Federal Reserve Rate Analysis" class="w-full h-full object-cover">
+                        alt="Federal Reserve Rate Analysis" class="w-full h-full object-cover">
                     <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(15,31,53,.75) 0%,transparent 50%)"></div>
                     <div class="absolute top-4 left-4 flex items-center gap-2">
                         <span class="badge badge-indigo">In-Depth Analysis</span>
@@ -113,37 +95,38 @@
                         <span class="text-[12px] text-[#9ca3af]">Mar 1, 2026</span>
                         <span class="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#4f46e5] group-hover:gap-3 transition-all">
                             Read Analysis
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
                         </span>
                     </div>
                 </div>
             </a>
 
-            {{-- Two small cards --}}
             <div class="flex flex-col gap-6">
                 @foreach([
-                    [
-                        route('article.emergency-fund'),
-                        'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&h=500&q=80&auto=format&fit=crop&crop=center',
-                        'Personal Finance',
-                        'Emergency Fund vs. High-Yield Savings in 2026: Where Should Your $10K Go?',
-                        'With rates still above 4.5% APY, we model four scenarios — liquid savings, T-bills, money market funds, and CDs — to find the optimal split.',
-                        'Feb 20, 2026',
-                    ],
-                    [
-                        route('article.home-insurance'),
-                        'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300&h=500&q=80&auto=format&fit=crop&crop=center',
-                        'Insurance',
-                        'Why Home Insurance Premiums Rose 18% in 2025 — And What to Do Before Renewal',
-                        'Climate risk repricing is permanent. We analyzed 14 carriers across 8 high-risk states and found three strategies that saved policyholders $340/year on average.',
-                        'Feb 27, 2026',
-                    ],
+                [
+                route('article.emergency-fund'),
+                'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&h=500&q=80&auto=format&fit=crop&crop=center',
+                'Personal Finance',
+                'Emergency Fund vs. High-Yield Savings in 2026: Where Should Your $10K Go?',
+                'With rates still above 4.5% APY, we model four scenarios — liquid savings, T-bills, money market funds, and CDs — to find the optimal split.',
+                'Feb 20, 2026',
+                ],
+                [
+                route('article.home-insurance'),
+                'https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=300&h=500&q=80&auto=format&fit=crop&crop=center',
+                'Insurance',
+                'Why Home Insurance Premiums Rose 18% in 2025 — And What to Do Before Renewal',
+                'Climate risk repricing is permanent. We analyzed 14 carriers across 8 high-risk states and found three strategies that saved policyholders $340/year on average.',
+                'Feb 27, 2026',
+                ],
                 ] as [$url,$img,$cat,$title,$desc,$date])
                 <a href="{{ $url }}"
-                   class="group rounded-2xl overflow-hidden flex flex-1 transition-all duration-300"
-                   style="background:#f8f9fb;border:1px solid #e5e7eb;box-shadow:0 2px 8px rgba(15,31,53,.04)"
-                   onmouseover="this.style.boxShadow='0 12px 32px rgba(15,31,53,.10)';this.style.transform='translateY(-2px)';this.style.borderColor='rgba(79,70,229,.2)'"
-                   onmouseout="this.style.boxShadow='0 2px 8px rgba(15,31,53,.04)';this.style.transform='';this.style.borderColor='#e5e7eb'">
+                    class="group rounded-2xl overflow-hidden flex flex-1 transition-all duration-300"
+                    style="background:#f8f9fb;border:1px solid #e5e7eb;box-shadow:0 2px 8px rgba(15,31,53,.04)"
+                    onmouseover="this.style.boxShadow='0 12px 32px rgba(15,31,53,.10)';this.style.transform='translateY(-2px)';this.style.borderColor='rgba(79,70,229,.2)'"
+                    onmouseout="this.style.boxShadow='0 2px 8px rgba(15,31,53,.04)';this.style.transform='';this.style.borderColor='#e5e7eb'">
                     <div class="shrink-0 relative overflow-hidden" style="width:120px;min-height:100%">
                         <img src="{{ $img }}" alt="{{ $title }}" class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute top-3 left-2 right-2">
@@ -152,13 +135,15 @@
                     </div>
                     <div class="p-5 flex flex-col flex-1 min-w-0">
                         <span class="text-[11px] font-semibold text-[#6b7280] px-2.5 py-0.5 rounded-full inline-block mb-2.5 w-fit"
-                              style="background:#f4f5f7;border:1px solid #e5e7eb">{{ $cat }}</span>
+                            style="background:#f4f5f7;border:1px solid #e5e7eb">{{ $cat }}</span>
                         <h3 class="familyfont text-[15px] font-bold text-[#0f1f35] leading-snug mb-2 group-hover:text-[#4f46e5] transition-colors line-clamp-2">{{ $title }}</h3>
                         <p class="text-[12.5px] text-[#6b7280] leading-relaxed flex-1 line-clamp-3">{{ $desc }}</p>
                         <div class="flex items-center justify-between mt-3 pt-3" style="border-top:1px solid #e5e7eb">
                             <span class="text-[11.5px] text-[#9ca3af]">{{ $date }}</span>
                             <span class="text-[12px] font-bold text-[#4f46e5] flex items-center gap-1 group-hover:gap-2 transition-all">
-                                Read <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                                Read <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                </svg>
                             </span>
                         </div>
                     </div>
@@ -169,7 +154,6 @@
     </div>
 </section>
 
-{{-- ══ WHY TRUST US ═══════════════════════════════════════════════ --}}
 <section style="background:#f4f5f7;padding:80px 24px;border-top:1px solid #e5e7eb">
     <div class="max-w-screen-xl mx-auto">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -184,29 +168,43 @@
                 </p>
                 <a href="#" class="inline-flex items-center gap-2 font-semibold text-[14px] text-[#4f46e5] hover:gap-3 transition-all">
                     Learn about our methodology
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
                 </a>
             </div>
 
             <div class="grid grid-cols-2 gap-4">
                 @foreach([
-                    ['<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
-                      'Thoroughly Researched',
-                      'Every review involves hours of research, real product testing, and verification before publication.'],
-                    ['<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
-                      'Expert Team',
-                      'Certified financial analysts and industry professionals with decades of combined experience.'],
-                    ['<polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>',
-                      'Unbiased Analysis',
-                      'Strict editorial independence. Our reviews are never influenced by advertisers or product providers.'],
-                    ['<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>',
-                      'Award-Winning',
-                      'Recognized for excellence in financial journalism by leading industry organizations.'],
+                ['
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />',
+                'Thoroughly Researched',
+                'Every review involves hours of research, real product testing, and verification before publication.'],
+                ['
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />',
+                'Expert Team',
+                'Certified financial analysts and industry professionals with decades of combined experience.'],
+                ['
+                <polyline points="9 11 12 14 22 4" />
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />',
+                'Unbiased Analysis',
+                'Strict editorial independence. Our reviews are never influenced by advertisers or product providers.'],
+                ['
+                <circle cx="12" cy="8" r="6" />
+                <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />',
+                'Award-Winning',
+                'Recognized for excellence in financial journalism by leading industry organizations.'],
                 ] as [$icon,$title,$desc])
                 <div class="bg-white rounded-2xl p-5 transition-all group cursor-default"
-                     style="border:1px solid #e5e7eb;box-shadow:0 2px 8px rgba(15,31,53,.04)"
-                     onmouseover="this.style.borderColor='rgba(79,70,229,.25)';this.style.boxShadow='0 8px 24px rgba(79,70,229,.10)'"
-                     onmouseout="this.style.borderColor='#e5e7eb';this.style.boxShadow='0 2px 8px rgba(15,31,53,.04)'">
+                    style="border:1px solid #e5e7eb;box-shadow:0 2px 8px rgba(15,31,53,.04)"
+                    onmouseover="this.style.borderColor='rgba(79,70,229,.25)';this.style.boxShadow='0 8px 24px rgba(79,70,229,.10)'"
+                    onmouseout="this.style.borderColor='#e5e7eb';this.style.boxShadow='0 2px 8px rgba(15,31,53,.04)'">
                     <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:#eef2ff">
                         <svg class="w-5 h-5" style="color:#4f46e5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">{!! $icon !!}</svg>
                     </div>
@@ -219,7 +217,6 @@
     </div>
 </section>
 
-{{-- ══ SECTOR ANALYSIS ════════════════════════════════════════════ --}}
 <section class="bg-white py-16 px-6" style="border-top:1px solid #e5e7eb">
     <div class="max-w-screen-xl mx-auto">
         <div class="mb-12">
@@ -233,38 +230,47 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             @php
             $sectors = [
-                ['icon'=>'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>',
-                 'cat'=>'Interest Rates & Banking',
-                 'badge'=>'Cautiously Optimistic','bc'=>'badge-amber',
-                 'title'=>'Fed Signals Potential Rate Cuts in Q2 2026',
-                 'desc'=>'Markets are pricing in a 78% probability of a 25bps cut by June. Our analysts examine what this means for savings yields and mortgage rates.',
-                 'metrics'=>[['Fed Funds Rate','4.25%','↘','red'],['10Y Treasury','3.92%','↘','red'],['Avg 30Y Mortgage','6.12%','↘','red']]],
-                ['icon'=>'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>',
-                 'cat'=>'Insurance Industry',
-                 'badge'=>'Under Pressure','bc'=>'badge-red',
-                 'title'=>'Climate Events Drive 18% Surge in Home Insurance Premiums',
-                 'desc'=>'Catastrophic weather patterns are reshaping the insurance landscape. Florida, California, and Louisiana face the steepest increases with some carriers exiting.',
-                 'metrics'=>[['Avg Premium Increase','+18.3%','↗','green'],['Carrier Exits','12','↗','green'],['Market Hardening','High','—','gray']]],
-                ['icon'=>'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
-                 'cat'=>'Real Estate & Housing',
-                 'badge'=>'Transitioning','bc'=>'badge-blue',
-                 'title'=>'Housing Inventory Rises 22% YoY, Signaling Shift Toward Buyers',
-                 'desc'=>'After years of historically low supply, housing inventory is finally expanding in key metro areas. Prices remain elevated but appreciation pace is slowing.',
-                 'metrics'=>[['Inventory (YoY)','+22.4%','↗','green'],['Median Home Price','$412K','—','gray'],['Days on Market','38','↗','green']]],
-                ['icon'=>'<polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/>',
-                 'cat'=>'Investment Markets',
-                 'badge'=>'Bullish','bc'=>'badge-green',
-                 'title'=>'S&P 500 Earnings Growth Outpaces Expectations for Third Consecutive Quarter',
-                 'desc'=>'Corporate earnings resilience continues to surprise analysts. Tech and healthcare lead the way while energy faces headwinds from commodity price volatility.',
-                 'metrics'=>[['S&P 500 YTD','+8.4%','↗','green'],['Earnings Growth','+11.2%','↗','green'],['P/E Ratio (Fwd)','21.3x','—','gray']]],
+            ['icon'=>'
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />',
+            'cat'=>'Interest Rates & Banking',
+            'badge'=>'Cautiously Optimistic','bc'=>'badge-amber',
+            'title'=>'Fed Signals Potential Rate Cuts in Q2 2026',
+            'desc'=>'Markets are pricing in a 78% probability of a 25bps cut by June. Our analysts examine what this means for savings yields and mortgage rates.',
+            'metrics'=>[['Fed Funds Rate','4.25%','↘','red'],['10Y Treasury','3.92%','↘','red'],['Avg 30Y Mortgage','6.12%','↘','red']]],
+            ['icon'=>'
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+            <polyline points="22 4 12 14.01 9 11.01" />',
+            'cat'=>'Insurance Industry',
+            'badge'=>'Under Pressure','bc'=>'badge-red',
+            'title'=>'Climate Events Drive 18% Surge in Home Insurance Premiums',
+            'desc'=>'Catastrophic weather patterns are reshaping the insurance landscape. Florida, California, and Louisiana face the steepest increases with some carriers exiting.',
+            'metrics'=>[['Avg Premium Increase','+18.3%','↗','green'],['Carrier Exits','12','↗','green'],['Market Hardening','High','—','gray']]],
+            ['icon'=>'
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />',
+            'cat'=>'Real Estate & Housing',
+            'badge'=>'Transitioning','bc'=>'badge-blue',
+            'title'=>'Housing Inventory Rises 22% YoY, Signaling Shift Toward Buyers',
+            'desc'=>'After years of historically low supply, housing inventory is finally expanding in key metro areas. Prices remain elevated but appreciation pace is slowing.',
+            'metrics'=>[['Inventory (YoY)','+22.4%','↗','green'],['Median Home Price','$412K','—','gray'],['Days on Market','38','↗','green']]],
+            ['icon'=>'
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+            <polyline points="16 7 22 7 22 13" />',
+            'cat'=>'Investment Markets',
+            'badge'=>'Bullish','bc'=>'badge-green',
+            'title'=>'S&P 500 Earnings Growth Outpaces Expectations for Third Consecutive Quarter',
+            'desc'=>'Corporate earnings resilience continues to surprise analysts. Tech and healthcare lead the way while energy faces headwinds from commodity price volatility.',
+            'metrics'=>[['S&P 500 YTD','+8.4%','↗','green'],['Earnings Growth','+11.2%','↗','green'],['P/E Ratio (Fwd)','21.3x','—','gray']]],
             ];
             @endphp
 
             @foreach($sectors as $s)
             <div class="rounded-2xl p-6 transition-all duration-300 group"
-                 style="background:#f8f9fb;border:1px solid #e5e7eb;box-shadow:0 2px 8px rgba(15,31,53,.04)"
-                 onmouseover="this.style.borderColor='rgba(79,70,229,.25)';this.style.boxShadow='0 12px 32px rgba(15,31,53,.10)'"
-                 onmouseout="this.style.borderColor='#e5e7eb';this.style.boxShadow='0 2px 8px rgba(15,31,53,.04)'">
+                style="background:#f8f9fb;border:1px solid #e5e7eb;box-shadow:0 2px 8px rgba(15,31,53,.04)"
+                onmouseover="this.style.borderColor='rgba(79,70,229,.25)';this.style.boxShadow='0 12px 32px rgba(15,31,53,.10)'"
+                onmouseout="this.style.borderColor='#e5e7eb';this.style.boxShadow='0 2px 8px rgba(15,31,53,.04)'">
                 <div class="flex items-start justify-between mb-4">
                     <div class="flex items-center gap-2.5">
                         <div class="w-8 h-8 rounded-lg flex items-center justify-center shrink-0" style="background:#eef2ff">
@@ -289,7 +295,9 @@
                 </div>
                 <a href="#" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#4f46e5] hover:gap-3 transition-all">
                     Read full analysis
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
                 </a>
             </div>
             @endforeach
@@ -297,13 +305,11 @@
     </div>
 </section>
 
-{{-- ══ CTA BANNER ════════════════════════════════════════════════ --}}
 <section style="background:#f4f5f7;padding:90px 24px;border-top:1px solid #e5e7eb;position:relative;overflow:hidden">
     <div class="absolute inset-0 pointer-events-none" style="background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(79,70,229,.06) 0%,transparent 70%)"></div>
     <div class="max-w-screen-xl mx-auto text-center relative">
-
         <div class="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[.16em] px-4 py-1.5 rounded-full mb-6"
-             style="background:#eef2ff;border:1px solid rgba(79,70,229,.2);color:#4f46e5">
+            style="background:#eef2ff;border:1px solid rgba(79,70,229,.2);color:#4f46e5">
             Get Expert Advice
         </div>
 
@@ -316,18 +322,20 @@
 
         <div class="flex items-center gap-4 justify-center flex-wrap">
             <a href="{{ route('consultation') }}"
-               class="inline-flex items-center gap-2 font-bold text-[15px] px-8 py-[14px] rounded-xl transition-all hover:-translate-y-0.5"
-               style="background:#4f46e5;color:#fff;box-shadow:0 8px 24px rgba(79,70,229,.3)"
-               onmouseover="this.style.background='#4338ca';this.style.boxShadow='0 12px 32px rgba(79,70,229,.4)'"
-               onmouseout="this.style.background='#4f46e5';this.style.boxShadow='0 8px 24px rgba(79,70,229,.3)'">
+                class="inline-flex items-center gap-2 font-bold text-[15px] px-8 py-[14px] rounded-xl transition-all hover:-translate-y-0.5"
+                style="background:#4f46e5;color:#fff;box-shadow:0 8px 24px rgba(79,70,229,.3)"
+                onmouseover="this.style.background='#4338ca';this.style.boxShadow='0 12px 32px rgba(79,70,229,.4)'"
+                onmouseout="this.style.background='#4f46e5';this.style.boxShadow='0 8px 24px rgba(79,70,229,.3)'">
                 Get Free Consultation
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
             </a>
             <a href="{{ route('reviews') }}"
-               class="inline-flex items-center gap-2 font-medium text-[15px] px-8 py-[14px] rounded-xl transition-all"
-               style="color:#374151;border:1.5px solid #d1d5db"
-               onmouseover="this.style.borderColor='#4f46e5';this.style.color='#4f46e5';this.style.background='#eef2ff'"
-               onmouseout="this.style.borderColor='#d1d5db';this.style.color='#374151';this.style.background='transparent'">
+                class="inline-flex items-center gap-2 font-medium text-[15px] px-8 py-[14px] rounded-xl transition-all"
+                style="color:#374151;border:1.5px solid #d1d5db"
+                onmouseover="this.style.borderColor='#4f46e5';this.style.color='#4f46e5';this.style.background='#eef2ff'"
+                onmouseout="this.style.borderColor='#d1d5db';this.style.color='#374151';this.style.background='transparent'">
                 Browse All Reviews
             </a>
         </div>
