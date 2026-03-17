@@ -26,10 +26,6 @@ public static function form(Form $form): Form
                 ->maxLength(255)
                 ->placeholder('Category Name'),
 
-            Forms\Components\Textarea::make('description')
-                ->rows(3)
-                ->placeholder('Description...'),
-
             Forms\Components\Select::make('status')
                 ->options([
                     1 => 'Active',

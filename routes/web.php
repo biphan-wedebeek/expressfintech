@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\LoanApplicationController;
-
+use App\Http\Controllers\ClickTrackingController;
 // Trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -128,3 +128,9 @@ Route::get('/finance/behavior/consumer-trends',    [PageController::class, 'fina
 // FORM
 Route::get('/intake', [TrackingController::class, 'form'])->name('intake');
 Route::post('/loan/apply', [LoanApplicationController::class, 'store'])->name('loan.apply');
+
+
+
+
+Route::get('/click/banner/{banner}', [ClickTrackingController::class, 'banner'])
+    ->name('click.banner');
