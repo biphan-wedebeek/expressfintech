@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OfferCategory extends Model
+class Category extends Model
 {
     use HasFactory;
 
-    protected $table = 'fintech_offer_categories';
+    protected $table = 'fintech_categories';
 
     protected $fillable = [
         'name',
@@ -20,8 +20,8 @@ class OfferCategory extends Model
         'status' => 'boolean',
     ];
 
-    public function offers()
+    public function subCategories()
     {
-        return $this->hasMany(FintechOffer::class, 'category_id');
+        return $this->hasMany(SubCategory::class, 'category_id');
     }
 }

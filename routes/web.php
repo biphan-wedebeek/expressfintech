@@ -126,11 +126,3 @@ Route::get('/finance/behavior/risk-tolerance',     [PageController::class, 'fina
 Route::get('/finance/behavior/decision-bias',      [PageController::class, 'financeBehaviorDecisionBias'])->name('finance.behavior.decision_bias');
 Route::get('/finance/behavior/consumer-trends',    [PageController::class, 'financeBehaviorConsumerTrends'])->name('finance.behavior.consumer_trends');
 // FORM
-Route::get('/intake', [TrackingController::class, 'form'])->name('intake');
-Route::post('/loan/apply', [LoanApplicationController::class, 'store'])->name('loan.apply');
-
-
-
-
-Route::get('/click/banner/{banner}', [ClickTrackingController::class, 'banner'])
-    ->name('click.banner');
