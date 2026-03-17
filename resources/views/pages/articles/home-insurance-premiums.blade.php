@@ -17,7 +17,7 @@
                 <nav class="flex items-center gap-2 text-[12px] text-white/50">
                     <a href="{{ route('home') }}" class="hover:text-white transition-colors">Home</a>
                     <span>/</span>
-                    <a href="{{ route('reviews') }}" class="hover:text-white transition-colors">Articles</a>
+                    <a href="{{ route('article.fed-rate') }}" class="hover:text-white transition-colors">Articles</a>
                     <span>/</span>
                     <span class="text-white/80">Home Insurance Premiums 2025</span>
                 </nav>
@@ -270,7 +270,7 @@
                         @endforeach
                     </div>
 
-                    <a href="{{ route('consultation') }}"
+                    <a href="{{ route('contact') }}"
                        class="mt-6 flex items-center justify-center gap-2 bg-[#c9a96e] hover:bg-[#b8934a] text-[#0f0f0f] font-bold text-[13.5px] px-5 py-3 rounded-xl transition-colors w-full">
                         Get Free Consultation
                         <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>

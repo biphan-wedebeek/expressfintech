@@ -440,7 +440,7 @@
                 <p class="text-[15.5px] font-light text-[var(--muted)] leading-[1.8] max-w-[560px] pl-4 border-l-2 border-[var(--indigo)] mb-[44px]">@yield('cover_deck','Expert analysis of insurance principles, products, and market dynamics.')</p>
                 <div class="flex gap-0 py-[18px] border-t border-[var(--border)] cover-meta">
                     <span><b class="text-[var(--navy)]">Author</b> EF Research</span>
-                    <span><b class="text-[var(--navy)]">Date</b> @yield('cover_date','March 2026')</span>
+                    <span><b class="text-[var(--navy)]">Date</b> @yield('cover_date', now()->format('F Y'))</span>
                     <span><b class="text-[var(--navy)]">Read</b> @yield('cover_read','12 min')</span>
                     <span><b class="text-[var(--navy)]">Topic</b> @yield('cover_topic','Insurance')</span>
                 </div>
@@ -488,7 +488,7 @@
     <div class="max-w-screen-xl mx-auto py-10 bg-[var(--white)] border-b border-[var(--border)]">
         <div class="flex items-baseline justify-between mb-10 pb-4 border-b border-[var(--border)]">
             <h2 class="font-['Playfair_Display'] text-[30px] font-bold text-[var(--navy)]">@yield('table_title','Analysis Matrix')</h2>
-            <span class="text-[10.5px] tracking-[0.2em] text-[var(--indigo)] font-extrabold uppercase">@yield('table_badge','Updated Q1 2026')</span>
+            <span class="text-[10.5px] tracking-[0.2em] text-[var(--indigo)] font-extrabold uppercase">@yield('table_badge', now()->format('F Y'))</span>
         </div>
         @yield('ins_table')
     </div>

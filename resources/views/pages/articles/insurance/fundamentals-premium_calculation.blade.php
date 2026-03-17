@@ -4,7 +4,7 @@
 @section('cover_h1_line1','Premium')
 @section('cover_h1_em','Calculation')
 @section('cover_deck','The mathematical journey from pure premium to final rate — how actuaries build, load, and validate insurance pricing structures across all lines of business.')
-@section('cover_date','March 2026')
+@section('cover_date', seoUpdateMonth('insurance-funda-premium'))
 @section('cover_read','12 min')
 @section('cover_topic','Actuarial Pricing')
 @section('cover_img','https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80')

@@ -4,7 +4,8 @@
 @section('cover_h1_line1','Life')
 @section('cover_h1_em','Insurance')
 @section('cover_deck','Product structures, mortality modelling, and market dynamics in life insurance — term, whole life, universal life, and the evolving role of annuities in retirement planning.')
-@section('cover_date','March 2026') @section('cover_read','13 min') @section('cover_topic','Life Insurance')
+@section('cover_date', seoUpdateMonth('insurance-category-life'))
+@section('cover_read','13 min') @section('cover_topic','Life Insurance')
 @section('cover_img','https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&q=80')
 @section('cover_stats')
 <div class="bg-[var(--navy)] py-[14px] px-[18px]"><div class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--white)] leading-none">$3.1T</div><div class="text-[9.5px] text-white/35 uppercase tracking-[0.1em] mt-[3px]">Global Life Premiums 2025</div></div>
@@ -20,9 +21,9 @@
         <div class="p-tag">Product Types</div>
         <h2 class="p-title">Term vs <em>Permanent Life</em></h2>
         <p class="p-text">Life insurance divides into two fundamental categories: <strong>term life</strong> (pure death benefit for a specified period) and <strong>permanent life</strong> (lifelong coverage with a cash value component). Term provides the highest death benefit per premium dollar; permanent builds equity and offers living benefits.</p>
-        <p class="p-text"><strong>Whole life</strong> builds guaranteed cash value at a fixed premium rate. <strong>Universal life (UL)</strong> offers flexible premiums with credited interest. <strong>Variable UL</strong> links cash value to investment sub-accounts. <strong>Indexed UL</strong> caps and floors returns against an equity index — the fastest-growing product category in 2024–2026.</p>
+        <p class="p-text"><strong>Whole life</strong> builds guaranteed cash value at a fixed premium rate. <strong>Universal life (UL)</strong> offers flexible premiums with credited interest. <strong>Variable UL</strong> links cash value to investment sub-accounts. <strong>Indexed UL</strong> caps and floors returns against an equity index — the fastest-growing product category in 2024–{{ now()->year }}.</p>
         <div class="p-note">
-            <div class="p-note-label">2026 Market Trend</div>
+            <div class="p-note-label">{{ now()->year }} Market Trend</div>
             <p>Indexed Universal Life (IUL) premiums grew 18% in 2025 as consumers sought market-linked upside with downside protection. IUL now represents 28% of all permanent life premiums in the US.</p>
         </div>
     </div>

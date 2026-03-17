@@ -4,7 +4,7 @@
 @section('cover_h1_line1','Seven')
 @section('cover_h1_em','Principles')
 @section('cover_deck','The legal and contractual foundations governing every insurance contract — from indemnity and insurable interest to subrogation and loss minimisation.')
-@section('cover_date','March 2026')
+@section('cover_date', seoUpdateMonth('insurance-funda-principles'))
 @section('cover_read','18 min')
 @section('cover_topic','Core Principles')
 @section('cover_img','https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80')

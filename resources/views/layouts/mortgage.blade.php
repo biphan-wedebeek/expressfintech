@@ -252,7 +252,7 @@
             <div class="scta">
                 <h4>Expert Advice</h4>
                 <p>Speak with our mortgage research team for personalised rate and product analysis.</p>
-                <a href="{{ route('consultation') }}">Book Free Session →</a>
+                <a href="{{ route('contact') }}">Book Free Session →</a>
             </div>
         </aside>
 

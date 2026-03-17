@@ -4,7 +4,7 @@
 @section('cover_h1_line1','Insurance')
 @section('cover_h1_em','Underwriting')
 @section('cover_deck','The art and science of risk selection — how underwriters evaluate, accept, price, and structure insurance coverage for individual and portfolio risk management.')
-@section('cover_date','March 2026')
+@section('cover_date', seoUpdateMonth('insurance-funda-underwriting'))
 @section('cover_read','13 min')
 @section('cover_topic','Underwriting Process')
 @section('cover_img','https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80')
@@ -63,9 +63,9 @@
         <div class="p-tag">Cycle Management</div>
         <h2 class="p-title">Hard & Soft Markets: <em>Underwriting Discipline</em></h2>
         <p class="p-text">The insurance market moves in cycles driven by capacity, competition, and loss experience. In a <strong>soft market</strong>, excess capacity drives rate competition and loosened terms — underwriting discipline erodes. In a <strong>hard market</strong>, post-CAT loss capacity withdrawal drives rate increases, tightened terms, and reduced coverage availability.</p>
-        <p class="p-text">2023–2026 represents one of the most sustained hard market cycles since the post-9/11 hardening. Average commercial P&C rates increased 15–22% across major lines, with property cat and cyber experiencing 30–50%+ rate movement in peak stress years.</p>
+        <p class="p-text">2023–{{ now()->year }} represents one of the most sustained hard market cycles since the post-9/11 hardening. Average commercial P&C rates increased 15–22% across major lines, with property cat and cyber experiencing 30–50%+ rate movement in peak stress years.</p>
         <div class="p-note">
-            <div class="p-note-label">2026 Cycle Position</div>
+            <div class="p-note-label">{{ now()->year }} Cycle Position</div>
             <p>The market is transitioning from hard to <strong>moderating</strong> — rates continue rising but at a slowing pace. Property cat remains technically stressed; liability is showing early signs of softening in lower-hazard segments. Cyber is stabilising after 2021–2023 volatility.</p>
         </div>
     </div>

@@ -4,7 +4,8 @@
 @section('cover_h1_line1','InsurTech')
 @section('cover_h1_em','& Innovation')
 @section('cover_deck','How technology is reshaping distribution, underwriting, claims, and the competitive structure of global insurance — from embedded insurance to AI-driven pricing engines.')
-@section('cover_date','March 2026') @section('cover_read','12 min') @section('cover_topic','Technology & Innovation')
+@section('cover_date', now()->format('F Y')) 
+@section('cover_read','12 min') @section('cover_topic','Technology & Innovation')
 @section('cover_img','https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80')
 @section('cover_stats')
 <div class="bg-[var(--navy)] py-[14px] px-[18px]"><div class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--white)] leading-none">$14.8B</div><div class="text-[9.5px] text-white/35 uppercase tracking-[0.1em] mt-[3px]">InsurTech Investment 2025</div></div>
@@ -78,7 +79,7 @@
 <div class="pstep"><div class="pstep-n">4</div><div class="pstep-title">Claims & Service</div><div class="pstep-body">AI triage, computer vision for property damage assessment, parametric triggers, IoT-connected claims prevention and early warning.</div></div>
 @endsection
 @section('related')
-<div class="rcard"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70" alt="Market"><div class="rcard-body"><div class="rcard-cat">Market Insights</div><div class="rcard-title">Market Trends 2026</div><p>Broader market dynamics and how InsurTech is reshaping the competitive landscape across lines.</p></div></div>
+<div class="rcard"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70" alt="Market"><div class="rcard-body"><div class="rcard-cat">Market Insights</div><div class="rcard-title">Market Trends {{ now()->year }}</div><p>Broader market dynamics and how InsurTech is reshaping the competitive landscape across lines.</p></div></div>
 <div class="rcard"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70" alt="Underwriting"><div class="rcard-body"><div class="rcard-cat">Fundamentals</div><div class="rcard-title">Insurance Underwriting</div><p>How AI and data transformation are changing the underwriting workflow and skills requirement.</p></div></div>
 <div class="rcard"><img src="https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?w=600&q=70" alt="Reports"><div class="rcard-body"><div class="rcard-cat">Market Insights</div><div class="rcard-title">Global Insurance Reports</div><p>Industry reports covering InsurTech investment, adoption, and impact across global markets.</p></div></div>
 @endsection
