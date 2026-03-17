@@ -2,25 +2,26 @@
 
 namespace App\Filament\Pages;
 
-use Filament\Pages\Page;
 use App\Models\Tracklink;
+use Filament\Pages\Page;
+use Livewire\WithPagination;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ReportOverview extends Page
 {
+    use WithPagination;
+
     protected static ?string $navigationIcon = 'heroicon-o-chart-bar';
     protected static string $view = 'filament.pages.report-overview';
     protected static ?string $navigationLabel = 'Tracklink Report';
-    protected static ?string $title = '';
+    protected static ?string $title = 'Tracklink Report';
 
     public $search_id = '';
     public $search_affiliate_id = '';
-    public $search_campaign_id = '';
+    public $search_offer_id = '';
     public $date_from = '';
     public $date_to = '';
     public $search_status = '';
-
-    use \Livewire\WithPagination;
 
     protected function getViewData(): array
     {
@@ -33,16 +34,16 @@ class ReportOverview extends Page
     {
         $query = Tracklink::query();
 
-        if ($this->search_id) {
+        if ($this->search_id !== '') {
             $query->where('id', $this->search_id);
         }
 
-        if ($this->search_affiliate_id) {
+        if ($this->search_affiliate_id !== '') {
             $query->where('aff_id', 'LIKE', '%' . $this->search_affiliate_id . '%');
         }
 
-        if ($this->search_campaign_id) {
-            $query->where('campaign_id', 'LIKE', '%' . $this->search_campaign_id . '%');
+        if ($this->search_offer_id !== '') {
+            $query->where('offer_id', $this->search_offer_id);
         }
 
         if ($this->date_from) {
@@ -54,20 +55,28 @@ class ReportOverview extends Page
         }
 
         if ($this->search_status !== '') {
-            $query->where('lead', $this->search_status);
+            $query->where('status', $this->search_status);
         }
 
         return $query->orderBy('created_at', 'desc');
     }
 
-    public function applyFilters()
+    public function applyFilters(): void
     {
         $this->resetPage();
     }
 
-    public function clearFilters()
+    public function clearFilters(): void
     {
-        $this->reset(['search_id', 'search_affiliate_id', 'search_campaign_id', 'date_from', 'date_to', 'search_status']);
+        $this->reset([
+            'search_id',
+            'search_affiliate_id',
+            'search_offer_id',
+            'date_from',
+            'date_to',
+            'search_status',
+        ]);
+
         $this->resetPage();
     }
 
@@ -83,10 +92,16 @@ class ReportOverview extends Page
             fputcsv($handle, [
                 'ID',
                 'Affiliate ID',
-                'Aff Source',
                 'Aff Click ID',
-                'Campaign ID',
+                'Offer ID',
+                'Banner ID',
+                'Advertiser ID',
                 'Source',
+                'Pub ID',
+                'Sub1',
+                'Sub2',
+                'Sub3',
+                'Sub4',
                 'IP Address',
                 'Country',
                 'Referrer URL',
@@ -95,20 +110,26 @@ class ReportOverview extends Page
                 'Browser',
                 'OS',
                 'User Agent',
-                'Lead',
                 'Status',
+                'Clicked At',
                 'Converted At',
-                'Created At'
+                'Created At',
             ]);
 
             foreach ($records as $record) {
                 fputcsv($handle, [
                     $record->id,
                     $record->aff_id,
-                    $record->source,
                     $record->aff_clickid,
-                    $record->campaign_id,
+                    $record->offer_id,
+                    $record->banner_id,
+                    $record->advertiser_id,
                     $record->source,
+                    $record->pubid,
+                    $record->sub1,
+                    $record->sub2,
+                    $record->sub3,
+                    $record->sub4,
                     $record->ip_address,
                     $record->country,
                     $record->referrer_url,
@@ -117,16 +138,16 @@ class ReportOverview extends Page
                     $record->browser,
                     $record->os,
                     $record->user_agent,
-                    $record->lead ? 'Yes' : 'No',
                     $record->status,
+                    $record->clicked_at?->format('Y-m-d H:i:s'),
                     $record->converted_at?->format('Y-m-d H:i:s'),
-                    $record->created_at->format('Y-m-d H:i:s')
+                    $record->created_at?->format('Y-m-d H:i:s'),
                 ]);
             }
 
             fclose($handle);
         }, $filename, [
-            'Content-Type' => 'text/csv',
+            'Content-Type' => 'text/csv; charset=UTF-8',
             'Content-Disposition' => 'attachment; filename="' . $filename . '"',
         ]);
     }

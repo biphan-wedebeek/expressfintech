@@ -2,19 +2,26 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class OfferCategory extends Model
 {
+    use HasFactory;
+
+    protected $table = 'fintech_offer_categories';
+
     protected $fillable = [
         'name',
-        'description',
         'status',
+    ];
+
+    protected $casts = [
+        'status' => 'boolean',
     ];
 
     public function offers()
     {
-        return $this->hasMany(Offer::class, 'category_id');
+        return $this->hasMany(FintechOffer::class, 'category_id');
     }
 }
