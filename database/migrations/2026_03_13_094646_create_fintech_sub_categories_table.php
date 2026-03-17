@@ -8,8 +8,13 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('fintech_offer_categories', function (Blueprint $table) {
+        Schema::create('fintech_sub_categories', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignId('category_id')
+                ->constrained('fintech_categories')
+                ->cascadeOnDelete();
+
             $table->string('name');
             $table->boolean('status')->default(true);
             $table->timestamps();
@@ -18,6 +23,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('fintech_offer_categories');
+        Schema::dropIfExists('fintech_sub_categories');
     }
 };
