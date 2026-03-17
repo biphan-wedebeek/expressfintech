@@ -5,11 +5,11 @@
             Trusted by 100,000+ readers worldwide
         </span>
         <div class="flex items-center gap-6">
-            <a href="{{ route('consultation') }}" class="flex items-center gap-1.5 opacity-70 hover:opacity-100 transition-opacity">
+            <a href="{{ route('contact') }}" class="flex items-center gap-1.5 opacity-70 hover:opacity-100 transition-opacity">
                 <svg class="w-3 h-3 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3.06 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.1A16 16 0 0 0 13 14l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 15z"/></svg>
                 Free Consultation
             </a>
-            <a href="{{ route('search') }}" class="flex items-center gap-1.5 opacity-70 hover:opacity-100 transition-opacity">
+            <a href="{{ route('contact') }}" class="flex items-center gap-1.5 opacity-70 hover:opacity-100 transition-opacity">
                 <svg class="w-3 h-3 shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                 Search Reviews
             </a>
@@ -55,7 +55,7 @@
             <button class="p-2 rounded-lg text-[#6b7280] hover:bg-[#eef2ff] hover:text-[#4f46e5] transition-all bg-transparent border-0 cursor-pointer">
                 <svg class="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             </button>
-            <a href="{{ route('get-started') }}"
+            <a href="{{ route('contact') }}"
                class="bg-[#4f46e5] hover:bg-[#4338ca] text-white font-semibold text-[13.5px] px-5 py-2.5 rounded-lg transition-all hover:shadow-lg hover:shadow-indigo-500/25 whitespace-nowrap">
                 Get Started
             </a>
@@ -74,13 +74,6 @@
 <script>
 (function(){
     const R = {
-        
-        'insurance':         '{{ route("insurance") }}',
-        'banking':           '{{ route("banking") }}',
-        'credit-cards':      '{{ route("credit-cards") }}',
-        'mortgages':         '{{ route("mortgages") }}',
-        'personal-finance':  '{{ route("personal-finance") }}',
-        'reviews':           '{{ route("reviews") }}',
 
         // Insurance
         'insurance.principles':          '{{ route("insurance.fundamentals.principles") }}',

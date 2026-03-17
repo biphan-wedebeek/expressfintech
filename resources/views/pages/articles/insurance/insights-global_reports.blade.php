@@ -1,10 +1,11 @@
 @extends('layouts.insurance')
-@section('title','Global Insurance Reports 2026')
+@section('title','Global Insurance Reports'. now()->year)
 @section('cover_kicker','Market Insights · Research Reports')
 @section('cover_h1_line1','Global')
-@section('cover_h1_em','Reports 2026')
+@section('cover_h1_em','Reports'. now()->year)
 @section('cover_deck','Curated analysis and key findings from the leading global insurance research institutions — Swiss Re, Munich Re, Lloyd\'s, Aon, and the Geneva Association.')
-@section('cover_date','March 2026') @section('cover_read','10 min') @section('cover_topic','Research Digest')
+@section('cover_date', now()->format('F Y')) 
+@section('cover_read','10 min') @section('cover_topic','Research Digest')
 @section('cover_img','https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800&q=80')
 @section('cover_stats')
 <div class="bg-[var(--navy)] py-[14px] px-[18px]"><div class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--white)] leading-none">$7.5T</div><div class="text-[9.5px] text-white/35 uppercase tracking-[0.1em] mt-[3px]">Global Premium Volume 2025</div></div>
@@ -12,7 +13,7 @@
 <div class="bg-[var(--navy)] py-[14px] px-[18px]"><div class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--white)] leading-none">$420B</div><div class="text-[9.5px] text-white/35 uppercase tracking-[0.1em] mt-[3px]">2025 CAT Losses</div></div>
 <div class="bg-[var(--navy)] py-[14px] px-[18px]"><div class="font-['Cormorant_Garamond'] text-2xl font-bold text-[var(--white)] leading-none">6</div><div class="text-[9.5px] text-white/35 uppercase tracking-[0.1em] mt-[3px]">Leading Reports Analysed</div></div>
 @endsection
-@section('block_label','2026 Research Digest — Key Reports')
+@section('block_label',now()->year .' Research Digest — Key Reports')
 @section('content')
 
 <div class="p-item">
@@ -49,7 +50,7 @@
         <div class="p-tag">Aon</div>
         <h2 class="p-title">Weather, Climate & <em>Catastrophe Insight</em></h2>
         <p class="p-text">Aon's annual climate and catastrophe report examines the intersection of climate science, economic exposure, and insurance market capacity. The 2025 edition focuses on the <strong>secondary peril problem</strong>: flood and severe convective storm events that fall below reinsurance attachment points are increasingly absorbed entirely by primary carriers — straining combined ratios without triggering reinsurance recovery.</p>
-        <p class="p-text">Aon's analysis of the January 2026 reinsurance renewals shows attachment points rose an average of 25% over 2022 levels — effectively transferring more secondary peril exposure from reinsurers to primary carriers and their policyholders.</p>
+        <p class="p-text">Aon's analysis of the January {{ now()->year }} reinsurance renewals shows attachment points rose an average of 25% over 2022 levels — effectively transferring more secondary peril exposure from reinsurers to primary carriers and their policyholders.</p>
     </div>
 </div>
 
@@ -78,7 +79,7 @@
 <div class="pstep"><div class="pstep-n">GA</div><div class="pstep-title">Geneva Association</div><div class="pstep-body">Systemic risk, climate, longevity, and regulatory research. Industry-level policy analysis and advocacy positions on key regulatory developments.</div></div>
 @endsection
 @section('related')
-<div class="rcard"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70" alt="Market"><div class="rcard-body"><div class="rcard-cat">Market Insights</div><div class="rcard-title">Market Trends 2026</div><p>Express Fintech analysis of key forces reshaping the global insurance market this year.</p></div></div>
+<div class="rcard"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70" alt="Market"><div class="rcard-body"><div class="rcard-cat">Market Insights</div><div class="rcard-title">Market Trends {{ now()->year }}</div><p>Express Fintech analysis of key forces reshaping the global insurance market this year.</p></div></div>
 <div class="rcard"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=70" alt="InsurTech"><div class="rcard-body"><div class="rcard-cat">Market Insights</div><div class="rcard-title">InsurTech & Innovation</div><p>Technology transformation across the insurance value chain — embedded, AI, and telematics.</p></div></div>
 <div class="rcard"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=70" alt="Regulatory"><div class="rcard-body"><div class="rcard-cat">Fundamentals</div><div class="rcard-title">Regulatory Framework</div><p>How Solvency II review and IFRS 17 are responding to the climate and systemic risk challenges.</p></div></div>
 @endsection

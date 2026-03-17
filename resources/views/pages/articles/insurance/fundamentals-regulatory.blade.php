@@ -4,7 +4,7 @@
 @section('cover_h1_line1','Regulatory')
 @section('cover_h1_em','Framework')
 @section('cover_deck','The global architecture of insurance regulation — solvency standards, consumer protection, rate oversight, and the evolving supervisory response to systemic risk and climate change.')
-@section('cover_date','March 2026')
+@section('cover_date', seoUpdateMonth('insurance-funda-regulatory'))
 @section('cover_read','13 min')
 @section('cover_topic','Insurance Regulation')
 @section('cover_img','https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80')

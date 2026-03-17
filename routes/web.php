@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\LoanApplicationController;
@@ -10,22 +11,13 @@ use App\Http\Controllers\ClickTrackingController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Static pages
-Route::get('/get-started',    [PageController::class, 'getStarted'])->name('get-started');
-Route::get('/consultation',   [PageController::class, 'consultation'])->name('consultation');
+Route::get('/get-started',    [ContactController::class, 'index'])->name('contact');
 Route::get('/search',         [PageController::class, 'search'])->name('search');
-Route::get('/reviews',        [PageController::class, 'reviews'])->name('reviews');
-
-// Category pages
-Route::get('/insurance',        [PageController::class, 'insurance'])->name('insurance');
-Route::get('/banking',          [PageController::class, 'banking'])->name('banking');
-Route::get('/credit-cards',     [PageController::class, 'creditCards'])->name('credit-cards');
-Route::get('/mortgages',        [PageController::class, 'mortgages'])->name('mortgages');
-Route::get('/personal-finance', [PageController::class, 'personalFinance'])->name('personal-finance');
 
 // Article detail pages
-Route::get('/articles/fed-rate-decision-2026',         [PageController::class, 'articleFedRate'])->name('article.fed-rate');
-Route::get('/articles/emergency-fund-vs-savings-2026', [PageController::class, 'articleEmergencyFund'])->name('article.emergency-fund');
-Route::get('/articles/home-insurance-premiums-2026',   [PageController::class, 'articleHomeInsurance'])->name('article.home-insurance');
+Route::get('/articles/fed-rate-decision',         [PageController::class, 'articleFedRate'])->name('article.fed-rate');
+Route::get('/articles/emergency-fund-vs-savings', [PageController::class, 'articleEmergencyFund'])->name('article.emergency-fund');
+Route::get('/articles/home-insurance-premiums',   [PageController::class, 'articleHomeInsurance'])->name('article.home-insurance');
 
 // Insurance Fundamentals sub-pages
 Route::get('/insurance/fundamentals/principles',          [PageController::class, 'insuranceFundamentalsPrinciples'])->name('insurance.fundamentals.principles');

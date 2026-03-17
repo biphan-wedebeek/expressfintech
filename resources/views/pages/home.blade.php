@@ -21,7 +21,7 @@
     </p>
 
     <div class="relative flex items-center gap-4 flex-wrap justify-center mb-14">
-        <a href="{{ route('reviews') }}" class="inline-flex items-center gap-2.5 font-bold text-[14.5px] px-8 py-[14px] rounded-xl transition-all hover:-translate-y-0.5"
+        <a href="{{ route('article.fed-rate') }}" class="inline-flex items-center gap-2.5 font-bold text-[14.5px] px-8 py-[14px] rounded-xl transition-all hover:-translate-y-0.5"
             style="background:#4f46e5;color:#fff;box-shadow:0 8px 24px rgba(79,70,229,.35)"
             onmouseover="this.style.background='#4338ca';this.style.boxShadow='0 12px 32px rgba(79,70,229,.45)'"
             onmouseout="this.style.background='#4f46e5';this.style.boxShadow='0 8px 24px rgba(79,70,229,.35)'">
@@ -30,7 +30,7 @@
                 <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
         </a>
-        <a href="{{ route('consultation') }}" class="inline-flex items-center gap-2.5 font-medium text-[14.5px] px-8 py-[14px] rounded-xl transition-all"
+        <a href="{{ route('contact') }}" class="inline-flex items-center gap-2.5 font-medium text-[14.5px] px-8 py-[14px] rounded-xl transition-all"
             style="border:1.5px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8)"
             onmouseover="this.style.borderColor='rgba(129,140,248,.6)';this.style.color='#a5b4fc';this.style.background='rgba(79,70,229,.12)'"
             onmouseout="this.style.borderColor='rgba(255,255,255,.2)';this.style.color='rgba(255,255,255,.8)';this.style.background='transparent'">
@@ -59,7 +59,7 @@
                     Hand-picked by our editorial team for accuracy, depth, and real-world relevance.
                 </p>
             </div>
-            <a href="{{ route('reviews') }}" class="hidden lg:inline-flex items-center gap-2 text-[13.5px] font-semibold px-5 py-2.5 rounded-lg transition-all shrink-0"
+            <a href="{{ route('article.fed-rate') }}" class="hidden lg:inline-flex items-center gap-2 text-[13.5px] font-semibold px-5 py-2.5 rounded-lg transition-all shrink-0"
                 style="color:#4f46e5;border:1.5px solid rgba(79,70,229,.3);background:#eef2ff"
                 onmouseover="this.style.background='#e0e7ff';this.style.borderColor='#4f46e5'"
                 onmouseout="this.style.background='#eef2ff';this.style.borderColor='rgba(79,70,229,.3)'">
@@ -80,19 +80,19 @@
                         alt="Federal Reserve Rate Analysis" class="w-full h-full object-cover">
                     <div class="absolute inset-0" style="background:linear-gradient(to top,rgba(15,31,53,.75) 0%,transparent 50%)"></div>
                     <div class="absolute top-4 left-4 flex items-center gap-2">
-                        <span class="badge badge-indigo">In-Depth Analysis</span>
-                        <span class="badge" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px)">Investing</span>
+                        <span class="bg-surface p-1 rounded backdrop-blur-md text-gray-700">In-Depth Analysis</span>
+                        <span class="bg-surface p-1 rounded backdrop-blur-md text-gray-700">Investing</span>
                     </div>
                 </div>
                 <div class="p-6 flex flex-col flex-1" style="background:#f8f9fb">
                     <h3 class="familyfont text-[22px] font-bold text-[#0f1f35] leading-[1.3] mb-4 group-hover:text-[#4f46e5] transition-colors">
-                        How the Fed's 2026 Rate Decision Will Reshape Your Savings, Mortgage, and Investment Strategy
+                        How the Fed's {{ now()->year }} Rate Decision Will Reshape Your Savings, Mortgage, and Investment Strategy
                     </h3>
                     <p class="text-[#6b7280] text-[14.5px] leading-[1.8] mb-6 flex-1">
                         With a 78% market probability of a Q2 rate cut, our analysts break down exactly how each 25bps move affects high-yield savings, 30-year mortgages, bond portfolios, and equity valuations.
                     </p>
                     <div class="flex items-center justify-between pt-5" style="border-top:1px solid #e5e7eb">
-                        <span class="text-[12px] text-[#9ca3af]">Mar 1, 2026</span>
+                        <span class="text-[12px] text-[#9ca3af]">{{ seoUpdateDate('article-fed-rate') }}</span>
                         <span class="inline-flex items-center gap-1.5 text-[13px] font-bold text-[#4f46e5] group-hover:gap-3 transition-all">
                             Read Analysis
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -104,14 +104,15 @@
             </a>
 
             <div class="flex flex-col gap-6">
+                @php $year = now()->year; @endphp
                 @foreach([
                 [
                 route('article.emergency-fund'),
                 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&h=500&q=80&auto=format&fit=crop&crop=center',
                 'Personal Finance',
-                'Emergency Fund vs. High-Yield Savings in 2026: Where Should Your $10K Go?',
+                "Emergency Fund vs. High-Yield Savings in {$year}: Where Should Your $10K Go?",
                 'With rates still above 4.5% APY, we model four scenarios — liquid savings, T-bills, money market funds, and CDs — to find the optimal split.',
-                'Feb 20, 2026',
+                seoUpdateDate('article-emergency-fund'),
                 ],
                 [
                 route('article.home-insurance'),
@@ -119,7 +120,7 @@
                 'Insurance',
                 'Why Home Insurance Premiums Rose 18% in 2025 — And What to Do Before Renewal',
                 'Climate risk repricing is permanent. We analyzed 14 carriers across 8 high-risk states and found three strategies that saved policyholders $340/year on average.',
-                'Feb 27, 2026',
+                seoUpdateDate('article-home-insurance'),
                 ],
                 ] as [$url,$img,$cat,$title,$desc,$date])
                 <a href="{{ $url }}"
@@ -130,7 +131,7 @@
                     <div class="shrink-0 relative overflow-hidden" style="width:120px;min-height:100%">
                         <img src="{{ $img }}" alt="{{ $title }}" class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute top-3 left-2 right-2">
-                            <span class="badge badge-indigo text-[8.5px] w-full text-center block">Analysis</span>
+                            <span class="bg-surface p-1 rounded backdrop-blur-md text-gray-700">Analysis</span>
                         </div>
                     </div>
                     <div class="p-5 flex flex-col flex-1 min-w-0">
@@ -228,41 +229,46 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            @php $year = now()->year; @endphp
             @php
             $sectors = [
             ['icon'=>'
             <line x1="18" y1="20" x2="18" y2="10" />
             <line x1="12" y1="20" x2="12" y2="4" />
             <line x1="6" y1="20" x2="6" y2="14" />',
-            'cat'=>'Interest Rates & Banking',
-            'badge'=>'Cautiously Optimistic','bc'=>'badge-amber',
-            'title'=>'Fed Signals Potential Rate Cuts in Q2 2026',
-            'desc'=>'Markets are pricing in a 78% probability of a 25bps cut by June. Our analysts examine what this means for savings yields and mortgage rates.',
-            'metrics'=>[['Fed Funds Rate','4.25%','↘','red'],['10Y Treasury','3.92%','↘','red'],['Avg 30Y Mortgage','6.12%','↘','red']]],
+            'route' => route('banking.structure-retail_commercial'), 
+            'cat'=>'Banking Structure',
+            'badge'=>'Foundational','bc'=>'badge-amber',
+            'title'=>'Retail vs Commercial Banking',
+            'desc'=>'Two distinct business models sharing the same banking licence — retail serves millions of individuals with standardised products, while commercial serves thousands of businesses with tailored financial solutions.',
+            'metrics'=>[['Retail customer base','100+','◬','red'],['Avg commercial loan','$2.4M','▽','green'],['NIM gap (retail vs corp)','+140bps','▽','green']]],
             ['icon'=>'
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
             <polyline points="22 4 12 14.01 9 11.01" />',
-            'cat'=>'Insurance Industry',
-            'badge'=>'Under Pressure','bc'=>'badge-red',
-            'title'=>'Climate Events Drive 18% Surge in Home Insurance Premiums',
-            'desc'=>'Catastrophic weather patterns are reshaping the insurance landscape. Florida, California, and Louisiana face the steepest increases with some carriers exiting.',
-            'metrics'=>[['Avg Premium Increase','+18.3%','↗','green'],['Carrier Exits','12','↗','green'],['Market Hardening','High','—','gray']]],
+            'route' => route('insurance.fundamentals.principles'),
+            'cat'=>'Insurance Fundamentals',
+            'badge'=>'Core Principles','bc'=>'badge-red',
+            'title'=>'Seven Principles of Insurance',
+            'desc'=>'The legal and contractual foundations governing every insurance contract — from indemnity and insurable interest to subrogation and loss minimisation.',
+            'metrics'=>[['Global premium volume','$7.5T','▽','green'],['Combined ratio ex-CAT','94.2%','▽','green'],['Subrogation recoveries','$8.2B','▽','green']]],
             ['icon'=>'
             <circle cx="12" cy="12" r="10" />
             <polyline points="12 6 12 12 16 14" />',
-            'cat'=>'Real Estate & Housing',
-            'badge'=>'Transitioning','bc'=>'badge-blue',
-            'title'=>'Housing Inventory Rises 22% YoY, Signaling Shift Toward Buyers',
-            'desc'=>'After years of historically low supply, housing inventory is finally expanding in key metro areas. Prices remain elevated but appreciation pace is slowing.',
-            'metrics'=>[['Inventory (YoY)','+22.4%','↗','green'],['Median Home Price','$412K','—','gray'],['Days on Market','38','↗','green']]],
+            'route' => route('mortgages.fundamentals.fixed_vs_variable'),
+            'cat'=>'Mortgage Fundamentals',
+            'badge'=>'Rate Structures','bc'=>'badge-blue',
+            'title'=>'Fixed vs Variable Rate Mortgages',
+            'desc'=>'How fixed and adjustable mortgage rate structures are priced, how they compare across time horizons, and how to choose between them in a high-rate environment.',
+            'metrics'=>[['Avg 30-yr fixed {$year}','6.8%','◬','red'],['Avg 5/1 ARM {$year}','6.1%','▽','green'],['Initial rate spread','0.7%','↣','green']]],
             ['icon'=>'
             <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
             <polyline points="16 7 22 7 22 13" />',
-            'cat'=>'Investment Markets',
-            'badge'=>'Bullish','bc'=>'badge-green',
-            'title'=>'S&P 500 Earnings Growth Outpaces Expectations for Third Consecutive Quarter',
-            'desc'=>'Corporate earnings resilience continues to surprise analysts. Tech and healthcare lead the way while energy faces headwinds from commodity price volatility.',
-            'metrics'=>[['S&P 500 YTD','+8.4%','↗','green'],['Earnings Growth','+11.2%','↗','green'],['P/E Ratio (Fwd)','21.3x','—','gray']]],
+            'route' => route('finance.planning.emergency_fund'),
+            'cat'=>'Chapter 02 · Planning',
+            'badge'=>'Foundation First','bc'=>'badge-green',
+            'title'=>'Emergency Fund — Build Your Financial Firewall',
+            'desc'=>'Before investing a single dollar, you need a financial firewall. 3–6 months of essential expenses held in a liquid account — the one rule with no exceptions.',
+            'metrics'=>[['Starter fund target','$1,000','▽','green'],['Full fund coverage','3–6×','▽','green'],['Freelancer target','6–12×','↣','gray']]],
             ];
             @endphp
 
@@ -293,7 +299,7 @@
                     </div>
                     @endforeach
                 </div>
-                <a href="#" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#4f46e5] hover:gap-3 transition-all">
+                <a href="{{ $s['route'] }}" class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#4f46e5] hover:gap-3 transition-all">
                     Read full analysis
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                         <path d="M5 12h14M12 5l7 7-7 7" />
@@ -321,7 +327,7 @@
         </p>
 
         <div class="flex items-center gap-4 justify-center flex-wrap">
-            <a href="{{ route('consultation') }}"
+            <a href="{{ route('contact') }}"
                 class="inline-flex items-center gap-2 font-bold text-[15px] px-8 py-[14px] rounded-xl transition-all hover:-translate-y-0.5"
                 style="background:#4f46e5;color:#fff;box-shadow:0 8px 24px rgba(79,70,229,.3)"
                 onmouseover="this.style.background='#4338ca';this.style.boxShadow='0 12px 32px rgba(79,70,229,.4)'"
@@ -331,7 +337,7 @@
                     <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
             </a>
-            <a href="{{ route('reviews') }}"
+            <a href="{{ route('article.fed-rate') }}"
                 class="inline-flex items-center gap-2 font-medium text-[15px] px-8 py-[14px] rounded-xl transition-all"
                 style="color:#374151;border:1.5px solid #d1d5db"
                 onmouseover="this.style.borderColor='#4f46e5';this.style.color='#4f46e5';this.style.background='#eef2ff'"

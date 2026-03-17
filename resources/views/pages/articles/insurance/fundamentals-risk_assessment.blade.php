@@ -4,7 +4,7 @@
 @section('cover_h1_line1','Risk')
 @section('cover_h1_em','Assessment')
 @section('cover_deck','How insurers quantify, model, and price risk — the statistical and actuarial frameworks that transform uncertain future losses into calculable premiums.')
-@section('cover_date','March 2026')
+@section('cover_date', seoUpdateMonth('insurance-funda-risk'))
 @section('cover_read','14 min')
 @section('cover_topic','Actuarial Methods')
 @section('cover_img','https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80')
@@ -65,7 +65,7 @@
         <p class="p-text">Gradient boosting (XGBoost, LightGBM), neural networks, and random forests now supplement — and in some lines, replace — traditional GLM-based ratemaking. Telematics data in auto, satellite imagery in property, and clinical data in health are creating granular risk segmentation impossible with legacy actuarial tools.</p>
         <p class="p-text">Adoption is uneven: personal auto and homeowners have seen the fastest ML penetration; specialty and casualty lines remain predominantly GLM-driven due to data scarcity and model interpretability requirements from regulators.</p>
         <div class="p-note">
-            <div class="p-note-label">2026 Market Data</div>
+            <div class="p-note-label">{{ now()->year }} Market Data</div>
             <p>30% of P&C insurers now deploy ML models in primary rating engines — up from 8% in 2021. Regulatory acceptance of "black box" models remains the primary adoption barrier, with NAIC model governance guidelines under active development.</p>
         </div>
     </div>
