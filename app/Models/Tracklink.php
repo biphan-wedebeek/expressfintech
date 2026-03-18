@@ -12,54 +12,34 @@ class Tracklink extends Model
     protected $table = 'fintech_tracklinks';
 
     protected $fillable = [
-        'aff_clickid',
-        'offer_id',
+        'user_id',
         'banner_id',
-        'advertiser_id',
-        'aff_id',
-        'source',
-        'pubid',
-        'sub1',
-        'sub2',
-        'sub3',
-        'sub4',
+        'banner_name',
         'ip_address',
-        'referrer_url',
-        'device_type',
-        'browser',
-        'os',
-        'country',
-        'user_agent',
+        'flead',
         'status',
-        'payout',
-        'converted_at',
-        'clicked_at',
+        'amount',
+        'sale_amount',
+        'user_agent',
+        'browser',
+        'operating_system',
+        'device_type',
+        'device_manuf',
+        'user_language',
+        'country',
+        'referrer_url',
     ];
 
     protected $casts = [
-        'payout' => 'decimal:2',
-        'converted_at' => 'datetime',
-        'clicked_at' => 'datetime',
+        'flead' => 'integer',
+        'status' => 'integer',
+        'amount' => 'decimal:2',
+        'sale_amount' => 'decimal:2',
     ];
-
-    public function offer()
-    {
-        return $this->belongsTo(Offer::class, 'offer_id');
-    }
 
     public function banner()
     {
-        return $this->belongsTo(OfferBanner::class, 'banner_id');
-    }
-
-    public function advertiser()
-    {
-        return $this->belongsTo(Advertiser::class, 'advertiser_id');
-    }
-
-    public function conversions()
-    {
-        return $this->hasMany(OfferConversion::class, 'tracklink_id');
+        return $this->belongsTo(Banner::class, 'banner_id');
     }
 
     public function postbackLogs()
