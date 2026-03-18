@@ -1,17 +1,15 @@
 @extends('layouts.finreview')
-@section('title', 'Emergency Fund vs. High-Yield Savings 2026: Where Should Your $10K Go? – FinReview')
+@section('title', 'Emergency Fund vs. High-Yield Savings " . now()->year . ": Where Should Your $10K Go? – FinReview')
 @section('description', 'We model four scenarios across liquid savings, T-bills, money market funds, and CDs to find the optimal split for your financial safety net.')
 
 @section('content')
 
-{{-- ── HERO ── --}}
 <div class="bg-[#0f0f0f] relative overflow-hidden">
     <div class="relative h-[460px] overflow-hidden">
         <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1400&q=85&auto=format&fit=crop"
              alt="Personal Finance Savings" class="w-full h-full object-cover opacity-55">
         <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(15,15,15,0.3) 0%, rgba(15,15,15,0.65) 55%, #0f0f0f 100%)"></div>
 
-        {{-- Breadcrumb --}}
         <div class="absolute top-8 left-0 right-0">
             <div class="max-w-screen-lg mx-auto px-6">
                 <nav class="flex items-center gap-2 text-[12px] text-white/50">
@@ -31,11 +29,11 @@
                     <span class="bg-white/15 backdrop-blur-sm text-white/85 text-[11px] font-medium px-3 py-1.5 rounded-lg border border-white/20">Personal Finance</span>
                     <span class="bg-white/15 backdrop-blur-sm text-white/85 text-[11px] font-medium px-3 py-1.5 rounded-lg border border-white/20">Savings</span>
                 </div>
-                <h1 class="text-white font-bold leading-[1.2] max-w-[780px]" style="font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,46px)">
-                    Emergency Fund vs. High-Yield Savings in 2026: Where Should Your $10K Go?
+                <h1 class="text-white! font-bold leading-[1.2] max-w-[780px]" style="font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,46px)">
+                    Emergency Fund vs. High-Yield Savings in {{ now()->year }}: Where Should Your $10K Go?
                 </h1>
                 <div class="flex items-center gap-6 mt-5 text-[13px] text-white/50">
-                    <span>Feb 20, 2026</span>
+                    <span>{{seoUpdateDate('article-emergency-fund')}}</span>
                     <span class="flex items-center gap-1.5">
                         <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         8 min read
@@ -47,15 +45,10 @@
     </div>
 </div>
 
-{{-- ── BODY ── --}}
 <div class="bg-[#f5f0eb]">
     <div class="max-w-screen-lg mx-auto px-6 py-14">
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12">
-
-            {{-- NỘI DUNG CHÍNH --}}
             <article class="min-w-0">
-
-                {{-- Key Takeaways --}}
                 <div class="bg-white border-l-4 border-[#c9a96e] rounded-r-2xl p-6 mb-10 shadow-sm">
                     <h2 class="text-[13px] font-black uppercase tracking-[0.12em] text-[#c9a96e] mb-4">Key Takeaways</h2>
                     <ul class="space-y-2.5">
@@ -74,15 +67,13 @@
                     </ul>
                 </div>
 
-                {{-- Intro --}}
                 <p class="text-[17px] text-[#1a1a1a] leading-[1.9] mb-6 font-light">
-                    Most financial advice treats the emergency fund as a single bucket — three to six months of expenses, parked somewhere "safe." In 2026, that thinking is costing people real money.
+                    Most financial advice treats the emergency fund as a single bucket — three to six months of expenses, parked somewhere "safe." In {{ now()->year }}, that thinking is costing people real money.
                 </p>
                 <p class="text-[15.5px] text-[#3d3833] leading-[1.85] mb-10">
                     With short-term rates still historically elevated and a Fed cut looming, the right strategy isn't where to put your emergency fund — it's <em>how to structure it across multiple vehicles</em> to maximize yield without sacrificing accessibility when you need it most.
                 </p>
 
-                {{-- Section 1 --}}
                 <h2 class="text-[26px] font-bold text-[#1a1a1a] mb-4 mt-12" style="font-family:'Playfair Display',serif">
                     The 4-Bucket Framework
                 </h2>
@@ -90,7 +81,6 @@
                     We model a $10,000 emergency fund across four scenarios, optimizing for both yield and access time. The goal: every dollar earns as much as possible while staying reachable within your personal risk tolerance.
                 </p>
 
-                {{-- 4 buckets --}}
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
                     @foreach([
                         ['Bucket 1', '1–2 Months', 'HYSA (Instant)', 'bg-[#c9a96e]', 'text-[#0f0f0f]',
@@ -123,7 +113,6 @@
                     @endforeach
                 </div>
 
-                {{-- Section 2 --}}
                 <h2 class="text-[26px] font-bold text-[#1a1a1a] mb-4 mt-12" style="font-family:'Playfair Display',serif">
                     Comparing the Options: Real Numbers on $10,000
                 </h2>
@@ -163,18 +152,15 @@
                     </div>
                 </div>
 
-                {{-- Bottom line --}}
                 <div class="bg-[#1a1a1a] rounded-2xl p-7 mb-10">
-                    <h3 class="text-[11px] font-bold text-[#c9a96e] mb-3 uppercase tracking-wider">Our Recommended Split for $10,000</h3>
+                    <h3 class="text-[11px] font-bold text-[#c9a96e]! mb-3 uppercase tracking-wider">Our Recommended Split for $10,000</h3>
                     <p class="text-white/80 text-[15px] leading-[1.8] mb-4">
                         <strong class="text-white">$2,500 in HYSA</strong> (instant access buffer) + <strong class="text-white">$4,500 in rolling T-bills</strong> (higher yield, 91-day cycle) + <strong class="text-white">$3,000 in a 12-month CD</strong> (lock rate before Fed cuts) = estimated <strong class="text-[#c9a96e]">$499/year</strong> in interest — vs. $475 in pure HYSA or $45 in a traditional savings account.
                     </p>
                     <p class="text-white/50 text-[13px]">Adjust the T-bill / HYSA split based on your job security and how quickly you'd need access in an emergency.</p>
                 </div>
-
             </article>
 
-            {{-- SIDEBAR --}}
             <aside class="space-y-6">
                 <div class="bg-white rounded-2xl border border-[#e8e0d8] p-6 shadow-sm sticky top-24">
                     <h3 class="text-[11px] font-bold uppercase tracking-[0.13em] text-[#c9a96e] mb-5">Related Articles</h3>
@@ -186,8 +172,8 @@
                         </div>
                         <div class="flex-1 min-w-0">
                             <span class="text-[10px] font-bold uppercase tracking-wider text-[#c9a96e]">Investing</span>
-                            <p class="text-[13px] font-semibold text-[#1a1a1a] leading-snug mt-0.5 group-hover:text-[#c9a96e] transition-colors line-clamp-2">How the Fed's 2026 Rate Decision Will Reshape Your Strategy</p>
-                            <span class="text-[11px] text-[#6b6560]">Mar 1, 2026</span>
+                            <p class="text-[13px] font-semibold text-[#1a1a1a] leading-snug mt-0.5 group-hover:text-[#c9a96e] transition-colors line-clamp-2">How the Fed's {{ now()->year }} Rate Decision Will Reshape Your Strategy</p>
+                            <span class="text-[11px] text-[#6b6560]">{{ seoUpdateDate('article-fed-rate') }}</span>
                         </div>
                     </a>
 
@@ -200,12 +186,11 @@
                             <div class="flex-1 min-w-0">
                                 <span class="text-[10px] font-bold uppercase tracking-wider text-[#c9a96e]">Insurance</span>
                                 <p class="text-[13px] font-semibold text-[#1a1a1a] leading-snug mt-0.5 group-hover:text-[#c9a96e] transition-colors line-clamp-2">Why Home Insurance Premiums Rose 18% in 2025</p>
-                                <span class="text-[11px] text-[#6b6560]">Feb 27, 2026</span>
+                                <span class="text-[11px] text-[#6b6560]">{{seoUpdateDate('article-home-insurance')}}</span>
                             </div>
                         </a>
                     </div>
 
-                    {{-- Rate comparison widget --}}
                     <div class="mt-6 pt-6 border-t border-[#f0e8df]">
                         <h3 class="text-[11px] font-bold uppercase tracking-[0.13em] text-[#c9a96e] mb-4">Top HYSA Rates Today</h3>
                         @foreach([
@@ -220,7 +205,6 @@
                         </div>
                         @endforeach
                     </div>
-
                     <a href="{{ route('contact') }}"
                        class="mt-6 flex items-center justify-center gap-2 bg-[#c9a96e] hover:bg-[#b8934a] text-[#0f0f0f] font-bold text-[13.5px] px-5 py-3 rounded-xl transition-colors w-full">
                         Get Free Consultation
@@ -228,7 +212,6 @@
                     </a>
                 </div>
             </aside>
-
         </div>
     </div>
 </div>

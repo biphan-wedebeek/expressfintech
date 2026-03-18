@@ -4,14 +4,12 @@
 
 @section('content')
 
-{{-- ── HERO ── --}}
 <div class="bg-[#0f0f0f] relative overflow-hidden">
     <div class="relative h-[460px] overflow-hidden">
         <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1400&q=85&auto=format&fit=crop"
              alt="Home Insurance" class="w-full h-full object-cover opacity-55">
         <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(15,15,15,0.3) 0%, rgba(15,15,15,0.65) 55%, #0f0f0f 100%)"></div>
 
-        {{-- Breadcrumb --}}
         <div class="absolute top-8 left-0 right-0">
             <div class="max-w-screen-lg mx-auto px-6">
                 <nav class="flex items-center gap-2 text-[12px] text-white/50">
@@ -31,11 +29,11 @@
                     <span class="bg-white/15 backdrop-blur-sm text-white/85 text-[11px] font-medium px-3 py-1.5 rounded-lg border border-white/20">Insurance</span>
                     <span class="bg-red-500/80 backdrop-blur-sm text-white text-[11px] font-bold px-3 py-1.5 rounded-lg">Under Pressure</span>
                 </div>
-                <h1 class="text-white font-bold leading-[1.2] max-w-[780px]" style="font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,46px)">
+                <h1 class="text-white! font-bold leading-[1.2] max-w-[780px]" style="font-family:'Playfair Display',serif; font-size:clamp(28px,4vw,46px)">
                     Why Home Insurance Premiums Rose 18% in 2025 — And What to Do Before Renewal
                 </h1>
                 <div class="flex items-center gap-6 mt-5 text-[13px] text-white/50">
-                    <span>Feb 27, 2026</span>
+                    <span>{{seoUpdateDate('article-home-insurance')}}</span>
                     <span class="flex items-center gap-1.5">
                         <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         10 min read
@@ -47,15 +45,10 @@
     </div>
 </div>
 
-{{-- ── BODY ── --}}
 <div class="bg-[#f5f0eb]">
     <div class="max-w-screen-lg mx-auto px-6 py-14">
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12">
-
-            {{-- NỘI DUNG CHÍNH --}}
             <article class="min-w-0">
-
-                {{-- Alert banner --}}
                 <div class="bg-red-50 border border-red-200 rounded-2xl px-6 py-4 mb-8 flex items-start gap-3">
                     <svg class="w-5 h-5 text-red-500 shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                     <p class="text-[13.5px] text-red-700 leading-relaxed">
@@ -63,7 +56,6 @@
                     </p>
                 </div>
 
-                {{-- Key Takeaways --}}
                 <div class="bg-white border-l-4 border-[#c9a96e] rounded-r-2xl p-6 mb-10 shadow-sm">
                     <h2 class="text-[13px] font-black uppercase tracking-[0.12em] text-[#c9a96e] mb-4">Key Takeaways</h2>
                     <ul class="space-y-2.5">
@@ -83,7 +75,6 @@
                     </ul>
                 </div>
 
-                {{-- Intro --}}
                 <p class="text-[17px] text-[#1a1a1a] leading-[1.9] mb-6 font-light">
                     If your home insurance renewal notice arrived and the number shocked you, you're not alone. Average premiums jumped 18.3% in 2025 — and unlike most price increases, this one isn't temporary.
                 </p>
@@ -91,12 +82,10 @@
                     Climate risk repricing is fundamentally restructuring the insurance market. Reinsurers — the companies that insure the insurers — have dramatically increased their own rates in response to catastrophic loss years. That cost flows directly to homeowners. But there's still a significant gap between what most policyholders pay and what a well-negotiated policy costs.
                 </p>
 
-                {{-- Section 1: Why --}}
                 <h2 class="text-[26px] font-bold text-[#1a1a1a] mb-4 mt-12" style="font-family:'Playfair Display',serif">
                     Why Premiums Jumped 18% — The Data
                 </h2>
 
-                {{-- State comparison --}}
                 <div class="bg-white rounded-2xl border border-[#e8e0d8] overflow-hidden mb-8 shadow-sm">
                     <div class="bg-[#1a1a1a] px-6 py-3">
                         <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#c9a96e]">2025 Premium Increase by State — Highest Impact Regions</p>
@@ -124,7 +113,6 @@
                     </div>
                 </div>
 
-                {{-- Section 2: What to do --}}
                 <h2 class="text-[26px] font-bold text-[#1a1a1a] mb-4 mt-12" style="font-family:'Playfair Display',serif">
                     3 Strategies That Cut Bills by an Average of $340/Year
                 </h2>
@@ -175,13 +163,12 @@
                     @endforeach
                 </div>
 
-                {{-- Carrier exits table --}}
                 <h2 class="text-[26px] font-bold text-[#1a1a1a] mb-4 mt-12" style="font-family:'Playfair Display',serif">
                     Which Carriers Have Exited — And What It Means for You
                 </h2>
                 <div class="bg-white rounded-2xl border border-[#e8e0d8] overflow-hidden mb-10 shadow-sm">
                     <div class="bg-[#1a1a1a] px-6 py-3">
-                        <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#c9a96e]">Major Carrier Market Exits — 2024–2026</p>
+                        <p class="text-[11px] font-bold uppercase tracking-[0.12em] text-[#c9a96e]">Major Carrier Market Exits — {{ (now()->year -2) . '–' . now()->year }}</p>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-[13.5px]">
@@ -213,9 +200,8 @@
                     </div>
                 </div>
 
-                {{-- Bottom line --}}
                 <div class="bg-[#1a1a1a] rounded-2xl p-7">
-                    <h3 class="text-[11px] font-bold text-[#c9a96e] mb-3 uppercase tracking-wider">Bottom Line</h3>
+                    <h3 class="text-[11px] font-bold text-[#c9a96e]! mb-3 uppercase tracking-wider">Bottom Line</h3>
                     <p class="text-white/80 text-[15px] leading-[1.8]">
                         The 18% average increase is the floor, not the ceiling — especially in high-risk states. <strong class="text-white">Don't auto-renew.</strong> Set a calendar reminder 45 days before your renewal date, get at least 3 quotes, raise your deductible if your emergency fund allows it, and bundle where possible. Policyholders who do all three consistently land $300–$500/year below the market average.
                     </p>
@@ -223,7 +209,6 @@
 
             </article>
 
-            {{-- SIDEBAR --}}
             <aside class="space-y-6">
                 <div class="bg-white rounded-2xl border border-[#e8e0d8] p-6 shadow-sm sticky top-24">
                     <h3 class="text-[11px] font-bold uppercase tracking-[0.13em] text-[#c9a96e] mb-5">Related Articles</h3>
@@ -235,8 +220,8 @@
                         </div>
                         <div class="flex-1 min-w-0">
                             <span class="text-[10px] font-bold uppercase tracking-wider text-[#c9a96e]">Investing</span>
-                            <p class="text-[13px] font-semibold text-[#1a1a1a] leading-snug mt-0.5 group-hover:text-[#c9a96e] transition-colors line-clamp-2">How the Fed's 2026 Rate Decision Will Reshape Your Strategy</p>
-                            <span class="text-[11px] text-[#6b6560]">Mar 1, 2026</span>
+                            <p class="text-[13px] font-semibold text-[#1a1a1a] leading-snug mt-0.5 group-hover:text-[#c9a96e] transition-colors line-clamp-2">How the Fed's {{ now()->year }} Rate Decision Will Reshape Your Strategy</p>
+                            <span class="text-[11px] text-[#6b6560]">{{ seoUpdateDate('article-fed-rate') }}</span>
                         </div>
                     </a>
 
@@ -248,13 +233,12 @@
                             </div>
                             <div class="flex-1 min-w-0">
                                 <span class="text-[10px] font-bold uppercase tracking-wider text-[#c9a96e]">Personal Finance</span>
-                                <p class="text-[13px] font-semibold text-[#1a1a1a] leading-snug mt-0.5 group-hover:text-[#c9a96e] transition-colors line-clamp-2">Emergency Fund vs. High-Yield Savings in 2026</p>
-                                <span class="text-[11px] text-[#6b6560]">Feb 20, 2026</span>
+                                <p class="text-[13px] font-semibold text-[#1a1a1a] leading-snug mt-0.5 group-hover:text-[#c9a96e] transition-colors line-clamp-2">Emergency Fund vs. High-Yield Savings in {{ now()->year }}</p>
+                                <span class="text-[11px] text-[#6b6560]">{{seoUpdateDate('article-emergency-fund')}}</span>
                             </div>
                         </a>
                     </div>
 
-                    {{-- Key stats --}}
                     <div class="mt-6 pt-6 border-t border-[#f0e8df]">
                         <h3 class="text-[11px] font-bold uppercase tracking-[0.13em] text-[#c9a96e] mb-4">Market Snapshot</h3>
                         @foreach([
@@ -277,7 +261,6 @@
                     </a>
                 </div>
             </aside>
-
         </div>
     </div>
 </div>
