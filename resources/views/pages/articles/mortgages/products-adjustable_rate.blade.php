@@ -3,12 +3,12 @@
 @section('hero_tag','Mortgage Products')
 @section('hero_tag2','ARM Products')
 @section('hero_title','Adjustable-Rate Mortgages: Deep Dive Into ARM Products')
-@section('hero_subtitle','Cap structures, index benchmarks, payment scenarios, and the strategic calculus for choosing ARM products in 2026\'s rate environment.')
-@section('hero_date','March 2026')
+@section('hero_subtitle', "Cap structures, index benchmarks, payment scenarios, and the strategic calculus for choosing ARM products in " . now()->year . "'s rate environment.")
+@section('hero_date', seoUpdateMonth('mortgages-product-adjustable'))
 @section('hero_read_time','11 min read')
 @section('hero_img','https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80')
 @section('article_badge','Mortgage Products')
-@section('last_updated','March 2026')
+@section('last_updated', seoUpdateMonth('mortgages-product-adjustable'))
 @section('nav_adjustable','on')
 @section('hero_stats')
 <div class="hstat"><div class="hstat-v">5/1</div><div class="hstat-l">Most popular ARM type</div></div>
@@ -20,9 +20,9 @@
     <div class="sec-hd"><div class="sec-num">01</div><h2>ARM Anatomy</h2></div>
     <p>An adjustable-rate mortgage (ARM) has three core components: an initial fixed period, an adjustment frequency, and a benchmark index + margin that determines the rate after the fixed period ends.</p>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>Common ARM Products — Structure & Use Case</span><span class="tbl-badge">2026</span></div>
+        <div class="tbl-head"><span>Common ARM Products — Structure & Use Case</span><span class="tbl-badge">{{ now()->year }}</span></div>
         <table>
-            <thead><tr><th>Product</th><th>Fixed Period</th><th>Adjusts Every</th><th>Typical Rate (2026)</th><th>Best For</th></tr></thead>
+            <thead><tr><th>Product</th><th>Fixed Period</th><th>Adjusts Every</th><th>Typical Rate ({{ now()->year }})</th><th>Best For</th></tr></thead>
             <tbody>
                 <tr><td>3/1 ARM</td><td class="r">3 years</td><td>1 year</td><td class="g">5.8%</td><td>Short-term holds</td></tr>
                 <tr><td>5/1 ARM</td><td class="a">5 years</td><td>1 year</td><td class="g">6.1%</td><td>5–7 year horizon</td></tr>
@@ -59,5 +59,5 @@
 @section('related')
 <div class="card"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Fundamentals</div><h4>Fixed vs Variable Rate</h4><p>Strategic comparison between fixed-rate certainty and ARM savings potential.</p></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Fundamentals</div><h4>Interest Rate Mechanisms</h4><p>How SOFR and Treasury yields feed into ARM index rate changes.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting 2026</h4><p>Forward rate projections and what they mean for current ARM holders.</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting {{ now()->year }}</h4><p>Forward rate projections and what they mean for current ARM holders.</p></div></div>
 @endsection

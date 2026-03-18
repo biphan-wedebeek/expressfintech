@@ -6,30 +6,31 @@
 @section('hero_section_label', 'Card Mechanics')
 @section('hero_title', 'APR & Interest Calculation')
 @section('hero_subtitle', 'The exact math behind how credit card interest compounds daily — and why carrying a balance is one of the most expensive financial decisions you can make.')
-@section('hero_date', 'March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time', '8 min read')
 @section('article_badge', 'Card Mechanics')
-@section('last_updated', 'March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_apr', 'active')
 @section('hero_stats')
-    <div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">
-        <p class="text-[26px] font-bold text-white fonttitle">24.6%</p>
-        <p class="text-[11.5px] text-purple-300/70 leading-tight mt-1">Avg. APR 2026 (US)</p>
-    </div>
-    <div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">
-        <p class="text-[26px] font-bold text-white fonttitle">Daily</p>
-        <p class="text-[11.5px] text-purple-300/70 leading-tight mt-1">Compounding cycle</p>
-    </div>
+<div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">
+    <p class="text-[26px] font-bold text-white fonttitle">24.6%</p>
+    <p class="text-[11.5px] text-purple-300/70 leading-tight mt-1">Avg. APR {{ now()->year }} (US)</p>
+</div>
+<div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">
+    <p class="text-[26px] font-bold text-white fonttitle">Daily</p>
+    <p class="text-[11.5px] text-purple-300/70 leading-tight mt-1">Compounding cycle</p>
+</div>
 @endsection
 @section('sidebar_stats')
-    <div class="space-y-3">
-        @foreach([['Avg. APR (2026)','24.6%'],['Penalty APR (max)','29.99%'],['0% Intro Avg. Period','15 months']] as [$l,$v])
-        <div class="cc-card flex items-center justify-between p-3 rounded-xl bg-[#f7f5ff] border border-[#e8e2f8]">
-            <p class="text-[11px] text-[#9ca3af] font-mono-sp">{{ $l }}</p>
-            <p class="text-[16px] font-bold text-[#1e0a3c]">{{ $v }}</p>
-        </div>
-        @endforeach
+<div class="space-y-3">
+    @php $year = now()->year; @endphp
+    @foreach([["Avg. APR ({$year})",'24.6%'],['Penalty APR (max)','29.99%'],['0% Intro Avg. Period','15 months']] as [$l,$v])
+    <div class="cc-card flex items-center justify-between p-3 rounded-xl bg-[#f7f5ff] border border-[#e8e2f8]">
+        <p class="text-[11px] text-[#9ca3af] font-mono-sp">{{ $l }}</p>
+        <p class="text-[16px] font-bold text-[#1e0a3c]">{{ $v }}</p>
     </div>
+    @endforeach
+</div>
 @endsection
 @section('content')
 <p class="text-[17px] text-[#1e0a3c] font-medium leading-relaxed mb-8 pb-6 border-b border-[#f5f0ff]">
@@ -51,11 +52,11 @@
 <p>On a $2,000 balance at 24% APR, carrying for 30 days:</p>
 <div class="my-5 space-y-2">
     @foreach([
-        ['DPR','24% ÷ 365 = 0.0657% / day'],
-        ['Daily Interest','$2,000 × 0.000657 = $1.31 / day'],
-        ['30-day Interest','$1.31 × 30 = $39.34'],
-        ['Effective Monthly Rate','1.97%'],
-        ['Annual Cost at this pace','~$472 on $2,000 balance'],
+    ['DPR','24% ÷ 365 = 0.0657% / day'],
+    ['Daily Interest','$2,000 × 0.000657 = $1.31 / day'],
+    ['30-day Interest','$1.31 × 30 = $39.34'],
+    ['Effective Monthly Rate','1.97%'],
+    ['Annual Cost at this pace','~$472 on $2,000 balance'],
     ] as [$step, $calc])
     <div class="flex items-center justify-between px-4 py-3 rounded-xl bg-[#f7f5ff] border border-[#e8e2f8]">
         <span class="text-[13px] font-medium text-[#374151]">{{ $step }}</span>
@@ -67,10 +68,10 @@
 <h2>Types of APR</h2>
 <div class="grid grid-cols-2 gap-4 my-7">
     @foreach([
-        ['Purchase APR','The standard rate applied to purchases. Variable — tied to the Prime Rate plus a margin set by the issuer.','violet'],
-        ['Balance Transfer APR','Rate on balances moved from another card. Often 0% intro for 12–21 months, then reverts to purchase APR or higher.','indigo'],
-        ['Cash Advance APR','The most expensive — typically 25–30%. Begins accruing immediately with no grace period, plus a cash advance fee.','red'],
-        ['Penalty APR','Triggered by 2+ late payments. Up to 29.99% and can be applied to existing balance under certain conditions (CARD Act protections apply).','amber'],
+    ['Purchase APR','The standard rate applied to purchases. Variable — tied to the Prime Rate plus a margin set by the issuer.','violet'],
+    ['Balance Transfer APR','Rate on balances moved from another card. Often 0% intro for 12–21 months, then reverts to purchase APR or higher.','indigo'],
+    ['Cash Advance APR','The most expensive — typically 25–30%. Begins accruing immediately with no grace period, plus a cash advance fee.','red'],
+    ['Penalty APR','Triggered by 2+ late payments. Up to 29.99% and can be applied to existing balance under certain conditions (CARD Act protections apply).','amber'],
     ] as [$title,$desc,$c])
     <div class="cc-card p-5 rounded-2xl bg-[#f7f5ff] border border-[#e8e2f8]">
         <h3 class="!mt-0 text-[13.5px] text-violet-700">{{ $title }}</h3>

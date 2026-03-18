@@ -6,10 +6,10 @@
 @section('hero_section_label','Card Strategy')
 @section('hero_title','Credit Utilization Strategy')
 @section('hero_subtitle','The tactical playbook for managing utilization across all your cards to maximize your FICO score — including timing tricks most cardholders never discover.')
-@section('hero_date','March 2026')
+@section('hero_date',now()->format('F Y'))
 @section('hero_read_time','7 min read')
 @section('article_badge','Card Strategy')
-@section('last_updated','March 2026')
+@section('last_updated',now()->format('F Y'))
 @section('nav_strategy','active')
 @section('hero_stats')
 <div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">

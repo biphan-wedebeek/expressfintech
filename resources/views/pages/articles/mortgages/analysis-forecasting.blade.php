@@ -1,35 +1,35 @@
 @extends('layouts.mortgage')
-@section('title','Rate Forecasting 2026')
+@section('title','Rate Forecasting ' . now()->year)
 @section('hero_tag','Market Analysis')
 @section('hero_tag2','Rate Outlook')
-@section('hero_title','Mortgage Rate Forecasting 2026–2027 Outlook')
-@section('hero_subtitle','Scenarios for 30-year fixed and ARM rates through 2027 — Fed policy trajectory, inflation persistence, and the variables that will determine the next rate move.')
-@section('hero_date','March 2026')
+@section('hero_title','Mortgage Rate Forecasting ' . now()->year . '–' . (now()->year + 1) . ' Outlook')
+@section('hero_subtitle','Scenarios for 30-year fixed and ARM rates through '. (now()->year + 1) .' — Fed policy trajectory, inflation persistence, and the variables that will determine the next rate move.')
+@section('hero_date', seoUpdateMonth('mortgages-analysis-foreca'))
 @section('hero_read_time','11 min read')
 @section('hero_img','https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&q=80')
 @section('article_badge','Market Analysis')
-@section('last_updated','March 2026')
+@section('last_updated', seoUpdateMonth('mortgages-analysis-foreca'))
 @section('nav_forecasting','on')
 @section('hero_stats')
-<div class="hstat"><div class="hstat-v">6.8%</div><div class="hstat-l">30-yr fixed, March 2026</div></div>
-<div class="hstat"><div class="hstat-v">2–3</div><div class="hstat-l">Expected Fed cuts 2026</div></div>
-<div class="hstat"><div class="hstat-v">5.75–6.25%</div><div class="hstat-l">Consensus 2027 target range</div></div>
+<div class="hstat"><div class="hstat-v">6.8%</div><div class="hstat-l">30-yr fixed, March {{ now()->year }}</div></div>
+<div class="hstat"><div class="hstat-v">2–3</div><div class="hstat-l">Expected Fed cuts {{ now()->year }}</div></div>
+<div class="hstat"><div class="hstat-v">5.75–6.25%</div><div class="hstat-l">Consensus {{(now()->year + 1)}} target range</div></div>
 @endsection
 @section('content')
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">01</div><h2>Current Rate Context</h2></div>
-    <p>As of March 2026, the 30-year fixed mortgage rate stands at approximately 6.8% — down from the cycle peak of 8.0% in October 2023 but still well above the 2020–2021 sub-3% lows. The Federal Reserve has begun a rate-cutting cycle, having reduced the Fed Funds Rate by 100bps from its 5.25–5.5% peak, but mortgage rates have not fallen proportionally due to persistent MBS spread widening.</p>
+    <p>As of March {{ now()->year }}, the 30-year fixed mortgage rate stands at approximately 6.8% — down from the cycle peak of 8.0% in October 2023 but still well above the 2020–2021 sub-3% lows. The Federal Reserve has begun a rate-cutting cycle, having reduced the Fed Funds Rate by 100bps from its 5.25–5.5% peak, but mortgage rates have not fallen proportionally due to persistent MBS spread widening.</p>
     <div class="hl">
         <div class="hl-lbl">Key Insight: Fed Cuts ≠ Mortgage Rate Drops</div>
-        <p>The Fed's rate cuts affect short-term rates most directly. 30-year mortgage rates track the 10-year Treasury, which has moved less aggressively than the short end — reflecting the "higher for longer" view that inflation will remain above the 2% target through 2026.</p>
+        <p>The Fed's rate cuts affect short-term rates most directly. 30-year mortgage rates track the 10-year Treasury, which has moved less aggressively than the short end — reflecting the "higher for longer" view that inflation will remain above the 2% target through {{ now()->year }}.</p>
     </div>
 </div>
 <div class="sec">
-    <div class="sec-hd"><div class="sec-num">02</div><h2>Rate Forecast Scenarios — 2026–2027</h2></div>
+    <div class="sec-hd"><div class="sec-num">02</div><h2>Rate Forecast Scenarios — {{ now()->year . '–' . (now()->year + 1) }}</h2></div>
     <div class="tbl-wrap">
         <div class="tbl-head"><span>30-Year Fixed Rate Scenarios</span><span class="tbl-badge">Consensus Model</span></div>
         <table>
-            <thead><tr><th>Scenario</th><th>Probability</th><th>Q4 2026</th><th>Q4 2027</th><th>Driver</th></tr></thead>
+            <thead><tr><th>Scenario</th><th>Probability</th><th>Q4 {{ now()->year }}</th><th>Q4 {{( now()->year +1) }}</th><th>Driver</th></tr></thead>
             <tbody>
                 <tr><td class="g">Bull (Rates Fall)</td><td>25%</td><td class="g">5.75%</td><td class="g">5.25%</td><td>Inflation collapses, Fed cuts 4–5x</td></tr>
                 <tr><td class="a">Base Case</td><td>55%</td><td class="a">6.2%</td><td class="a">5.8%</td><td>Gradual cuts, MBS spread tightens</td></tr>

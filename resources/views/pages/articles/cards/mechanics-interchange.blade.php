@@ -6,10 +6,10 @@
 @section('hero_section_label', 'Card Mechanics')
 @section('hero_title', 'Interchange Fees')
 @section('hero_subtitle', 'The hidden fee every merchant pays on every card transaction — how it funds rewards programs and why it is one of the most contested areas in payments regulation.')
-@section('hero_date', 'March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time', '8 min read')
 @section('article_badge', 'Card Mechanics')
-@section('last_updated', 'March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_interchange', 'active')
 @section('hero_stats')
     <div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">

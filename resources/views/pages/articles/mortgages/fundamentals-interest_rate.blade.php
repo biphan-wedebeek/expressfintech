@@ -4,11 +4,11 @@
 @section('hero_tag2','Rate Mechanics')
 @section('hero_title','Interest Rate Mechanisms:How Mortgage Rates Are Set')
 @section('hero_subtitle','The transmission chain from Federal Reserve policy to your individual mortgage rate — including Treasury yields, MBS spreads, and lender pricing decisions.')
-@section('hero_date','March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time','11 min read')
 @section('hero_img','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80')
 @section('article_badge','Mortgage Fundamentals')
-@section('last_updated','March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_interest_rate','on')
 @section('hero_stats')
 <div class="hstat"><div class="hstat-v">10yr</div><div class="hstat-l">Treasury = primary rate anchor</div></div>
@@ -29,7 +29,7 @@
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">02</div><h2>Factors That Move Mortgage Rates</h2></div>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>Key Rate Drivers & Direction of Impact</span><span class="tbl-badge">2026</span></div>
+        <div class="tbl-head"><span>Key Rate Drivers & Direction of Impact</span><span class="tbl-badge">{{ now()->year }}</span></div>
         <table>
             <thead><tr><th>Driver</th><th>Impact on Rates</th><th>Mechanism</th></tr></thead>
             <tbody>
@@ -59,7 +59,7 @@
 </div>
 @endsection
 @section('related')
-<div class="card"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting 2026</h4><p>Fed policy trajectory and its impact on fixed and ARM rates through 2027.</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting {{ now()->year }}</h4><p>Fed policy trajectory and its impact on fixed and ARM rates through 2027.</p></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Fundamentals</div><h4>Fixed vs Variable Rate</h4><p>How rate mechanisms translate into real product decisions for borrowers.</p></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Mortgage-backed Securities</h4><p>How MBS markets and spreads directly influence the rates lenders offer.</p></div></div>
 @endsection

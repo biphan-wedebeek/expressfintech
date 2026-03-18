@@ -4,14 +4,14 @@
 @section('hero_tag2','Conventional')
 @section('hero_title','Conventional Loans: The Standard Mortgage')
 @section('hero_subtitle','Conforming and non-conforming conventional mortgages — eligibility, pricing, PMI requirements, and how they compare to government-backed alternatives.')
-@section('hero_date','March 2026')
+@section('hero_date', seoUpdateMonth('mortgages-product-loans'))
 @section('hero_read_time','10 min read')
 @section('hero_img','https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80')
 @section('article_badge','Mortgage Products')
-@section('last_updated','March 2026')
+@section('last_updated', seoUpdateMonth('mortgages-product-loans'))
 @section('nav_conventional','on')
 @section('hero_stats')
-<div class="hstat"><div class="hstat-v">$806,500</div><div class="hstat-l">2026 Conforming Loan Limit</div></div>
+<div class="hstat"><div class="hstat-v">$806,500</div><div class="hstat-l">{{ now()->year }} Conforming Loan Limit</div></div>
 <div class="hstat"><div class="hstat-v">620</div><div class="hstat-l">Minimum credit score</div></div>
 <div class="hstat"><div class="hstat-v">3%</div><div class="hstat-l">Minimum down (Fannie/Freddie)</div></div>
 @endsection
@@ -21,14 +21,14 @@
     <p>A conventional mortgage is any home loan not backed by a government agency. This distinguishes it from FHA, VA, and USDA loans. Conventional loans are either "conforming" — meaning they meet Fannie Mae and Freddie Mac purchase guidelines — or "non-conforming" (jumbo), which exceed conforming loan limits.</p>
     <p>Conforming loans are the most common mortgage product in the US. Because Fannie and Freddie can purchase and securitize them, lenders face lower capital requirements, which translates into competitive rates for borrowers who meet the qualification criteria.</p>
     <div class="hl">
-        <div class="hl-lbl">2026 Conforming Loan Limit</div>
-        <p>The FHFA sets conforming loan limits annually based on home price appreciation. In 2026, the standard limit is <strong>$806,500</strong> for single-family properties in most US counties, with higher-cost area limits reaching $1,209,750.</p>
+        <div class="hl-lbl">{{ now()->year }} Conforming Loan Limit</div>
+        <p>The FHFA sets conforming loan limits annually based on home price appreciation. In {{ now()->year }}, the standard limit is <strong>$806,500</strong> for single-family properties in most US counties, with higher-cost area limits reaching $1,209,750.</p>
     </div>
 </div>
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">02</div><h2>Qualification Requirements</h2></div>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>Conventional Loan Qualification Criteria — 2026</span><span class="tbl-badge">Fannie Mae / Freddie Mac</span></div>
+        <div class="tbl-head"><span>Conventional Loan Qualification Criteria — {{ now()->year }}</span><span class="tbl-badge">Fannie Mae / Freddie Mac</span></div>
         <table>
             <thead><tr><th>Factor</th><th>Minimum</th><th>Optimal</th><th>Notes</th></tr></thead>
             <tbody>
@@ -36,7 +36,7 @@
                 <tr><td>Down Payment</td><td class="a">3%</td><td class="g">20%</td><td>Below 20% requires PMI</td></tr>
                 <tr><td>Back-End DTI</td><td class="a">45%</td><td class="g">&lt;36%</td><td>Up to 50% with DU approval</td></tr>
                 <tr><td>PMI Required</td><td colspan="2" class="r">Yes, if LTV &gt;80%</td><td>Cancellable at 80% LTV</td></tr>
-                <tr><td>Loan Limit</td><td colspan="2" class="a">$806,500 (2026)</td><td>Higher in designated areas</td></tr>
+                <tr><td>Loan Limit</td><td colspan="2" class="a">$806,500 ({{ now()->year }})</td><td>Higher in designated areas</td></tr>
             </tbody>
         </table>
     </div>
@@ -44,7 +44,7 @@
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">03</div><h2>Conventional vs Government-Backed</h2></div>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>Loan Type Comparison Matrix</span><span class="tbl-badge">2026</span></div>
+        <div class="tbl-head"><span>Loan Type Comparison Matrix</span><span class="tbl-badge">{{ now()->year }}</span></div>
         <table>
             <thead><tr><th>Feature</th><th>Conventional</th><th>FHA</th><th>VA</th><th>USDA</th></tr></thead>
             <tbody>

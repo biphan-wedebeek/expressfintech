@@ -1,14 +1,15 @@
 {{-- resources/views/layouts/mortgage.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name='impact-site-verification' value='e4bf24d0-e930-4ad6-b364-a86751a3d024'>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>@yield('title','Mortgage Analysis') — Express Fintech</title>
     <link rel="icon" type="image/png" href="{{ asset('expressfintech.png') }}">
     <script src="https://cdn.tailwindcss.com"></script>
-     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
         :root{--navy:#0c1f35;--indigo:#4f46e5;--indigo-light:#eef2ff;--gold:#b8973f;--text:#374151;--muted:#6b7280;--border:#e5e7eb;--bg:#f6f7fb;}
         *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -139,185 +140,174 @@
     </style>
     @stack('styles')
 </head>
+
 <body>
 
-{{-- HEADER --}}
-@include('partials.header')
+    @include('partials.header')
 
-{{-- ══ HERO ══ --}}
-<section class="bg-[var(--navy)] pt-16 relative overflow-hidden">
-    <div class="wrap">
-        <div class="grid grid-cols-[1fr_380px] gap-14 items-end relative z-[1]">
-
-            {{-- Left copy --}}
-            <div>
-                <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;">
-                    <span class="font-[Manrope] text-[10px] font-extrabold uppercase tracking-[0.12em] py-[5px] px-3 rounded-full bg-[rgba(79,70,229,0.25)] text-[#a5b4fc] border border-[rgba(99,102,241,0.3)]">@yield('hero_tag','Mortgage Analysis')</span>
-                    <span class="font-[Manrope] text-[10px] font-extrabold uppercase tracking-[0.12em] py-[5px] px-3 rounded-full bg-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.4)] border border-[rgba(255,255,255,0.12)]">@yield('hero_tag2','Core Concepts')</span>
-                    <span class="font-[Manrope] text-[10px] font-extrabold uppercase tracking-[0.12em] py-[5px] px-3 rounded-full bg-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.4)] border border-[rgba(255,255,255,0.12)]">Updated 2026</span>
-                </div>
-                <h1 class="fonttitle text-[clamp(26px,3.2vw,42px)] font-semibold text-white">@yield('hero_title','Mortgage Analysis')</h1>
-                <p class="text-[rgba(255,255,255,0.45)] text-[15.5px] leading-[1.8] max-w-[520px] mb-7">@yield('hero_subtitle','Expert analysis of mortgage products, market dynamics, and lending fundamentals.')</p>
-                <div class="flex items-center gap-4 font-[Manrope] text-[12px] text-white/[0.28] pb-[52px]">
-                    <span>@yield('hero_date','March 2026')</span><i></i>
-                    <span>@yield('hero_read_time','12 min read')</span><i></i>
-                    <span>Express Fintech Research</span>
-                </div>
-            </div>
-
-            {{-- Right panel --}}
-            <div class="hero-right">
-                <div class="rounded-[14px] overflow-hidden border border-[rgba(255,255,255,0.1)] shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
-                    <img src="@yield('hero_img','https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80')"
-                         alt="@yield('hero_img_alt','Mortgage and property concept')" class="w-full h-[210px] object-cover block">
-                </div>
-                <div class="hero-stats">
-                    @yield('hero_stats')
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-{{-- ══ BODY ══ --}}
-<div class="max-w-screen-xl mx-auto py-10 px-10">
-    <div class="layout">
-
-        {{-- ── SIDEBAR ── --}}
-        <aside class="sidebar">
-            <div class="toc">
-                <div class="toc-head">Navigation</div>
-
-                {{-- Fundamentals --}}
-                <div class="toc-group">Fundamentals</div>
-                <a href="{{ route('mortgages.fundamentals.fixed_vs_variable') }}"       class="@yield('nav_fixed_vs_variable')">
-                    <span class="toc-n">01</span>Fixed vs Variable Rate
-                </a>
-                <a href="{{ route('mortgages.fundamentals.amortization_structure') }}"     class="@yield('nav_amortization_structure')">
-                    <span class="toc-n">02</span>Amortization Structure
-                </a>
-                <a href="{{ route('mortgages.fundamentals.underwriting') }}"   class="@yield('nav_underwriting')">
-                    <span class="toc-n">03</span>Mortgage Underwriting
-                </a>
-                <a href="{{ route('mortgages.fundamentals.ratio') }}"          class="@yield('nav_ratio')">
-                    <span class="toc-n">04</span>Loan-to-Value Ratio
-                </a>
-                <a href="{{ route('mortgages.fundamentals.interest_rate') }}"  class="@yield('nav_interest_rate')">
-                    <span class="toc-n">05</span>Interest Rate Mechanics
-                </a>
-
-                <div class="toc-div"></div>
-
-                {{-- Products --}}
-                <div class="toc-group">Products</div>
-                <a href="{{ route('mortgages.products.conventional') }}"       class="@yield('nav_conventional')">
-                    <span class="toc-n">—</span>Conventional Loans
-                </a>
-                <a href="{{ route('mortgages.products.fha_va') }}"             class="@yield('nav_fha_va')">
-                    <span class="toc-n">—</span>FHA / VA Loans
-                </a>
-                <a href="{{ route('mortgages.products.jumbo') }}"              class="@yield('nav_jumbo')">
-                    <span class="toc-n">—</span>Jumbo Loans
-                </a>
-                <a href="{{ route('mortgages.products.refinance') }}"          class="@yield('nav_refinance')">
-                    <span class="toc-n">—</span>Refinance Strategies
-                </a>
-                <a href="{{ route('mortgages.products.adjustable_rate') }}"    class="@yield('nav_adjustable')">
-                    <span class="toc-n">—</span>Adjustable-Rate (ARM)
-                </a>
-
-                <div class="toc-div"></div>
-
-                {{-- Analysis --}}
-                <div class="toc-group">Market Analysis</div>
-                <a href="{{ route('mortgages.analysis.price_trends') }}"       class="@yield('nav_price_trends')">
-                    <span class="toc-n">—</span>Housing Price Trends
-                </a>
-                <a href="{{ route('mortgages.analysis.securities') }}"         class="@yield('nav_securities')">
-                    <span class="toc-n">—</span>MBS
-                </a>
-                <a href="{{ route('mortgages.analysis.forecasting') }}"        class="@yield('nav_forecasting')">
-                    <span class="toc-n">—</span>Rate Forecasting
-                </a>
-                <a href="{{ route('mortgages.analysis.estate_cycles') }}"      class="@yield('nav_cycles')">
-                    <span class="toc-n">—</span>Real Estate Cycles
-                </a>
-                <a href="{{ route('mortgages.analysis.regulatory') }}"         class="@yield('nav_regulatory')">
-                    <span class="toc-n">—</span>Regulatory Impact
-                </a>
-            </div>
-
-            {{-- CTA --}}
-            <div class="scta">
-                <h4>Expert Advice</h4>
-                <p>Speak with our mortgage research team for personalised rate and product analysis.</p>
-                <a href="{{ route('contact') }}">Book Free Session →</a>
-            </div>
-        </aside>
-
-        {{-- ── MAIN ── --}}
-        <main class="content">
-
-            {{-- Badge bar --}}
-            <div class="art-bar">
-                <div style="display:flex;align-items:center;gap:12px;">
-                    <span class="art-badge">@yield('article_badge','Mortgage Analysis')</span>
-                    <span style="font-family:'Manrope',sans-serif;font-size:11px;color:#9ca3af;">Expert Verified · 2026</span>
-                </div>
-                <div class="art-actions">
-                    <button class="art-btn" title="Share">
-                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-                    </button>
-                    <button class="art-btn" title="Save">
-                        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
-                    </button>
-                </div>
-            </div>
-
-            {{-- Article body --}}
-            @yield('content')
-
-            {{-- Feedback --}}
-            <div class="fb-bar">
+    <section class="bg-[var(--navy)] pt-16 relative overflow-hidden">
+        <div class="wrap">
+            <div class="grid grid-cols-[1fr_380px] gap-14 items-end relative z-[1]">
                 <div>
-                    <p style="font-family:'Manrope',sans-serif;font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Was this helpful?</p>
-                    <div style="display:flex;gap:8px;">
-                        <button class="fb-btn">
-                            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
-                            Helpful
+                    <div style="display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap;">
+                        <span class="font-[Manrope] text-[10px] font-extrabold uppercase tracking-[0.12em] py-[5px] px-3 rounded-full bg-[rgba(79,70,229,0.25)] text-[#a5b4fc] border border-[rgba(99,102,241,0.3)]">@yield('hero_tag','Mortgage Analysis')</span>
+                        <span class="font-[Manrope] text-[10px] font-extrabold uppercase tracking-[0.12em] py-[5px] px-3 rounded-full bg-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.4)] border border-[rgba(255,255,255,0.12)]">@yield('hero_tag2','Core Concepts')</span>
+                        <span class="font-[Manrope] text-[10px] font-extrabold uppercase tracking-[0.12em] py-[5px] px-3 rounded-full bg-[rgba(255,255,255,0.06)] text-[rgba(255,255,255,0.4)] border border-[rgba(255,255,255,0.12)]">Updated {{ now()->year }}</span>
+                    </div>
+                    <h1 class="fonttitle text-[clamp(26px,3.2vw,42px)] font-semibold text-white">@yield('hero_title','Mortgage Analysis')</h1>
+                    <p class="text-[rgba(255,255,255,0.45)] text-[15.5px] leading-[1.8] max-w-[520px] mb-7">@yield('hero_subtitle','Expert analysis of mortgage products, market dynamics, and lending fundamentals.')</p>
+                    <div class="flex items-center gap-4 font-[Manrope] text-[12px] text-white/[0.28] pb-[52px]">
+                        <span>@yield('hero_date',now()->format('F Y'))</span><i></i>
+                        <span>@yield('hero_read_time','12 min read')</span><i></i>
+                        <span>Express Fintech Research</span>
+                    </div>
+                </div>
+
+                <div class="hero-right">
+                    <div class="rounded-[14px] overflow-hidden border border-[rgba(255,255,255,0.1)] shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
+                        <img src="@yield('hero_img','https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80')"
+                            alt="@yield('hero_img_alt','Mortgage and property concept')" class="w-full h-[210px] object-cover block">
+                    </div>
+                    <div class="hero-stats">
+                        @yield('hero_stats')
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="max-w-screen-xl mx-auto py-10 px-10">
+        <div class="layout">
+            <aside class="sidebar">
+                <div class="toc">
+                    <div class="toc-head">Navigation</div>
+                    <div class="toc-group">Fundamentals</div>
+                    <a href="{{ route('mortgages.fundamentals.fixed_vs_variable') }}" class="@yield('nav_fixed_vs_variable')">
+                        <span class="toc-n">01</span>Fixed vs Variable Rate
+                    </a>
+                    <a href="{{ route('mortgages.fundamentals.amortization_structure') }}" class="@yield('nav_amortization_structure')">
+                        <span class="toc-n">02</span>Amortization Structure
+                    </a>
+                    <a href="{{ route('mortgages.fundamentals.underwriting') }}" class="@yield('nav_underwriting')">
+                        <span class="toc-n">03</span>Mortgage Underwriting
+                    </a>
+                    <a href="{{ route('mortgages.fundamentals.ratio') }}" class="@yield('nav_ratio')">
+                        <span class="toc-n">04</span>Loan-to-Value Ratio
+                    </a>
+                    <a href="{{ route('mortgages.fundamentals.interest_rate') }}" class="@yield('nav_interest_rate')">
+                        <span class="toc-n">05</span>Interest Rate Mechanics
+                    </a>
+
+                    <div class="toc-div"></div>
+
+                    <div class="toc-group">Products</div>
+                    <a href="{{ route('mortgages.products.conventional') }}" class="@yield('nav_conventional')">
+                        <span class="toc-n">—</span>Conventional Loans
+                    </a>
+                    <a href="{{ route('mortgages.products.fha_va') }}" class="@yield('nav_fha_va')">
+                        <span class="toc-n">—</span>FHA / VA Loans
+                    </a>
+                    <a href="{{ route('mortgages.products.jumbo') }}" class="@yield('nav_jumbo')">
+                        <span class="toc-n">—</span>Jumbo Loans
+                    </a>
+                    <a href="{{ route('mortgages.products.refinance') }}" class="@yield('nav_refinance')">
+                        <span class="toc-n">—</span>Refinance Strategies
+                    </a>
+                    <a href="{{ route('mortgages.products.adjustable_rate') }}" class="@yield('nav_adjustable')">
+                        <span class="toc-n">—</span>Adjustable-Rate (ARM)
+                    </a>
+
+                    <div class="toc-div"></div>
+
+                    <div class="toc-group">Market Analysis</div>
+                    <a href="{{ route('mortgages.analysis.price_trends') }}" class="@yield('nav_price_trends')">
+                        <span class="toc-n">—</span>Housing Price Trends
+                    </a>
+                    <a href="{{ route('mortgages.analysis.securities') }}" class="@yield('nav_securities')">
+                        <span class="toc-n">—</span>MBS
+                    </a>
+                    <a href="{{ route('mortgages.analysis.forecasting') }}" class="@yield('nav_forecasting')">
+                        <span class="toc-n">—</span>Rate Forecasting
+                    </a>
+                    <a href="{{ route('mortgages.analysis.estate_cycles') }}" class="@yield('nav_cycles')">
+                        <span class="toc-n">—</span>Real Estate Cycles
+                    </a>
+                    <a href="{{ route('mortgages.analysis.regulatory') }}" class="@yield('nav_regulatory')">
+                        <span class="toc-n">—</span>Regulatory Impact
+                    </a>
+                </div>
+
+                <div class="scta">
+                    <h4>Expert Advice</h4>
+                    <p>Speak with our mortgage research team for personalised rate and product analysis.</p>
+                    <a href="{{ route('contact') }}">Book Free Session →</a>
+                </div>
+            </aside>
+
+            <main class="content">
+                <div class="art-bar">
+                    <div style="display:flex;align-items:center;gap:12px;">
+                        <span class="art-badge">@yield('article_badge','Mortgage Analysis')</span>
+                        <span style="font-family:'Manrope',sans-serif;font-size:11px;color:#9ca3af;">Expert Verified · {{ now()->year }}</span>
+                    </div>
+                    <div class="art-actions">
+                        <button class="art-btn" title="Share">
+                            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                            </svg>
                         </button>
-                        <button class="fb-btn" style="transform:none;">
-                            <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="transform:rotate(180deg)"><path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/></svg>
-                            Needs work
+                        <button class="art-btn" title="Save">
+                            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                            </svg>
                         </button>
                     </div>
                 </div>
-                <div style="text-align:right;">
-                    <p style="font-family:'Manrope',sans-serif;font-size:11px;color:#9ca3af;margin-bottom:4px;">Last Updated</p>
-                    <p style="font-size:13px;font-weight:600;color:#374151;">@yield('last_updated','March 2026')</p>
+
+                @yield('content')
+
+                <div class="fb-bar">
+                    <div>
+                        <p style="font-family:'Manrope',sans-serif;font-size:11px;color:#9ca3af;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Was this helpful?</p>
+                        <div style="display:flex;gap:8px;">
+                            <button class="fb-btn">
+                                <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                                </svg>
+                                Helpful
+                            </button>
+                            <button class="fb-btn" style="transform:none;">
+                                <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" style="transform:rotate(180deg)">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                                </svg>
+                                Needs work
+                            </button>
+                        </div>
+                    </div>
+                    <div style="text-align:right;">
+                        <p style="font-family:'Manrope',sans-serif;font-size:11px;color:#9ca3af;margin-bottom:4px;">Last Updated</p>
+                        <p style="font-size:13px;font-weight:600;color:#374151;">@yield('last_updated',now()->format('F Y'))</p>
+                    </div>
                 </div>
-            </div>
 
-        </main>
-    </div>
-</div>
-
-{{-- ══ RELATED ══ --}}
-@hasSection('related')
-<section class="cards-section">
-    <div class="wrap">
-        <h2 class="cs-title">Related Research</h2>
-        <p class="cs-sub">Further analysis from the Express Fintech research team.</p>
-        <div class="cards">
-            @yield('related')
+            </main>
         </div>
     </div>
-</section>
-@endif
 
-@include('partials.footer')
+    @hasSection('related')
+    <section class="cards-section">
+        <div class="wrap">
+            <h2 class="cs-title">Related Research</h2>
+            <p class="cs-sub">Further analysis from the Express Fintech research team.</p>
+            <div class="cards">
+                @yield('related')
+            </div>
+        </div>
+    </section>
+    @endif
 
+    @include('partials.footer')
     @stack('scripts')
 </body>
+
 </html>

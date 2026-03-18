@@ -7,10 +7,10 @@
 @section('hero_section_label', 'Card Mechanics')
 @section('hero_title', 'Credit Scoring Models')
 @section('hero_subtitle', 'How FICO, VantageScore and proprietary models work — the algorithms behind every credit card approval, limit, and interest rate you receive.')
-@section('hero_date', 'March 2026')
+@section('hero_date',now()->format('F Y'))
 @section('hero_read_time', '9 min read')
 @section('article_badge', 'Card Mechanics')
-@section('last_updated', 'March 2026')
+@section('last_updated',now()->format('F Y'))
 @section('nav_scoring', 'active')
 
 @section('hero_stats')
@@ -131,7 +131,7 @@
 </ul>
 
 <div class="my-7 p-6 rounded-2xl border-l-4 border-violet-500" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
-    <p class="text-[13.5px] font-semibold text-[#4c1d95] mb-1">AI-Powered Scoring — 2026</p>
+    <p class="text-[13.5px] font-semibold text-[#4c1d95] mb-1">AI-Powered Scoring — {{ now()->year }}</p>
     <p class="text-[13.5px] text-[#5b21b6] !mb-0 leading-relaxed">Lenders are increasingly deploying proprietary ML models that incorporate cashflow data (bank account transactions), rent payment history, and telecom payment records — reaching consumers with thin credit files that traditional FICO models score poorly. This is expanding credit access while adding complexity to the scoring landscape.</p>
 </div>
 

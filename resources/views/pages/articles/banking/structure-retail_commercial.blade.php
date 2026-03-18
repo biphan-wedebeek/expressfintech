@@ -204,7 +204,7 @@
         <div class="border border-[var(--border)] overflow-hidden shadow-[var(--shadow-sm)]">
             <div class="bg-[var(--bg-surface)] px-5 py-3 flex items-center justify-between border-b border-[var(--border)]">
                 <h4 class="text-[var(--navy)] text-xs font-bold tracking-[0.16em] uppercase">Comparison Matrix</h4>
-                <span class="text-[var(--indigo)] text-[10px] tracking-widest uppercase">{{ now()->subYear()->year }}–{{ now()->year }}</span>
+                <span class="text-[var(--indigo)] text-[10px] tracking-widest uppercase">{{ (now()->year - 1) . '–' . now()->year }}</span>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-sm border-collapse">

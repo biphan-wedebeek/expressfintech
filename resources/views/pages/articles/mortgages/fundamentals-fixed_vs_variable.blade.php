@@ -4,16 +4,16 @@
 @section('hero_tag2','Rate Structures')
 @section('hero_title','Fixed vs Variable Rate Mortgages Explained')
 @section('hero_subtitle','A rigorous comparison of fixed and variable (adjustable) mortgage rate structures — how each works, how they are priced, and how to choose between them.')
-@section('hero_date','March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time','11 min read')
 @section('hero_img','https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800&q=80')
 @section('hero_img_alt','Fixed vs variable rate mortgage')
 @section('article_badge','Mortgage Fundamentals')
-@section('last_updated','March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_structure','on')
 @section('hero_stats')
-<div class="hstat"><div class="hstat-v">6.8%</div><div class="hstat-l">Avg 30-yr Fixed 2026</div></div>
-<div class="hstat"><div class="hstat-v">6.1%</div><div class="hstat-l">Avg 5/1 ARM 2026</div></div>
+<div class="hstat"><div class="hstat-v">6.8%</div><div class="hstat-l">Avg 30-yr Fixed {{ now()->year }}</div></div>
+<div class="hstat"><div class="hstat-v">6.1%</div><div class="hstat-l">Avg 5/1 ARM {{ now()->year }}</div></div>
 <div class="hstat"><div class="hstat-v">0.7%</div><div class="hstat-l">Initial Rate Spread</div></div>
 @endsection
 @section('content')
@@ -38,11 +38,11 @@
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">03</div><h2>Side-by-Side Comparison</h2></div>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>Fixed vs Adjustable Rate — Key Parameters</span><span class="tbl-badge">2026</span></div>
+        <div class="tbl-head"><span>Fixed vs Adjustable Rate — Key Parameters</span><span class="tbl-badge">{{ now()->year }}</span></div>
         <table>
             <thead><tr><th>Feature</th><th>30-yr Fixed</th><th>15-yr Fixed</th><th>5/1 ARM</th><th>7/1 ARM</th></tr></thead>
             <tbody>
-                <tr><td>Initial Rate (2026)</td><td class="a">6.8%</td><td class="g">6.1%</td><td class="g">6.1%</td><td class="a">6.3%</td></tr>
+                <tr><td>Initial Rate ({{ now()->year }})</td><td class="a">6.8%</td><td class="g">6.1%</td><td class="g">6.1%</td><td class="a">6.3%</td></tr>
                 <tr><td>Rate Certainty</td><td class="g">30 years</td><td class="g">15 years</td><td class="a">5 years</td><td class="a">7 years</td></tr>
                 <tr><td>Monthly Payment ($400K)</td><td class="a">$2,617</td><td class="g">$3,390</td><td class="g">$2,440</td><td class="a">$2,492</td></tr>
                 <tr><td>Rate Risk</td><td class="g">None</td><td class="g">None</td><td class="r">After yr 5</td><td class="r">After yr 7</td></tr>
@@ -61,13 +61,13 @@
         <li><strong>Plan to hold 15–30 years</strong> — Fixed rate almost always wins on total cost certainty and protection against rate spikes.</li>
     </ul>
     <div class="hl">
-        <div class="hl-lbl">2026 Context</div>
-        <p>With rates at generational highs in 2023–2026, many borrowers who took ARMs expecting to refinance into lower fixed rates are now holding. The rate forecast matters enormously in this decision — consider your personal rate sensitivity before choosing ARM.</p>
+        <div class="hl-lbl">{{ now()->year }} Context</div>
+        <p>With rates at generational highs in {{ (now()->year - 3) . '–' . now()->year }}, many borrowers who took ARMs expecting to refinance into lower fixed rates are now holding. The rate forecast matters enormously in this decision — consider your personal rate sensitivity before choosing ARM.</p>
     </div>
 </div>
 @endsection
 @section('related')
 <div class="card"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Fundamentals</div><h4>Amortization Structure Explained</h4><p>How mortgage payments split between principal and interest over time — and why early payments are mostly interest.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Products</div><h4>Adjustable-Rate Mortgages Guide</h4><p>Deep-dive into ARM products, cap structures, and index benchmarks for 2026.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting 2026</h4><p>Fed policy trajectory and its impact on 30-year fixed and ARM rates through 2027.</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Products</div><h4>Adjustable-Rate Mortgages Guide</h4><p>Deep-dive into ARM products, cap structures, and index benchmarks for {{ now()->year }}.</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting {{ now()->year }}</h4><p>Fed policy trajectory and its impact on 30-year fixed and ARM rates through {{ (now()->year +1) }}.</p></div></div>
 @endsection

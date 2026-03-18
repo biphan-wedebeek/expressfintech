@@ -9,13 +9,9 @@
 @section('content')
 
 <section class="bg-surface border-b border-[var(--border)] py-20">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="grid lg:grid-cols-2 gap-14 items-start">
-
             <div>
-
                 <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
                     <span class="w-6 h-px bg-emerald-600"></span>
                     Your Financial Scorecard
@@ -46,17 +42,11 @@
                         At age 50 around <strong>4× income</strong>.
                         These are directional guides, not strict rules.
                     </p>
-
                 </div>
-
             </div>
 
-
-
             <div>
-
                 <div class="border border-[var(--border)] bg-white">
-
                     <div class="bg-surface border-b border-[var(--border)] px-6 py-3 text-xs uppercase tracking-wider font-semibold">
                         Net Worth Formula
                     </div>
@@ -70,13 +60,10 @@
                         <div class="text-xs text-muted">
                             Calculate monthly and track the trend.
                         </div>
-
                     </div>
-
                 </div>
 
                 <ul class="mt-6 space-y-3 text-sm text-muted">
-
                     <li class="flex gap-3">
                         <span class="text-emerald-600 font-bold">→</span>
                         <span><strong>Assets</strong>: cash, investments, property, valuables</span>
@@ -96,23 +83,14 @@
                         <span class="text-emerald-600 font-bold">→</span>
                         <span>Use a spreadsheet or finance tracking app</span>
                     </li>
-
                 </ul>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-
 <section class="bg-white border-b border-[var(--border)] py-20">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
             <span class="w-6 h-px bg-emerald-600"></span>
             Milestone Benchmarks
@@ -122,24 +100,18 @@
             Net Worth Targets by Age
         </h2>
 
-
         <div class="overflow-hidden border border-[var(--border)] rounded-lg">
-
             <table class="w-full text-sm">
-
                 <thead class="bg-surface text-left text-xs uppercase tracking-wider text-muted">
-
                     <tr>
                         <th class="px-6 py-3">Age</th>
                         <th class="px-6 py-3">Target Net Worth</th>
                         <th class="px-6 py-3">Key Milestone</th>
                         <th class="px-6 py-3">Action Priority</th>
                     </tr>
-
                 </thead>
 
                 <tbody class="divide-y divide-[var(--border)]">
-
                     <tr class="hover:bg-surface">
                         <td class="px-6 py-4 font-semibold">25</td>
                         <td class="px-6 py-4 text-emerald-600 font-semibold">0.25× income</td>
@@ -174,33 +146,23 @@
                         <td class="px-6 py-4 text-muted">FIRE number approaching</td>
                         <td class="px-6 py-4 text-muted">Plan withdrawal strategy</td>
                     </tr>
-
                 </tbody>
-
             </table>
-
         </div>
-
     </div>
-
 </section>
 
 @endsection
 
-
-
 @section('related')
 
 <section class="bg-white border-t border-[var(--border)] py-16">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600 mb-8">
             Related Articles
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
-
             <a href="{{ route('finance.planning.budget') }}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
 
                 <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
@@ -218,7 +180,6 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
 
 
@@ -239,7 +200,6 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
 
 
@@ -260,13 +220,9 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
-
         </div>
-
     </div>
-
 </section>
 
 @endsection

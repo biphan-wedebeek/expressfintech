@@ -6,10 +6,10 @@
 @section('hero_section_label','Card Strategy')
 @section('hero_title','Balance Transfer Analysis')
 @section('hero_subtitle','How to use 0% APR balance transfer offers to eliminate credit card debt faster — the math, the traps, and the strategy for making transfers work.')
-@section('hero_date','March 2026')
+@section('hero_date',now()->format('F Y'))
 @section('hero_read_time','8 min read')
 @section('article_badge','Card Strategy')
-@section('last_updated','March 2026')
+@section('last_updated',now()->format('F Y'))
 @section('nav_analysis','active')
 @section('hero_stats')
 <div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">
@@ -57,7 +57,7 @@
     <li><strong>Have a payoff plan</strong> — Divide the total balance by the number of 0% months. That's your monthly payment target. If you can't clear the balance in time, reconsider.</li>
     <li><strong>Apply before you need it</strong> — Opening a new card temporarily reduces your score. Apply during a period of score strength.</li>
 </ul>
-<h2>Best Transfers of 2026</h2>
+<h2>Best Transfers of {{ now()->year }}</h2>
 <div class="my-6 overflow-hidden rounded-2xl border border-[#e8e2f8]">
     <table class="w-full border-collapse text-[13.5px]">
         <thead>

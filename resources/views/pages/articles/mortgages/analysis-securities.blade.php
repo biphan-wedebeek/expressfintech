@@ -4,11 +4,11 @@
 @section('hero_tag2','MBS Markets')
 @section('hero_title','Mortgage-backed Securities: How Mortgages Become Bonds')
 @section('hero_subtitle','The securitization chain from mortgage origination to MBS — how Fannie, Freddie, and Ginnie Mae operate, and why MBS spreads directly affect the rate on your loan.')
-@section('hero_date','March 2026')
+@section('hero_date', seoUpdateMonth('mortgages-analysis-securities'))
 @section('hero_read_time','12 min read')
 @section('hero_img','https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80')
 @section('article_badge','Market Analysis')
-@section('last_updated','March 2026')
+@section('last_updated', seoUpdateMonth('mortgages-analysis-securities'))
 @section('nav_securities','on')
 @section('hero_stats')
 <div class="hstat"><div class="hstat-v">$12T</div><div class="hstat-l">Total MBS outstanding</div></div>
@@ -29,7 +29,7 @@
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">02</div><h2>The GSEs — Fannie, Freddie & Ginnie</h2></div>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>Agency Comparison</span><span class="tbl-badge">2026</span></div>
+        <div class="tbl-head"><span>Agency Comparison</span><span class="tbl-badge">{{ now()->year }}</span></div>
         <table>
             <thead><tr><th>Agency</th><th>Type</th><th>Loans Backed</th><th>Government Status</th><th>MBS Share</th></tr></thead>
             <tbody>
@@ -51,6 +51,6 @@
 @endsection
 @section('related')
 <div class="card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Fundamentals</div><h4>Interest Rate Mechanisms</h4><p>How MBS spreads transmit into the mortgage rates offered to individual borrowers.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting 2026</h4><p>Fed QT and MBS market dynamics — rate forecast scenarios for 2026–2027.</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting {{ now()->year }}</h4><p>Fed QT and MBS market dynamics — rate forecast scenarios for {{ now()->year . '–' . (now()->year + 1) }}.</p></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Regulatory Impact</h4><p>GSE reform proposals and their potential impact on MBS markets and mortgage pricing.</p></div></div>
 @endsection
