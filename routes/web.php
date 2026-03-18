@@ -11,7 +11,8 @@ use App\Http\Controllers\ClickTrackingController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Static pages
-Route::get('/get-started',    [ContactController::class, 'index'])->name('contact');
+Route::get('/contact',      [ContactController::class, 'index'])->name('contact');
+Route::post('/contact',     [ContactController::class, 'store'])->name('contact.store');
 Route::get('/search',         [PageController::class, 'search'])->name('search');
 
 // Article detail pages
