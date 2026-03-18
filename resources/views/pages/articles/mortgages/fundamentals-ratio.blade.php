@@ -4,11 +4,11 @@
 @section('hero_tag2','LTV & Equity')
 @section('hero_title','Loan-to-Value Ratio: Collateral, Equity & Risk')
 @section('hero_subtitle','How LTV affects mortgage approval, interest rates, PMI requirements, and the path to building real equity in your home.')
-@section('hero_date','March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time','9 min read')
 @section('hero_img','https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&q=80')
 @section('article_badge','Mortgage Fundamentals')
-@section('last_updated','March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_ratio','on')
 @section('hero_stats')
 <div class="hstat"><div class="hstat-v">80%</div><div class="hstat-l">Conventional LTV limit</div></div>
@@ -28,7 +28,7 @@
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">02</div><h2>LTV Thresholds & Their Consequences</h2></div>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>LTV Thresholds — Impact on Rate, PMI & Products</span><span class="tbl-badge">2026</span></div>
+        <div class="tbl-head"><span>LTV Thresholds — Impact on Rate, PMI & Products</span><span class="tbl-badge">{{ now()->year }}</span></div>
         <table>
             <thead><tr><th>LTV Range</th><th>Down Payment</th><th>PMI Required</th><th>Rate Impact</th><th>Products Available</th></tr></thead>
             <tbody>
@@ -63,6 +63,6 @@
 @endsection
 @section('related')
 <div class="card"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Fundamentals</div><h4>Mortgage Underwriting</h4><p>How LTV is evaluated alongside credit and income in the underwriting decision.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Products</div><h4>Conventional Loans</h4><p>LTV thresholds, PMI requirements, and conforming loan limits for 2026.</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Products</div><h4>Conventional Loans</h4><p>LTV thresholds, PMI requirements, and conforming loan limits for {{ now()->year }}.</p></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Strategy</div><h4>Refinance Strategies</h4><p>Using LTV improvement through appreciation or paydown to access better rates.</p></div></div>
 @endsection

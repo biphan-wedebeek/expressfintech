@@ -7,10 +7,10 @@
 @section('hero_section_label', 'Market & Regulation')
 @section('hero_title', 'Card Network Comparison')
 @section('hero_subtitle', 'Visa, Mastercard, American Express, and Discover — how the four major card networks differ in structure, reach, fee economics, and acceptance worldwide.')
-@section('hero_date', 'March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time', '9 min read')
 @section('article_badge', 'Market & Regulation')
-@section('last_updated', 'March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_comparison', 'active')
 
 @section('hero_stats')
@@ -73,7 +73,7 @@
 </div>
 
 <div class="bg-[#1e0a3c] rounded-2xl p-5 text-white">
-    <p class="text-[10.5px] font-bold uppercase tracking-[.14em] text-purple-400 mb-3">2026 Purchase Volume</p>
+    <p class="text-[10.5px] font-bold uppercase tracking-[.14em] text-purple-400 mb-3">{{ now()->year }} Purchase Volume</p>
     @foreach([
     ['Visa', '$16.4T'],
     ['Mastercard', '$9.1T'],
@@ -276,8 +276,8 @@
 </ul>
 
 <div class="my-7 p-6 rounded-2xl border-l-4 border-violet-500" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
-    <p class="text-[13.5px] font-semibold text-[#4c1d95] mb-1">Capital One + Discover: 2026 Impact</p>
-    <p class="text-[13.5px] text-[#5b21b6] !mb-0 leading-relaxed">Capital One's acquisition of Discover (completed 2024) creates a vertically integrated issuer-network combination for the first time since Amex. Capital One now controls its own network rails — enabling lower processing costs, better data, and the ability to offer merchants alternative pricing to Visa/MC. Analysts expect this to intensify competition in the merchant acceptance and co-brand card markets through 2026–2028.</p>
+    <p class="text-[13.5px] font-semibold text-[#4c1d95] mb-1">Capital One + Discover: {{ now()->year }} Impact</p>
+    <p class="text-[13.5px] text-[#5b21b6] !mb-0 leading-relaxed">Capital One's acquisition of Discover (completed 2024) creates a vertically integrated issuer-network combination for the first time since Amex. Capital One now controls its own network rails — enabling lower processing costs, better data, and the ability to offer merchants alternative pricing to Visa/MC. Analysts expect this to intensify competition in the merchant acceptance and co-brand card markets through {{ now()->year . '–' . (now()->year + 2) }}.</p>
 </div>
 
 @endsection

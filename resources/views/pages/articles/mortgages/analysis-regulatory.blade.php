@@ -4,11 +4,11 @@
 @section('hero_tag2','Regulation')
 @section('hero_title','Regulatory Impact: Policy, Law & the Mortgage Market')
 @section('hero_subtitle','How FHFA, CFPB, Dodd-Frank, Basel III and housing policy shape mortgage availability, pricing, and the structure of the US lending market.')
-@section('hero_date','March 2026')
+@section('hero_date', seoUpdateMonth('mortgages-analysis-regulatory'))
 @section('hero_read_time','11 min read')
 @section('hero_img','https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80')
 @section('article_badge','Market Analysis')
-@section('last_updated','March 2026')
+@section('last_updated', seoUpdateMonth('mortgages-analysis-regulatory'))
 @section('nav_regulatory','on')
 @section('hero_stats')
 <div class="hstat"><div class="hstat-v">2010</div><div class="hstat-l">Dodd-Frank enacted</div></div>
@@ -34,7 +34,7 @@
     <div class="sec-hd"><div class="sec-num">02</div><h2>FHFA — Shaping the GSE Market</h2></div>
     <p>The Federal Housing Finance Agency oversees Fannie Mae and Freddie Mac (under conservatorship since 2008) and sets conforming loan limits, g-fees (guarantee fees), and LLPAs (loan-level price adjustments). FHFA decisions directly affect the rate every conforming borrower receives:</p>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>Key FHFA Policy Levers & Market Impact</span><span class="tbl-badge">2026</span></div>
+        <div class="tbl-head"><span>Key FHFA Policy Levers & Market Impact</span><span class="tbl-badge">{{ now()->year }}</span></div>
         <table>
             <thead><tr><th>Policy Tool</th><th>What It Does</th><th>Market Impact</th></tr></thead>
             <tbody>
@@ -47,8 +47,8 @@
     </div>
 </div>
 <div class="sec">
-    <div class="sec-hd"><div class="sec-num">03</div><h2>2026 Regulatory Landscape</h2></div>
-    <p>Several major regulatory developments are shaping the mortgage market in 2026:</p>
+    <div class="sec-hd"><div class="sec-num">03</div><h2>{{ now()->year }} Regulatory Landscape</h2></div>
+    <p>Several major regulatory developments are shaping the mortgage market in {{ now()->year }}:</p>
     <ul>
         <li><strong>Basel III "Endgame" implementation</strong> — Stricter capital requirements for large bank mortgage holdings are increasing the cost of portfolio lending, pushing more volume to the GSE securitization channel.</li>
         <li><strong>CFPB DTI rule debates</strong> — Proposals to raise or modify DTI caps have been debated in the context of housing affordability — tighter caps reduce lending access; looser caps increase default risk.</li>

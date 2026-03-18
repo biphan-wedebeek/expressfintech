@@ -4,11 +4,11 @@
 @section('hero_tag2','Refinancing')
 @section('hero_title','Refinance Strategies: When & How to Refinance ')
 @section('hero_subtitle','A quantitative framework for evaluating mortgage refinance decisions — break-even analysis, cash-out vs rate-term, and timing in a volatile rate environment.')
-@section('hero_date','March 2026')
+@section('hero_date', seoUpdateMonth('mortgages-product-refinace'))
 @section('hero_read_time','10 min read')
 @section('hero_img','https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80')
 @section('article_badge','Mortgage Products')
-@section('last_updated','March 2026')
+@section('last_updated', seoUpdateMonth('mortgages-product-refinace'))
 @section('nav_refinance','on')
 @section('hero_stats')
 <div class="hstat"><div class="hstat-v">2–3%</div><div class="hstat-l">Closing costs as % of loan</div></div>
@@ -57,6 +57,6 @@
 @endsection
 @section('related')
 <div class="card"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Fundamentals</div><h4>Fixed vs Variable Rate</h4><p>How to evaluate switching between fixed and ARM in a refinance decision.</p></div></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting 2026</h4><p>When rates may fall enough to make refinancing worthwhile — scenarios for 2026–2027.</p></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Market Analysis</div><h4>Rate Forecasting {{ now()->year }}</h4><p>When rates may fall enough to make refinancing worthwhile — scenarios for {{ now()->year . '–' . (now()->year + 1) }}.</p></div></div>
 <div class="card"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt=""><div class="card-body"><div class="card-tag">Fundamentals</div><h4>Amortization Structure</h4><p>How refinancing resets the amortization clock — and the true long-term cost.</p></div></div>
 @endsection

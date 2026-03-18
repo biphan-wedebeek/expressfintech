@@ -4,11 +4,11 @@
 @section('hero_tag2','Amortization')
 @section('hero_title','Amortization Structure: Principal, Interest & Time')
 @section('hero_subtitle','The mathematical mechanics of how mortgage payments are structured — why early payments are almost entirely interest, and how the schedule shifts over a 30-year term.')
-@section('hero_date','March 2026')
+@section('hero_date',' now()->format('F Y'))
 @section('hero_read_time','10 min read')
 @section('hero_img','https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&q=80')
 @section('article_badge','Mortgage Fundamentals')
-@section('last_updated','March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_mechanisms','on')
 @section('hero_stats')
 <div class="hstat"><div class="hstat-v">360</div><div class="hstat-l">Payments on 30-yr mortgage</div></div>

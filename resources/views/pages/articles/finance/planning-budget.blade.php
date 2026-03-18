@@ -11,16 +11,13 @@
 {{-- 50/30/20 Rule --}}
 <section class="bg-surface border-b border-[var(--border)] py-20">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
             <span class="w-6 h-px bg-emerald-600"></span>
             The Framework
         </div>
 
         <div class="grid lg:grid-cols-2 gap-14 items-start">
-
             <div>
-
                 <h2 class="fonttitle text-3xl lg:text-4xl font-bold leading-tight mb-6">
                     The <em class="text-emerald-600 italic">50/30/20</em> Rule
                 </h2>
@@ -51,14 +48,10 @@
                         Studies show people who write down a budget spend
                         <strong class="text-[var(--text-primary)]">15–20% less</strong> per month.
                     </p>
-
                 </div>
-
             </div>
 
-
             <div class="flex flex-col gap-6">
-
                 <div class="border-l-4 border-emerald-500 bg-white p-8 shadow-sm">
                     <div class="fonttitle text-6xl font-black text-emerald-600 mb-2">50%</div>
                     <div class="text-xs uppercase tracking-[0.1em] text-muted">
@@ -79,19 +72,13 @@
                         Savings & debt repayment floor
                     </div>
                 </div>
-
             </div>
-
         </div>
     </div>
 </section>
 
-
-{{-- 4 Steps --}}
 <section class="bg-white border-b border-[var(--border)] py-20">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
             <span class="w-6 h-px bg-emerald-600"></span>
             How To Start
@@ -111,7 +98,6 @@
             ] as [$n,$title,$body])
 
             <div class="bg-surface p-7 border border-[var(--border)] hover:border-emerald-400 transition">
-
                 <div class="text-4xl font-bold text-emerald-500 opacity-40 mb-4">
                     {{ $n }}
                 </div>
@@ -123,21 +109,14 @@
                 <div class="text-sm text-muted leading-relaxed">
                     {{ $body }}
                 </div>
-
             </div>
-
             @endforeach
-
         </div>
     </div>
 </section>
 
-
-{{-- Methods Table --}}
 <section class="bg-surface border-b border-[var(--border)] py-20">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
             <span class="w-6 h-px bg-emerald-600"></span>
             Methods Compared
@@ -148,11 +127,8 @@
         </h2>
 
         <div class="overflow-x-auto border border-[var(--border)] bg-white">
-
             <table class="w-full text-sm">
-
                 <thead class="bg-surface text-xs uppercase tracking-wider text-muted">
-
                     <tr>
                         <th class="p-4 text-left">Method</th>
                         <th class="p-4 text-left">Best For</th>
@@ -160,7 +136,6 @@
                         <th class="p-4 text-left">Accuracy</th>
                         <th class="p-4 text-left">Tools</th>
                     </tr>
-
                 </thead>
 
                 <tbody>
@@ -184,27 +159,21 @@
                     </tr>
 
                     @endforeach
-
                 </tbody>
             </table>
-
         </div>
     </div>
 </section>
 
 @endsection
 
-
 @section('related')
 
 <section class="bg-white border-t border-[var(--border)] py-16">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600 mb-8">
             Related Articles
         </div>
-
         <div class="grid md:grid-cols-3 gap-6">
 
             @foreach([
@@ -230,7 +199,6 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
 
             @endforeach

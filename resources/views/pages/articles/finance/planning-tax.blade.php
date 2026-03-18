@@ -9,13 +9,9 @@
 @section('content')
 
 <section class="bg-surface border-b border-[var(--border)] py-20">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="grid lg:grid-cols-2 gap-14 items-start">
-
             <div>
-
                 <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
                     <span class="w-6 h-px bg-emerald-600"></span>
                     Legal Optimisation
@@ -45,18 +41,14 @@
                         are taxed at lower long-term rates (0%, 15%, or 20%).
                         Holding investments longer can dramatically reduce taxes.
                     </p>
-
                 </div>
-
             </div>
 
-
             <div class="flex flex-col divide-y divide-[var(--border)]">
-
                 <div class="flex gap-4 py-4">
                     <span class="text-emerald-600 font-bold">✓</span>
                     <p class="text-sm text-muted">
-                        <strong>Maximise 401(k)</strong> — reduce taxable income by up to $23,000 in 2026
+                        <strong>Maximise 401(k)</strong> — reduce taxable income by up to $23,000 in {{ now()->year }}
                     </p>
                 </div>
 
@@ -94,21 +86,13 @@
                         <strong>Bunch deductions</strong> to alternate between itemizing and standard deduction
                     </p>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-
 <section class="bg-white border-b border-[var(--border)] py-20">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
             <span class="w-6 h-px bg-emerald-600"></span>
             Accounts First
@@ -128,7 +112,6 @@
             ] as [$n,$title,$body])
 
             <div class="bg-surface border border-[var(--border)] p-7 hover:border-emerald-400 transition">
-
                 <div class="text-4xl font-bold text-emerald-500 opacity-40 mb-4">
                     {{ $n }}
                 </div>
@@ -140,35 +123,24 @@
                 <p class="text-sm text-muted leading-relaxed">
                     {{ $body }}
                 </p>
-
             </div>
-
             @endforeach
-
         </div>
-
     </div>
-
 </section>
 
 @endsection
 
-
-
 @section('related')
 
 <section class="bg-white border-t border-[var(--border)] py-16">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600 mb-8">
             Related Articles
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
-
             <a href="{{ route('finance.behavior.decision_bias') }}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
-
                 <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
                     Financial Decision Bias
                 </div>
@@ -184,11 +156,9 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
 
             <a href="{{ route('finance.planning.retirement') }}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
-
                 <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
                     Retirement
                 </div>
@@ -204,12 +174,9 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
 
-
             <a href="{{ route('finance.building.independence') }}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
-
                 <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
                     Independence
                 </div>
@@ -225,13 +192,9 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
-
         </div>
-
     </div>
-
 </section>
 
 @endsection

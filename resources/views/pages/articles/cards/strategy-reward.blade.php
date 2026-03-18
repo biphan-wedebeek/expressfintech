@@ -6,10 +6,10 @@
 @section('hero_section_label', 'Card Strategy')
 @section('hero_title', 'Reward Program Economics')
 @section('hero_subtitle', 'The financial mechanics behind points, miles, and cashback programs — how issuers profit from rewards and how savvy cardholders maximize value extraction.')
-@section('hero_date', 'March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time', '9 min read')
 @section('article_badge', 'Card Strategy')
-@section('last_updated', 'March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_reward', 'active')
 @section('hero_stats')
     <div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">

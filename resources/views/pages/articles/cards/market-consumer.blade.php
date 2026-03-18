@@ -9,10 +9,10 @@
 @section('hero_section_label', 'Market & Regulation')
 @section('hero_title', 'Consumer Protection Laws')
 @section('hero_subtitle', 'The regulatory framework protecting credit card consumers — from the CARD Act\'s rate restrictions to CFPB enforcement and the rights every cardholder should know.')
-@section('hero_date', 'March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time', '9 min read')
 @section('article_badge', 'Market & Regulation')
-@section('last_updated', 'March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_consumer', 'active')
 
 @section('hero_stats')
@@ -163,7 +163,7 @@
 </ul>
 
 <div class="my-7 p-6 rounded-2xl border-l-4 border-violet-500" style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
-    <p class="text-[13.5px] font-semibold text-[#4c1d95] mb-1">2026: Late Fee Rule Battle</p>
+    <p class="text-[13.5px] font-semibold text-[#4c1d95] mb-1">{{ now()->year }}: Late Fee Rule Battle</p>
     <p class="text-[13.5px] text-[#5b21b6] !mb-0 leading-relaxed">The CFPB's 2024 rule capping late fees at $8 — down from the current $30/$41 — has been contested in federal court by the banking industry. The outcome of this litigation will determine whether issuers must restructure their penalty fee revenue model, potentially affecting how they price risk across their card portfolios and which consumers receive cards at all.</p>
 </div>
 

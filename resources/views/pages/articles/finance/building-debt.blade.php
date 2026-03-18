@@ -9,13 +9,9 @@
  @section('content')
 
  <section class="bg-surface border-b border-[var(--border)] py-20">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="grid lg:grid-cols-2 gap-14 items-start">
-
              <div>
-
                  <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
                      <span class="w-6 h-px bg-emerald-600"></span>
                      Debt Classification
@@ -46,16 +42,11 @@
                      <p class="text-sm text-muted">
                          Any debt above <strong>6% APR</strong> should usually be repaid before investing outside employer-matched retirement accounts.
                      </p>
-
                  </div>
-
              </div>
 
-
              <div class="space-y-4">
-
                  <div class="border border-[var(--border)] bg-white p-6">
-
                      <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
                          Avalanche Method
                      </div>
@@ -63,12 +54,9 @@
                      <p class="text-sm text-muted">
                          Pay the <strong>highest interest rate first</strong>. This minimises total interest and is mathematically optimal.
                      </p>
-
                  </div>
 
-
                  <div class="border border-[var(--border)] bg-white p-6">
-
                      <div class="text-xs uppercase tracking-wider text-amber-600 font-semibold mb-2">
                          Snowball Method
                      </div>
@@ -76,23 +64,14 @@
                      <p class="text-sm text-muted">
                          Pay the <strong>smallest balance first</strong>. Momentum from quick wins keeps motivation high.
                      </p>
-
                  </div>
-
              </div>
-
          </div>
-
      </div>
-
  </section>
 
-
-
  <section class="bg-white border-b border-[var(--border)] py-20">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
              <span class="w-6 h-px bg-emerald-600"></span>
              Debt by Type
@@ -102,22 +81,18 @@
              Debt Classification Framework
          </h2>
 
-
          <div class="border border-[var(--border)] rounded-lg overflow-hidden">
-
              <div class="flex items-center justify-between px-6 py-4 bg-surface border-b border-[var(--border)]">
                  <span class="text-xs uppercase tracking-wider font-semibold">
                      Debt Type Reference
                  </span>
                  <span class="text-xs uppercase tracking-wider text-emerald-600">
-                     2026
+                     {{ now()->year }}
                  </span>
              </div>
 
              <table class="w-full text-sm">
-
                  <thead class="bg-surface text-left text-xs uppercase tracking-wider text-muted">
-
                      <tr>
                          <th class="px-6 py-3">Debt Type</th>
                          <th class="px-6 py-3">Typical APR</th>
@@ -125,11 +100,9 @@
                          <th class="px-6 py-3">Strategy</th>
                          <th class="px-6 py-3">Risk Level</th>
                      </tr>
-
                  </thead>
 
                  <tbody class="divide-y divide-[var(--border)]">
-
                      <tr class="hover:bg-surface">
                          <td class="px-6 py-4 font-semibold">Credit Card</td>
                          <td class="px-6 py-4 text-red-500 font-semibold">18–29%</td>
@@ -169,35 +142,24 @@
                          <td class="px-6 py-4 text-muted">Maintain schedule</td>
                          <td class="px-6 py-4 text-emerald-600 font-semibold">Productive</td>
                      </tr>
-
                  </tbody>
-
              </table>
-
          </div>
-
      </div>
-
  </section>
 
  @endsection
 
-
-
  @section('related')
 
  <section class="bg-white border-t border-[var(--border)] py-16">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600 mb-8">
              Related Articles
          </div>
 
          <div class="grid md:grid-cols-3 gap-6">
-
              <a href="{{route('finance.planning.budget')}}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
-
                  <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
                      Budgeting
                  </div>
@@ -213,12 +175,9 @@
                  <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                      Read More →
                  </span>
-
              </a>
 
-
              <a href="{{route('finance.planning.emergency_fund')}}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
-
                  <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
                      Emergency Fund
                  </div>
@@ -234,12 +193,9 @@
                  <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                      Read More →
                  </span>
-
              </a>
 
-
              <a href="{{route('finance.behavior.decision_bias')}}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
-
                  <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
                      Financial Decision Bias
                  </div>
@@ -255,13 +211,9 @@
                  <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                      Read More →
                  </span>
-
              </a>
-
          </div>
-
      </div>
-
  </section>
 
  @endsection

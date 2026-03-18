@@ -10,11 +10,8 @@
 
  <section class="bg-emerald-50 border-b border-emerald-100 py-20">
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="grid lg:grid-cols-2 gap-14 items-start">
-
              <div>
-
                  <div class="flex items-center gap-3 mb-4 uppercase tracking-[0.25em] text-emerald-600 text-xs font-semibold">
                      <span class="w-6 h-px bg-emerald-500"></span>
                      The FIRE Framework
@@ -45,16 +42,11 @@
                          <strong class="text-emerald-900">$1.25 million</strong>.
                          Reducing spending to $40,000 cuts your target to $1M — a $250K reduction in required savings.
                      </p>
-
                  </div>
-
              </div>
 
-
              <div>
-
                  <div class="border-l-4 border-emerald-500 bg-white shadow-sm p-7 mb-4">
-
                      <div class="fonttitle text-5xl text-emerald-600 mb-2">
                          25×
                      </div>
@@ -62,11 +54,9 @@
                      <div class="text-xs uppercase tracking-wide text-emerald-900/60">
                          Annual spending = FIRE portfolio target
                      </div>
-
                  </div>
 
                  <div class="border-l-4 border-yellow-400 bg-white shadow-sm p-7 mb-4">
-
                      <div class="fonttitle text-5xl text-yellow-500 mb-2">
                          4%
                      </div>
@@ -74,11 +64,9 @@
                      <div class="text-xs uppercase tracking-wide text-emerald-900/60">
                          Safe annual withdrawal rate based on historical market data
                      </div>
-
                  </div>
 
                  <ul class="space-y-3 text-emerald-900/70 text-sm">
-
                      <li class="flex gap-3">
                          <span class="text-emerald-600 font-semibold">→</span>
                          <span>Lean FIRE: extreme frugality, sub-$40K annual spending</span>
@@ -98,24 +86,15 @@
                          <span class="text-emerald-600 font-semibold">→</span>
                          <span>Barista FIRE: semi-retire with part-time income supplement</span>
                      </li>
-
                  </ul>
-
              </div>
-
          </div>
-
      </div>
  </section>
 
-
-
  <section class="bg-white border-b border-emerald-100 py-20">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
              <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
                  <div class="text-4xl font-bold text-emerald-200 mb-4">01</div>
                  <div class="font-semibold text-emerald-900 mb-2">Calculate Your FIRE Number</div>
@@ -147,22 +126,16 @@
                      Tax-advantaged accounts, Roth conversions, and capital gains harvesting can add years to your runway.
                  </p>
              </div>
-
          </div>
-
      </div>
  </section>
 
  @endsection
 
-
-
  @section('related')
 
  <section class="bg-emerald-50 border-t border-emerald-100 pt-16">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="uppercase tracking-[0.25em] text-xs font-semibold text-emerald-600 mb-10">
              Related Articles
          </div>
@@ -186,9 +159,7 @@
                  <div class="text-xs uppercase tracking-wider text-emerald-600">
                      Read More →
                  </div>
-
              </a>
-
 
              <a href="{{route('finance.behavior.decision_bias')}}" class="block bg-white p-7 hover:bg-emerald-50 transition rounded shadow-sm">
 
@@ -207,9 +178,7 @@
                  <div class="text-xs uppercase tracking-wider text-emerald-600">
                      Read More →
                  </div>
-
              </a>
-
 
              <a href="{{route('finance.building.passive_income')}}" class="block bg-white p-7 hover:bg-emerald-50 transition rounded shadow-sm">
 
@@ -228,11 +197,8 @@
                  <div class="text-xs uppercase tracking-wider text-emerald-600">
                      Read More →
                  </div>
-
              </a>
-
          </div>
-
      </div>
  </section>
 

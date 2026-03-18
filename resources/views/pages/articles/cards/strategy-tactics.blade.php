@@ -6,10 +6,10 @@
 @section('hero_section_label','Card Strategy')
 @section('hero_title','Card Churning Tactics')
 @section('hero_subtitle','The systematic strategy of opening and closing credit cards to capture signup bonuses repeatedly — the rules, the risks, and the issuer restrictions you must know.')
-@section('hero_date','March 2026')
+@section('hero_date',now()->format('F Y'))
 @section('hero_read_time','9 min read')
 @section('article_badge','Card Strategy')
-@section('last_updated','March 2026')
+@section('last_updated',now()->format('F Y'))
 @section('nav_tactics','active')
 @section('hero_stats')
 <div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">

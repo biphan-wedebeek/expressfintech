@@ -4,11 +4,11 @@
 @section('hero_tag2','Underwriting')
 @section('hero_title','Mortgage Underwriting The Approval Decision Process')
 @section('hero_subtitle','How lenders evaluate mortgage applications — the credit, income, asset, and property criteria that determine approval, pricing, and loan terms.')
-@section('hero_date','March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time','12 min read')
 @section('hero_img','https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=80')
 @section('article_badge','Mortgage Fundamentals')
-@section('last_updated','March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_underwriting','on')
 @section('hero_stats')
 <div class="hstat"><div class="hstat-v">620</div><div class="hstat-l">Min. conventional credit score</div></div>
@@ -36,7 +36,7 @@
         <li><strong>Bankruptcy / foreclosure</strong> — Waiting periods: 2–7 years depending on loan type and type of derogatory event.</li>
     </ul>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>Credit Score Thresholds by Loan Type</span><span class="tbl-badge">2026</span></div>
+        <div class="tbl-head"><span>Credit Score Thresholds by Loan Type</span><span class="tbl-badge">{{ now()->year }}</span></div>
         <table>
             <thead><tr><th>Loan Type</th><th>Minimum Score</th><th>Best Rate Score</th><th>Notes</th></tr></thead>
             <tbody>

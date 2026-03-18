@@ -6,10 +6,10 @@
 @section('hero_section_label', 'Card Mechanics')
 @section('hero_title', 'Credit Limits')
 @section('hero_subtitle', 'How issuers set, adjust, and manage credit limits — and the strategies cardholders use to maximize their available credit while protecting their scores.')
-@section('hero_date', 'March 2026')
+@section('hero_date', seoUpdateMonth('card-mechanics-credit'))
 @section('hero_read_time', '7 min read')
 @section('article_badge', 'Card Mechanics')
-@section('last_updated', 'March 2026')
+@section('last_updated', seoUpdateMonth('card-mechanics-credit'))
 @section('nav_credit', 'active')
 @section('hero_stats')
     <div class="hero-stat rounded-xl px-5 py-4 text-center min-w-[130px]">

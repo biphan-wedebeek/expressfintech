@@ -4,21 +4,21 @@
 @section('hero_tag2','Non-Conforming')
 @section('hero_title','Jumbo Loans: High-Value Property Financing')
 @section('hero_subtitle','Mortgages above the conforming loan limit — how jumbo underwriting differs, why rates behave differently, and what lenders require for high-value property financing.')
-@section('hero_date','March 2026')
+@section('hero_date', seoUpdateMonth('mortgages-product-jumbo'))
 @section('hero_read_time','9 min read')
 @section('hero_img','https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80')
 @section('article_badge','Mortgage Products')
-@section('last_updated','March 2026')
+@section('last_updated', seoUpdateMonth('mortgages-product-jumbo'))
 @section('nav_jumbo','on')
 @section('hero_stats')
-<div class="hstat"><div class="hstat-v">$806,500+</div><div class="hstat-l">Jumbo threshold 2026</div></div>
+<div class="hstat"><div class="hstat-v">$806,500+</div><div class="hstat-l">Jumbo threshold {{ now()->year }}</div></div>
 <div class="hstat"><div class="hstat-v">700+</div><div class="hstat-l">Credit score required</div></div>
 <div class="hstat"><div class="hstat-v">20%</div><div class="hstat-l">Typical minimum down</div></div>
 @endsection
 @section('content')
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">01</div><h2>What Makes a Loan "Jumbo"?</h2></div>
-    <p>A jumbo loan is any mortgage exceeding the conforming loan limits set by the FHFA — $806,500 for standard areas and up to $1,209,750 in designated high-cost markets in 2026. Because they exceed Fannie Mae and Freddie Mac purchase limits, jumbo loans cannot be securitized in standard agency MBS markets.</p>
+    <p>A jumbo loan is any mortgage exceeding the conforming loan limits set by the FHFA — $806,500 for standard areas and up to $1,209,750 in designated high-cost markets in {{ now()->year }}. Because they exceed Fannie Mae and Freddie Mac purchase limits, jumbo loans cannot be securitized in standard agency MBS markets.</p>
     <p>Without the ability to sell to Fannie/Freddie, lenders hold jumbo loans on their own balance sheets or sell to private investors — requiring higher capital reserves and creating stricter qualification standards.</p>
     <div class="callout">
         <h3>Why Jumbo Rates Are Sometimes Lower</h3>
@@ -28,7 +28,7 @@
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">02</div><h2>Jumbo Qualification Standards</h2></div>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>Jumbo Loan Requirements — Typical 2026</span><span class="tbl-badge">Portfolio Lender Standards</span></div>
+        <div class="tbl-head"><span>Jumbo Loan Requirements — Typical {{ now()->year }}</span><span class="tbl-badge">Portfolio Lender Standards</span></div>
         <table>
             <thead><tr><th>Criterion</th><th>Standard Jumbo</th><th>Super Jumbo (&gt;$2M)</th></tr></thead>
             <tbody>

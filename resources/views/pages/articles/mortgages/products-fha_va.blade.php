@@ -3,12 +3,12 @@
 @section('hero_tag','Mortgage Products')
 @section('hero_tag2','Government-Backed')
 @section('hero_title','FHA & VA Loans: Government-Backed Mortgages')
-@section('hero_subtitle','Complete analysis of FHA and VA loan programs — eligibility, costs, benefits, and how they compare for first-time buyers and veterans in 2026.')
-@section('hero_date','March 2026')
+@section('hero_subtitle','Complete analysis of FHA and VA loan programs — eligibility, costs, benefits, and how they compare for first-time buyers and veterans in '. now()->year )
+@section('hero_date', seoUpdateMonth('mortgages-product-fha'))
 @section('hero_read_time','11 min read')
 @section('hero_img','https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&q=80')
 @section('article_badge','Mortgage Products')
-@section('last_updated','March 2026')
+@section('last_updated', seoUpdateMonth('mortgages-product-fha'))
 @section('nav_fha_va','on')
 @section('hero_stats')
 <div class="hstat"><div class="hstat-v">3.5%</div><div class="hstat-l">FHA minimum down payment</div></div>
@@ -24,7 +24,7 @@
         <li><strong>10% down payment</strong> accepted for scores 500–579</li>
         <li><strong>DTI limits</strong> — Front-end 31% / Back-end 43% (up to 57% with strong compensating factors)</li>
         <li><strong>MIP (Mortgage Insurance Premium)</strong> — 1.75% upfront + annual 0.55–1.05% depending on term and LTV</li>
-        <li><strong>Loan limits</strong> — $524,225 standard; $1,149,825 high-cost areas (2026)</li>
+        <li><strong>Loan limits</strong> — $524,225 standard; $1,149,825 high-cost areas ({{ now()->year }})</li>
     </ul>
     <div class="callout">
         <h3>The FHA MIP Trap</h3>
@@ -49,7 +49,7 @@
 <div class="sec">
     <div class="sec-hd"><div class="sec-num">03</div><h2>FHA vs VA — Side-by-Side</h2></div>
     <div class="tbl-wrap">
-        <div class="tbl-head"><span>FHA vs VA — Key Parameter Comparison</span><span class="tbl-badge">2026</span></div>
+        <div class="tbl-head"><span>FHA vs VA — Key Parameter Comparison</span><span class="tbl-badge">{{ now()->year }}</span></div>
         <table>
             <thead><tr><th>Feature</th><th>FHA</th><th>VA</th></tr></thead>
             <tbody>

@@ -10,11 +10,8 @@
 
  <section class="bg-emerald-50 border-b border-emerald-100 py-20">
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="grid lg:grid-cols-2 gap-14 items-start">
-
              <div>
-
                  <div class="flex items-center gap-3 mb-4 uppercase tracking-[0.25em] text-emerald-600 text-xs font-semibold">
                      <span class="w-6 h-px bg-emerald-500"></span>
                      Risk Management
@@ -46,14 +43,10 @@
                      </p>
 
                  </div>
-
              </div>
 
-
              <div>
-
                  <div class="border-l-4 border-emerald-500 bg-white shadow-sm p-7 mb-6">
-
                      <div class="fonttitle text-5xl text-emerald-600 mb-2">
                          0.01%
                      </div>
@@ -61,11 +54,9 @@
                      <div class="text-xs uppercase tracking-wide text-emerald-900/60">
                          Average expense ratio of broad index ETFs — diversification at near-zero cost
                      </div>
-
                  </div>
 
                  <ul class="space-y-3 text-emerald-900/70 text-sm">
-
                      <li class="flex gap-3">
                          <span class="text-emerald-600 font-semibold">→</span>
                          <span><strong class="text-emerald-900">Domestic equity</strong> — US total market (VTI, FSKAX)</span>
@@ -90,24 +81,15 @@
                          <span class="text-emerald-600 font-semibold">→</span>
                          <span><strong class="text-emerald-900">Rebalance annually</strong> — restore target allocations after drift</span>
                      </li>
-
                  </ul>
-
              </div>
-
          </div>
-
      </div>
  </section>
 
-
-
  <section class="bg-white border-b border-emerald-100 py-20">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
              <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
                  <div class="text-4xl font-bold text-emerald-200 mb-4">01</div>
                  <div class="font-semibold text-emerald-900 mb-2">Start with a 3-Fund Portfolio</div>
@@ -139,22 +121,16 @@
                      Drift from target allocations creates unintended concentration. A once-yearly rebalance restores balance efficiently.
                  </p>
              </div>
-
          </div>
-
      </div>
  </section>
 
  @endsection
 
-
-
  @section('related')
 
  <section class="bg-emerald-50 border-t border-emerald-100 pt-16">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="uppercase tracking-[0.25em] text-xs font-semibold text-emerald-600 mb-10">
              Related Articles
          </div>
@@ -189,9 +165,7 @@
                  </p>
                  <div class="text-xs uppercase tracking-wider text-emerald-600">Read More →</div>
              </a>
-
          </div>
-
      </div>
  </section>
 

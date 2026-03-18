@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name='impact-site-verification' value='e4bf24d0-e930-4ad6-b364-a86751a3d024'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="{{ asset('expressfintech.png') }}">
     <title>@yield('title', 'Credit Cards') — Express Fintech</title>
@@ -117,7 +118,7 @@
         <nav class="flex items-center text-[11.5px] text-purple-300/60 mb-6 font-mono-sp tracking-wide">
             <a href="{{ route('home') }}" class="hover:text-purple-200 transition-colors">Home</a>
             <span class="bsep"></span>
-            <a href="{{ route('credit-cards') }}" class="hover:text-purple-200 transition-colors">Credit Cards</a>
+            <span class="hover:text-purple-200 transition-colors">Credit Cards</span>
             <span class="bsep"></span>
             <span class="text-purple-200/80">@yield('breadcrumb_section', 'Analysis')</span>
             @hasSection('breadcrumb_current')
@@ -149,7 +150,7 @@
                 <div class="flex items-center gap-6 mt-6 text-[12px] text-purple-300/45 font-mono-sp fade-up-3">
                     <span class="flex items-center gap-1.5">
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        @yield('hero_date', 'March 2026')
+                        @yield('hero_date', now()->format('F Y'))
                     </span>
                     <span class="flex items-center gap-1.5">
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -282,7 +283,7 @@
                      style="background:linear-gradient(145deg,#1e0a3c,#2d1060)">
                     <p class="text-[10.5px] font-bold uppercase tracking-[.14em] text-purple-400 mb-2">Credit Cards Hub</p>
                     <p class="text-[12.5px] text-white/50 mb-4 leading-relaxed">Explore all card analyses, comparisons, and strategies.</p>
-                    <a href="{{ route('credit-cards') }}"
+                    <a href="{{ route('cards.mechanics-scoring') }}"
                        class="flex items-center gap-2 text-[13px] font-semibold text-purple-300 hover:text-white transition-colors">
                         View Cards Hub
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -294,7 +295,7 @@
                      style="background:linear-gradient(135deg,#f5f3ff,#ede9fe)">
                     <p class="text-[11px] font-bold uppercase tracking-[.12em] text-violet-700 mb-2">Free Consultation</p>
                     <p class="text-[12.5px] text-[#374151] mb-4 leading-relaxed">Questions about card selection and optimization strategy?</p>
-                    <a href="{{ route('consultation') }}"
+                    <a href="{{ route('contact') }}"
                        class="block w-full text-center bg-violet-700 hover:bg-violet-800 text-white text-[13px] font-semibold py-2.5 rounded-xl transition-colors">
                         Book Free Call
                     </a>
@@ -361,7 +362,7 @@
                             </div>
                             <div class="text-right">
                                 <p class="text-[11px] text-[#9ca3af] font-mono-sp mb-1">Last Updated</p>
-                                <p class="text-[13px] font-semibold text-[#374151]">@yield('last_updated', 'March 2026')</p>
+                                <p class="text-[13px] font-semibold text-[#374151]">@yield('last_updated',now()->format('F Y'))</p>
                             </div>
                         </div>
                     </div>

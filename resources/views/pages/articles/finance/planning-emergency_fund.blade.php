@@ -10,11 +10,8 @@
 
 <section class="bg-surface border-b border-[var(--border)] py-20">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="grid lg:grid-cols-2 gap-14 items-start">
-
             <div>
-
                 <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
                     <span class="w-6 h-px bg-emerald-600"></span>
                     The Foundation
@@ -48,14 +45,10 @@
                     Start with a <strong class="text-[var(--text-primary)]">$1,000 starter fund</strong>.
                     Once debt is gone, build the full buffer.
                 </p>
-
             </div>
 
-
             <div>
-
                 <div class="border-l-4 border-amber-500 bg-white p-8 shadow-sm mb-6">
-
                     <div class="fonttitle text-5xl font-black text-amber-500 mb-2">
                         3–6×
                     </div>
@@ -63,9 +56,7 @@
                     <div class="text-xs uppercase tracking-wider text-muted">
                         Monthly essential expenses held in savings
                     </div>
-
                 </div>
-
 
                 <ul class="space-y-3 text-sm text-muted">
 
@@ -93,21 +84,14 @@
                         <span class="text-emerald-600 font-bold">→</span>
                         <span>A starter fund of $1,000 is better than zero</span>
                     </li>
-
                 </ul>
-
             </div>
-
         </div>
     </div>
 </section>
 
-
-
 <section class="bg-white border-b border-[var(--border)] py-20">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
             <span class="w-6 h-px bg-emerald-600"></span>
             Build Your Fund
@@ -116,7 +100,6 @@
         <h2 class="fonttitle text-3xl lg:text-4xl font-bold mb-10">
             3-Phase Emergency Fund Strategy
         </h2>
-
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
@@ -144,28 +127,20 @@
             </div>
 
             @endforeach
-
         </div>
-
     </div>
 </section>
 
 @endsection
 
-
-
 @section('related')
 
 <section class="bg-white border-t border-[var(--border)] py-16">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600 mb-8">
             Related Articles
         </div>
-
         <div class="grid md:grid-cols-3 gap-6">
-
             <a href="{{ route('finance.planning.budget') }}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
 
                 <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
@@ -183,9 +158,7 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
-
 
             <a href="{{ route('finance.building.debt') }}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
 
@@ -204,9 +177,7 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
-
 
             <a href="{{ route('finance.behavior.decision_bias') }}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
 
@@ -225,13 +196,9 @@
                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                     Read More →
                 </span>
-
             </a>
-
         </div>
-
     </div>
-
 </section>
 
 @endsection

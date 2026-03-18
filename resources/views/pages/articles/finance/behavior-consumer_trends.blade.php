@@ -3,7 +3,7 @@
 @section('title', 'Consumer Trends — How Markets Shape Your Spending')
 @section('breadcrumb', 'Consumer Trends')
 @section('eyebrow', 'Behavior · Market Context')
-@section('page_title', 'Consumer Trends 2026')
+@section('page_title', 'Consumer Trends'.now()->year)
 @section('page_lead', 'Understanding macro consumer trends protects your purchasing power, informs your investment thesis, and reveals the structural forces shaping what you earn and what you pay.')
 
 @section('content')
@@ -18,7 +18,7 @@
 
                 <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-indigo">
                     <span class="w-[22px] h-[1px] bg-indigo block"></span>
-                    2026 Landscape
+                    {{ now()->year }} Landscape
                 </div>
 
                 <h2 class="fonttitle text-4xl lg:text-5xl text-navy mb-8 leading-tight">
@@ -26,7 +26,7 @@
                 </h2>
 
                 <p class="text-[15px] text-muted leading-relaxed mb-5">
-                    Consumer spending patterns in 2026 are shaped by three dominant forces:
+                    Consumer spending patterns in {{ now()->year }} are shaped by three dominant forces:
                     <strong class="text-navy">post-pandemic normalisation</strong>,
                     <strong class="text-navy">AI-driven productivity shifts</strong>,
                     and the ongoing <strong class="text-navy">cost-of-living pressure</strong>
@@ -50,7 +50,7 @@
 
                     <p class="text-[13px] text-muted leading-relaxed">
                         The average US household spends <strong class="text-navy">$273/month</strong>
-                        on subscriptions in 2026, up from $86 in 2018.
+                        on subscriptions in {{ now()->year }}, up from $86 in 2018.
                         Most households can cut 30–40% without noticing the loss.
                     </p>
 

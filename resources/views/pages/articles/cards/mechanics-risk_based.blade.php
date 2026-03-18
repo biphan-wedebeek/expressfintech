@@ -6,10 +6,10 @@
 @section('hero_section_label', 'Card Mechanics')
 @section('hero_title', 'Risk-based Pricing')
 @section('hero_subtitle', 'How issuers price credit risk — the models that determine why two people applying for the same card receive different APRs, limits, and approval decisions.')
-@section('hero_date', 'March 2026')
+@section('hero_date', now()->format('F Y'))
 @section('hero_read_time', '8 min read')
 @section('article_badge', 'Card Mechanics')
-@section('last_updated', 'March 2026')
+@section('last_updated', now()->format('F Y'))
 @section('nav_risk', 'active')
 @section('sidebar_stats')
     <div class="space-y-3">

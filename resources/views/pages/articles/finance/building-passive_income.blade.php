@@ -9,13 +9,9 @@
  @section('content')
 
  <section class="bg-surface border-b border-[var(--border)] py-20">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="grid lg:grid-cols-2 gap-14 items-start">
-
              <div>
-
                  <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
                      <span class="w-6 h-px bg-emerald-600"></span>
                      The Concept
@@ -44,15 +40,10 @@
                      </p>
 
                  </div>
-
              </div>
 
-
-
              <div>
-
                  <div class="border-l-4 border-emerald-500 bg-white p-6 mb-4">
-
                      <div class="fonttitle text-5xl font-black text-emerald-600 mb-2">
                          4–7%
                      </div>
@@ -60,12 +51,9 @@
                      <div class="text-xs uppercase tracking-wider text-muted">
                          Typical annual yield from diversified dividend portfolios
                      </div>
-
                  </div>
 
-
                  <ul class="space-y-3 text-sm text-muted">
-
                      <li class="flex gap-3">
                          <span class="text-emerald-600 font-bold">→</span>
                          <span><strong>Dividend index funds</strong> — low cost, diversified</span>
@@ -90,25 +78,15 @@
                          <span class="text-emerald-600 font-bold">→</span>
                          <span><strong>Digital products</strong> — courses, templates, SaaS</span>
                      </li>
-
                  </ul>
-
              </div>
-
          </div>
-
      </div>
-
  </section>
 
-
-
  <section class="bg-white border-b border-[var(--border)] py-20">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
              <div class="bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
 
                  <div class="text-4xl font-black text-emerald-200 mb-4">01</div>
@@ -120,12 +98,9 @@
                  <p class="text-sm text-muted">
                      Funds like dividend ETFs diversify income across hundreds of companies.
                  </p>
-
              </div>
 
-
              <div class="bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
-
                  <div class="text-4xl font-black text-emerald-200 mb-4">02</div>
 
                  <h3 class="font-semibold mb-2">
@@ -135,14 +110,10 @@
                  <p class="text-sm text-muted">
                      Real estate investment trusts distribute most income as dividends.
                  </p>
-
              </div>
 
-
              <div class="bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
-
                  <div class="text-4xl font-black text-emerald-200 mb-4">03</div>
-
                  <h3 class="font-semibold mb-2">
                      Maximise HYSA Yield
                  </h3>
@@ -150,14 +121,10 @@
                  <p class="text-sm text-muted">
                      High-yield savings accounts provide safe passive income on cash reserves.
                  </p>
-
              </div>
 
-
              <div class="bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
-
                  <div class="text-4xl font-black text-emerald-200 mb-4">04</div>
-
                  <h3 class="font-semibold mb-2">
                      Explore Rental Property
                  </h3>
@@ -165,31 +132,21 @@
                  <p class="text-sm text-muted">
                      Buy-and-hold real estate can generate strong cash flow over time.
                  </p>
-
              </div>
-
          </div>
-
      </div>
-
  </section>
 
  @endsection
 
-
-
  @section('related')
 
  <section class="bg-white border-t border-[var(--border)] py-16">
-
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
          <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600 mb-8">
              Related Articles
          </div>
-
          <div class="grid md:grid-cols-3 gap-6">
-
              <a href="{{route('finance.behavior.decision_bias')}}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
 
                  <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
@@ -207,9 +164,7 @@
                  <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                      Read More →
                  </span>
-
              </a>
-
 
              <a href="{{route('finance.building.diversification')}}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
 
@@ -228,9 +183,7 @@
                  <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                      Read More →
                  </span>
-
              </a>
-
 
              <a href="{{route('finance.building.independence')}}" class="block bg-surface border border-[var(--border)] p-6 hover:shadow-md transition">
 
@@ -249,13 +202,9 @@
                  <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
                      Read More →
                  </span>
-
              </a>
-
          </div>
-
      </div>
-
  </section>
 
  @endsection
