@@ -13,14 +13,9 @@ return new class extends Migration
 
             $table->enum('direction', ['incoming_advertiser', 'outgoing_wedebeek']);
 
-            $table->foreignId('advertiser_id')
+            $table->foreignId('banner_id')
                 ->nullable()
-                ->constrained('fintech_advertisers')
-                ->nullOnDelete();
-
-            $table->foreignId('offer_id')
-                ->nullable()
-                ->constrained('fintech_offers')
+                ->constrained('fintech_banners')
                 ->nullOnDelete();
 
             $table->foreignId('tracklink_id')
@@ -28,16 +23,9 @@ return new class extends Migration
                 ->constrained('fintech_tracklinks')
                 ->nullOnDelete();
 
-            $table->foreignId('conversion_id')
-                ->nullable()
-                ->constrained('fintech_offer_conversions')
-                ->nullOnDelete();
-
-            $table->string('clickid')->nullable();
             $table->text('request_url')->nullable();
-            $table->longText('request_payload')->nullable();
-            $table->integer('response_code')->nullable();
-            $table->longText('response_body')->nullable();
+            $table->longText('response')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

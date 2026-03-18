@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\OfferResource\Pages;
+namespace App\Filament\Resources\BannerResource\Pages;
 
-use App\Filament\Resources\OfferResource;
+use App\Filament\Resources\BannerResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListOffers extends ListRecords
+class ListBanners extends ListRecords
 {
-    protected static string $resource = OfferResource::class;
+    protected static string $resource = BannerResource::class;
 
     protected function getHeaderActions(): array
     {
