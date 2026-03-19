@@ -72,8 +72,9 @@ class PageController extends Controller
     public function cardsStrategyTactics()   { return view('pages.articles.cards.strategy-tactics'); }
 
     // Credit Cards  Market & Regulation
-    public function cardsMarketComparison() { return view('pages.articles.cards.market-comparison'); }
-    public function cardsMarketConsumer()   { return view('pages.articles.cards.market-consumer'); }
+    public function cardsMarketComparison()   { return view('pages.articles.cards.market-comparison'); }
+    public function cardsMarketConsumer()     { return view('pages.articles.cards.market-consumer'); }
+    public function cardsMarketExperianFico() { return view('pages.articles.cards.market-experian_fico'); }
 
     // Mortgages — Fundamentals
     public function mortgagesFundamentalsFixedVsVariable() { return view('pages.articles.mortgages.fundamentals-fixed_vs_variable'); }
