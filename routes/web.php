@@ -75,7 +75,7 @@ Route::get('/credit-cards/strategy/card-churning',           [PageController::cl
 // Credit Cards Market & Regulation
 Route::get('/credit-cards/market/network-comparison',    [PageController::class, 'cardsMarketComparison'])->name('cards.market-comparison');
 Route::get('/credit-cards/market/consumer-protection',   [PageController::class, 'cardsMarketConsumer'])->name('cards.market-consumer');
-
+Route::get('/credit-cards/market/free-fico-score',       [PageController::class, 'cardsMarketExperianFico'])->name('cards.market-experian_fico');
 
 // Mortgages Fundamentals
 Route::get('/mortgages/fundamentals/fixed-vs-variable',     [PageController::class, 'mortgagesFundamentalsFixedVsVariable'])->name('mortgages.fundamentals.fixed_vs_variable');

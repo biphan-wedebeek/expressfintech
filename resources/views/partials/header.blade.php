@@ -122,15 +122,16 @@
         'cards.strategy.strategy':  '{{ route("cards.strategy-strategy") }}',
         'cards.strategy.tactics':   '{{ route("cards.strategy-tactics") }}',
 
-        'cards.market.comparison': '{{ route("cards.market-comparison") }}',
-        'cards.market.consumer':   '{{ route("cards.market-consumer") }}',
+        'cards.market.comparison':    '{{ route("cards.market-comparison") }}',
+        'cards.market.consumer':      '{{ route("cards.market-consumer") }}',
+        'cards.market.experian_fico': '{{ route("cards.market-experian_fico") }}',
 
         // Mortgages Fundamentals
-        'mortgages.fundamentals.fixed_vs_variable': '{{ route("mortgages.fundamentals.fixed_vs_variable") }}',
+        'mortgages.fundamentals.fixed_vs_variable':        '{{ route("mortgages.fundamentals.fixed_vs_variable") }}',
         'mortgages.fundamentals.amortization_structure':   '{{ route("mortgages.fundamentals.amortization_structure") }}',
-        'mortgages.fundamentals.underwriting': '{{ route("mortgages.fundamentals.underwriting") }}',
-        'mortgages.fundamentals.ratio':        '{{ route("mortgages.fundamentals.ratio") }}',
-        'mortgages.fundamentals.interest_rate':'{{ route("mortgages.fundamentals.interest_rate") }}',
+        'mortgages.fundamentals.underwriting':             '{{ route("mortgages.fundamentals.underwriting") }}',
+        'mortgages.fundamentals.ratio':                    '{{ route("mortgages.fundamentals.ratio") }}',
+        'mortgages.fundamentals.interest_rate':            '{{ route("mortgages.fundamentals.interest_rate") }}',
         
         // Mortgages Products
         'mortgages.products.conventional':   '{{ route("mortgages.products.conventional") }}',
@@ -232,8 +233,9 @@
                 {l:'Card Churning Tactics',      h:R['cards.strategy.tactics']},
             ]},
             c3:{title:'Market & Regulation',items:[
-                {l:'Card Network Comparison',  h:R['cards.market.comparison']},
-                {l:'Consumer Protection Laws', h:R['cards.market.consumer']},
+                {l:'Card Network Comparison',     h:R['cards.market.comparison']},
+                {l:'Consumer Protection Laws',    h:R['cards.market.consumer']},
+                {l:'Free FICO® Score — Experian', h:R['cards.market.experian_fico'] },
             ]},
             featured:[ ]
         },
