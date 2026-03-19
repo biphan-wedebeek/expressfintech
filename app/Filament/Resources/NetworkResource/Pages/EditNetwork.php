@@ -17,6 +17,11 @@ class EditNetwork extends EditRecord
         ];
     }
 
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
+
     protected function mutateFormDataBeforeFill(array $data): array
     {
         $mapped = NetworkResource::parseFinValueToFixedFields($data['fin_value'] ?? null);
@@ -28,6 +33,7 @@ class EditNetwork extends EditRecord
     {
         $data['fin_link'] = NetworkResource::buildFinLinkFromPairs($data);
         $data['fin_value'] = NetworkResource::buildFinValueFromPairs($data);
+        $data['fin_subid'] = NetworkResource::buildTrackingFollowFromData($data);
 
         unset(
             $data['click_id_param'],
