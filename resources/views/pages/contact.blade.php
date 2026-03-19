@@ -39,8 +39,7 @@
                 <div class="flex flex-col gap-3 w-full max-w-sm">
                     @foreach([
                         ['indigo','Email Support','support@expressfintech.com','<path d="M2 4a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V4z" stroke="#818cf8" stroke-width="1.5"/><path d="M2 6l8 5 8-5" stroke="#818cf8" stroke-width="1.5" stroke-linecap="round"/>'],
-                        ['amber','Phone Line','+1 (888) 400-FINTECH','<path d="M5 2.5A1.5 1.5 0 016.5 1h7A1.5 1.5 0 0115 2.5v15a1.5 1.5 0 01-1.5 1.5h-7A1.5 1.5 0 014 17.5v-15z" stroke="#d97706" stroke-width="1.5"/><circle cx="10" cy="16" r="1" fill="#d97706"/>'],
-                        ['green','Live Chat','Available Mon–Fri, 9am–6pm EST','<path d="M2 10C2 5.58 5.58 2 10 2s8 3.58 8 8-3.58 8-8 8c-1.2 0-2.34-.27-3.36-.74L2 18l.74-4.64A7.95 7.95 0 012 10z" stroke="#10b981" stroke-width="1.5"/>'],
+                        ['amber','Phone Line','+1 484 569 1268','<path d="M5 2.5A1.5 1.5 0 016.5 1h7A1.5 1.5 0 0115 2.5v15a1.5 1.5 0 01-1.5 1.5h-7A1.5 1.5 0 014 17.5v-15z" stroke="#d97706" stroke-width="1.5"/><circle cx="10" cy="16" r="1" fill="#d97706"/>'],
                     ] as [$color,$title,$sub,$svgPath])
                         <div class="flex items-center gap-4 rounded-xl px-5 py-4 transition-all duration-200 cursor-default"
                              style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);"
@@ -341,8 +340,7 @@
             </h4>
             @foreach([
                 ['blue','Email','support@expressfintech.com','Response within 24 hours','<path d="M2 4a2 2 0 012-2h10a2 2 0 012 2v9a2 2 0 01-2 2H4a2 2 0 01-2-2V4z" stroke="#3b82f6" stroke-width="1.4"/><path d="M2 6l7 5 7-5" stroke="#3b82f6" stroke-width="1.4" stroke-linecap="round"/>','#eff6ff'],
-                ['green','Phone','+1 (888) 400-3468','Mon–Fri, 9am–6pm EST','<path d="M3.5 3A1.5 1.5 0 015 1.5h8A1.5 1.5 0 0114.5 3v12A1.5 1.5 0 0113 16.5H5A1.5 1.5 0 013.5 15V3z" stroke="#10b981" stroke-width="1.4"/><circle cx="9" cy="14" r=".8" fill="#10b981"/>','#f0fdf4'],
-                ['amber','Live Chat','Chat with an expert now','Instant response during hours','<path d="M2 10C2 5.58 5.58 2 9 2s7 3.58 7 8-3.58 8-7 8c-1.05 0-2.05-.23-2.93-.66L2 17l.66-4.07A7.95 7.95 0 012 10z" stroke="#d97706" stroke-width="1.4"/>','#fffbeb'],
+                ['green','Phone','+1 484 569 1268','Mon–Fri, 9am–6pm EST','<path d="M3.5 3A1.5 1.5 0 015 1.5h8A1.5 1.5 0 0114.5 3v12A1.5 1.5 0 0113 16.5H5A1.5 1.5 0 013.5 15V3z" stroke="#10b981" stroke-width="1.4"/><circle cx="9" cy="14" r=".8" fill="#10b981"/>','#f0fdf4'],
                 ['purple','Office Hours','Monday – Friday','9:00 AM – 6:00 PM Eastern','<circle cx="9" cy="9" r="7" stroke="#7c3aed" stroke-width="1.4"/><path d="M9 5v4l3 3" stroke="#7c3aed" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>','#f5f3ff'],
             ] as [$color,$label,$value,$sub,$svgPath,$iconBg])
                 <div class="flex items-start gap-3.5 py-3.5" style="border-bottom:1px solid var(--border);">
