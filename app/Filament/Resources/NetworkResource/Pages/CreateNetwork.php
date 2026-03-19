@@ -13,6 +13,7 @@ class CreateNetwork extends CreateRecord
     {
         $data['fin_link'] = NetworkResource::buildFinLinkFromPairs($data);
         $data['fin_value'] = NetworkResource::buildFinValueFromPairs($data);
+        $data['fin_subid'] = NetworkResource::buildTrackingFollowFromData($data);
 
         unset(
             $data['click_id_param'],
@@ -26,5 +27,10 @@ class CreateNetwork extends CreateRecord
         );
 
         return $data;
+    }
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
     }
 }

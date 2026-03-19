@@ -58,8 +58,10 @@ class CategoryResource extends Resource
                             ->columns(2)
                             ->defaultItems(0)
                             ->collapsible()
+                            ->collapsed()
                             ->itemLabel(fn (array $state): ?string => $state['name'] ?? 'Subcategory'),
                     ]),
+    
             ]);
     }
 
@@ -84,7 +86,7 @@ class CategoryResource extends Resource
                     ->boolean(),
 
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime('Y-m-d H:i')
+                    ->dateTime('Y-m-d')
                     ->sortable(),
             ])
             ->actions([

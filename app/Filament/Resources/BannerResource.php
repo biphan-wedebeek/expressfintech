@@ -29,6 +29,11 @@ class BannerResource extends Resource
 
                         Forms\Components\Grid::make(2)
                             ->schema([
+                                // ===== Row: Title | Tracking URL =====
+                                Forms\Components\TextInput::make('title')
+                                    ->label('Title')
+                                    ->maxLength(255)
+                                    ->placeholder('Banner title'),
 
                                 // Network
                                 Forms\Components\Select::make('network_id')
@@ -77,12 +82,6 @@ class BannerResource extends Resource
                                     ])
                                     ->required(),
 
-                                // ===== Row: Title | Tracking URL =====
-                                Forms\Components\TextInput::make('title')
-                                    ->label('Title')
-                                    ->maxLength(255)
-                                    ->placeholder('Banner title'),
-
                                 Forms\Components\Textarea::make('tracking_url')
                                     ->label('Tracking URL')
                                     ->rows(2)
@@ -91,7 +90,7 @@ class BannerResource extends Resource
                                 // ===== Row: Description | Image =====
                                 Forms\Components\Textarea::make('description')
                                     ->label('Description')
-                                    ->rows(3),
+                                    ->rows(2),
 
                                 Forms\Components\FileUpload::make('image_url')
                                     ->label('Image')
@@ -137,20 +136,20 @@ class BannerResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                Tables\Columns\TextColumn::make('subCategory.name')
-                    ->label('Sub Category')
-                    ->searchable()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('subCategory.name')
+                //     ->label('Sub Category')
+                //     ->searchable()
+                //     ->sortable(),
 
-                Tables\Columns\TextColumn::make('placement')
-                    ->badge()
-                    ->formatStateUsing(fn ($state) => match ($state) {
-                        1 => 'TOP',
-                        2 => 'RIGHT',
-                        3 => 'BOTTOM',
-                        4 => 'LEFT',
-                        default => '-',
-                    }),
+                // Tables\Columns\TextColumn::make('placement')
+                //     ->badge()
+                //     ->formatStateUsing(fn ($state) => match ($state) {
+                //         1 => 'TOP',
+                //         2 => 'RIGHT',
+                //         3 => 'BOTTOM',
+                //         4 => 'LEFT',
+                //         default => '-',
+                //     }),
 
                 Tables\Columns\TextColumn::make('tracking_url')
                     ->label('Tracking URL')
@@ -162,7 +161,7 @@ class BannerResource extends Resource
                     ->boolean(),
 
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime('Y-m-d H:i')
+                    ->dateTime('Y-m-d')
                     ->sortable(),
             ])
             ->filters([
@@ -174,13 +173,13 @@ class BannerResource extends Resource
                     ->label('Category')
                     ->relationship('category', 'name'),
 
-                Tables\Filters\SelectFilter::make('placement')
-                    ->options([
-                        1 => 'TOP',
-                        2 => 'RIGHT',
-                        3 => 'BOTTOM',
-                        4 => 'LEFT',
-                    ]),
+                // Tables\Filters\SelectFilter::make('placement')
+                //     ->options([
+                //         1 => 'TOP',
+                //         2 => 'RIGHT',
+                //         3 => 'BOTTOM',
+                //         4 => 'LEFT',
+                //     ]),
 
                 Tables\Filters\SelectFilter::make('status')
                     ->options([

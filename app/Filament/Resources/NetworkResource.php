@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\HtmlString;
 
 class NetworkResource extends Resource
 {
@@ -36,16 +37,17 @@ class NetworkResource extends Resource
 
                                 Forms\Components\TextInput::make('fin_subid')
                                     ->label('Tracking Follow')
-                                    ->nullable()
-                                    ->maxLength(255)
-                                    ->placeholder('&sub_aff_id=#pubid#&aff_click_id='),
+                                    ->disabled()
+                                    ->dehydrated(false)
+                                    ->formatStateUsing(fn ($state, $get) => static::buildTrackingFollowFromGetter($get))
+                                    ->live(),
 
                                 Forms\Components\TextInput::make('id_postback')
                                     ->label('Order')
                                     ->numeric()
                                     ->default(0)
                                     ->minValue(0)
-                                    ->live(),
+                                    ->live(debounce: 300),
 
                                 Forms\Components\Toggle::make('status')
                                     ->label('Status')
@@ -54,82 +56,103 @@ class NetworkResource extends Resource
                             ]),
                     ]),
 
-                    Forms\Components\Section::make('Postback Config')
-                        ->schema([
-                            Forms\Components\Grid::make(2)
-                                ->schema([
-                                    Forms\Components\Fieldset::make('Click ID')
-                                        ->schema([
-                                            Forms\Components\Grid::make(2)
-                                                ->schema([
-                                                    Forms\Components\TextInput::make('click_id_param')
-                                                        ->label('Param Name')
-                                                        ->placeholder('clickid')
-                                                        ->live(),
+                Forms\Components\Section::make('Postback Config')
+                    ->schema([
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\Fieldset::make('Click ID')
+                                    ->schema([
+                                        Forms\Components\Grid::make(2)
+                                            ->schema([
+                                                Forms\Components\TextInput::make('click_id_param')
+                                                    ->label('Param Name')
+                                                    ->placeholder('clickid')
+                                                    ->required()
+                                                    ->live(debounce: 300),
 
-                                                    Forms\Components\TextInput::make('click_id_value')
-                                                        ->label('Value')
-                                                        ->placeholder('{aff_click_id}')
-                                                        ->live(),
-                                                ]),
-                                        ])
-                                        ->columnSpan(1),
+                                                Forms\Components\TextInput::make('click_id_value')
+                                                    ->label('Value')
+                                                    ->placeholder('{aff_click_id}')
+                                                    ->required()
+                                                    ->rule('regex:' . static::macroPattern())
+                                                    ->validationMessages([
+                                                        'required' => 'Clickid value is required.',
+                                                        'regex' => 'Clickid must be a valid macro (e.g. {clickid} or {{clickid}}).',
+                                                    ])
+                                                    ->live(debounce: 300),
+                                            ]),
+                                    ])
+                                    ->columnSpan(1),
 
-                                    Forms\Components\Fieldset::make('Credit')
-                                        ->schema([
-                                            Forms\Components\Grid::make(2)
-                                                ->schema([
-                                                    Forms\Components\TextInput::make('credit_param')
-                                                        ->label('Param Name')
-                                                        ->placeholder('payout')
-                                                        ->live(),
+                                Forms\Components\Fieldset::make('Credit')
+                                    ->schema([
+                                        Forms\Components\Grid::make(2)
+                                            ->schema([
+                                                Forms\Components\TextInput::make('credit_param')
+                                                    ->label('Param Name')
+                                                    ->placeholder('payout')
+                                                    ->required()
+                                                    ->live(debounce: 300),
 
-                                                    Forms\Components\TextInput::make('credit_value')
-                                                        ->label('Value')
-                                                        ->placeholder('{payout}')
-                                                        ->live(),
-                                                ]),
-                                        ])
-                                        ->columnSpan(1),
-                                ]),
+                                                Forms\Components\TextInput::make('credit_value')
+                                                    ->label('Value')
+                                                    ->placeholder('{payout}')
+                                                    ->required()
+                                                    ->rule('regex:' . static::macroPattern())
+                                                    ->validationMessages([
+                                                        'required' => 'Credit value is required.',
+                                                        'regex' => 'Credit must be a valid macro (e.g. {payout} or {{payout}}).',
+                                                    ])
+                                                    ->live(debounce: 300),
+                                            ]),
+                                    ])
+                                    ->columnSpan(1),
+                            ]),
 
-                            Forms\Components\Grid::make(2)
-                                ->schema([
-                                    Forms\Components\Fieldset::make('Other')
-                                        ->schema([
-                                            Forms\Components\Grid::make(2)
-                                                ->schema([
-                                                    Forms\Components\TextInput::make('other_param')
-                                                        ->label('Param Name')
-                                                        ->placeholder('sub1')
-                                                        ->live(),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\Fieldset::make('Pub ID')
+                                    ->schema([
+                                        Forms\Components\Grid::make(2)
+                                            ->schema([
+                                                Forms\Components\TextInput::make('other_param')
+                                                    ->label('Param Name')
+                                                    ->placeholder('pubid')
+                                                    ->live(debounce: 300),
 
-                                                    Forms\Components\TextInput::make('other_value')
-                                                        ->label('Value')
-                                                        ->placeholder('{sub1}')
-                                                        ->live(),
-                                                ]),
-                                        ])
-                                        ->columnSpan(1),
+                                                Forms\Components\TextInput::make('other_value')
+                                                    ->label('Value')
+                                                    ->placeholder('{pubid}')
+                                                    ->rule('regex:' . static::macroPatternAllowEmpty())
+                                                    ->validationMessages([
+                                                        'regex' => 'Pub ID must be a valid macro (e.g. {pubid} or {{pubid}}).',
+                                                    ])
+                                                    ->live(debounce: 300),
+                                            ]),
+                                    ])
+                                    ->columnSpan(1),
 
-                                    Forms\Components\Fieldset::make('Sale Amount')
-                                        ->schema([
-                                            Forms\Components\Grid::make(2)
-                                                ->schema([
-                                                    Forms\Components\TextInput::make('sale_amount_param')
-                                                        ->label('Param Name')
-                                                        ->placeholder('payout_amount')
-                                                        ->live(),
+                                Forms\Components\Fieldset::make('Sale Amount')
+                                    ->schema([
+                                        Forms\Components\Grid::make(2)
+                                            ->schema([
+                                                Forms\Components\TextInput::make('sale_amount_param')
+                                                    ->label('Param Name')
+                                                    ->placeholder('sale_amount')
+                                                    ->live(debounce: 300),
 
-                                                    Forms\Components\TextInput::make('sale_amount_value')
-                                                        ->label('Value')
-                                                        ->placeholder('{payout_amount}')
-                                                        ->live(),
-                                                ]),
-                                        ])
-                                        ->columnSpan(1),
-                                ]),
-                                
+                                                Forms\Components\TextInput::make('sale_amount_value')
+                                                    ->label('Value')
+                                                    ->placeholder('{sale_amount}')
+                                                    ->rule('regex:' . static::macroPatternAllowEmpty())
+                                                    ->validationMessages([
+                                                        'regex' => 'Sale amount must be a valid macro (e.g. {sale_amount} or {{sale_amount}}).',
+                                                    ])
+                                                    ->live(debounce: 300),
+                                            ]),
+                                    ])
+                                    ->columnSpan(1),
+                            ]),
 
                         Forms\Components\Grid::make(2)
                             ->schema([
@@ -137,19 +160,20 @@ class NetworkResource extends Resource
                                     ->label('Pass')
                                     ->required()
                                     ->default('xx')
-                                    ->live(),
+                                    ->live(debounce: 300),
 
-                                Forms\Components\TextInput::make('preview_link')
+                                Forms\Components\Placeholder::make('preview_link')
                                     ->label('URL')
-                                    ->disabled()
-                                    ->dehydrated(false)
-                                    ->formatStateUsing(fn ($state, $get) => 
-                                        static::generateLinkPreviewFromFixedFields($get)
-                                    ),
+                                    ->content(fn ($get) => new HtmlString(
+                                        '<a href="' . e($url = static::generateLinkPreviewFromFixedFields($get)) . '" 
+                                            target="_blank" 
+                                            style="color: #2563eb; text-decoration: underline;"
+                                            class="break-all">
+                                            ' . e($url) . '
+                                        </a>'
+                                    )),
                             ]),
                     ]),
-
-                    
             ]);
     }
 
@@ -175,7 +199,7 @@ class NetworkResource extends Resource
                     ->boolean(),
 
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime('Y-m-d H:i')
+                    ->dateTime('Y-m-d')
                     ->sortable()
                     ->toggleable(),
             ])
@@ -208,8 +232,17 @@ class NetworkResource extends Resource
         ];
     }
 
+    public static function macroPattern(): string
+    {
+        return '/^(?:\{\{\w+\}\}|\[\[\w+\]\]|##\w+##|!!\w+!!|""\w+""|\$\$\w+\$\$|%%\w+%%|&&\w+&&|\'\'\w+\'\'|\(\(\w+\)\)|\*\*\w+\*\*|\+\+\w+\+\+|,,\w+,,|--\w+--|\.\.\w+\.\.|\/\/\w+\/\/|::\w+::|;;\w+;;|<<\w+>>|==\w+==|\?\?\w+\?\?|@@\w+@@|\\\\\w+\\\\|\^\^\w+\^\^|``\w+``|\|\|\w+\|\||~~\w+~~|__\w+__|\{\w+\}|\[\w+\]|\#\w+\#|!\w+!|"\w+"|\$\w+\$|%\w+%|&\w+&|\'\w+\'|\(\w+\)|\*\w+\*|\+\w+\+|,\w+,|-\w+-|\/\w+\/|:\w+:|;\w+;|<\w+>|=\w+=|\?\w+\?|@\w+@|\\\\\w+\\\\|\^\w+\^|_\w+_|`\w+`|\|\w+\||~\w+~)$/';
+    }
 
-        public static function generateLinkPreviewFromFixedFields(callable $get): string
+    public static function macroPatternAllowEmpty(): string
+    {
+        return '/^$|(?:\{\{\w+\}\}|\[\[\w+\]\]|##\w+##|!!\w+!!|""\w+""|\$\$\w+\$\$|%%\w+%%|&&\w+&&|\'\'\w+\'\'|\(\(\w+\)\)|\*\*\w+\*\*|\+\+\w+\+\+|,,\w+,,|--\w+--|\.\.\w+\.\.|\/\/\w+\/\/|::\w+::|;;\w+;;|<<\w+>>|==\w+==|\?\?\w+\?\?|@@\w+@@|\\\\\w+\\\\|\^\^\w+\^\^|``\w+``|\|\|\w+\|\||~~\w+~~|__\w+__|\{\w+\}|\[\w+\]|\#\w+\#|!\w+!|"\w+"|\$\w+\$|%\w+%|&\w+&|\'\w+\'|\(\w+\)|\*\w+\*|\+\w+\+|,\w+,|-\w+-|\/\w+\/|:\w+:|;\w+;|<\w+>|=\w+=|\?\w+\?|@\w+@|\\\\\w+\\\\|\^\w+\^|_\w+_|`\w+`|\|\w+\||~\w+~)$/';
+    }
+
+    public static function generateLinkPreviewFromFixedFields(callable $get): string
     {
         $base = rtrim(config('app.url'), '/') . '/postback/banner/';
         $id = $get('id_postback') ?: 0;
@@ -222,11 +255,9 @@ class NetworkResource extends Resource
             ->map(fn ($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
             ->implode('&');
 
-        if ($query === '') {
-            return "{$base}{$id}/{$pass}/";
-        }
-
-        return "{$base}{$id}/{$pass}/?{$query}";
+        return $query === ''
+            ? "{$base}{$id}/{$pass}/"
+            : "{$base}{$id}/{$pass}/?{$query}";
     }
 
     public static function collectFixedPostbackPairsFromGetter(callable $get): array
@@ -285,11 +316,45 @@ class NetworkResource extends Resource
             ->map(fn ($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
             ->implode('&');
 
-        if ($query === '') {
-            return "{$base}{$id}/{$pass}/";
+        return $query === ''
+            ? "{$base}{$id}/{$pass}/"
+            : "{$base}{$id}/{$pass}/?{$query}";
+    }
+
+    public static function buildTrackingFollowFromGetter(callable $get): string
+    {
+        $pubIdKey = trim((string) ($get('other_param') ?? ''));
+        $clickIdKey = trim((string) ($get('click_id_param') ?? ''));
+
+        $subid = '';
+
+        if ($pubIdKey !== '') {
+            $subid .= "&{$pubIdKey}=#pubid#";
         }
 
-        return "{$base}{$id}/{$pass}/?{$query}";
+        if ($clickIdKey !== '') {
+            $subid .= "&{$clickIdKey}=";
+        }
+
+        return $subid;
+    }
+
+    public static function buildTrackingFollowFromData(array $data): string
+    {
+        $pubIdKey = trim((string) ($data['other_param'] ?? ''));
+        $clickIdKey = trim((string) ($data['click_id_param'] ?? ''));
+
+        $subid = '';
+
+        if ($pubIdKey !== '') {
+            $subid .= "&{$pubIdKey}=#pubid#";
+        }
+
+        if ($clickIdKey !== '') {
+            $subid .= "&{$clickIdKey}=";
+        }
+
+        return $subid;
     }
 
     public static function buildFinValueFromPairs(array $data): string
@@ -299,11 +364,8 @@ class NetworkResource extends Resource
         $flat = [];
 
         foreach ($pairs as $pair) {
-            $key = trim($pair['key'] ?? '');
-            $value = $pair['value'] ?? '';
-
-            $flat[] = $key;
-            $flat[] = $value;
+            $flat[] = trim($pair['key'] ?? '');
+            $flat[] = $pair['value'] ?? '';
         }
 
         return serialize($flat);
