@@ -9,7 +9,7 @@ class Affiliate extends Model
 {
     use HasFactory;
 
-    protected $table = 'app_affiliates';
+    protected $table = 'fintech_affiliates';
     protected $fillable = [
         'firstname',
         'lastname',
@@ -20,17 +20,36 @@ class Affiliate extends Model
         'postback_url',
         'click_param_name',
         'status',
-        'notes',
     ];
+
 
     public function getFullNameAttribute(): string
     {
         return trim("{$this->firstname} {$this->lastname}");
     }
-
-    // Relationship với tracklinks
     public function tracklinks()
     {
-        return $this->hasMany(Tracklink::class, 'aff_id', 'id');
+        return $this->hasMany(Tracklink::class, 'affiliate_id');
+    }
+
+    public function offers()
+    {
+        return $this->belongsToMany(
+            \App\Models\Offer::class,
+            'fintech_affiliate_offer',
+            'affiliate_id',
+            'offer_id'
+        )->withTimestamps();
+    }
+
+    protected static function booted(): void
+    {
+        static::created(function (Affiliate $affiliate) {
+            $offerIds = Offer::query()->pluck('id');
+
+            if ($offerIds->isNotEmpty()) {
+                $affiliate->offers()->syncWithoutDetaching($offerIds->all());
+            }
+        });
     }
 }

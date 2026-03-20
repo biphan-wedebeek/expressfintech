@@ -96,7 +96,10 @@ class BannerResource extends Resource
                                     ->label('Image')
                                     ->image()
                                     ->directory('banners')
-                                    ->required(),
+                                    ->required()
+                                    ->minSize(300)
+                                    ->maxSize(3072)
+                                    ->helperText('Max size: 3MB.'),
 
                                 // Status
                                 Forms\Components\Toggle::make('status')

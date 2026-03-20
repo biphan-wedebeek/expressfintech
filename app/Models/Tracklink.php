@@ -15,6 +15,10 @@ class Tracklink extends Model
         'user_id',
         'banner_id',
         'banner_name',
+        'offer_id',
+        'affiliate_id',
+        'sub1', // affsource
+        'sub2', // affclickid
         'ip_address',
         'flead',
         'status',
@@ -45,5 +49,13 @@ class Tracklink extends Model
     public function postbackLogs()
     {
         return $this->hasMany(PostbackLog::class, 'tracklink_id');
+    }
+    public function offer()
+    {
+        return $this->belongsTo(Offer::class, 'offer_id');
+    }
+    public function affiliate()
+    {
+        return $this->belongsTo(Affiliate::class, 'affiliate_id');
     }
 }

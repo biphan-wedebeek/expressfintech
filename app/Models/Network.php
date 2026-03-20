@@ -25,4 +25,19 @@ class Network extends Model
         'status' => 'boolean',
         'id_postback' => 'integer',
     ];
+
+    public function getFinValueConfigAttribute(): array
+    {
+        if (blank($this->fin_value)) {
+            return [];
+        }
+
+        if (is_array($this->fin_value)) {
+            return $this->fin_value;
+        }
+
+        $decoded = json_decode($this->fin_value, true);
+
+        return is_array($decoded) ? $decoded : [];
+    }
 }

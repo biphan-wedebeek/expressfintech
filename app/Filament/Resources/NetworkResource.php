@@ -37,17 +37,15 @@ class NetworkResource extends Resource
 
                                 Forms\Components\TextInput::make('fin_subid')
                                     ->label('Tracking Follow')
-                                    ->disabled()
-                                    ->dehydrated(false)
-                                    ->formatStateUsing(fn ($state, $get) => static::buildTrackingFollowFromGetter($get))
-                                    ->live(),
+                                    ->maxLength(255)
+                                    ->placeholder('e.g. &aff_sub={subid}'),
 
-                                Forms\Components\TextInput::make('id_postback')
-                                    ->label('Order')
-                                    ->numeric()
-                                    ->default(0)
-                                    ->minValue(0)
-                                    ->live(debounce: 300),
+                                // Forms\Components\TextInput::make('id_postback')
+                                //     ->label('Order')
+                                //     ->numeric()
+                                //     ->default(0)
+                                //     ->minValue(0)
+                                //     ->live(debounce: 300),
 
                                 Forms\Components\Toggle::make('status')
                                     ->label('Status')
@@ -115,12 +113,12 @@ class NetworkResource extends Resource
                                     ->schema([
                                         Forms\Components\Grid::make(2)
                                             ->schema([
-                                                Forms\Components\TextInput::make('other_param')
+                                                Forms\Components\TextInput::make('pub_id_param')
                                                     ->label('Param Name')
                                                     ->placeholder('pubid')
                                                     ->live(debounce: 300),
 
-                                                Forms\Components\TextInput::make('other_value')
+                                                Forms\Components\TextInput::make('pub_id_value')
                                                     ->label('Value')
                                                     ->placeholder('{pubid}')
                                                     ->rule('regex:' . static::macroPatternAllowEmpty())
@@ -156,11 +154,11 @@ class NetworkResource extends Resource
 
                         Forms\Components\Grid::make(2)
                             ->schema([
-                                Forms\Components\TextInput::make('fin_pass')
-                                    ->label('Pass')
-                                    ->required()
-                                    ->default('xx')
-                                    ->live(debounce: 300),
+                                // Forms\Components\TextInput::make('fin_pass')
+                                //     ->label('Pass')
+                                //     ->required()
+                                //     ->default('xx')
+                                //     ->live(debounce: 300),
 
                                 Forms\Components\Placeholder::make('preview_link')
                                     ->label('URL')
@@ -242,11 +240,12 @@ class NetworkResource extends Resource
         return '/^$|(?:\{\{\w+\}\}|\[\[\w+\]\]|##\w+##|!!\w+!!|""\w+""|\$\$\w+\$\$|%%\w+%%|&&\w+&&|\'\'\w+\'\'|\(\(\w+\)\)|\*\*\w+\*\*|\+\+\w+\+\+|,,\w+,,|--\w+--|\.\.\w+\.\.|\/\/\w+\/\/|::\w+::|;;\w+;;|<<\w+>>|==\w+==|\?\?\w+\?\?|@@\w+@@|\\\\\w+\\\\|\^\^\w+\^\^|``\w+``|\|\|\w+\|\||~~\w+~~|__\w+__|\{\w+\}|\[\w+\]|\#\w+\#|!\w+!|"\w+"|\$\w+\$|%\w+%|&\w+&|\'\w+\'|\(\w+\)|\*\w+\*|\+\w+\+|,\w+,|-\w+-|\/\w+\/|:\w+:|;\w+;|<\w+>|=\w+=|\?\w+\?|@\w+@|\\\\\w+\\\\|\^\w+\^|_\w+_|`\w+`|\|\w+\||~\w+~)$/';
     }
 
+
     public static function generateLinkPreviewFromFixedFields(callable $get): string
     {
         $base = rtrim(config('app.url'), '/') . '/postback/banner/';
-        $id = $get('id_postback') ?: 0;
-        $pass = $get('fin_pass') ?: 'xx';
+        // $id = $get('id_postback') ?: 0;
+        // $pass = $get('fin_pass') ?: 'xx';
 
         $pairs = static::collectFixedPostbackPairsFromGetter($get);
 
@@ -256,8 +255,8 @@ class NetworkResource extends Resource
             ->implode('&');
 
         return $query === ''
-            ? "{$base}{$id}/{$pass}/"
-            : "{$base}{$id}/{$pass}/?{$query}";
+            ? "{$base}"
+            : "{$base}?{$query}";
     }
 
     public static function collectFixedPostbackPairsFromGetter(callable $get): array
@@ -272,8 +271,8 @@ class NetworkResource extends Resource
                 'value' => $get('credit_value'),
             ],
             [
-                'key' => $get('other_param'),
-                'value' => $get('other_value'),
+                'key' => $get('pub_id_param'),
+                'value' => $get('pub_id_value'),
             ],
             [
                 'key' => $get('sale_amount_param'),
@@ -294,8 +293,8 @@ class NetworkResource extends Resource
                 'value' => $data['credit_value'] ?? '',
             ],
             [
-                'key' => $data['other_param'] ?? '',
-                'value' => $data['other_value'] ?? '',
+                'key' => $data['pub_id_param'] ?? '',
+                'value' => $data['pub_id_value'] ?? '',
             ],
             [
                 'key' => $data['sale_amount_param'] ?? '',
@@ -307,8 +306,8 @@ class NetworkResource extends Resource
     public static function buildFinLinkFromPairs(array $data): string
     {
         $base = rtrim(config('app.url'), '/') . '/postback/banner/';
-        $id = $data['id_postback'] ?? 0;
-        $pass = $data['fin_pass'] ?? 'xx';
+        // $id = $data['id_postback'] ?? 0;
+        // $pass = $data['fin_pass'] ?? 'xx';
         $pairs = static::collectFixedPostbackPairsFromData($data);
 
         $query = collect($pairs)
@@ -317,92 +316,69 @@ class NetworkResource extends Resource
             ->implode('&');
 
         return $query === ''
-            ? "{$base}{$id}/{$pass}/"
-            : "{$base}{$id}/{$pass}/?{$query}";
-    }
-
-    public static function buildTrackingFollowFromGetter(callable $get): string
-    {
-        $pubIdKey = trim((string) ($get('other_param') ?? ''));
-        $clickIdKey = trim((string) ($get('click_id_param') ?? ''));
-
-        $subid = '';
-
-        if ($pubIdKey !== '') {
-            $subid .= "&{$pubIdKey}=#pubid#";
-        }
-
-        if ($clickIdKey !== '') {
-            $subid .= "&{$clickIdKey}=";
-        }
-
-        return $subid;
-    }
-
-    public static function buildTrackingFollowFromData(array $data): string
-    {
-        $pubIdKey = trim((string) ($data['other_param'] ?? ''));
-        $clickIdKey = trim((string) ($data['click_id_param'] ?? ''));
-
-        $subid = '';
-
-        if ($pubIdKey !== '') {
-            $subid .= "&{$pubIdKey}=#pubid#";
-        }
-
-        if ($clickIdKey !== '') {
-            $subid .= "&{$clickIdKey}=";
-        }
-
-        return $subid;
+            ? "{$base}"
+            : "{$base}?{$query}";
     }
 
     public static function buildFinValueFromPairs(array $data): string
     {
-        $pairs = static::collectFixedPostbackPairsFromData($data);
+        $payload = [
+            'click_id_param' => $data['click_id_param'] ?? 'clickid',
+            'click_id_value' => $data['click_id_value'] ?? '{click_id}',
+            'credit_param' => $data['credit_param'] ?? 'payout',
+            'credit_value' => $data['credit_value'] ?? '{payout}',
+            'pub_id_param' => $data['pub_id_param'] ?? '',
+            'pub_id_value' => $data['pub_id_value'] ?? '',
+            'sale_amount_param' => $data['sale_amount_param'] ?? '',
+            'sale_amount_value' => $data['sale_amount_value'] ?? '',
+        ];
 
-        $flat = [];
-
-        foreach ($pairs as $pair) {
-            $flat[] = trim($pair['key'] ?? '');
-            $flat[] = $pair['value'] ?? '';
-        }
-
-        return serialize($flat);
+        return json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     }
 
-    public static function parseFinValueToFixedFields(?string $serialized): array
+    public static function parseFinValueToFixedFields(null|string|array $value): array
     {
         $defaults = [
             'click_id_param' => 'clickid',
-            'click_id_value' => '{aff_click_id}',
+            'click_id_value' => '{click_id}',
             'credit_param' => 'payout',
             'credit_value' => '{payout}',
-            'other_param' => '',
-            'other_value' => '',
+            'pub_id_param' => '',
+            'pub_id_value' => '',
             'sale_amount_param' => '',
             'sale_amount_value' => '',
         ];
 
-        if (! $serialized) {
+        if (blank($value)) {
             return $defaults;
         }
 
-        $data = @unserialize($serialized);
-
-        if (! is_array($data)) {
-            return $defaults;
+        if (is_array($value)) {
+            return array_merge($defaults, $value);
         }
 
-        return [
-            'click_id_param' => $data[0] ?? 'clickid',
-            'click_id_value' => $data[1] ?? '{aff_click_id}',
-            'credit_param' => $data[2] ?? 'payout',
-            'credit_value' => $data[3] ?? '{payout}',
-            'other_param' => $data[4] ?? '',
-            'other_value' => $data[5] ?? '',
-            'sale_amount_param' => $data[6] ?? '',
-            'sale_amount_value' => $data[7] ?? '',
-        ];
+        $decoded = json_decode($value, true);
+
+        if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+            return array_merge($defaults, $decoded);
+        }
+
+        // Fallback: hỗ trợ dữ liệu cũ đang serialize
+        $legacy = @unserialize($value);
+
+        if (is_array($legacy)) {
+            return [
+                'click_id_param' => $legacy[0] ?? 'clickid',
+                'click_id_value' => $legacy[1] ?? '{click_id}',
+                'credit_param' => $legacy[2] ?? 'payout',
+                'credit_value' => $legacy[3] ?? '{payout}',
+                'pub_id_param' => $legacy[4] ?? '',
+                'pub_id_value' => $legacy[5] ?? '',
+                'sale_amount_param' => $legacy[6] ?? '',
+                'sale_amount_value' => $legacy[7] ?? '',
+            ];
+        }
+
+        return $defaults;
     }
 }

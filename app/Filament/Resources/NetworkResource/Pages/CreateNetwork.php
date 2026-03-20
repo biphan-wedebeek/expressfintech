@@ -13,18 +13,6 @@ class CreateNetwork extends CreateRecord
     {
         $data['fin_link'] = NetworkResource::buildFinLinkFromPairs($data);
         $data['fin_value'] = NetworkResource::buildFinValueFromPairs($data);
-        $data['fin_subid'] = NetworkResource::buildTrackingFollowFromData($data);
-
-        unset(
-            $data['click_id_param'],
-            $data['click_id_value'],
-            $data['credit_param'],
-            $data['credit_value'],
-            $data['other_param'],
-            $data['other_value'],
-            $data['sale_amount_param'],
-            $data['sale_amount_value'],
-        );
 
         return $data;
     }

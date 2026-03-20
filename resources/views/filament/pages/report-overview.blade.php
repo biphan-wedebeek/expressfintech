@@ -115,8 +115,8 @@
                                 <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Source</th>
                                 <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Aff Click ID</th>
                                 <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Offer ID</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Banner ID</th>
-                                <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Advertiser ID</th>
+                                <!-- <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Banner ID</th>
+                                <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Advertiser ID</th> -->
                                 <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">IP Address</th>
                                 <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Referrer</th>
                                 <th class="px-4 py-3 text-left text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">Payout</th>
@@ -139,19 +139,19 @@
 
                                     <td class="px-4 py-3">
                                         <span class="text-sm text-slate-700 dark:text-slate-300 font-medium">
-                                            {{ $row->aff_id ?? '—' }}
+                                            {{ $row->affiliate_id ?? '—' }}
                                         </span>
                                     </td>
 
                                     <td class="px-4 py-3">
                                         <span class="text-sm text-slate-700 dark:text-slate-300 font-medium">
-                                            {{ $row->source ?? '—' }}
+                                            {{ $row->sub1 ?? '—' }}
                                         </span>
                                     </td>
 
                                     <td class="px-4 py-3">
                                         <span class="text-xs font-mono text-slate-600 dark:text-slate-400">
-                                            {{ $row->aff_clickid ?? '—' }}
+                                            {{ $row->sub2 ?? '—' }}
                                         </span>
                                     </td>
 
@@ -161,17 +161,17 @@
                                         </span>
                                     </td>
 
-                                    <td class="px-4 py-3">
+                                    <!-- <td class="px-4 py-3">
                                         <span class="text-sm text-slate-700 dark:text-slate-300">
                                             {{ $row->banner_id ?? '—' }}
                                         </span>
-                                    </td>
+                                    </td> -->
 
-                                    <td class="px-4 py-3">
+                                    <!-- <td class="px-4 py-3">
                                         <span class="text-sm text-slate-700 dark:text-slate-300">
                                             {{ $row->advertiser_id ?? '—' }}
                                         </span>
-                                    </td>
+                                    </td> -->
 
                                     <td class="px-4 py-3 align-top">
                                         <div class="flex items-center gap-2">
@@ -206,7 +206,7 @@
 
                                     <td class="px-4 py-3">
                                         <span class="text-sm font-semibold text-green-700 dark:text-green-400">
-                                            ${{ number_format((float) $row->payout, 2) }}
+                                            ${{ number_format((float) $row->amount, 2) }}
                                         </span>
                                     </td>
 
@@ -232,12 +232,18 @@
 
                                     <td class="px-4 py-3">
                                         @php
-                                            $status = $row->status ?? 'clicked';
+                                            $statusRaw = $row->status ?? 1;
+
+                                            $statusMap = [
+                                                1 => 'clicked',
+                                                2 => 'conversion',
+                                            ];
+
+                                            $status = $statusMap[$statusRaw] ?? 'clicked';
 
                                             $statusClasses = match ($status) {
-                                                'approved' => 'bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-800',
-                                                'pending' => 'bg-amber-50 text-amber-700 border border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800',
-                                                'rejected' => 'bg-rose-50 text-rose-700 border border-rose-200 dark:bg-rose-900/30 dark:text-rose-300 dark:border-rose-800',
+                                                'clicked' => 'bg-slate-100 text-slate-700 border border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700',
+                                                'conversion' => 'bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-900/30 dark:text-emerald-300 dark:border-emerald-800',
                                                 default => 'bg-slate-100 text-slate-700 border border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700',
                                             };
                                         @endphp
