@@ -69,14 +69,6 @@ class AffiliateResource extends Resource
                             ->columnSpanFull(),
                     ])
                     ->columns(2),
-
-                Forms\Components\Section::make('Additional Notes')
-                    ->schema([
-                        Forms\Components\Textarea::make('notes')
-                            ->rows(4)
-                            ->columnSpanFull(),
-                    ])
-                    ->collapsible(),
             ]);
     }
 
@@ -95,10 +87,23 @@ class AffiliateResource extends Resource
                     ->weight('bold')
                     ->description(fn(Affiliate $record): string => $record->email ?? ''),
 
-                Tables\Columns\TextColumn::make('offer_link')
-                    ->label('Offer Link')
+                Tables\Columns\TextColumn::make('offer_links')
+                    ->label('Offer Links')
+                    ->html()
                     ->getStateUsing(function ($record) {
-                        return url('/?aff_id=' . $record->id . '&offer_id=1');
+                        if ($record->offers->isEmpty()) {
+                            return '<span>No offers</span>';
+                        }
+
+                        return $record->offers->map(function ($offer) use ($record) {
+                            $link = url('/click?affiliate_id=' . $record->id . '&offer_id=' . $offer->id);
+
+                            return "
+                                <div style='margin-bottom:8px'>
+                                    <a href='{$link}' target='_blank'>{$link}</a>
+                                </div>
+                            ";
+                        })->implode('');
                     })
                     ->copyable()
                     ->weight('bold')
@@ -143,7 +148,7 @@ class AffiliateResource extends Resource
                         default => 'gray',
                     }),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime('d/m/Y H:i')
+                    ->dateTime('Y-m-d')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])

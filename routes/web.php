@@ -7,6 +7,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\LoanApplicationController;
 use App\Http\Controllers\ClickTrackingController;
+use App\Http\Controllers\OfferController;
+use App\Http\Controllers\AdvertiserPostbackController;
 // Trang chủ
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -119,3 +121,8 @@ Route::get('/finance/behavior/risk-tolerance',     [PageController::class, 'fina
 Route::get('/finance/behavior/decision-bias',      [PageController::class, 'financeBehaviorDecisionBias'])->name('finance.behavior.decision_bias');
 Route::get('/finance/behavior/consumer-trends',    [PageController::class, 'financeBehaviorConsumerTrends'])->name('finance.behavior.consumer_trends');
 // FORM
+
+// Offers
+Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+Route::get('/click', [ClickTrackingController::class, 'handle'])->name('offer.click');
+Route::get('/postback/banner/{network}', [AdvertiserPostbackController::class, 'handle'])->name('advertiser.postback');

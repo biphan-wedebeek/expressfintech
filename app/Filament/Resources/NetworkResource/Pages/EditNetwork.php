@@ -24,27 +24,15 @@ class EditNetwork extends EditRecord
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
-        $mapped = NetworkResource::parseFinValueToFixedFields($data['fin_value'] ?? null);
+        $fixedFields = NetworkResource::parseFinValueToFixedFields($data['fin_value'] ?? null);
 
-        return array_merge($data, $mapped);
+        return array_merge($data, $fixedFields);
     }
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
         $data['fin_link'] = NetworkResource::buildFinLinkFromPairs($data);
         $data['fin_value'] = NetworkResource::buildFinValueFromPairs($data);
-        $data['fin_subid'] = NetworkResource::buildTrackingFollowFromData($data);
-
-        unset(
-            $data['click_id_param'],
-            $data['click_id_value'],
-            $data['credit_param'],
-            $data['credit_value'],
-            $data['other_param'],
-            $data['other_value'],
-            $data['sale_amount_param'],
-            $data['sale_amount_value'],
-        );
 
         return $data;
     }

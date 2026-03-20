@@ -118,19 +118,6 @@ class ViewAffiliate extends ViewRecord
                     ->columns(2)
                     ->collapsible(),
 
-                // Notes
-                Infolists\Components\Section::make('Notes')
-                    ->icon('heroicon-o-document-text')
-                    ->schema([
-                        Infolists\Components\TextEntry::make('notes')
-                            ->label('')
-                            ->prose()
-                            ->placeholder('No notes available')
-                            ->columnSpanFull(),
-                    ])
-                    ->collapsible()
-                    ->collapsed(),
-
                 // System Information
                 Infolists\Components\Section::make('System Information')
                     ->icon('heroicon-o-information-circle')
