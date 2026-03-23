@@ -31,7 +31,7 @@ class AdvertiserPostbackController extends Controller
             'success' => $result['success'],
             'message' => $result['message'],
             'duplicate' => $result['duplicate'] ?? false,
-            'tracklink_id' => $result['tracklink']->id ?? null,
+            'tracklink_id' => $result['tracklink_id'] ?? null,
             'outbound' => $result['outbound'] ?? null,
         ], $result['code'] ?? 200);
     }

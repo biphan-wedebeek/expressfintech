@@ -25,6 +25,7 @@ class ClickTrackingController extends Controller
         }
 
         $offer = Offer::query()
+            ->with('network')
             ->where('id', $offerId)
             ->where('status', true)
             ->first();
@@ -58,7 +59,23 @@ class ClickTrackingController extends Controller
 
         $clickId = $tracklink->id;
 
-        $finalUrl = $this->appendQueryParam($offer->tracking_url, 'clickid', $clickId);
+        // $finalUrl = $this->appendQueryParam($offer->tracking_url, 'clickid', $clickId);
+
+        $network = $offer->network;
+        $trackingFollow = $network?->fin_subid ?? '';
+
+        $affSub = $this->buildAffSub($trackingFollow, [
+            'click_id' => $clickId,
+            'pubid' => $affiliate->id,
+            's3' => (string) $request->query('sub1', ''),
+            's4' => (string) $request->query('sub2', ''),
+        ]);
+
+        $finalUrl = $this->appendAffSubToUrl($offer->tracking_url, $affSub);
+
+        if ($affSub === '') {
+            $finalUrl = $this->appendQueryParam($offer->tracking_url, 'clickid', $clickId);
+        }
 
         return redirect()->away($finalUrl);
     }
@@ -123,4 +140,75 @@ class ClickTrackingController extends Controller
             default => 'Unknown',
         };
     }
+
+
+        /**
+     * Build tracking follow string from network template.
+     *
+     * Supported behaviors:
+     * 1. Explicit mode:
+     *    If template contains {clickid} or #clickid#, replace it in-place.
+     *
+     * 2. Legacy append mode:
+     *    If template does not contain clickid placeholder, append clickid at the end.
+     */
+    private function buildAffSub(string $template, array $payload): string
+    {
+        $template = trim($template);
+
+        if ($template === '') {
+            return '';
+        }
+
+        $clickId = (string) ($payload['click_id'] ?? '');
+        $pubid = (string) ($payload['pubid'] ?? '');
+        $s3 = (string) ($payload['s3'] ?? '');
+        $s4 = (string) ($payload['s4'] ?? '');
+
+        $hasExplicitClickId =
+            str_contains($template, '{clickid}') ||
+            str_contains($template, '#clickid#');
+
+        $result = strtr($template, [
+            '{clickid}' => rawurlencode($clickId),
+            '#clickid#' => rawurlencode($clickId),
+
+            '{pubid}' => rawurlencode($pubid),
+            '#pubid#' => rawurlencode($pubid),
+
+            '{s3}' => rawurlencode($s3),
+            '#s3#' => rawurlencode($s3),
+
+            '{s4}' => rawurlencode($s4),
+            '#s4#' => rawurlencode($s4),
+        ]);
+
+        if (! $hasExplicitClickId) {
+            $result .= rawurlencode($clickId);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Safely append affsub/query tail into target URL.
+     */
+    private function appendAffSubToUrl(string $url, string $affSub): string
+    {
+        if ($affSub === '') {
+            return $url;
+        }
+
+        if (str_contains($url, '?')) {
+            if (preg_match('/[?&]$/', $url)) {
+                return $url . ltrim($affSub, '&');
+            }
+
+            return $url . (str_starts_with($affSub, '&') ? $affSub : '&' . ltrim($affSub, '&'));
+        }
+
+        return rtrim($url, '/') . '?' . ltrim($affSub, '&');
+    }
+
+    
 }

@@ -23,6 +23,7 @@ class Network extends Model
 
     protected $casts = [
         'status' => 'boolean',
+        'fin_value' => 'array',
         'id_postback' => 'integer',
     ];
 

@@ -11,10 +11,18 @@ class CreateNetwork extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['fin_link'] = NetworkResource::buildFinLinkFromPairs($data);
         $data['fin_value'] = NetworkResource::buildFinValueFromPairs($data);
 
         return $data;
+    }
+
+    protected function afterCreate(): void
+    {
+        $data = $this->record->toArray();
+
+        $this->record->update([
+            'fin_link' => NetworkResource::buildFinLinkFromPairs($data),
+        ]);
     }
 
     protected function getRedirectUrl(): string

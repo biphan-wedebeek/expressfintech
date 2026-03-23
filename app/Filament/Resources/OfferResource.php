@@ -120,6 +120,8 @@ class OfferResource extends Resource
                 Tables\Columns\TextColumn::make('tracking_url')
                     ->label('Tracking URL')
                     ->limit(40)
+                    ->copyable()
+                    ->copyMessage('Copied')
                     ->toggleable(),
 
                 Tables\Columns\TextColumn::make('category.name')
@@ -128,9 +130,9 @@ class OfferResource extends Resource
                     ->sortable()
                     ->toggleable(),
 
-                Tables\Columns\IconColumn::make('api_on')
-                    ->boolean()
-                    ->label('API On'),
+                // Tables\Columns\IconColumn::make('api_on')
+                //     ->boolean()
+                //     ->label('API On'),
 
                 Tables\Columns\IconColumn::make('status')
                     ->boolean()
@@ -144,6 +146,12 @@ class OfferResource extends Resource
             ->filters([
                 Tables\Filters\TernaryFilter::make('status')
                     ->label('Status'),
+                Tables\Filters\SelectFilter::make('network_id')
+                    ->label('Network')
+                    ->relationship('network', 'name'),
+                Tables\Filters\SelectFilter::make('category_id')
+                    ->label('Category')
+                    ->relationship('category', 'name'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
