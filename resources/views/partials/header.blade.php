@@ -191,8 +191,18 @@
                 {l:'Global Insurance Reports', h:R['insurance.insights.reports']},
             ]},
             featured:[
-                {badge:'TOP PICK',title:'State Farm Home Insurance Review 2026',h:'#'},
-                {badge:null,      title:'GEICO Auto Insurance Review 2026',     h:'#'},
+                {
+                    badge:'TOP PICK',
+                    title:'Straight-Through Processing & Digital Underwriting',
+                    h:R['insurance.underwriting']+'#section-03',
+                    img:'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80'
+                },
+                {
+                    badge:null,
+                    title:'Insurance Market Trends & Analysis {{ now()->year }}',
+                    h:R['insurance.insights.trends'],
+                    img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80'
+                },
             ]
         },
         banking:{
@@ -215,7 +225,14 @@
                 {l:'Risk & Liquidity Management', h:R['banking.analysis.risk-liquidity']},
                 {l:'Global Banking Outlook',      h:R['banking.analysis.global-outlook']},
             ]},
-            featured:[ ]
+            featured:[
+                {
+                    badge: 'DEEP DIVE',
+                    title: 'Open Banking: APIs, PSD2 & the Platform Economy',
+                    h: R['banking.structure.open-banking'],
+                    img: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80'
+                },
+            ]
         },
         'credit-cards':{
             c1:{title:'Card Mechanics',items:[
@@ -237,7 +254,14 @@
                 {l:'Consumer Protection Laws',    h:R['cards.market.consumer']},
                 {l:'Free FICO® Score — Experian', h:R['cards.market.experian_fico'] },
             ]},
-            featured:[ ]
+            featured:[
+                {
+                    badge: 'MUST READ',
+                    title: 'APR & Daily Compounding: The True Cost of Carrying a Balance',
+                    h: R['cards.mechanics.apr'],
+                    img: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&q=80'
+                },
+            ]
         },
         mortgages:{
             c1:{title:'Mortgage Fundamentals',items:[
@@ -261,7 +285,14 @@
                 {l:'Real Estate Cycles',          h:R['mortgages.analysis.estate_cycles']},
                 {l:'Regulatory Impact',           h:R['mortgages.analysis.regulatory']},
             ]},
-            featured:[ ]
+            featured:[
+                {
+                    badge: 'FUNDAMENTALS',
+                    title: 'Loan-to-Value Ratio: Equity, PMI & What Lenders Really Look At',
+                    h: R['mortgages.fundamentals.ratio'],
+                    img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&q=80'
+                },
+            ]
         },
         'personal-finance': {
             c1: { title: 'Financial Planning', items: [
@@ -285,14 +316,18 @@
                 { l: 'Financial Decision Bias',  h: R['finance.behavior.decision_bias'] },
                 { l: 'Consumer Trends',          h: R['finance.behavior.consumer_trends'] },
             ]},
-            featured: []
+            featured:[
+                {
+                    badge: 'TAX SEASON',
+                    title: 'Tax Strategy: Legal Frameworks to Minimise Your Lifetime Tax Bill',
+                    h: R['finance.planning.tax'],
+                    img: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=400&q=80'
+                },
+            ]
         },
     };
 
     /* ─── Render ─── */
-    const imgPH = `<div class="w-[66px] h-[50px] rounded-lg flex items-center justify-center shrink-0 overflow-hidden" style="background:#eef2ff">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-    </div>`;
 
     function col1HTML(col){
         return `<p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#4f46e5] mb-4">${col.title}</p>
@@ -307,21 +342,22 @@
     }
 
     function featuredHTML(items){
-        const hdr = `<p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#4f46e5] mb-4">Featured Reviews</p>`;
-        if(!items.length) return hdr+`<p class="text-[13px] text-[#9ca3af] px-2">Coming soon…</p>`;
-        return hdr + items.map(r=>`
-        <a href="${r.h}" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#eef2ff] transition-colors mb-1.5">
-            ${imgPH}
-            <div class="flex-1 min-w-0">
-                ${r.badge?`<span class="inline-block text-[9px] font-bold tracking-[0.12em] uppercase text-[#4f46e5] px-2 py-0.5 rounded-md mb-1.5" style="background:#eef2ff;border:1px solid rgba(79,70,229,.2)">${r.badge}</span>`:''}
-                <p class="text-[13px] font-semibold text-[#0f1f35] leading-snug m-0">${r.title}</p>
-            </div>
-        </a>`).join('')
-        +`<a href="${R['reviews']}" class="inline-flex items-center gap-2 text-[13px] font-semibold text-[#4f46e5] mt-2 px-2 py-1.5 rounded-lg hover:bg-[#eef2ff] transition-all group">
-            View all reviews
-            <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>`;
-    }
+    const hdr = `<p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#4f46e5] mb-4">Featured Reviews</p>`;
+    if(!items.length) return hdr+`<p class="text-[13px] text-[#9ca3af] px-2">Coming soon…</p>`;
+    return hdr + items.map(r=>`
+    <a href="${r.h}" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#eef2ff] transition-colors mb-1.5">
+        <div class="w-[66px] h-[50px] rounded-lg shrink-0 overflow-hidden">
+            ${r.img
+                ? `<img src="${r.img}" alt="" class="w-full h-full object-cover">`
+                : `<div class="w-full h-full flex items-center justify-center" style="background:#eef2ff"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>`
+            }
+        </div>
+        <div class="flex-1 min-w-0">
+            ${r.badge?`<span class="inline-block text-[9px] font-bold tracking-[0.12em] uppercase text-[#4f46e5] px-2 py-0.5 rounded-md mb-1.5" style="background:#eef2ff;border:1px solid rgba(79,70,229,.2)">${r.badge}</span>`:''}
+            <p class="text-[13px] font-semibold text-[#0f1f35] leading-snug m-0">${r.title}</p>
+        </div>
+    </a>`).join('');
+}
 
     function renderMenu(key){
         const d=MENUS[key]; if(!d) return;

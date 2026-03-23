@@ -18,16 +18,17 @@ class ContactResource extends Resource
 {
     protected static ?string $model = FintechContact::class;
 
-    protected static ?string $navigationIcon  = 'heroicon-o-envelope';
-    protected static ?string $navigationLabel = 'Contacts';
-    protected static ?string $navigationGroup = 'Support';
-    protected static ?string $modelLabel      = 'Contact';
+    protected static ?string $navigationIcon   = 'heroicon-o-envelope';
+    protected static ?string $navigationLabel  = 'Contacts';
+    protected static ?string $navigationGroup  = 'Support';
+    protected static ?string $modelLabel       = 'Contact';
     protected static ?string $pluralModelLabel = 'Contacts';
 
-    // Badge hiển thị số tin nhắn mới
     public static function getNavigationBadge(): ?string
     {
-        return (string) FintechContact::where('status', 'new')->count() ?: null;
+        return cache()->remember('contacts_new_count', now()->addSeconds(60), function () {
+            return (string) FintechContact::where('status', 'new')->count() ?: null;
+        });
     }
 
     public static function getNavigationBadgeColor(): string
@@ -35,7 +36,12 @@ class ContactResource extends Resource
         return 'warning';
     }
 
-    // ── FORM (chỉ cho edit, không tạo mới từ admin) ──────────
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()->with(['category', 'subCategory']);
+    }
+
+    // ── FORM ──────────────────────────────────────────────────
     public static function form(Form $form): Form
     {
         return $form
@@ -124,7 +130,7 @@ class ContactResource extends Resource
                 Tables\Columns\TextColumn::make('id')
                     ->label('#')
                     ->sortable()
-                    ->formatStateUsing(fn ($state) => 'EF-' . str_pad($state, 6, '0', STR_PAD_LEFT)),
+                    ->formatStateUsing(fn($state) => 'EF-' . str_pad($state, 6, '0', STR_PAD_LEFT)),
 
                 Tables\Columns\TextColumn::make('full_name')
                     ->label('Name')
@@ -152,12 +158,12 @@ class ContactResource extends Resource
                     ->label('Sub Category')
                     ->badge()
                     ->color('gray')
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('message')
                     ->label('Message')
                     ->limit(60)
-                    ->tooltip(fn ($record) => $record->message)
+                    ->tooltip(fn($record) => $record->message)
                     ->wrap(),
 
                 Tables\Columns\BadgeColumn::make('status')
@@ -196,31 +202,30 @@ class ContactResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make()
-                    ->label('Update Status'),
-                Tables\Actions\DeleteAction::make(),
+                    ->label('Edit'),
+
+                Tables\Actions\DeleteAction::make()
+                    ->requiresConfirmation(false),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    // Đánh dấu spam hàng loạt
                     Tables\Actions\BulkAction::make('mark_spam')
                         ->label('Mark as Spam')
                         ->icon('heroicon-o-no-symbol')
                         ->color('danger')
-                        ->action(fn ($records) => $records->each->update(['status' => 'spam']))
+                        ->action(fn($records) => $records->each->update(['status' => 'spam']))
                         ->requiresConfirmation(),
 
-                    // Đánh dấu đã đọc hàng loạt
                     Tables\Actions\BulkAction::make('mark_read')
                         ->label('Mark as Read')
                         ->icon('heroicon-o-check')
                         ->color('info')
-                        ->action(fn ($records) => $records->each->update(['status' => 'read'])),
+                        ->action(fn($records) => $records->each->update(['status' => 'read'])),
 
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            ->defaultSort('created_at', 'desc')
-            ->poll('30s'); // Tự reload mỗi 30 giây để cập nhật tin nhắn mới
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getPages(): array
