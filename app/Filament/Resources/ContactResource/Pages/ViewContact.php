@@ -24,7 +24,7 @@ class ViewContact extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\EditAction::make()->label('Update Status'),
+            Actions\EditAction::make()->label('Edit'),
         ];
     }
 }
