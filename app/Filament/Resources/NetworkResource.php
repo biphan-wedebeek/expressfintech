@@ -187,11 +187,15 @@ class NetworkResource extends Resource
                 Tables\Columns\TextColumn::make('fin_link')
                     ->label('Postback URL')
                     ->limit(60)
-                    ->wrap(),
+                    ->wrap()
+                    ->copyable()
+                    ->copyMessage('Copied'),
 
                 Tables\Columns\TextColumn::make('fin_subid')
                     ->label('Affsub')
-                    ->limit(40),
+                    ->limit(40)
+                    ->copyable()
+                    ->copyMessage('Copied'),
 
                 Tables\Columns\IconColumn::make('status')
                     ->boolean(),
@@ -232,20 +236,38 @@ class NetworkResource extends Resource
 
     public static function macroPattern(): string
     {
-        return '/^(?:\{\{\w+\}\}|\[\[\w+\]\]|##\w+##|!!\w+!!|""\w+""|\$\$\w+\$\$|%%\w+%%|&&\w+&&|\'\'\w+\'\'|\(\(\w+\)\)|\*\*\w+\*\*|\+\+\w+\+\+|,,\w+,,|--\w+--|\.\.\w+\.\.|\/\/\w+\/\/|::\w+::|;;\w+;;|<<\w+>>|==\w+==|\?\?\w+\?\?|@@\w+@@|\\\\\w+\\\\|\^\^\w+\^\^|``\w+``|\|\|\w+\|\||~~\w+~~|__\w+__|\{\w+\}|\[\w+\]|\#\w+\#|!\w+!|"\w+"|\$\w+\$|%\w+%|&\w+&|\'\w+\'|\(\w+\)|\*\w+\*|\+\w+\+|,\w+,|-\w+-|\/\w+\/|:\w+:|;\w+;|<\w+>|=\w+=|\?\w+\?|@\w+@|\\\\\w+\\\\|\^\w+\^|_\w+_|`\w+`|\|\w+\||~\w+~)$/';
+        return '/^(?:\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|}\w+}|}}\w+}}|\]\w+\]|\]\]\w+\]\]|"\w+"|\'\w+\')$/';
     }
 
     public static function macroPatternAllowEmpty(): string
     {
-        return '/^$|(?:\{\{\w+\}\}|\[\[\w+\]\]|##\w+##|!!\w+!!|""\w+""|\$\$\w+\$\$|%%\w+%%|&&\w+&&|\'\'\w+\'\'|\(\(\w+\)\)|\*\*\w+\*\*|\+\+\w+\+\+|,,\w+,,|--\w+--|\.\.\w+\.\.|\/\/\w+\/\/|::\w+::|;;\w+;;|<<\w+>>|==\w+==|\?\?\w+\?\?|@@\w+@@|\\\\\w+\\\\|\^\^\w+\^\^|``\w+``|\|\|\w+\|\||~~\w+~~|__\w+__|\{\w+\}|\[\w+\]|\#\w+\#|!\w+!|"\w+"|\$\w+\$|%\w+%|&\w+&|\'\w+\'|\(\w+\)|\*\w+\*|\+\w+\+|,\w+,|-\w+-|\/\w+\/|:\w+:|;\w+;|<\w+>|=\w+=|\?\w+\?|@\w+@|\\\\\w+\\\\|\^\w+\^|_\w+_|`\w+`|\|\w+\||~\w+~)$/';
+        return '/^(?:$|\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|}\w+}|}}\w+}}|\]\w+\]|\]\]\w+\]\]|"\w+"|\'\w+\')$/';
     }
 
+    // public static function generateLinkPreviewFromFixedFields(callable $get): string
+    // {
+    //     $base = rtrim(config('app.url'), '/') . '/postback/banner/';
+    //     // $id = $get('id_postback') ?: 0;
+    //     // $pass = $get('fin_pass') ?: 'xx';
+
+    //     $pairs = static::collectFixedPostbackPairsFromGetter($get);
+
+    //     $query = collect($pairs)
+    //         ->filter(fn ($pair) => filled($pair['key']))
+    //         ->map(fn ($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
+    //         ->implode('&');
+
+    //     return $query === ''
+    //         ? "{$base}"
+    //         : "{$base}?{$query}";
+    // }
 
     public static function generateLinkPreviewFromFixedFields(callable $get): string
     {
-        $base = rtrim(config('app.url'), '/') . '/postback/banner/';
-        // $id = $get('id_postback') ?: 0;
-        // $pass = $get('fin_pass') ?: 'xx';
+        $networkId = $get('id') ?: $get('record.id');
+
+        $base = rtrim(config('app.url'), '/') . '/postback/banner';
+        $base .= $networkId ? '/' . $networkId : '';
 
         $pairs = static::collectFixedPostbackPairsFromGetter($get);
 
@@ -255,9 +277,10 @@ class NetworkResource extends Resource
             ->implode('&');
 
         return $query === ''
-            ? "{$base}"
+            ? $base
             : "{$base}?{$query}";
     }
+
 
     public static function collectFixedPostbackPairsFromGetter(callable $get): array
     {
@@ -303,11 +326,30 @@ class NetworkResource extends Resource
         ];
     }
 
+    // public static function buildFinLinkFromPairs(array $data): string
+    // {
+    //     $base = rtrim(config('app.url'), '/') . '/postback/banner/';
+    //     // $id = $data['id_postback'] ?? 0;
+    //     // $pass = $data['fin_pass'] ?? 'xx';
+    //     $pairs = static::collectFixedPostbackPairsFromData($data);
+
+    //     $query = collect($pairs)
+    //         ->filter(fn ($pair) => filled($pair['key']))
+    //         ->map(fn ($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
+    //         ->implode('&');
+
+    //     return $query === ''
+    //         ? "{$base}"
+    //         : "{$base}?{$query}";
+    // }
+
     public static function buildFinLinkFromPairs(array $data): string
     {
-        $base = rtrim(config('app.url'), '/') . '/postback/banner/';
-        // $id = $data['id_postback'] ?? 0;
-        // $pass = $data['fin_pass'] ?? 'xx';
+        $networkId = $data['id'] ?? null;
+
+        $base = rtrim(config('app.url'), '/') . '/postback/banner';
+        $base .= $networkId ? '/' . $networkId : '';
+
         $pairs = static::collectFixedPostbackPairsFromData($data);
 
         $query = collect($pairs)
@@ -316,17 +358,17 @@ class NetworkResource extends Resource
             ->implode('&');
 
         return $query === ''
-            ? "{$base}"
+            ? $base
             : "{$base}?{$query}";
     }
 
     public static function buildFinValueFromPairs(array $data): string
     {
         $payload = [
-            'click_id_param' => $data['click_id_param'] ?? 'clickid',
-            'click_id_value' => $data['click_id_value'] ?? '{click_id}',
-            'credit_param' => $data['credit_param'] ?? 'payout',
-            'credit_value' => $data['credit_value'] ?? '{payout}',
+            'click_id_param' => $data['click_id_param'] ?? '',
+            'click_id_value' => $data['click_id_value'] ?? '',
+            'credit_param' => $data['credit_param'] ?? '',
+            'credit_value' => $data['credit_value'] ?? '',
             'pub_id_param' => $data['pub_id_param'] ?? '',
             'pub_id_value' => $data['pub_id_value'] ?? '',
             'sale_amount_param' => $data['sale_amount_param'] ?? '',
@@ -381,4 +423,6 @@ class NetworkResource extends Resource
 
         return $defaults;
     }
+
+    
 }

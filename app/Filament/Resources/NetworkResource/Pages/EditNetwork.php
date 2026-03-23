@@ -31,6 +31,7 @@ class EditNetwork extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
+        $data['id'] = $this->record->id;
         $data['fin_link'] = NetworkResource::buildFinLinkFromPairs($data);
         $data['fin_value'] = NetworkResource::buildFinValueFromPairs($data);
 

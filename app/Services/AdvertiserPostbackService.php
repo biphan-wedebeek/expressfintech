@@ -13,12 +13,14 @@ class AdvertiserPostbackService
 {
     public function handleInbound(Request $request, Network $network): array
     {
-        $config = $network->fin_value_config ?? [];
+        $config = is_array($network->fin_value)
+            ? $network->fin_value
+            : (json_decode($network->fin_value ?? '[]', true) ?: []);
 
-        $clickParam = $config['click_id_param'] ?? $config['click_param'] ?? 'clickid';
-        $payoutParam = $config['credit_param'] ?? $config['payout_param'] ?? 'payout';
-        $saleAmountParam = $config['sale_amount_param'] ?? null;
-        $pubIdParam = $config['other_param'] ?? $config['pubid_param'] ?? null;
+        $clickParam = $config['click_id_param'];
+        $payoutParam = $config['credit_param'];
+        $saleAmountParam = $config['sale_amount_param'];
+        $pubIdParam = $config['pub_id_param'];
 
         $clickId = $request->query($clickParam);
         if (blank($clickId) && $clickParam !== 'clickid') {

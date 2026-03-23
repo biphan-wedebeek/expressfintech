@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\ViewColumn;
 
 class AffiliateResource extends Resource
 {
@@ -87,51 +88,34 @@ class AffiliateResource extends Resource
                     ->weight('bold')
                     ->description(fn(Affiliate $record): string => $record->email ?? ''),
 
-                Tables\Columns\TextColumn::make('offer_links')
+
+                ViewColumn::make('offer_links')
                     ->label('Offer Links')
-                    ->html()
-                    ->getStateUsing(function ($record) {
-                        if ($record->offers->isEmpty()) {
-                            return '<span>No offers</span>';
-                        }
-
-                        return $record->offers->map(function ($offer) use ($record) {
-                            $link = url('/click?affiliate_id=' . $record->id . '&offer_id=' . $offer->id);
-
-                            return "
-                                <div style='margin-bottom:8px'>
-                                    <a href='{$link}' target='_blank'>{$link}</a>
-                                </div>
-                            ";
-                        })->implode('');
-                    })
-                    ->copyable()
-                    ->weight('bold')
-                    ->color('success'),
+                    ->view('filament.tables.columns.offer-links'),
 
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->icon('heroicon-m-phone')
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('website')
                     ->searchable()
                     ->icon('heroicon-m-globe-alt')
                     ->url(fn(Affiliate $record): ?string => $record->website ? 'https://' . $record->website : null)
                     ->openUrlInNewTab()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('click_param_name')
                     ->label('Click Param')
-                    ->badge()
                     ->color('gray')
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('postback_url')
                     ->label('Postback Url')
-                    ->badge()
+                    ->wrap()
                     ->color('gray')
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->copyable()
+                    ->copyMessage('Copied'),
 
                 Tables\Columns\TextColumn::make('status')
                     ->label('Status')
