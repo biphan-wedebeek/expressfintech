@@ -244,24 +244,6 @@ class NetworkResource extends Resource
         return '/^(?:$|\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|}\w+}|}}\w+}}|\]\w+\]|\]\]\w+\]\]|"\w+"|\'\w+\')$/';
     }
 
-    // public static function generateLinkPreviewFromFixedFields(callable $get): string
-    // {
-    //     $base = rtrim(config('app.url'), '/') . '/postback/banner/';
-    //     // $id = $get('id_postback') ?: 0;
-    //     // $pass = $get('fin_pass') ?: 'xx';
-
-    //     $pairs = static::collectFixedPostbackPairsFromGetter($get);
-
-    //     $query = collect($pairs)
-    //         ->filter(fn ($pair) => filled($pair['key']))
-    //         ->map(fn ($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
-    //         ->implode('&');
-
-    //     return $query === ''
-    //         ? "{$base}"
-    //         : "{$base}?{$query}";
-    // }
-
     public static function generateLinkPreviewFromFixedFields(callable $get): string
     {
         $networkId = $get('id') ?: $get('record.id');
@@ -326,23 +308,6 @@ class NetworkResource extends Resource
         ];
     }
 
-    // public static function buildFinLinkFromPairs(array $data): string
-    // {
-    //     $base = rtrim(config('app.url'), '/') . '/postback/banner/';
-    //     // $id = $data['id_postback'] ?? 0;
-    //     // $pass = $data['fin_pass'] ?? 'xx';
-    //     $pairs = static::collectFixedPostbackPairsFromData($data);
-
-    //     $query = collect($pairs)
-    //         ->filter(fn ($pair) => filled($pair['key']))
-    //         ->map(fn ($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
-    //         ->implode('&');
-
-    //     return $query === ''
-    //         ? "{$base}"
-    //         : "{$base}?{$query}";
-    // }
-
     public static function buildFinLinkFromPairs(array $data): string
     {
         $networkId = $data['id'] ?? null;
@@ -404,8 +369,6 @@ class NetworkResource extends Resource
         if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
             return array_merge($defaults, $decoded);
         }
-
-        // Fallback: hỗ trợ dữ liệu cũ đang serialize
         $legacy = @unserialize($value);
 
         if (is_array($legacy)) {

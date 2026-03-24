@@ -255,7 +255,7 @@
 
                                     <td class="px-4 py-3">
                                         <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">
-                                            {{ $row->converted_at?->format('Y-m-d H:i') ?? '—' }}
+                                            {{ $row->status == 2 ? $row->updated_at?->format('Y-m-d H:i') : '—' }}
                                         </span>
                                     </td>
 
