@@ -9,8 +9,12 @@ class CreateNetwork extends CreateRecord
 {
     protected static string $resource = NetworkResource::class;
 
+    protected array $submittedData = [];
+
     protected function mutateFormDataBeforeCreate(array $data): array
     {
+        $this->submittedData = $data;
+
         $data['fin_value'] = NetworkResource::buildFinValueFromPairs($data);
 
         return $data;
@@ -18,7 +22,9 @@ class CreateNetwork extends CreateRecord
 
     protected function afterCreate(): void
     {
-        $data = $this->record->toArray();
+        $data = array_merge($this->submittedData, [
+            'id' => $this->record->id,
+        ]);
 
         $this->record->update([
             'fin_link' => NetworkResource::buildFinLinkFromPairs($data),

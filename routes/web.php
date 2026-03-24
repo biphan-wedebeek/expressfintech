@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
-use App\Http\Controllers\TrackingController;
+
 use App\Http\Controllers\LoanApplicationController;
 use App\Http\Controllers\ClickTrackingController;
 use App\Http\Controllers\OfferController;
