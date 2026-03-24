@@ -39,12 +39,18 @@ class ClickTrackingController extends Controller
             throw new NotFoundHttpException('Offer not found or inactive.');
         }
 
+        $referrerUrl = (string) (
+            $request->headers->get('referer')
+            ?? $request->headers->get('referrer')
+            ?? ''
+        );
+
         $tracklink = Tracklink::create([
             'offer_id'          => $offer->id,
             'ip_address'        => $request->ip(),
-            'affiliate_id'     => $affiliate->id,
-            'sub1'             => $request->query('sub1'),
-            'sub2'             => $request->query('sub2'),
+            'affiliate_id'      => $affiliate->id,
+            'sub1'              => $request->query('sub1'),
+            'sub2'              => $request->query('sub2'),
             'flead'             => 0,
             'status'            => 1,
             'user_agent'        => substr((string) $request->userAgent(), 0, 1000),
@@ -54,7 +60,7 @@ class ClickTrackingController extends Controller
             'device_manuf'      => $this->detectDeviceManufacturer($request->userAgent()),
             'user_language'     => substr((string) $request->header('Accept-Language'), 0, 255),
             'country'           => null,
-            'referrer_url'      => substr((string) $request->headers->get('referer'), 0, 1000),
+            'referrer_url'      => substr($referrerUrl, 0, 1000),
         ]);
 
         $clickId = $tracklink->id;
