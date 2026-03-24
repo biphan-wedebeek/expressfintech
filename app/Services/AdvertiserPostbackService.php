@@ -169,15 +169,13 @@ class AdvertiserPostbackService
             /** @var Response $response */
             // $response = Http::timeout(15)->get($finalUrl);
 
-            $refererHeader = (string) ($payload['referrer_url'] ?? '');
+            $expressReferer = config('app.url'); // https://www.expressfintech.online
 
-            $http = Http::timeout(15);
-
-            if ($refererHeader !== '') {
-                $http = $http->withHeaders([
-                    'Referer' => $refererHeader,
-                ]);
-            }
+            $response = Http::timeout(15)
+                ->withHeaders([
+                    'Referer' => rtrim($expressReferer, '/') . '/',
+                ])
+                ->get($finalUrl);
 
             $response = $http->get($finalUrl);
 

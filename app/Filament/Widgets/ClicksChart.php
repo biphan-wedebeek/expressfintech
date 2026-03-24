@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Filament\Widgets;
+
+use App\Models\Tracklink;
+use Carbon\Carbon;
+use Filament\Widgets\ChartWidget;
+
+class ClicksChart extends ChartWidget
+{
+    protected static ?string $heading = 'Clicks - Last 7 Days';
+
+    protected function getData(): array
+    {
+        $labels = [];
+        $data = [];
+
+        for ($i = 6; $i >= 0; $i--) {
+            $date = Carbon::now()->subDays($i);
+            $labels[] = $date->format('d M');
+            $data[] = Tracklink::whereDate('created_at', $date->toDateString())->count();
+        }
+
+        return [
+            'datasets' => [
+                [
+                    'label' => 'Clicks',
+                    'data' => $data,
+                ],
+            ],
+            'labels' => $labels,
+        ];
+    }
+
+    protected function getType(): string
+    {
+        return 'line';
+    }
+}
