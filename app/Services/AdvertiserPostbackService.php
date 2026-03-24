@@ -167,7 +167,19 @@ class AdvertiserPostbackService
 
         try {
             /** @var Response $response */
-            $response = Http::timeout(15)->get($finalUrl);
+            // $response = Http::timeout(15)->get($finalUrl);
+
+            $refererHeader = (string) ($payload['referrer_url'] ?? '');
+
+            $http = Http::timeout(15);
+
+            if ($refererHeader !== '') {
+                $http = $http->withHeaders([
+                    'Referer' => $refererHeader,
+                ]);
+            }
+
+            $response = $http->get($finalUrl);
 
             $body = $response->body();
 
