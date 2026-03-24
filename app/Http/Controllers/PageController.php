@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Services\BannerService;
 
 class PageController extends Controller
 {
+    public function __construct(protected BannerService $bannerService) {}
+
     public function getStarted()     { return view('pages.get-started'); }
     public function consultation()   { return view('pages.consultation'); }
     public function search()         { return view('pages.search'); }
@@ -28,7 +31,12 @@ class PageController extends Controller
     
     // Insurance Categories
     public function insuranceCategoriesLifeAnalysis()  { return view('pages.articles.insurance.categories-life_analysis'); }
-    public function insuranceCategoriesHealthSystems() { return view('pages.articles.insurance.categories-health_systems'); }
+    public function insuranceCategoriesHealthSystems()
+    {
+        return view('pages.articles.insurance.categories-health_systems', [
+            'banners_bottom' => $this->bannerService->get('Insurance', 'Health Insurance Systems', 3),
+        ]);
+    }
     public function insuranceCategoriesProperty()      { return view('pages.articles.insurance.categories-property'); }
     public function insuranceCategoriesAutoMarket()    { return view('pages.articles.insurance.categories-auto_market'); }
     public function insuranceCategoriesReinsurance()   { return view('pages.articles.insurance.categories-reinsurance'); }
@@ -72,7 +80,11 @@ class PageController extends Controller
     public function cardsStrategyTactics()   { return view('pages.articles.cards.strategy-tactics'); }
 
     // Credit Cards  Market & Regulation
-    public function cardsMarketComparison()   { return view('pages.articles.cards.market-comparison'); }
+    public function cardsMarketComparison()   {
+         return view('pages.articles.cards.market-comparison',[
+            'banners_right' => $this->bannerService->get('Credit Cards', 'Card Network Comparison', 2),
+         ]); 
+    }
     public function cardsMarketConsumer()     { return view('pages.articles.cards.market-consumer'); }
     public function cardsMarketExperianFico() { return view('pages.articles.cards.market-experian_fico'); }
 
@@ -114,7 +126,11 @@ class PageController extends Controller
     // Financial Behavior
     public function financeBehaviorPsychology()     { return view('pages.articles.finance.behavior-psychology'); }
     public function financeBehaviorSpending()       { return view('pages.articles.finance.behavior-spending'); }
-    public function financeBehaviorRiskTolerance()  { return view('pages.articles.finance.behavior-risk_tolerance'); }
+    public function financeBehaviorRiskTolerance()  {
+         return view('pages.articles.finance.behavior-risk_tolerance',[
+            'banners_right' => $this->bannerService->get('Personal Finance', 'Risk Tolerance', 2),
+         ]); 
+    }
     public function financeBehaviorDecisionBias()   { return view('pages.articles.finance.behavior-decision_bias'); }
     public function financeBehaviorConsumerTrends() { return view('pages.articles.finance.behavior-consumer_trends'); }
 }

@@ -40,7 +40,21 @@
         </div>
     </div>
 </div>
+@if($banners_bottom->isNotEmpty())
+    <div class="w-full space-y-3 my-8">
+        @foreach($banners_bottom as $banner)
+            <a href="{{ request()->url() }}" rel="noopener noreferrer sponsored" title="{{ $banner->title }}">
+                <div class="overflow-hidden rounded-sm border border-[var(--border)] hover:shadow-md transition-shadow duration-200">
+                    <img src="{{ asset('storage/' . (is_array($banner->image_url) ? $banner->image_url[0] : $banner->image_url)) }}"
+                         alt="{{ $banner->title ?? 'Advertisement' }}"
+                         class="w-full object-cover block" loading="lazy">
+                </div>
+            </a>
+        @endforeach
+    </div>
+@endif
 @endsection
+
 @section('metrics_band')
 <div class="mitem"><div class="mitem-v">$4.8T</div><div class="mitem-l">Global Health Premiums</div></div>
 <div class="mitem"><div class="mitem-v">64%</div><div class="mitem-l">US Adults Insured</div></div>
