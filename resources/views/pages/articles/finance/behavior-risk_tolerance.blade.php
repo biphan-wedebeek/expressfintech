@@ -81,14 +81,19 @@
                     </li>
                 </ul>
 
-                <a href="{{ request()->url() }}" class="block mt-6 rounded-md overflow-hidden">
-                    <div class="w-full aspect-[23/9] bg-gray-100">
-                        <img
-                            src="{{ asset('images/pages/banner1.png') }}"
-                            alt="Banner"
-                            class="w-full h-full object-cover">
-                    </div>
-                </a>
+                @if($banners_right->isNotEmpty())
+                <div class="w-full space-y-3 my-8">
+                    @foreach($banners_right as $banner)
+                    <a href="{{ request()->url() }}" rel="noopener noreferrer sponsored" title="{{ $banner->title }}">
+                        <div class="overflow-hidden rounded-sm border border-[var(--border)] hover:shadow-md transition-shadow duration-200">
+                            <img src="{{ asset('storage/' . (is_array($banner->image_url) ? $banner->image_url[0] : $banner->image_url)) }}"
+                                alt="{{ $banner->title ?? 'Advertisement' }}"
+                                class="w-full object-cover block" loading="lazy">
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+                @endif
             </div>
         </div>
     </div>

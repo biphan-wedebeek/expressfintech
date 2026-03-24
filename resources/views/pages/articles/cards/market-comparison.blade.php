@@ -87,75 +87,19 @@
     @endforeach
     <p class="text-[11px] text-white/30 mt-2">*UnionPay primarily domestic China</p>
 </div>
-<a href="{{ request()->url() }}" target="_blank" class="rounded-2xl overflow-hidden shadow-2xl block">
-    <!-- TOP -->
-    <div class="bg-white px-5 pt-5 pb-4 text-center border-b border-purple-100">
-        <div class="flex items-center justify-center gap-2 mb-3">
-            <div class="grid grid-cols-2 gap-[3px]">
-                <span class="w-2 h-2 rounded-sm bg-blue-900 opacity-80 block"></span>
-                <span class="w-2 h-2 rounded-sm bg-blue-900 opacity-40 block"></span>
-                <span class="w-2 h-2 rounded-sm bg-blue-900 opacity-40 block"></span>
-                <span class="w-2 h-2 rounded-sm bg-blue-900 opacity-80 block"></span>
-            </div>
-            <div class="text-left leading-tight">
-                <p class="text-[15px] font-bold text-blue-900 tracking-wide">LENDING</p>
-                <p class="text-[10px] font-semibold text-blue-800 tracking-widest opacity-60">FOR BAD CREDIT</p>
-            </div>
+@if($banners_right->isNotEmpty())
+<div class="w-full space-y-3 my-8">
+    @foreach($banners_right as $banner)
+    <a href="{{ request()->url() }}" rel="noopener noreferrer sponsored" title="{{ $banner->title }}">
+        <div class="overflow-hidden rounded-sm border border-[var(--border)] hover:shadow-md transition-shadow duration-200">
+            <img src="{{ asset('storage/' . (is_array($banner->image_url) ? $banner->image_url[0] : $banner->image_url)) }}"
+                alt="{{ $banner->title ?? 'Advertisement' }}"
+                class="w-full object-cover block" loading="lazy">
         </div>
-        <p class="text-[14px] text-gray-400 mb-0.5">Your Trusted Source</p>
-        <p class="text-[20px] font-bold text-blue-900 leading-tight">for Personal Loans</p>
-    </div>
-
-    <!-- MID -->
-    <div class="px-4 py-5" style="background:linear-gradient(150deg,#1e50b5 0%,#2e78e4 55%,#4aa3f5 100%)">
-        <div class="flex justify-around gap-1">
-
-            <div class="flex flex-col items-center gap-2 flex-1">
-                <div class="rounded-full border-2 border-white/50 bg-white/10 flex items-center justify-center" style="width:52px;height:52px">
-                    <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
-                    </svg>
-                </div>
-                <span class="text-[10px] font-semibold text-white text-center leading-tight">Marketplace and<br>Lending Partners</span>
-            </div>
-
-            <div class="flex flex-col items-center gap-2 flex-1">
-                <div class="rounded-full border-2 border-white/50 bg-white/10 flex items-center justify-center" style="width:52px;height:52px">
-                    <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                </div>
-                <span class="text-[10px] font-semibold text-white text-center leading-tight">Fast<br>Delivery</span>
-            </div>
-
-            <div class="flex flex-col items-center gap-2 flex-1">
-                <div class="rounded-full border-2 border-white/50 bg-white/10 flex items-center justify-center" style="width:52px;height:52px">
-                    <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
-                    </svg>
-                </div>
-                <span class="text-[10px] font-semibold text-white text-center leading-tight">Data<br>Security</span>
-            </div>
-
-            <div class="flex flex-col items-center gap-2 flex-1">
-                <div class="rounded-full border-2 border-white/50 bg-white/10 flex items-center justify-center" style="width:52px;height:52px">
-                    <svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
-                </div>
-                <span class="text-[10px] font-semibold text-white text-center leading-tight">All Credit<br>Considered</span>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- BOTTOM -->
-    <div class="bg-white px-5 pt-4 pb-5 text-center border-t border-purple-100">
-        <p class="text-[12.5px] text-gray-400 mb-1">Get the financing you need, up to</p>
-        <p class="text-[36px] font-extrabold text-blue-900 leading-none mb-1 tracking-tight">$40,000!</p>
-        <p class="text-[12px] text-gray-400">Find a loan in 3 easy steps!</p>
-    </div>
-</a>
+    </a>
+    @endforeach
+</div>
+@endif
 </div>
 @endsection
 
