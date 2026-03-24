@@ -168,14 +168,11 @@ class AdvertiserPostbackService
         try {
             /** @var Response $response */
             // $response = Http::timeout(15)->get($finalUrl);
+            $expressReferer = rtrim(config('app.url'), '/') . '/';
 
-            $expressReferer = config('app.url'); // https://www.expressfintech.online
-
-            $response = Http::timeout(15)
-                ->withHeaders([
-                    'Referer' => rtrim($expressReferer, '/') . '/',
-                ])
-                ->get($finalUrl);
+            $http = Http::timeout(15)->withHeaders([
+                'Referer' => $expressReferer,
+            ]);
 
             $response = $http->get($finalUrl);
 
