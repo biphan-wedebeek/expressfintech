@@ -58,9 +58,6 @@ class ClickTrackingController extends Controller
         ]);
 
         $clickId = $tracklink->id;
-
-        // $finalUrl = $this->appendQueryParam($offer->tracking_url, 'clickid', $clickId);
-
         $network = $offer->network;
         $trackingFollow = $network?->fin_subid ?? '';
 

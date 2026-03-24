@@ -114,6 +114,7 @@ class AdvertiserPostbackService
             'payout' => (string) $tracklink->amount,
             'pub_id' => (string) ($pubId ?? ''),
             'sale_amount' => (string) ($tracklink->sale_amount ?? ''),
+            'referrer_url' => (string) ($tracklink->referrer_url ?? ''),
         ]);
 
         return [
@@ -207,6 +208,7 @@ class AdvertiserPostbackService
         $payout = (string) ($payload['payout'] ?? '');
         $pubId = (string) ($payload['pub_id'] ?? '');
         $saleAmount = (string) ($payload['sale_amount'] ?? '');
+        $referrerUrl = (string) ($payload['referrer_url'] ?? '');
 
         $clickIdForOutbound = $sub2 !== '' ? $sub2 : $expressClickId;
 
@@ -229,6 +231,7 @@ class AdvertiserPostbackService
 
             '{sale_amount}' => $saleAmount,
             '{revenue}' => $saleAmount,
+            '{referrer_url}' => $referrerUrl,
         ];
 
         $url = strtr($template, $replacements);
