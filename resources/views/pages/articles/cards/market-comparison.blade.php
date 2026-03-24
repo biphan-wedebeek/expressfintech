@@ -87,20 +87,23 @@
     @endforeach
     <p class="text-[11px] text-white/30 mt-2">*UnionPay primarily domestic China</p>
 </div>
+
 @if($banners_right->isNotEmpty())
-<div class="w-full space-y-3 my-8">
-    @foreach($banners_right as $banner)
-    <a href="{{ request()->url() }}" rel="noopener noreferrer sponsored" title="{{ $banner->title }}">
-        <div class="overflow-hidden rounded-sm border border-[var(--border)] hover:shadow-md transition-shadow duration-200">
-            <img src="{{ asset('storage/' . (is_array($banner->image_url) ? $banner->image_url[0] : $banner->image_url)) }}"
-                alt="{{ $banner->title ?? 'Advertisement' }}"
-                class="w-full object-cover block" loading="lazy">
+    <div class="w-full space-y-3 my-8">
+        @foreach($banners_right as $banner)
+        <div id="banner-{{ $banner->id }}" class="scroll-mt-20">
+            <a href="{{ request()->url() }}#banner-{{ $banner->id }}" rel="noopener noreferrer sponsored" title="{{ $banner->title }}"
+               onclick="event.preventDefault(); window.open('{{ $banner->tracking_url }}', '_blank');">
+                <div class="overflow-hidden rounded-sm border border-[var(--border)] hover:shadow-md transition-shadow duration-200 cursor-pointer">
+                    <img src="{{ asset('storage/' . (is_array($banner->image_url) ? $banner->image_url[0] : $banner->image_url)) }}"
+                        alt="{{ $banner->title ?? 'Advertisement' }}" class="w-full object-cover block" loading="lazy">
+                </div>
+            </a>
         </div>
-    </a>
-    @endforeach
-</div>
+        @endforeach
+    </div>
 @endif
-</div>
+
 @endsection
 
 @section('content')
