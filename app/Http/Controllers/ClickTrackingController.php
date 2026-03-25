@@ -74,10 +74,7 @@ class ClickTrackingController extends Controller
             $finalUrl = $this->appendQueryParam($offer->tracking_url, 'clickid', $clickId);
         }
 
-        $currentClickUrl = $request->url() . '?' . http_build_query([
-            'affiliate_id' => $affiliate->id,
-            'offer_id' => $offer->id,
-        ]);
+        $currentClickUrl = rtrim(config('app.url'), '/');
 
         return response()->view('click-redirect', [
             'targetUrl' => $finalUrl, 
