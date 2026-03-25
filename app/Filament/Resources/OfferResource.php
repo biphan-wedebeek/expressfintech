@@ -37,31 +37,32 @@ class OfferResource extends Resource
 
                         Forms\Components\Select::make('network_id')
                             ->label('Network')
-                            ->relationship('network', 'name')
+                            ->relationship('network', 'name', fn($query) => $query->where('status', 1))
                             ->searchable()
                             ->preload()
                             ->required(),
 
                         Forms\Components\Select::make('category_id')
                             ->label('Category')
-                            ->relationship('category', 'name')
+                            ->relationship('category', 'name', fn($query) => $query->where('status', 1))
                             ->searchable()
                             ->preload()
                             ->live()
-                            ->afterStateUpdated(fn (Set $set) => $set('sub_category_id', null))
+                            ->afterStateUpdated(fn(Set $set) => $set('sub_category_id', null))
                             ->required(),
 
                         Forms\Components\Select::make('sub_category_id')
                             ->label('Sub Category')
-                            ->options(fn (Get $get): array => SubCategory::query()
+                            ->options(fn(Get $get): array => SubCategory::query()
                                 ->where('category_id', $get('category_id'))
+                                ->where('status', 1)
                                 ->pluck('name', 'id')
                                 ->toArray())
                             ->searchable()
                             ->preload()
-                            ->disabled(fn (Get $get): bool => blank($get('category_id')))
+                            ->disabled(fn(Get $get): bool => blank($get('category_id')))
                             ->required()
-                            ->placeholder(fn (Get $get): string => blank($get('category_id'))
+                            ->placeholder(fn(Get $get): string => blank($get('category_id'))
                                 ? 'Please select category first'
                                 : 'Select sub category'),
 
@@ -130,13 +131,10 @@ class OfferResource extends Resource
                     ->sortable()
                     ->toggleable(),
 
-                // Tables\Columns\IconColumn::make('api_on')
-                //     ->boolean()
-                //     ->label('API On'),
-
-                Tables\Columns\IconColumn::make('status')
-                    ->boolean()
-                    ->label('Status'),
+                Tables\Columns\ToggleColumn::make('status')
+                    ->label('Status')
+                    ->onColor('success')
+                    ->offColor('danger'),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('Y-m-d')
@@ -154,9 +152,17 @@ class OfferResource extends Resource
                     ->relationship('category', 'name'),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('')
+                    ->tooltip('Edit')
+                    ->icon('heroicon-o-pencil-square'),
+
+                Tables\Actions\DeleteAction::make()
+                    ->label('')
+                    ->tooltip('Delete')
+                    ->icon('heroicon-o-trash'),
             ])
+            ->actionsColumnLabel('Actions')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

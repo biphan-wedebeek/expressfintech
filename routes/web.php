@@ -126,3 +126,5 @@ Route::get('/finance/behavior/consumer-trends',    [PageController::class, 'fina
 Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
 Route::get('/click', [ClickTrackingController::class, 'handle'])->name('offer.click');
 Route::get('/postback/banner/{network}', [AdvertiserPostbackController::class, 'handle'])->name('advertiser.postback');
+
+Route::post('/admin/mark-contacts-read', function () { \App\Models\FintechContact::where('status', 'new')->update(['status' => 'read']); return response()->json(['ok' => true]); })->middleware(['web', 'auth']);

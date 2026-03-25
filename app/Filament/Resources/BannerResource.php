@@ -26,44 +26,38 @@ class BannerResource extends Resource
             ->schema([
                 Forms\Components\Section::make('Banner Information')
                     ->schema([
-
                         Forms\Components\Grid::make(2)
                             ->schema([
-                                // ===== Row: Title | Tracking URL =====
                                 Forms\Components\TextInput::make('title')
                                     ->label('Title')
                                     ->maxLength(255)
                                     ->placeholder('Banner title'),
 
-                                // Network
                                 Forms\Components\Select::make('network_id')
                                     ->label('Network')
-                                    ->relationship('network', 'name')
+                                    ->relationship('network', 'name', fn($query) => $query->where('status', 1))
                                     ->searchable()
                                     ->preload()
                                     ->required(),
 
-                                // Category
                                 Forms\Components\Select::make('category_id')
                                     ->label('Category')
-                                    ->relationship('category', 'name')
+                                    ->relationship('category', 'name', fn ($query) => $query->where('status', 1))
                                     ->searchable()
                                     ->preload()
                                     ->required()
                                     ->live(),
 
-                                // Sub Category
                                 Forms\Components\Select::make('sub_category_id')
                                     ->label('Sub Category')
                                     ->options(function (callable $get) {
                                         $categoryId = $get('category_id');
-
                                         if (! $categoryId) {
                                             return [];
                                         }
-
                                         return \App\Models\SubCategory::query()
                                             ->where('category_id', $categoryId)
+                                             ->where('status', 1)
                                             ->pluck('name', 'id')
                                             ->toArray();
                                     })
@@ -71,7 +65,6 @@ class BannerResource extends Resource
                                     ->preload()
                                     ->required(),
 
-                                // Placement (INT)
                                 Forms\Components\Select::make('placement')
                                     ->label('Placement')
                                     ->options([
@@ -87,7 +80,6 @@ class BannerResource extends Resource
                                     ->rows(2)
                                     ->required(),
 
-                                // ===== Row: Description | Image =====
                                 Forms\Components\Textarea::make('description')
                                     ->label('Description')
                                     ->rows(2),
@@ -100,7 +92,6 @@ class BannerResource extends Resource
                                     ->maxSize(9216)
                                     ->helperText('Max size: 9MB.'),
 
-                                // Status
                                 Forms\Components\Toggle::make('status')
                                     ->label('Active')
                                     ->default(true)
@@ -115,12 +106,13 @@ class BannerResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
-                    ->sortable(),
+                    ->sortable()
+                    ->width('60px'),
 
                 Tables\Columns\ImageColumn::make('image_url')
                     ->label('Image')
                     ->square()
-                    ->url(fn ($record) => asset('storage/' . $record->image_url)),
+                    ->url(fn($record) => asset('storage/' . $record->image_url)),
 
                 Tables\Columns\TextColumn::make('title')
                     ->label('Title')
@@ -138,29 +130,15 @@ class BannerResource extends Resource
                     ->searchable()
                     ->sortable(),
 
-                // Tables\Columns\TextColumn::make('subCategory.name')
-                //     ->label('Sub Category')
-                //     ->searchable()
-                //     ->sortable(),
-
-                // Tables\Columns\TextColumn::make('placement')
-                //     ->badge()
-                //     ->formatStateUsing(fn ($state) => match ($state) {
-                //         1 => 'TOP',
-                //         2 => 'RIGHT',
-                //         3 => 'BOTTOM',
-                //         4 => 'LEFT',
-                //         default => '-',
-                //     }),
-
                 Tables\Columns\TextColumn::make('tracking_url')
                     ->label('Tracking URL')
                     ->limit(40)
                     ->toggleable(isToggledHiddenByDefault: true),
 
-                Tables\Columns\IconColumn::make('status')
+                Tables\Columns\ToggleColumn::make('status')
                     ->label('Status')
-                    ->boolean(),
+                    ->onColor('success')
+                    ->offColor('danger'),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('Y-m-d')
@@ -175,14 +153,6 @@ class BannerResource extends Resource
                     ->label('Category')
                     ->relationship('category', 'name'),
 
-                // Tables\Filters\SelectFilter::make('placement')
-                //     ->options([
-                //         1 => 'TOP',
-                //         2 => 'RIGHT',
-                //         3 => 'BOTTOM',
-                //         4 => 'LEFT',
-                //     ]),
-
                 Tables\Filters\SelectFilter::make('status')
                     ->options([
                         1 => 'Active',
@@ -190,10 +160,22 @@ class BannerResource extends Resource
                     ]),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\ViewAction::make()
+                    ->label('')
+                    ->tooltip('View')
+                    ->icon('heroicon-o-eye'),
+
+                Tables\Actions\EditAction::make()
+                    ->label('')
+                    ->tooltip('Edit')
+                    ->icon('heroicon-o-pencil-square'),
+
+                Tables\Actions\DeleteAction::make()
+                    ->label('')
+                    ->tooltip('Delete')
+                    ->icon('heroicon-o-trash'),
             ])
+            ->actionsColumnLabel('Actions')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
