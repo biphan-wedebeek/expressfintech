@@ -74,17 +74,14 @@ class ClickTrackingController extends Controller
             $finalUrl = $this->appendQueryParam($offer->tracking_url, 'clickid', $clickId);
         }
 
-
-        // thêm dòng này
-        $currentClickUrl = $request->fullUrl();
-        // $finalUrl = $this->appendQueryParam($finalUrl, 'source_click', $currentClickUrl);
-        // $finalUrl = $this->appendQueryParam($finalUrl, 'source_click', $tracklink->id);
-
-        // return redirect()->away($finalUrl);
+        $currentClickUrl = $request->url() . '?' . http_build_query([
+            'affiliate_id' => $affiliate->id,
+            'offer_id' => $offer->id,
+        ]);
 
         return response()->view('click-redirect', [
-            'targetUrl' => $finalUrl, // URL gốc của click
-            'currentClickUrl' => $currentClickUrl, // URL hiện tại của click
+            'targetUrl' => $finalUrl, 
+            'currentClickUrl' => $currentClickUrl, 
         ]);
     }
 
