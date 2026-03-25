@@ -62,7 +62,7 @@
 @if($banners_bottom->isNotEmpty())
 <div class="w-full space-y-3 my-8">
     @foreach($banners_bottom as $banner)
-    <div id="banner-{{ $banner->id }}" class="scroll-mt-4">
+    <div id="banner-{{ $banner->id }}" class="scroll-mt-20">
         <a href="{{ request()->url() }}#banner-{{ $banner->id }}" rel="noopener noreferrer sponsored" title="{{ $banner->title }}"
             onclick="event.preventDefault(); window.open('{{ $banner->tracking_url }}', '_blank');">
             <div class="overflow-hidden rounded-sm border border-[var(--border)] hover:shadow-md transition-shadow duration-200 cursor-pointer">

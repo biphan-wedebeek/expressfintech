@@ -1,5 +1,4 @@
 <?php
-// app/Filament/Resources/ContactResource/Pages/ListContacts.php
 
 namespace App\Filament\Resources\ContactResource\Pages;
 
@@ -12,6 +11,11 @@ class ListContacts extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return []; // Không có nút Create vì contact chỉ đến từ frontend
+        return [];
+    }
+
+    public function getFooter(): ?\Illuminate\Contracts\View\View
+    {
+        return view('filament.contacts.mark-read-script');
     }
 }

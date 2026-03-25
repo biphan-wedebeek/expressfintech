@@ -4,8 +4,6 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactResource\Pages;
 use App\Models\FintechContact;
-use App\Models\Category;
-use App\Models\SubCategory;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -26,9 +24,8 @@ class ContactResource extends Resource
 
     public static function getNavigationBadge(): ?string
     {
-        return cache()->remember('contacts_new_count', now()->addSeconds(60), function () {
-            return (string) FintechContact::where('status', 'new')->count() ?: null;
-        });
+        $count = FintechContact::where('status', 'new')->count();
+        return $count > 0 ? (string) $count : null;
     }
 
     public static function getNavigationBadgeColor(): string
@@ -41,7 +38,6 @@ class ContactResource extends Resource
         return parent::getEloquentQuery()->with(['category', 'subCategory']);
     }
 
-    // ── FORM ──────────────────────────────────────────────────
     public static function form(Form $form): Form
     {
         return $form
@@ -122,7 +118,6 @@ class ContactResource extends Resource
             ]);
     }
 
-    // ── TABLE ─────────────────────────────────────────────────
     public static function table(Table $table): Table
     {
         return $table
@@ -166,14 +161,23 @@ class ContactResource extends Resource
                     ->tooltip(fn($record) => $record->message)
                     ->wrap(),
 
-                Tables\Columns\BadgeColumn::make('status')
+                Tables\Columns\TextColumn::make('status')
                     ->label('Status')
-                    ->colors([
-                        'warning' => 'new',
-                        'info'    => 'read',
-                        'success' => 'replied',
-                        'danger'  => 'spam',
-                    ])
+                    ->badge()
+                    ->color(fn(string $state): string => match ($state) {
+                        'new'     => 'warning',
+                        'read'    => 'info',
+                        'replied' => 'success',
+                        'spam'    => 'danger',
+                        default   => 'gray',
+                    })
+                    ->formatStateUsing(fn(string $state): string => match ($state) {
+                        'new'     => 'New',
+                        'read'    => 'Read',
+                        'replied' => 'Replied',
+                        'spam'    => 'Spam',
+                        default   => ucfirst($state),
+                    })
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('ip_address')
@@ -200,13 +204,45 @@ class ContactResource extends Resource
                     ->relationship('category', 'name'),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make()
-                    ->label('Edit'),
+                Tables\Actions\ViewAction::make()
+                    ->label('')
+                    ->tooltip('View')
+                    ->icon('heroicon-o-eye')
+                    ->modalHeading(fn($record) => 'Contact — ' . $record->full_name)
+                    ->modalWidth('3xl')
+                    ->mountUsing(function ($record, $form) {
+                        if ($record->status === 'new') {
+                            $record->update(['status' => 'read']);
+                        }
+                        $form->fill($record->fresh()->toArray());
+                    }),
+
+                Tables\Actions\Action::make('change_status')
+                    ->label('')
+                    ->tooltip('Change Status')
+                    ->icon('heroicon-o-arrow-path')
+                    ->form([
+                        Forms\Components\Select::make('status')
+                            ->label('Status')
+                            ->options([
+                                'new'     => 'New',
+                                'read'    => 'Read',
+                                'replied' => 'Replied',
+                                'spam'    => 'Spam',
+                            ])
+                            ->required()
+                            ->default(fn($record) => $record->status),
+                    ])
+                    ->action(function ($record, array $data) {
+                        $record->update(['status' => $data['status']]);
+                    }),
 
                 Tables\Actions\DeleteAction::make()
-                    ->requiresConfirmation(false),
+                    ->label('')
+                    ->tooltip('Delete')
+                    ->icon('heroicon-o-trash'),
             ])
+            ->actionsColumnLabel('Actions')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\BulkAction::make('mark_spam')
@@ -227,13 +263,10 @@ class ContactResource extends Resource
             ])
             ->defaultSort('created_at', 'desc');
     }
-
     public static function getPages(): array
     {
         return [
-            'index'  => Pages\ListContacts::route('/'),
-            'view'   => Pages\ViewContact::route('/{record}'),
-            'edit'   => Pages\EditContact::route('/{record}/edit'),
+            'index' => Pages\ListContacts::route('/'),
         ];
     }
 }

@@ -162,7 +162,7 @@ class NetworkResource extends Resource
 
                                 Forms\Components\Placeholder::make('preview_link')
                                     ->label('URL')
-                                    ->content(fn ($get) => new HtmlString(
+                                    ->content(fn($get) => new HtmlString(
                                         '<a href="' . e($url = static::generateLinkPreviewFromFixedFields($get)) . '" 
                                             target="_blank" 
                                             style="color: #2563eb; text-decoration: underline;"
@@ -197,8 +197,10 @@ class NetworkResource extends Resource
                     ->copyable()
                     ->copyMessage('Copied'),
 
-                Tables\Columns\IconColumn::make('status')
-                    ->boolean(),
+                Tables\Columns\ToggleColumn::make('status')
+                    ->label('Status')
+                    ->onColor('success')
+                    ->offColor('danger'),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('Y-m-d')
@@ -213,9 +215,17 @@ class NetworkResource extends Resource
                     ]),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label('')
+                    ->tooltip('Edit')
+                    ->icon('heroicon-o-pencil-square'),
+
+                Tables\Actions\DeleteAction::make()
+                    ->label('')
+                    ->tooltip('Delete')
+                    ->icon('heroicon-o-trash'),
             ])
+            ->actionsColumnLabel('Actions')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -253,8 +263,8 @@ class NetworkResource extends Resource
         $pairs = static::collectFixedPostbackPairsFromGetter($get);
 
         $query = collect($pairs)
-            ->filter(fn ($pair) => filled($pair['key']))
-            ->map(fn ($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
+            ->filter(fn($pair) => filled($pair['key']))
+            ->map(fn($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
             ->implode('&');
 
         return $query === ''
@@ -317,8 +327,8 @@ class NetworkResource extends Resource
         $pairs = static::collectFixedPostbackPairsFromData($data);
 
         $query = collect($pairs)
-            ->filter(fn ($pair) => filled($pair['key']))
-            ->map(fn ($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
+            ->filter(fn($pair) => filled($pair['key']))
+            ->map(fn($pair) => trim($pair['key']) . '=' . ($pair['value'] ?? ''))
             ->implode('&');
 
         return $query === ''
@@ -385,6 +395,4 @@ class NetworkResource extends Resource
 
         return $defaults;
     }
-
-    
 }

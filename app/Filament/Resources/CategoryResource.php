@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -29,7 +30,8 @@ class CategoryResource extends Resource
                             ->label('Category Name')
                             ->required()
                             ->maxLength(255)
-                            ->placeholder('Category Name'),
+                            ->placeholder('Category Name')
+                            ->dehydrateStateUsing(fn($state) => trim($state)),
 
                         Forms\Components\Toggle::make('status')
                             ->label('Active')
@@ -48,21 +50,61 @@ class CategoryResource extends Resource
                                     ->label('Subcategory Name')
                                     ->required()
                                     ->maxLength(255)
-                                    ->placeholder('Subcategory Name'),
-
-                                Forms\Components\Toggle::make('status')
-                                    ->label('Active')
-                                    ->default(true)
-                                    ->inline(false),
+                                    ->placeholder('Subcategory Name')
+                                    ->dehydrateStateUsing(fn($state) => trim($state)) // ✅ trim
+                                    ->columnSpan(1),
+                                Forms\Components\Hidden::make('status')
+                                    ->default(true),
                             ])
-                            ->columns(2)
+                            ->columns(1)
                             ->defaultItems(0)
                             ->collapsible()
                             ->collapsed()
-                            ->itemLabel(fn (array $state): ?string => $state['name'] ?? 'Subcategory'),
+                            ->itemLabel(fn(array $state): ?string => $state['name'] ?? 'Subcategory')
+                            ->extraItemActions([
+                                Forms\Components\Actions\Action::make('toggleStatus')
+                                    ->label(
+                                        fn(array $arguments, Forms\Components\Repeater $component): string =>
+                                        self::getSubStatus($arguments, $component) ? '🟢 Active' : '🔴 Inactive'
+                                    )
+                                    ->color(
+                                        fn(array $arguments, Forms\Components\Repeater $component): string =>
+                                        self::getSubStatus($arguments, $component) ? 'success' : 'danger'
+                                    )
+                                    ->link()
+                                    ->size('sm')
+                                    ->tooltip(
+                                        fn(array $arguments, Forms\Components\Repeater $component): string =>
+                                        self::getSubStatus($arguments, $component)
+                                            ? 'Click to deactivate'
+                                            : 'Click to activate'
+                                    )
+                                    ->action(function (array $arguments, Forms\Components\Repeater $component): void {
+                                        $items   = $component->getState();
+                                        $itemKey = $arguments['item'];
+                                        if (!isset($items[$itemKey])) return;
+                                        $newStatus = !(bool)($items[$itemKey]['status'] ?? true);
+                                        $subId = $items[$itemKey]['id'] ?? null;
+                                        if ($subId) {
+                                            SubCategory::where('id', $subId)
+                                            ->update(['status' => $newStatus]);
+                                        }
+                                        $items[$itemKey]['status'] = $newStatus;
+                                        $component->state($items);
+                                    }),
+                            ]),
                     ]),
-    
             ]);
+    }
+
+    protected static function getSubStatus(
+        array $arguments,
+        Forms\Components\Repeater $component
+    ): bool {
+        $items   = $component->getState();
+        $itemKey = $arguments['item'] ?? null;
+
+        return (bool)($items[$itemKey]['status'] ?? true);
     }
 
     public static function table(Table $table): Table
@@ -70,7 +112,8 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
-                    ->sortable(),
+                    ->sortable()
+                    ->width('60px'),
 
                 Tables\Columns\TextColumn::make('name')
                     ->label('Category')
@@ -81,9 +124,10 @@ class CategoryResource extends Resource
                     ->label('Subcategories')
                     ->counts('subCategories'),
 
-                Tables\Columns\IconColumn::make('status')
+                Tables\Columns\ToggleColumn::make('status')
                     ->label('Status')
-                    ->boolean(),
+                    ->onColor('success')
+                    ->offColor('danger'),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime('Y-m-d')
@@ -93,14 +137,27 @@ class CategoryResource extends Resource
                 Tables\Actions\Action::make('addSubcategory')
                     ->label('Add Sub')
                     ->icon('heroicon-o-plus')
-                    ->url(fn (Category $record): string =>
+                    ->url( fn(Category $record): string =>
                         route('filament.admin.resources.categories.edit', $record) . '#subCategories'
                     )
                     ->color('success'),
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+
+                Tables\Actions\ViewAction::make()
+                    ->label('')
+                    ->tooltip('View')
+                    ->icon('heroicon-o-eye'),
+
+                Tables\Actions\EditAction::make()
+                    ->label('')
+                    ->tooltip('Edit')
+                    ->icon('heroicon-o-pencil-square'),
+
+                Tables\Actions\DeleteAction::make()
+                    ->label('')
+                    ->tooltip('Delete')
+                    ->icon('heroicon-o-trash'),
             ])
+            ->actionsColumnLabel('Actions')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -112,9 +169,9 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
+            'index'  => Pages\ListCategories::route('/'),
             'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'edit'   => Pages\EditCategory::route('/{record}/edit'),
         ];
     }
 }
