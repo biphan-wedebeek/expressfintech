@@ -248,12 +248,12 @@ class NetworkResource extends Resource
 
     public static function macroPattern(): string
     {
-        return '/^(?:\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|}\w+}|}}\w+}}|\]\w+\]|\]\]\w+\]\]|"\w+"|\'\w+\')$/';
+        return '/^(?:\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|\[\w+\]|\[\[\w+\]\]|"\w+"|\'\w+\')$/';
     }
 
     public static function macroPatternAllowEmpty(): string
     {
-        return '/^(?:$|\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|}\w+}|}}\w+}}|\]\w+\]|\]\]\w+\]\]|"\w+"|\'\w+\')$/';
+        return '/^(?:$|\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|\[\w+\]|\[\[\w+\]\]|"\w+"|\'\w+\')$/';
     }
 
     public static function generateLinkPreviewFromFixedFields(callable $get): string
@@ -274,7 +274,6 @@ class NetworkResource extends Resource
             ? $base
             : "{$base}?{$query}";
     }
-
 
     public static function collectFixedPostbackPairsFromGetter(callable $get): array
     {
