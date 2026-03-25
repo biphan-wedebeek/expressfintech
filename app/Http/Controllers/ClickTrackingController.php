@@ -74,12 +74,12 @@ class ClickTrackingController extends Controller
             $finalUrl = $this->appendQueryParam($offer->tracking_url, 'clickid', $clickId);
         }
 
-        $currentClickUrl = rtrim(config('app.url'), '/');
+        return response()
+            ->view('click-redirect', [
+                'targetUrl' => $finalUrl,
+            ])
+            ->header('Referrer-Policy', 'origin');
 
-        return response()->view('click-redirect', [
-            'targetUrl' => $finalUrl, 
-            'currentClickUrl' => $currentClickUrl, 
-        ]);
     }
 
     private function appendQueryParam(string $url, string $key, string|int $value): string
