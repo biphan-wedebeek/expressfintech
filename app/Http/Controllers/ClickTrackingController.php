@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Offer;
 use App\Models\Affiliate;
 use App\Models\Tracklink;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ClickTrackingController extends Controller
 {
-    public function handle(Request $request): RedirectResponse
+    public function handle(Request $request): Response
     {
         $offerId = (int) $request->query('offer_id');
         $affiliateId = (int) $request->query('affiliate_id');
@@ -39,12 +39,6 @@ class ClickTrackingController extends Controller
             throw new NotFoundHttpException('Offer not found or inactive.');
         }
 
-        $referrerUrl = (string) (
-            $request->headers->get('referer')
-            ?? $request->headers->get('referrer')
-            ?? ''
-        );
-
         $tracklink = Tracklink::create([
             'offer_id'          => $offer->id,
             'ip_address'        => $request->ip(),
@@ -60,7 +54,7 @@ class ClickTrackingController extends Controller
             'device_manuf'      => $this->detectDeviceManufacturer($request->userAgent()),
             'user_language'     => substr((string) $request->header('Accept-Language'), 0, 255),
             'country'           => null,
-            'referrer_url'      => substr($referrerUrl, 0, 1000),
+            'referrer_url'      => substr((string) $request->header('Referer'), 0, 1000),
         ]);
 
         $clickId = $tracklink->id;
@@ -80,7 +74,18 @@ class ClickTrackingController extends Controller
             $finalUrl = $this->appendQueryParam($offer->tracking_url, 'clickid', $clickId);
         }
 
-        return redirect()->away($finalUrl);
+
+        // thêm dòng này
+        $currentClickUrl = $request->fullUrl();
+        // $finalUrl = $this->appendQueryParam($finalUrl, 'source_click', $currentClickUrl);
+        // $finalUrl = $this->appendQueryParam($finalUrl, 'source_click', $tracklink->id);
+
+        // return redirect()->away($finalUrl);
+
+        return response()->view('click-redirect', [
+            'targetUrl' => $finalUrl, // URL gốc của click
+            'currentClickUrl' => $currentClickUrl, // URL hiện tại của click
+        ]);
     }
 
     private function appendQueryParam(string $url, string $key, string|int $value): string

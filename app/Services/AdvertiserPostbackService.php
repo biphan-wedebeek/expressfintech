@@ -167,14 +167,7 @@ class AdvertiserPostbackService
 
         try {
             /** @var Response $response */
-            // $response = Http::timeout(15)->get($finalUrl);
-            $expressReferer = rtrim(config('app.url'), '/') . '/';
-
-            $http = Http::timeout(15)->withHeaders([
-                'Referer' => $expressReferer,
-            ]);
-
-            $response = $http->get($finalUrl);
+            $response = Http::timeout(15)->get($finalUrl);
 
             $body = $response->body();
 
