@@ -17,7 +17,7 @@ class ReportOverview extends Page
     protected static ?string $title = 'Tracklink Report';
 
     public $search_id = '';
-    public $search_user_id = '';
+    public $search_affiliate_id = '';
     public $search_offer_id = '';
     public $search_banner_id = '';
     public $date_from = '';
@@ -40,8 +40,8 @@ class ReportOverview extends Page
             $query->where('id', $this->search_id);
         }
 
-        if ($this->search_user_id !== '') {
-            $query->where('user_id', $this->search_user_id);
+        if ($this->search_affiliate_id !== '') {
+            $query->where('affiliate_id', $this->search_affiliate_id);
         }
 
         if ($this->search_offer_id !== '') {
@@ -80,7 +80,7 @@ class ReportOverview extends Page
     {
         $this->reset([
             'search_id',
-            'search_user_id',
+            'search_affiliate_id',
             'search_offer_id',
             'search_banner_id',
             'date_from',
