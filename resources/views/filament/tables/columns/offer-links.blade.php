@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-1 w-full min-w-[320px]">
-    @forelse ($getRecord()->offers as $offer)
+    @forelse ($getRecord()->offers()->where('status', 1)->get() as $offer)
         @php
             $link = url('/click?affiliate_id=' . $getRecord()->id . '&offer_id=' . $offer->id);
         @endphp

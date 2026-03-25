@@ -60,10 +60,8 @@
                             wire:model="search_status"
                             class="w-full px-2 py-1.5 text-sm border border-slate-300 dark:border-slate-600 rounded-md focus:ring-2 focus:ring-slate-500 focus:border-transparent bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100">
                             <option value="">All Status</option>
-                            <option value="clicked">Clicked</option>
-                            <option value="pending">Pending</option>
-                            <option value="approved">Approved</option>
-                            <option value="rejected">Rejected</option>
+                            <option value="1">Click</option>
+                            <option value="2">Conversion</option>
                         </select>
                     </div>
 

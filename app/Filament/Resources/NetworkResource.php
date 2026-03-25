@@ -10,7 +10,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\HtmlString;
-
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 class NetworkResource extends Resource
 {
     protected static ?string $model = Network::class;
@@ -224,11 +225,15 @@ class NetworkResource extends Resource
                     ->label('')
                     ->tooltip('Delete')
                     ->icon('heroicon-o-trash'),
+                Tables\Actions\RestoreAction::make(),
+                Tables\Actions\ForceDeleteAction::make(),
             ])
             ->actionsColumnLabel('Actions')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\RestoreBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(),
                 ]),
             ])
             ->defaultSort('id', 'desc');
@@ -243,14 +248,22 @@ class NetworkResource extends Resource
         ];
     }
 
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
+    }
+
     public static function macroPattern(): string
     {
-        return '/^(?:\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|}\w+}|}}\w+}}|\]\w+\]|\]\]\w+\]\]|"\w+"|\'\w+\')$/';
+        return '/^(?:\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|\[\w+\]|\[\[\w+\]\]|"\w+"|\'\w+\')$/';
     }
 
     public static function macroPatternAllowEmpty(): string
     {
-        return '/^(?:$|\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|}\w+}|}}\w+}}|\]\w+\]|\]\]\w+\]\]|"\w+"|\'\w+\')$/';
+        return '/^(?:$|\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|\[\w+\]|\[\[\w+\]\]|"\w+"|\'\w+\')$/';
     }
 
     public static function generateLinkPreviewFromFixedFields(callable $get): string
@@ -271,7 +284,6 @@ class NetworkResource extends Resource
             ? $base
             : "{$base}?{$query}";
     }
-
 
     public static function collectFixedPostbackPairsFromGetter(callable $get): array
     {
