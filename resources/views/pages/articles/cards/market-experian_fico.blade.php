@@ -74,13 +74,12 @@
     <div class="bg-emerald-500/15 border border-emerald-500/25 rounded-xl px-4 py-2.5 text-center mb-4">
         <p class="text-[12px] text-emerald-400 font-semibold">🚀 Score updated immediately</p>
     </div>
-    @if($banners_bottom->isNotEmpty())
-    @php $banner = $banners_bottom->first(); @endphp
-    <a href="{{ $banner->tracking_url }}"
+    
+    <a href="{{ $banners_bottom->isNotEmpty() ? $banners_bottom->first()->tracking_url : '#' }}"
         class="block w-full text-center bg-[#b721ff] hover:bg-[#a010f0] text-white text-[14px] font-bold py-3.5 rounded-xl transition-all">
         Let's get started →
     </a>
-    @endif
+    
     <p class="text-[10.5px] text-white/25 text-center mt-2">No credit card required</p>
 </div>
 
@@ -358,16 +357,15 @@
         <p class="text-white/50! text-[13px] mb-6 max-w-sm mx-auto leading-relaxed">
             New credit scores take effect immediately.<br>Free monitoring and alerts included.
         </p>
-        @if($banners_bottom->isNotEmpty())
-        @php $banner = $banners_bottom->first(); @endphp
-        <a href="{{ $banner->tracking_url }}"
+        
+        <a href="{{ $banners_bottom->isNotEmpty() ? $banners_bottom->first()->tracking_url : '#' }}"
             class="inline-flex items-center gap-2.5 bg-[#b721ff] hover:bg-[#a010f0] text-white font-bold text-[15px] px-8 py-4 rounded-xl transition-all hover:shadow-lg hover:shadow-purple-800/40">
             Let's get started
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
             </svg>
         </a>
-        @endif
+        
         <p class="text-white/50! text-[11px] mt-3">Results vary. See disclaimers below.</p>
     </div>
 </div>
