@@ -89,11 +89,6 @@ class AffiliateResource extends Resource
                     ->weight('bold')
                     ->description(fn(Affiliate $record): string => $record->email ?? ''),
 
-
-                ViewColumn::make('offer_links')
-                    ->label('Offer Links')
-                    ->view('filament.tables.columns.offer-links'),
-
                 Tables\Columns\TextColumn::make('phone')
                     ->searchable()
                     ->icon('heroicon-m-phone')

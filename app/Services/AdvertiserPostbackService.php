@@ -109,8 +109,8 @@ class AdvertiserPostbackService
 
         $outbound = $this->sendOutboundToWedebeek($tracklink, [
             'express_click_id' => (string) $tracklink->id,
-            'sub1' => (string) ($tracklink->sub1 ?? ''),
-            'sub2' => (string) ($tracklink->sub2 ?? ''),
+            's1' => (string) ($tracklink->s1 ?? ''),
+            's2' => (string) ($tracklink->s2 ?? ''),
             'payout' => (string) $tracklink->amount,
             'pub_id' => (string) ($pubId ?? ''),
             'sale_amount' => (string) ($tracklink->sale_amount ?? ''),
@@ -203,8 +203,8 @@ class AdvertiserPostbackService
     protected function replaceOutboundTemplate(string $template, array $payload): string
     {
         $expressClickId = (string) ($payload['express_click_id'] ?? '');
-        $sub1 = (string) ($payload['sub1'] ?? '');
-        $sub2 = (string) ($payload['sub2'] ?? '');
+        $sub1 = (string) ($payload['s1'] ?? '');
+        $sub2 = (string) ($payload['s2'] ?? '');
         $payout = (string) ($payload['payout'] ?? '');
         $pubId = (string) ($payload['pub_id'] ?? '');
         $saleAmount = (string) ($payload['sale_amount'] ?? '');

@@ -43,8 +43,8 @@ class ClickTrackingController extends Controller
             'offer_id'          => $offer->id,
             'ip_address'        => $request->ip(),
             'affiliate_id'      => $affiliate->id,
-            'sub1'              => $request->query('sub1'),
-            'sub2'              => $request->query('sub2'),
+            's1'                => $request->query('s1'),
+            's2'                => $request->query('s2'),
             'flead'             => 0,
             'status'            => 1,
             'user_agent'        => substr((string) $request->userAgent(), 0, 1000),
@@ -64,8 +64,8 @@ class ClickTrackingController extends Controller
         $affSub = $this->buildAffSub($trackingFollow, [
             'click_id' => $clickId,
             'pubid' => $affiliate->id,
-            's3' => (string) $request->query('sub1', ''),
-            's4' => (string) $request->query('sub2', ''),
+            's3' => (string) $request->query('s1', ''),
+            's4' => (string) $request->query('s2', ''),
         ]);
 
         $finalUrl = $this->appendAffSubToUrl($offer->tracking_url, $affSub);
