@@ -295,8 +295,8 @@ class AdvertiserPostbackService
         $url = strtr($template, $replacements);
 
         return $this->appendMissingQueryParams($url, [
-            'sub1' => $sub1,
-            'sub2' => $effectiveClickId,
+            's1' => $sub1,
+            's2' => $effectiveClickId,
         ]);
     }
 
