@@ -10,8 +10,7 @@ class Offer extends Model
 
     protected $fillable = [
         'network_id',
-        'category_id',
-        'sub_category_id',
+        'banner_id',
         'title',
         'image_url',
         'description',
@@ -22,21 +21,19 @@ class Offer extends Model
         'status',
     ];
 
-    // Relationships
+    protected $casts = [
+        'api_on' => 'boolean',
+        'status' => 'boolean',
+    ];
 
     public function network()
     {
         return $this->belongsTo(Network::class);
     }
 
-    public function category()
+    public function banner()
     {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function subCategory()
-    {
-        return $this->belongsTo(SubCategory::class);
+        return $this->belongsTo(Banner::class);
     }
 
     public function tracklinks()

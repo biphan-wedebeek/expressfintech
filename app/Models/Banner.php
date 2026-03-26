@@ -12,7 +12,6 @@ class Banner extends Model
     protected $table = 'fintech_banners';
 
     protected $fillable = [
-        'network_id',
         'category_id',
         'sub_category_id',
         'placement',
@@ -25,12 +24,8 @@ class Banner extends Model
 
     protected $casts = [
         'status' => 'boolean',
+        'placement' => 'integer',
     ];
-
-    public function network()
-    {
-        return $this->belongsTo(Network::class, 'network_id');
-    }
 
     public function category()
     {
