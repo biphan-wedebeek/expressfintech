@@ -143,13 +143,13 @@
 
                                     <td class="px-4 py-3">
                                         <span class="text-sm text-slate-700 dark:text-slate-300 font-medium">
-                                            {{ $row->sub1 ?? '—' }}
+                                            {{ $row->s1 ?? '—' }}
                                         </span>
                                     </td>
 
                                     <td class="px-4 py-3">
                                         <span class="text-xs font-mono text-slate-600 dark:text-slate-400">
-                                            {{ $row->sub2 ?? '—' }}
+                                            {{ $row->s2 ?? '—' }}
                                         </span>
                                     </td>
 

@@ -9,8 +9,7 @@ class OfferController extends Controller
 {
     public function index(): View
     {
-        // Lấy affiliate Wedebeek
-        $affiliate = Affiliate::where('firstname', 'Wedebeek')->first();
+        $affiliate = Affiliate::where('firstname', 'like', '%Wedebeek%')->first();
 
         $offers = collect();
 

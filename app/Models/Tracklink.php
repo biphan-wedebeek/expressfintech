@@ -17,8 +17,8 @@ class Tracklink extends Model
         'banner_name',
         'offer_id',
         'affiliate_id',
-        'sub1', // affsource
-        'sub2', // affclickid
+        's1', // affsource
+        's2', // affclickid
         'ip_address',
         'flead',
         'status',

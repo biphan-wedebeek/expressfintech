@@ -179,7 +179,11 @@ class NetworkResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->defaultSort('created_at', 'desc')
             ->columns([
+                Tables\Columns\TextColumn::make('id')
+                    ->label('ID')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('name')
                     ->label('Network')
                     ->searchable()
@@ -258,12 +262,32 @@ class NetworkResource extends Resource
 
     public static function macroPattern(): string
     {
-        return '/^(?:\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|\[\w+\]|\[\[\w+\]\]|"\w+"|\'\w+\')$/';
+        return '/^(?:'
+            . '\{[^}]+\}'                 // {abc, abc-1, abc.xyz}
+            . '|\{\{[^}]+\}\}'           // {{abc}}
+            . '|\{\%[^%]+\%\}'           // {%abc%}, {%cid-1%}
+            . '|#[^#]+#'                 // #abc#
+            . '|#@[^#]+#@'               // #@abc#@
+            . '|\[[^\]]+\]'              // [abc]
+            . '|\[\[[^\]]+\]\]'          // [[abc]]
+            . '|"[^"]+"'                 // "abc"
+            . '|\'[^\']+\''              // 'abc'
+        . ')$/';
     }
 
     public static function macroPatternAllowEmpty(): string
     {
-        return '/^(?:$|\{\w+\}|\{\{\w+\}\}|#\w+#|#@\w+#@|\[\w+\]|\[\[\w+\]\]|"\w+"|\'\w+\')$/';
+        return '/^(?:$|'
+            . '\{[^}]+\}'
+            . '|\{\{[^}]+\}\}'
+            . '|\{\%[^%]+\%\}'
+            . '|#[^#]+#'
+            . '|#@[^#]+#@'
+            . '|\[[^\]]+\]'
+            . '|\[\[[^\]]+\]\]'
+            . '|"[^"]+"'
+            . '|\'[^\']+\''
+        . ')$/';
     }
 
     public static function generateLinkPreviewFromFixedFields(callable $get): string
