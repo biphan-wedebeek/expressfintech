@@ -200,6 +200,50 @@ class AdvertiserPostbackService
         }
     }
 
+    // protected function replaceOutboundTemplate(string $template, array $payload): string
+    // {
+    //     $expressClickId = (string) ($payload['express_click_id'] ?? '');
+    //     $sub1 = (string) ($payload['s1'] ?? '');
+    //     $sub2 = (string) ($payload['s2'] ?? '');
+    //     $payout = (string) ($payload['payout'] ?? '');
+    //     $pubId = (string) ($payload['pub_id'] ?? '');
+    //     $saleAmount = (string) ($payload['sale_amount'] ?? '');
+    //     $referrerUrl = (string) ($payload['referrer_url'] ?? '');
+
+    //     $clickIdForOutbound = $sub2 !== '' ? $sub2 : $expressClickId;
+
+    //     $replacements = [
+    //         '{clickid}' => $clickIdForOutbound,
+    //         '{click_id}' => $clickIdForOutbound,
+    //         '{transaction_id}' => $clickIdForOutbound,
+    //         '{aff_click_id}' => $clickIdForOutbound,
+
+    //         '{sub1}' => $sub1,
+    //         '{sub2}' => $sub2,
+    //         '{s1}' => $sub1,
+    //         '{s2}' => $sub2,
+
+    //         '{payout}' => $payout,
+    //         '{payout_amount}' => $payout,
+    //         '{commission}' => $payout,
+    //         '{credit}' => $payout,
+
+    //         '{pubid}' => $pubId,
+    //         '{pub_id}' => $pubId,
+
+    //         '{sale_amount}' => $saleAmount,
+    //         '{revenue}' => $saleAmount,
+    //         '{referrer_url}' => $referrerUrl,
+    //     ];
+
+    //     $url = strtr($template, $replacements);
+
+    //     return $this->appendMissingQueryParams($url, [
+    //         'sub1' => $sub1,
+    //         'sub2' => $sub2,
+    //     ]);
+    // }
+
     protected function replaceOutboundTemplate(string $template, array $payload): string
     {
         $expressClickId = (string) ($payload['express_click_id'] ?? '');
@@ -210,25 +254,39 @@ class AdvertiserPostbackService
         $saleAmount = (string) ($payload['sale_amount'] ?? '');
         $referrerUrl = (string) ($payload['referrer_url'] ?? '');
 
-        $clickIdForOutbound = $sub2 !== '' ? $sub2 : $expressClickId;
+        $effectiveClickId = $sub2 !== '' ? $sub2 : $expressClickId;
 
         $replacements = [
-            '{clickid}' => $clickIdForOutbound,
-            '{click_id}' => $clickIdForOutbound,
-            '{transaction_id}' => $clickIdForOutbound,
-            '{aff_click_id}' => $clickIdForOutbound,
+            // click id aliases
+            '{clickid}' => $effectiveClickId,
+            '{click_id}' => $effectiveClickId,
+            '{transaction_id}' => $effectiveClickId,
+            '{aff_click_id}' => $effectiveClickId,
+            '#clickid#' => $effectiveClickId,
 
+            // sub aliases
             '{sub1}' => $sub1,
-            '{sub2}' => $sub2,
+            '{sub2}' => $effectiveClickId,
+            '{s1}' => $sub1,
+            '{s2}' => $effectiveClickId,
+            '#sub1#' => $sub1,
+            '#sub2#' => $effectiveClickId,
+            '#s1#' => $sub1,
+            '#s2#' => $effectiveClickId,
 
+            // payout aliases
             '{payout}' => $payout,
             '{payout_amount}' => $payout,
             '{commission}' => $payout,
             '{credit}' => $payout,
 
+            // pub id aliases
             '{pubid}' => $pubId,
             '{pub_id}' => $pubId,
+            '#pubid#' => $pubId,
+            '#pub_id#' => $pubId,
 
+            // other aliases
             '{sale_amount}' => $saleAmount,
             '{revenue}' => $saleAmount,
             '{referrer_url}' => $referrerUrl,
@@ -238,7 +296,7 @@ class AdvertiserPostbackService
 
         return $this->appendMissingQueryParams($url, [
             'sub1' => $sub1,
-            'sub2' => $sub2,
+            'sub2' => $effectiveClickId,
         ]);
     }
 
