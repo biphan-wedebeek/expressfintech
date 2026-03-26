@@ -86,7 +86,12 @@ class PageController extends Controller
          ]); 
     }
     public function cardsMarketConsumer()     { return view('pages.articles.cards.market-consumer'); }
-    public function cardsMarketExperianFico() { return view('pages.articles.cards.market-experian_fico'); }
+    public function cardsMarketExperianFico()
+    {
+        return view('pages.articles.cards.market-experian_fico', [
+            'banners_bottom' => $this->bannerService->get('Credit Cards', 'Free FICO® Score — Experian'),
+        ]);
+    }
 
     // Mortgages — Fundamentals
     public function mortgagesFundamentalsFixedVsVariable() { return view('pages.articles.mortgages.fundamentals-fixed_vs_variable'); }

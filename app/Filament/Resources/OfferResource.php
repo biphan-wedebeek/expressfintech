@@ -3,12 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\OfferResource\Pages;
+use App\Models\Banner;
 use App\Models\Offer;
-use App\Models\SubCategory;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
 use Filament\Forms\Components\FileUpload;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -30,72 +28,70 @@ class OfferResource extends Resource
             ->schema([
                 Forms\Components\Section::make('Offer information')
                     ->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->label('Title')
-                            ->maxLength(255)
-                            ->required(),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('title')
+                                    ->label('Title')
+                                    ->maxLength(255)
+                                    ->required(),
 
-                        Forms\Components\Select::make('network_id')
-                            ->label('Network')
-                            ->relationship('network', 'name', fn($query) => $query->where('status', 1))
-                            ->searchable()
-                            ->preload()
-                            ->required(),
+                                Forms\Components\Select::make('network_id')
+                                    ->label('Network')
+                                    ->relationship('network', 'name', fn($query) => $query->where('status', 1))
+                                    ->searchable()
+                                    ->preload()
+                                    ->required(),
 
-                        Forms\Components\Select::make('category_id')
-                            ->label('Category')
-                            ->relationship('category', 'name', fn($query) => $query->where('status', 1))
-                            ->searchable()
-                            ->preload()
-                            ->live()
-                            ->afterStateUpdated(fn(Set $set) => $set('sub_category_id', null))
-                            ->required(),
+                                Forms\Components\TextInput::make('tracking_url')
+                                    ->label('Tracking URL')
+                                    ->required()
+                                    ->maxLength(2048),
 
-                        Forms\Components\Select::make('sub_category_id')
-                            ->label('Sub Category')
-                            ->options(fn(Get $get): array => SubCategory::query()
-                                ->where('category_id', $get('category_id'))
-                                ->where('status', 1)
-                                ->pluck('name', 'id')
-                                ->toArray())
-                            ->searchable()
-                            ->preload()
-                            ->disabled(fn(Get $get): bool => blank($get('category_id')))
-                            ->required()
-                            ->placeholder(fn(Get $get): string => blank($get('category_id'))
-                                ? 'Please select category first'
-                                : 'Select sub category'),
+                                Forms\Components\Select::make('banner_id')
+                                    ->label('Banner')
+                                    ->options(function (?Offer $record) {
+                                        $usedBannerIds = Offer::query()
+                                            ->whereNotNull('banner_id')
+                                            ->when($record?->id, fn($q) => $q->where('id', '!=', $record->id))
+                                            ->pluck('banner_id')
+                                            ->toArray();
 
-                        Forms\Components\Textarea::make('description')
-                            ->label('Description')
-                            ->rows(2),
+                                        return Banner::query()
+                                            ->where('status', 1)
+                                            ->whereNotIn('id', $usedBannerIds)
+                                            ->get()
+                                            ->mapWithKeys(fn($banner) => [
+                                                $banner->id => $banner->title ?? 'Banner #' . $banner->id
+                                            ])
+                                            ->toArray();
+                                    })
+                                    ->searchable()
+                                    ->preload()
+                                    ->nullable(),
 
-                        Forms\Components\Textarea::make('tracking_url')
-                            ->label('Tracking URL')
-                            ->required()
-                            ->rows(2),
+                                Forms\Components\Textarea::make('description')
+                                    ->label('Description')
+                                    ->rows(3),
 
-                        FileUpload::make('image_url')
-                            ->label('Image')
-                            ->image()
-                            ->directory('offers')
-                            ->required()
-                            ->columnSpan(2)
-                            // ->minSize(300)
-                            ->maxSize(3072)
-                            ->helperText('Max size: 3MB.'),
+                                FileUpload::make('image_url')
+                                    ->label('Image')
+                                    ->image()
+                                    ->directory('offers')
+                                    ->required()
+                                    ->maxSize(3072)
+                                    ->helperText('Max size: 3MB.'),
 
-                        Forms\Components\Toggle::make('api_on')
-                            ->label('API On')
-                            ->default(true)
-                            ->required(),
+                                Forms\Components\Toggle::make('api_on')
+                                    ->label('API On')
+                                    ->default(true)
+                                    ->required(),
 
-                        Forms\Components\Toggle::make('status')
-                            ->label('Status')
-                            ->default(true)
-                            ->required(),
-                    ])
-                    ->columns(2),
+                                Forms\Components\Toggle::make('status')
+                                    ->label('Status')
+                                    ->default(true)
+                                    ->required(),
+                            ]),
+                    ]),
             ]);
     }
 
@@ -103,7 +99,8 @@ class OfferResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->sortable(),
+                Tables\Columns\TextColumn::make('id')
+                    ->sortable(),
 
                 Tables\Columns\ImageColumn::make('image_url')
                     ->label('Image')
@@ -111,6 +108,7 @@ class OfferResource extends Resource
 
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
+                    ->sortable()
                     ->limit(30),
 
                 Tables\Columns\TextColumn::make('network.name')
@@ -123,13 +121,10 @@ class OfferResource extends Resource
                     ->limit(40)
                     ->copyable()
                     ->copyMessage('Copied')
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
-                Tables\Columns\TextColumn::make('category.name')
-                    ->label('Category')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(),
+                Tables\Columns\ToggleColumn::make('api_on')
+                    ->label('API On'),
 
                 Tables\Columns\ToggleColumn::make('status')
                     ->label('Status')
@@ -144,12 +139,10 @@ class OfferResource extends Resource
             ->filters([
                 Tables\Filters\TernaryFilter::make('status')
                     ->label('Status'),
+
                 Tables\Filters\SelectFilter::make('network_id')
                     ->label('Network')
                     ->relationship('network', 'name'),
-                Tables\Filters\SelectFilter::make('category_id')
-                    ->label('Category')
-                    ->relationship('category', 'name'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
@@ -167,7 +160,8 @@ class OfferResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('id', 'desc');
     }
 
     public static function getRelations(): array

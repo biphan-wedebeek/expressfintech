@@ -31,18 +31,12 @@ class BannerResource extends Resource
                                 Forms\Components\TextInput::make('title')
                                     ->label('Title')
                                     ->maxLength(255)
-                                    ->placeholder('Banner title'),
-
-                                Forms\Components\Select::make('network_id')
-                                    ->label('Network')
-                                    ->relationship('network', 'name', fn($query) => $query->where('status', 1))
-                                    ->searchable()
-                                    ->preload()
-                                    ->required(),
+                                    ->placeholder('Banner title')
+                                    ->columnSpanFull(),
 
                                 Forms\Components\Select::make('category_id')
                                     ->label('Category')
-                                    ->relationship('category', 'name', fn ($query) => $query->where('status', 1))
+                                    ->relationship('category', 'name', fn($query) => $query->where('status', 1))
                                     ->searchable()
                                     ->preload()
                                     ->required()
@@ -57,7 +51,7 @@ class BannerResource extends Resource
                                         }
                                         return \App\Models\SubCategory::query()
                                             ->where('category_id', $categoryId)
-                                             ->where('status', 1)
+                                            ->where('status', 1)
                                             ->pluck('name', 'id')
                                             ->toArray();
                                     })
@@ -72,17 +66,16 @@ class BannerResource extends Resource
                                         2 => 'RIGHT',
                                         3 => 'BOTTOM',
                                         4 => 'LEFT',
-                                    ])
-                                    ->required(),
+                                    ]),
 
-                                Forms\Components\Textarea::make('tracking_url')
+                                Forms\Components\TextInput::make('tracking_url')
                                     ->label('Tracking URL')
-                                    ->rows(2)
-                                    ->required(),
+                                    ->required()
+                                    ->maxLength(2048),
 
                                 Forms\Components\Textarea::make('description')
                                     ->label('Description')
-                                    ->rows(2),
+                                    ->rows(3),
 
                                 Forms\Components\FileUpload::make('image_url')
                                     ->label('Image')
@@ -120,15 +113,20 @@ class BannerResource extends Resource
                     ->sortable()
                     ->limit(30),
 
-                Tables\Columns\TextColumn::make('network.name')
-                    ->label('Network')
-                    ->searchable()
-                    ->sortable(),
-
                 Tables\Columns\TextColumn::make('category.name')
                     ->label('Category')
                     ->searchable()
                     ->sortable(),
+
+                Tables\Columns\TextColumn::make('placement')
+                    ->label('Placement')
+                    ->formatStateUsing(fn($state) => match ((int) $state) {
+                        1 => 'TOP',
+                        2 => 'RIGHT',
+                        3 => 'BOTTOM',
+                        4 => 'LEFT',
+                        default => '-',
+                    }),
 
                 Tables\Columns\TextColumn::make('tracking_url')
                     ->label('Tracking URL')
@@ -145,10 +143,6 @@ class BannerResource extends Resource
                     ->sortable(),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('network_id')
-                    ->label('Network')
-                    ->relationship('network', 'name'),
-
                 Tables\Filters\SelectFilter::make('category_id')
                     ->label('Category')
                     ->relationship('category', 'name'),

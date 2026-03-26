@@ -1,5 +1,4 @@
 <?php
-// app/Services/BannerService.php
 
 namespace App\Services;
 
@@ -10,9 +9,8 @@ use Illuminate\Support\Collection;
 
 class BannerService
 {
-    public function get(string $categoryName, string $subCategoryName, int $placement): Collection
+    public function get(string $categoryName, string $subCategoryName, ?int $placement = null): Collection
     {
-        // Tự động tìm ID từ name
         $category = Category::where('name', $categoryName)
             ->where('status', 1)
             ->first();
@@ -29,7 +27,7 @@ class BannerService
         return Banner::where('status', 1)
             ->where('category_id', $category->id)
             ->where('sub_category_id', $subCategory->id)
-            ->where('placement', $placement)
+            ->when($placement !== null, fn($q) => $q->where('placement', $placement))
             ->orderBy('id')
             ->get();
     }
