@@ -178,11 +178,21 @@ class ClickTrackingController extends Controller
             '{pubid}' => rawurlencode($pubid),
             '#pubid#' => rawurlencode($pubid),
 
-            '{s3}' => rawurlencode($s3),
-            '#s3#' => rawurlencode($s3),
+            // s1 = tracklink.id (click_id Express)
+            '{s1}'       => rawurlencode($clickId),
+            '#s1#'       => rawurlencode($clickId),
 
-            '{s4}' => rawurlencode($s4),
-            '#s4#' => rawurlencode($s4),
+            // s2 = affiliate_id (pubid Express)
+            '{s2}'       => rawurlencode($pubid),
+            '#s2#'       => rawurlencode($pubid),
+
+            // s3 = sub1 từ Wedebeek (pid Wedebeek)
+            '{s3}'       => rawurlencode($s3),
+            '#s3#'       => rawurlencode($s3),
+
+            // s4 = sub2 từ Wedebeek (clickid Wedebeek)
+            '{s4}'       => rawurlencode($s4),
+            '#s4#'       => rawurlencode($s4),
         ]);
 
         if (! $hasExplicitClickId) {
