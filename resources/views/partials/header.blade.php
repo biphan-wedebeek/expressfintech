@@ -153,6 +153,7 @@
         'finance.planning.retirement':     '{{ route("finance.planning.retirement") }}',
         'finance.planning.tax':            '{{ route("finance.planning.tax") }}',
         'finance.planning.net_worth':      '{{ route("finance.planning.net_worth") }}',
+        'finance.planning.aarp_membership':'{{ route("finance.planning.aarp_membership") }}',
         
         // Financial Wealth Building
         'finance.building.passive_income':   '{{ route("finance.building.passive_income") }}',
@@ -301,6 +302,7 @@
                 { t: 'Retirement Planning',     h: R['finance.planning.retirement'] },
                 { t: 'Tax Planning Strategies', h: R['finance.planning.tax'] },
                 { t: 'Net Worth Analysis',      h: R['finance.planning.net_worth'] },
+                { t: 'AARP Membership Guide',   h: R['finance.planning.aarp_membership'] },
             ]},
             c2: { title: 'Wealth Building', items: [
                 { l: 'Passive Income Models',    h: R['finance.building.passive_income'] },

@@ -8,7 +8,7 @@
 
 @section('content')
 
-<section class="bg-emerald-50 border-b border-emerald-100 py-20">
+<section class="bg-surface border-b border-[var(--border)] py-20">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
         <div class="grid lg:grid-cols-2 gap-14 items-start">
             <div>
@@ -21,13 +21,13 @@
                     The Most Powerful Force in Finance
                 </h2>
 
-                <p class="text-emerald-900/70 leading-relaxed mb-5">
+                <p class="text-muted leading-relaxed mb-5">
                     Einstein reportedly called compound interest the eighth wonder of the world. Whether or not he said it, the maths is undeniable. A single $10,000 investment earning 8% annually becomes
                     <strong class="text-emerald-900">$100,627</strong>
                     in 30 years — without adding another dollar.
                 </p>
 
-                <p class="text-emerald-900/70 leading-relaxed mb-5">
+                <p class="text-muted leading-relaxed mb-5">
                     The formula:
                     <span class="text-emerald-600 italic">A = P(1 + r/n)^nt</span>.
                     But the practical insight is simpler: start early, contribute consistently, never interrupt compounding with panic selling.
@@ -39,7 +39,7 @@
                         Rule of 72
                     </div>
 
-                    <p class="text-emerald-900/70 text-sm leading-relaxed">
+                    <p class="text-muted text-sm leading-relaxed">
                         Divide 72 by your expected annual return to find how many years it takes to double your money.
                         At 8%: 72 ÷ 8 =
                         <strong class="text-emerald-900">9 years</strong>
@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                <ul class="space-y-3 text-emerald-900/70 text-sm">
+                <ul class="space-y-3 text-muted text-sm">
                     <li class="flex gap-3">
                         <span class="text-emerald-600 font-semibold">→</span>
                         <span>Start investing the moment you have an emergency fund</span>
@@ -90,137 +90,48 @@
     </div>
 </section>
 
-<section class="bg-white border-b border-emerald-100 py-20">
+<section class="bg-white border-b border-[var(--border)] py-20">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
-                <div class="text-4xl font-bold text-emerald-200 mb-4">
-                    10Y
-                </div>
+            @foreach([
+            ['10Y','After 10 Years — $21,589','A $10,000 investment at 8% has more than doubled. The compounding curve has begun to accelerate.'],
+            ['20Y','After 20 Years — $46,610','The same investment is now worth 4.6× the original. Each dollar now earns far more than it did in year one.'],
+            ['30Y','After 30 Years — $100,627','10× the original investment. This is the exponential phase — the final decade accounts for more growth than the first two combined.'],
+            ['40Y','After 40 Years — $217,245','Starting a decade earlier nearly doubles the outcome. Time is the only variable that cannot be purchased. '],
+            ] as [$n,$title,$body])
 
-                <div class="font-semibold text-emerald-900 mb-2">
-                    After 10 Years — $21,589
-                </div>
-
-                <p class="text-sm text-emerald-900/70">
-                    A $10,000 investment at 8% has more than doubled. The compounding curve has begun to accelerate.
-                </p>
+            <div class="bg-surface p-7 border border-[var(--border)] hover:border-emerald-400 transition">
+                <div class="text-4xl font-bold text-emerald-500 opacity-40 mb-4"> {{ $n }} </div>
+                <div class="font-semibold mb-2 text-[var(--text-primary)]"> {{ $title }} </div>
+                <div class="text-sm text-muted leading-relaxed"> {{ $body }} </div>
             </div>
-
-            <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
-
-                <div class="text-4xl font-bold text-emerald-200 mb-4">
-                    20Y
-                </div>
-
-                <div class="font-semibold text-emerald-900 mb-2">
-                    After 20 Years — $46,610
-                </div>
-
-                <p class="text-sm text-emerald-900/70">
-                    The same investment is now worth 4.6× the original. Each dollar now earns far more than it did in year one.
-                </p>
-            </div>
-
-            <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
-
-                <div class="text-4xl font-bold text-emerald-200 mb-4">
-                    30Y
-                </div>
-
-                <div class="font-semibold text-emerald-900 mb-2">
-                    After 30 Years — $100,627
-                </div>
-
-                <p class="text-sm text-emerald-900/70">
-                    10× the original investment. This is the exponential phase — the final decade accounts for more growth than the first two combined.
-                </p>
-            </div>
-
-
-            <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
-                <div class="text-4xl font-bold text-emerald-200 mb-4">
-                    40Y
-                </div>
-
-                <div class="font-semibold text-emerald-900 mb-2">
-                    After 40 Years — $217,245
-                </div>
-
-                <p class="text-sm text-emerald-900/70">
-                    Starting a decade earlier nearly doubles the outcome. Time is the only variable that cannot be purchased.
-                </p>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
-
 @endsection
 
 @section('related')
-
-<section class="bg-emerald-50 border-t border-emerald-100 pt-16">
+<section class="bg-white border-t border-[var(--border)] py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-        <div class="uppercase tracking-[0.25em] text-xs font-semibold text-emerald-600 mb-10">
+        <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600 mb-8">
             Related Articles
         </div>
         <div class="grid md:grid-cols-3 gap-6">
-            <a href="{{route('finance.behavior.decision_bias')}}" class="block bg-white p-7 hover:bg-emerald-50 transition rounded shadow-sm">
+            @foreach([
+            ['finance.behavior.decision_bias','Financial Decision Bias','Loss Aversion ','People tend to fear losses more than they value gains in financial decisions.'],
+            ['finance.planning.retirement','Retirement','Retirement Planning','Long-term wealth building and retirement planning are the same journey.'],
+            ['finance.building.independence','Independence','Financial Independence','FIRE is long-term wealth building on an accelerated timeline.'],
+            ] as [$route,$cat,$title,$body])
 
-                <div class="text-xs uppercase tracking-widest text-emerald-600 mb-2">
-                    Financial Decision Bias
-                </div>
-
-                <div class="fonttitle text-lg text-emerald-900 mb-2">
-                    Loss Aversion
-                </div>
-
-                <p class="text-sm text-emerald-900/70 mb-4">
-                    People tend to fear losses more than they value gains in financial decisions.
-                </p>
-
-                <div class="text-xs uppercase tracking-wider text-emerald-600">
-                    Read More →
-                </div>
+            <a href="{{ route($route) }}" class="block border border-[var(--border)] bg-surface p-6 hover:shadow-md transition">
+                <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2"> {{ $cat }} </div>
+                <div class="fonttitle text-lg font-bold mb-2"> {{ $title }} </div>
+                <p class="text-sm text-muted mb-4"> {{ $body }} </p>
+                <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold"> Read More → </span>
             </a>
-
-            <a href="{{route('finance.planning.retirement')}}" class="block bg-white p-7 hover:bg-emerald-50 transition rounded shadow-sm">
-                <div class="text-xs uppercase tracking-widest text-emerald-600 mb-2">
-                    Retirement
-                </div>
-
-                <div class="fonttitle text-lg text-emerald-900 mb-2">
-                    Retirement Planning
-                </div>
-
-                <p class="text-sm text-emerald-900/70 mb-4">
-                    Long-term wealth building and retirement planning are the same journey.
-                </p>
-
-                <div class="text-xs uppercase tracking-wider text-emerald-600">
-                    Read More →
-                </div>
-            </a>
-
-            <a href="{{route('finance.building.independence')}}" class="block bg-white p-7 hover:bg-emerald-50 transition rounded shadow-sm">
-                <div class="text-xs uppercase tracking-widest text-emerald-600 mb-2">
-                    Independence
-                </div>
-
-                <div class="fonttitle text-lg text-emerald-900 mb-2">
-                    Financial Independence
-                </div>
-
-                <p class="text-sm text-emerald-900/70 mb-4">
-                    FIRE is long-term wealth building on an accelerated timeline.
-                </p>
-
-                <div class="text-xs uppercase tracking-wider text-emerald-600">
-                    Read More →
-                </div>
-            </a>
+            @endforeach
         </div>
     </div>
 </section>
-
 @endsection

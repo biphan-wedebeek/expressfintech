@@ -106,7 +106,8 @@ Route::get('/finance/planning/emergency-fund',    [PageController::class, 'finan
 Route::get('/finance/planning/retirement',        [PageController::class, 'financePlanningRetirement'])->name('finance.planning.retirement');
 Route::get('/finance/planning/tax-strategies',    [PageController::class, 'financePlanningTax'])->name('finance.planning.tax');
 Route::get('/finance/planning/net-worth',         [PageController::class, 'financePlanningNetWorth'])->name('finance.planning.net_worth');
- 
+Route::get('/planning/aarp-membership',           [PageController::class, 'financePlanningAarpMembership'])->name('finance.planning.aarp_membership');
+
 // Financial Wealth Building
 Route::get('/finance/building/passive-income',      [PageController::class, 'financeBuildingPassiveIncome'])->name('finance.building.passive_income');
 Route::get('/finance/building/long-term-compounding',[PageController::class, 'financeBuildingLongTerm'])->name('finance.building.long_term');

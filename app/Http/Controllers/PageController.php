@@ -120,7 +120,11 @@ class PageController extends Controller
     public function financePlanningRetirement()     { return view('pages.articles.finance.planning-retirement'); }
     public function financePlanningTax()            { return view('pages.articles.finance.planning-tax'); }
     public function financePlanningNetWorth()       { return view('pages.articles.finance.planning-net_worth'); }
- 
+    public function financePlanningAarpMembership() { 
+        return view('pages.articles.finance.planning-aarp_membership',[
+            'banners_button' => $this->bannerService->get('Personal Finance', 'AARP Membership Guide')
+        ]);
+    }
     // Financial Wealth Building
     public function financeBuildingPassiveIncome()    { return view('pages.articles.finance.building-passive_income'); }
     public function financeBuildingLongTerm()         { return view('pages.articles.finance.building-long_term'); }
