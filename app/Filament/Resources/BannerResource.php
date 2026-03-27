@@ -30,6 +30,7 @@ class BannerResource extends Resource
                             ->schema([
                                 Forms\Components\TextInput::make('title')
                                     ->label('Title')
+                                    ->required()
                                     ->maxLength(255)
                                     ->placeholder('Banner title')
                                     ->columnSpanFull(),
@@ -70,7 +71,6 @@ class BannerResource extends Resource
 
                                 Forms\Components\TextInput::make('tracking_url')
                                     ->label('Tracking URL')
-                                    ->required()
                                     ->maxLength(2048),
 
                                 Forms\Components\Textarea::make('description')
@@ -81,7 +81,6 @@ class BannerResource extends Resource
                                     ->label('Image')
                                     ->image()
                                     ->directory('banners')
-                                    ->required()
                                     ->maxSize(9216)
                                     ->helperText('Max size: 9MB.'),
 

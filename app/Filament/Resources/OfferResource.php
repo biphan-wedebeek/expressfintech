@@ -77,7 +77,6 @@ class OfferResource extends Resource
                                     ->label('Image')
                                     ->image()
                                     ->directory('offers')
-                                    ->required()
                                     ->maxSize(3072)
                                     ->helperText('Max size: 3MB.'),
 
