@@ -8,7 +8,7 @@
 
  @section('content')
 
- <section class="bg-emerald-50 border-b border-emerald-100 py-20">
+ <section class="bg-surface border-b border-[var(--border)] py-20">
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
          <div class="grid lg:grid-cols-2 gap-14 items-start">
              <div>
@@ -21,12 +21,12 @@
                      How Your Mind Manages — and Mismanages — Money
                  </h2>
 
-                 <p class="text-emerald-900/70 leading-relaxed mb-5">
+                 <p class="text-muted leading-relaxed mb-5">
                      Money carries enormous psychological weight: security, status, identity, and freedom are all bound to it.
                      These emotional associations shape financial decisions far more than knowledge or strategy.
                  </p>
 
-                 <p class="text-emerald-900/70 leading-relaxed mb-5">
+                 <p class="text-muted leading-relaxed mb-5">
                      <strong class="text-emerald-900">Money scripts</strong> — deeply held beliefs about money formed in childhood — drive adult financial behaviour unconsciously.
                      Identifying your scripts is the first step to overriding them with intentional choices.
                  </p>
@@ -36,7 +36,7 @@
                          Key Insight
                      </div>
 
-                     <p class="text-emerald-900/70 text-sm leading-relaxed">
+                     <p class="text-muted text-sm leading-relaxed">
                          The most financially successful people are not the most knowledgeable — they are the most consistent.
                          Automating decisions removes psychology from the equation, which is why automation is one of the most powerful personal finance tools.
                      </p>
@@ -54,8 +54,7 @@
                      </div>
                  </div>
 
-                 <ul class="space-y-3 text-emerald-900/70 text-sm">
-
+                 <ul class="space-y-3 text-muted text-sm">
                      <li class="flex gap-3">
                          <span class="text-emerald-600 font-semibold">→</span>
                          <span><strong class="text-emerald-900">Money avoidance</strong>: associating money with greed or shame</span>
@@ -86,83 +85,65 @@
      </div>
  </section>
 
- <section class="bg-white border-b border-emerald-100 py-20">
+
+ <section class="bg-white border-b border-[var(--border)] py-20">
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-             <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
-                 <div class="text-4xl font-bold text-emerald-200 mb-4">01</div>
-                 <div class="font-semibold text-emerald-900 mb-2">Identify Your Money Script</div>
-                 <p class="text-sm text-emerald-900/70">
-                     Which pattern dominates: avoidance, worship, status, or vigilance? Self-awareness is the first step toward change.
-                 </p>
-             </div>
+             @foreach([
+             ['01','Identify Your Money Script','Which pattern dominates: avoidance, worship, status, or vigilance? Self-awareness is the first step toward change.'],
+             ['02','Automate Every Key Decision','Savings transfers, automatic investing, and bill autopay remove reliance on willpower.'],
+             ['03','Separate Needs From Identity','Lifestyle inflation is often status spending in disguise. Separate identity from consumption.'],
+             ['04','Celebrate Process, Not Outcomes','Focus on savings rate and consistency. Market returns are outside your control.'],
+             ] as [$n,$title,$body])
 
-             <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
-                 <div class="text-4xl font-bold text-emerald-200 mb-4">02</div>
-                 <div class="font-semibold text-emerald-900 mb-2">Automate Every Key Decision</div>
-                 <p class="text-sm text-emerald-900/70">
-                     Savings transfers, automatic investing, and bill autopay remove reliance on willpower.
-                 </p>
+             <div class="bg-surface p-7 border border-[var(--border)] hover:border-emerald-400 transition">
+                 <div class="text-4xl font-bold text-emerald-500 opacity-40 mb-4"> {{ $n }} </div>
+                 <div class="font-semibold mb-2 text-[var(--text-primary)]"> {{ $title }} </div>
+                 <div class="text-sm text-muted leading-relaxed"> {{ $body }} </div>
              </div>
-
-             <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
-                 <div class="text-4xl font-bold text-emerald-200 mb-4">03</div>
-                 <div class="font-semibold text-emerald-900 mb-2">Separate Needs From Identity</div>
-                 <p class="text-sm text-emerald-900/70">
-                     Lifestyle inflation is often status spending in disguise. Separate identity from consumption.
-                 </p>
-             </div>
-
-             <div class="bg-emerald-50 hover:bg-emerald-100 transition p-7 rounded">
-                 <div class="text-4xl font-bold text-emerald-200 mb-4">04</div>
-                 <div class="font-semibold text-emerald-900 mb-2">Celebrate Process, Not Outcomes</div>
-                 <p class="text-sm text-emerald-900/70">
-                     Focus on savings rate and consistency. Market returns are outside your control.
-                 </p>
-             </div>
+             @endforeach
          </div>
      </div>
  </section>
-
  @endsection
 
  @section('related')
 
- <section class="bg-emerald-50 border-t border-emerald-100 pt-16">
+ <section class="bg-white border-t border-[var(--border)] py-16">
      <div class="max-w-7xl mx-auto px-6 lg:px-12">
-         <div class="uppercase tracking-[0.25em] text-xs font-semibold text-emerald-600 mb-10">
+         <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600 mb-8">
              Related Articles
          </div>
-
          <div class="grid md:grid-cols-3 gap-6">
-             <a href="{{route('finance.behavior.spending')}}" class="block bg-white p-7 hover:bg-emerald-50 transition rounded shadow-sm">
-                 <div class="text-xs uppercase tracking-widest text-emerald-600 mb-2">Spending</div>
-                 <div class="fonttitle text-lg text-emerald-900 mb-2">The Psychology of Spending</div>
-                 <p class="text-sm text-emerald-900/70 mb-4">
-                     Translate mindset insights into spending habit changes.
+
+             @foreach([
+             ['finance.behavior.spending','Spending','The Psychology of Spending','Translate mindset insights into spending habit changes.'],
+             ['finance.behavior.decision_bias','Bias','Cognitive Biases in Finance','The mental shortcuts that often cost money.'],
+             ['finance.behavior.risk_tolerance','Risk','Risk Tolerance','How psychology shapes your investment risk profile.'],
+             ] as [$route,$cat,$title,$body])
+
+             <a href="{{ route($route) }}" class="block border border-[var(--border)] bg-surface p-6 hover:shadow-md transition">
+
+                 <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2">
+                     {{ $cat }}
+                 </div>
+
+                 <div class="fonttitle text-lg font-bold mb-2">
+                     {{ $title }}
+                 </div>
+
+                 <p class="text-sm text-muted mb-4">
+                     {{ $body }}
                  </p>
-                 <div class="text-xs uppercase tracking-wider text-emerald-600">Read More →</div>
+
+                 <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold">
+                     Read More →
+                 </span>
              </a>
 
-             <a href="{{route('finance.behavior.decision_bias')}}" class="block bg-white p-7 hover:bg-emerald-50 transition rounded shadow-sm">
-                 <div class="text-xs uppercase tracking-widest text-emerald-600 mb-2">Bias</div>
-                 <div class="fonttitle text-lg text-emerald-900 mb-2">Cognitive Biases in Finance</div>
-                 <p class="text-sm text-emerald-900/70 mb-4">
-                     The mental shortcuts that often cost money.
-                 </p>
-                 <div class="text-xs uppercase tracking-wider text-emerald-600">Read More →</div>
-             </a>
+             @endforeach
 
-             <a href="{{route('finance.behavior.risk_tolerance')}}" class="block bg-white p-7 hover:bg-emerald-50 transition rounded shadow-sm">
-                 <div class="text-xs uppercase tracking-widest text-emerald-600 mb-2">Risk</div>
-                 <div class="fonttitle text-lg text-emerald-900 mb-2">Risk Tolerance</div>
-                 <p class="text-sm text-emerald-900/70 mb-4">
-                     How psychology shapes your investment risk profile.
-                 </p>
-                 <div class="text-xs uppercase tracking-wider text-emerald-600">Read More →</div>
-             </a>
          </div>
      </div>
  </section>
-
  @endsection

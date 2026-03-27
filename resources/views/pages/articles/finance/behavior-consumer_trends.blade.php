@@ -9,19 +9,14 @@
 @section('content')
 
 <section class="bg-surface border-b border-[var(--border)] py-20">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
-
             <div>
-
-                <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-indigo">
-                    <span class="w-[22px] h-[1px] bg-indigo block"></span>
+                <div class="flex items-center gap-3 mb-4 text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600">
+                    <span class="w-6 h-px bg-emerald-600"></span>
                     {{ now()->year }} Landscape
                 </div>
-
-                <h2 class="fonttitle text-4xl lg:text-5xl text-navy mb-8 leading-tight">
+                <h2 class="fonttitle text-3xl lg:text-4xl font-bold leading-tight mb-6">
                     The Forces Reshaping Consumer Finance
                 </h2>
 
@@ -42,9 +37,8 @@
                     Auditing recurring charges is now a standard annual financial task.
                 </p>
 
-                <div class="border border-indigo/20 bg-indigo-light p-6 rounded-md">
-
-                    <div class="text-[10px] font-bold tracking-[0.22em] uppercase text-indigo mb-2">
+                <div class="border border-emerald-200 bg-emerald-50 p-6 rounded-lg">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-emerald-700 font-semibold mb-2">
                         Subscription Audit
                     </div>
 
@@ -53,145 +47,69 @@
                         on subscriptions in {{ now()->year }}, up from $86 in 2018.
                         Most households can cut 30–40% without noticing the loss.
                     </p>
-
                 </div>
-
             </div>
 
             <div>
-
-                <div class="border-l-4 border-indigo bg-white shadow-sm p-7 mb-4">
-
-                    <div class="fonttitle text-5xl font-black text-indigo mb-2">
+                <div class="border-l-4 border-yellow-500 bg-white p-8 shadow-sm">
+                    <div class="fonttitle text-6xl font-black text-yellow-500 mb-2">
                         $273
                     </div>
 
-                    <div class="text-xs text-muted uppercase tracking-wider">
+                    <div class="text-xs uppercase tracking-[0.1em] text-muted">
                         Average US household monthly subscription spend — audit yours
                     </div>
-
                 </div>
 
                 <ul class="space-y-3">
-
                     <li class="flex gap-3 text-[14px] text-muted leading-relaxed">
-                        <span class="text-indigo font-semibold">→</span>
+                        <span class="text-emerald-600 font-semibold">→</span>
                         <span>Cancel subscriptions you have not used in 60 days</span>
                     </li>
 
                     <li class="flex gap-3 text-[14px] text-muted leading-relaxed">
-                        <span class="text-indigo font-semibold">→</span>
+                        <span class="text-emerald-600 font-semibold">→</span>
                         <span>Review annual subscriptions before auto-renewal</span>
                     </li>
 
                     <li class="flex gap-3 text-[14px] text-muted leading-relaxed">
-                        <span class="text-indigo font-semibold">→</span>
+                        <span class="text-emerald-600 font-semibold">→</span>
                         <span>Negotiate — most services offer retention discounts when you cancel</span>
                     </li>
 
                     <li class="flex gap-3 text-[14px] text-muted leading-relaxed">
-                        <span class="text-indigo font-semibold">→</span>
+                        <span class="text-emerald-600 font-semibold">→</span>
                         <span>Share family plans across households where legally permitted</span>
                     </li>
 
                     <li class="flex gap-3 text-[14px] text-muted leading-relaxed">
-                        <span class="text-indigo font-semibold">→</span>
+                        <span class="text-emerald-600 font-semibold">→</span>
                         <span>Track subscriptions with a dedicated row in your monthly budget</span>
                     </li>
-
                 </ul>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
 <section class="bg-white border-b border-[var(--border)] py-20">
-
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            @foreach([
+            ['01','Audit All Subscriptions','Pull every recurring charge from the last 2 months. List service, amount, and last date used. Most people find 3–5 forgotten ones.'],
+            ['02','Categorise Spending by Value','Essential (utilities, insurance), high-value (used weekly), low-value (used rarely). Cancel all low-value immediately.'],
+            ['03','Monitor Inflation by Category','Housing, food, and energy inflate faster than headline CPI. Track your personal inflation rate, not the national average.'],
+            ['04','Align Spending With Goals','Map every major spending category to a life goal. Spending that maps to no goal is a candidate for reduction.'],
+            ] as [$n,$title,$body])
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            <div class="bg-surface p-8 border border-[var(--border)] hover:border-indigo transition">
-
-                <div class="text-5xl font-extrabold text-indigo/20 mb-4">
-                    01
-                </div>
-
-                <div class="font-semibold text-navy mb-2">
-                    Audit All Subscriptions
-                </div>
-
-                <p class="text-sm text-muted leading-relaxed">
-                    Pull every recurring charge from the last 2 months.
-                    List service, amount, and last date used.
-                    Most people find 3–5 forgotten ones.
-                </p>
-
+            <div class="bg-surface p-7 border border-[var(--border)] hover:border-emerald-400 transition">
+                <div class="text-4xl font-bold text-emerald-500 opacity-40 mb-4"> {{ $n }} </div>
+                <div class="font-semibold mb-2 text-[var(--text-primary)]"> {{ $title }} </div>
+                <div class="text-sm text-muted leading-relaxed"> {{ $body }} </div>
             </div>
-
-
-            <div class="bg-surface p-8 border border-[var(--border)] hover:border-indigo transition">
-
-                <div class="text-5xl font-extrabold text-indigo/20 mb-4">
-                    02
-                </div>
-
-                <div class="font-semibold text-navy mb-2">
-                    Categorise Spending by Value
-                </div>
-
-                <p class="text-sm text-muted leading-relaxed">
-                    Essential (utilities, insurance), high-value (used weekly),
-                    low-value (used rarely). Cancel all low-value immediately.
-                </p>
-
-            </div>
-
-
-            <div class="bg-surface p-8 border border-[var(--border)] hover:border-indigo transition">
-
-                <div class="text-5xl font-extrabold text-indigo/20 mb-4">
-                    03
-                </div>
-
-                <div class="font-semibold text-navy mb-2">
-                    Monitor Inflation by Category
-                </div>
-
-                <p class="text-sm text-muted leading-relaxed">
-                    Housing, food, and energy inflate faster than headline CPI.
-                    Track your personal inflation rate, not the national average.
-                </p>
-
-            </div>
-
-
-            <div class="bg-surface p-8 border border-[var(--border)] hover:border-indigo transition">
-
-                <div class="text-5xl font-extrabold text-indigo/20 mb-4">
-                    04
-                </div>
-
-                <div class="font-semibold text-navy mb-2">
-                    Align Spending With Goals
-                </div>
-
-                <p class="text-sm text-muted leading-relaxed">
-                    Map every major spending category to a life goal.
-                    Spending that maps to no goal is a candidate for reduction.
-                </p>
-
-            </div>
-
+            @endforeach
         </div>
-
     </div>
-
 </section>
 
 @endsection
@@ -199,82 +117,27 @@
 
 @section('related')
 
-<section class="bg-surface border-t border-[var(--border)] pt-16">
-
+<section class="bg-white border-t border-[var(--border)] py-16">
     <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
-        <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-indigo mb-10">
+        <div class="text-[10px] font-bold tracking-[0.26em] uppercase text-emerald-600 mb-8">
             Related Articles
         </div>
+        <div class="grid md:grid-cols-3 gap-6">
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            @foreach([
+            ['finance.planning.budget','Budgeting','The 50/30/20 Rule','Apply behavioural insights to your monthly budget structure.'],
+            ['finance.behavior.spending','Spending','Spending Behavior','Translate consumer trend awareness into personal spending changes.'],
+            ['finance.behavior.psychology','Psychology','Money Psychology','The psychological drivers behind consumer trend participation.'],
+            ] as [$route,$cat,$title,$body])
 
-            <a href="{{route('finance.planning.budget')}}" class="bg-white border border-[var(--border)] p-8 hover:shadow-md transition block">
-
-                <div class="text-xs uppercase tracking-widest text-indigo mb-2">
-                    Budgeting
-                </div>
-
-                <div class="fonttitle text-lg text-navy mb-2">
-                    The 50/30/20 Rule
-                </div>
-
-                <p class="text-sm text-muted mb-4">
-                    Apply behavioural insights to your monthly budget structure.
-                </p>
-
-                <div class="text-xs uppercase tracking-widest text-indigo">
-                    Read More →
-                </div>
-
+            <a href="{{ route($route) }}" class="block border border-[var(--border)] bg-surface p-6 hover:shadow-md transition">
+                <div class="text-xs uppercase tracking-wider text-emerald-600 font-semibold mb-2"> {{ $cat }} </div>
+                <div class="fonttitle text-lg font-bold mb-2"> {{ $title }} </div>
+                <p class="text-sm text-muted mb-4"> {{ $body }} </p>
+                <span class="text-xs uppercase tracking-wider text-emerald-600 font-semibold"> Read More → </span>
             </a>
-
-
-            <a href="{{route('finance.behavior.spending')}}" class="bg-white border border-[var(--border)] p-8 hover:shadow-md transition block">
-
-                <div class="text-xs uppercase tracking-widest text-indigo mb-2">
-                    Spending
-                </div>
-
-                <div class="fonttitle text-lg text-navy mb-2">
-                    Spending Behavior
-                </div>
-
-                <p class="text-sm text-muted mb-4">
-                    Translate consumer trend awareness into personal spending changes.
-                </p>
-
-                <div class="text-xs uppercase tracking-widest text-indigo">
-                    Read More →
-                </div>
-
-            </a>
-
-
-            <a href="{{route('finance.behavior.psychology')}}" class="bg-white border border-[var(--border)] p-8 hover:shadow-md transition block">
-
-                <div class="text-xs uppercase tracking-widest text-indigo mb-2">
-                    Psychology
-                </div>
-
-                <div class="fonttitle text-lg text-navy mb-2">
-                    Money Psychology
-                </div>
-
-                <p class="text-sm text-muted mb-4">
-                    The psychological drivers behind consumer trend participation.
-                </p>
-
-                <div class="text-xs uppercase tracking-widest text-indigo">
-                    Read More →
-                </div>
-
-            </a>
-
+            @endforeach
         </div>
-
     </div>
-
 </section>
-
 @endsection
