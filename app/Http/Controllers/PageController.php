@@ -140,6 +140,11 @@ class PageController extends Controller
             'banners_right' => $this->bannerService->get('Personal Finance', 'Risk Tolerance', 2),
          ]); 
     }
-    public function financeBehaviorDecisionBias()   { return view('pages.articles.finance.behavior-decision_bias'); }
-    public function financeBehaviorConsumerTrends() { return view('pages.articles.finance.behavior-consumer_trends'); }
+    public function financeBehaviorDecisionBias()       { return view('pages.articles.finance.behavior-decision_bias'); }
+    public function financeBehaviorConsumerTrends()     { return view('pages.articles.finance.behavior-consumer_trends'); }
+    public function financeBehaviorIdentityProtection() { 
+        return view('pages.articles.finance.behavior-identity_protection',[
+            'url_button' => $this->bannerService->get('Personal Finance', 'Identity Protection'),
+        ]);
+    }
 }
