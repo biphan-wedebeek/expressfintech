@@ -75,24 +75,24 @@
 (function(){
     const R = {
 
-        // Insurance
+        // ── Insurance ──────────────────────────────────────────
         'insurance.principles':          '{{ route("insurance.fundamentals.principles") }}',
         'insurance.risk-assessment':     '{{ route("insurance.fundamentals.risk-assessment") }}',
         'insurance.underwriting':        '{{ route("insurance.fundamentals.underwriting") }}',
         'insurance.premium-calculation': '{{ route("insurance.fundamentals.premium-calculation") }}',
         'insurance.regulatory':          '{{ route("insurance.fundamentals.regulatory") }}',
-        
-        'insurance.categories.life':        '{{ route("insurance.categories.life") }}',
-        'insurance.categories.health':      '{{ route("insurance.categories.health") }}',
-        'insurance.categories.property':    '{{ route("insurance.categories.property") }}',
+
         'insurance.categories.auto':        '{{ route("insurance.categories.auto") }}',
+        'insurance.categories.health':      '{{ route("insurance.categories.health") }}',
+        'insurance.categories.life':        '{{ route("insurance.categories.life") }}',
+        'insurance.categories.property':    '{{ route("insurance.categories.property") }}',
         'insurance.categories.reinsurance': '{{ route("insurance.categories.reinsurance") }}',
 
-        'insurance.insights.trends':        '{{ route("insurance.insights.trends") }}',
         'insurance.insights.insurtech':     '{{ route("insurance.insights.insurtech") }}',
         'insurance.insights.reports':       '{{ route("insurance.insights.reports") }}',
+        'insurance.insights.trends':        '{{ route("insurance.insights.trends") }}',
 
-        // Banking
+        // ── Banking ────────────────────────────────────────────
         'banking.structure.retail-commercial': '{{ route("banking.structure-retail_commercial") }}',
         'banking.structure.central-banking':   '{{ route("banking.structure-central_banking") }}',
         'banking.structure.digital-evolution': '{{ route("banking.structure-digital_evolution") }}',
@@ -109,7 +109,7 @@
         'banking.analysis.profitability-metrics': '{{ route("banking.analysis-profitability_metrics") }}',
         'banking.analysis.risk-liquidity':        '{{ route("banking.analysis-risk_liquidity") }}',
 
-        // Cards
+        // ── Credit Cards ───────────────────────────────────────
         'cards.mechanics.scoring':    '{{ route("cards.mechanics-scoring") }}',
         'cards.mechanics.apr':        '{{ route("cards.mechanics-apr") }}',
         'cards.mechanics.interchange':'{{ route("cards.mechanics-interchange") }}',
@@ -126,107 +126,108 @@
         'cards.market.consumer':      '{{ route("cards.market-consumer") }}',
         'cards.market.experian_fico': '{{ route("cards.market-experian_fico") }}',
 
-        // Mortgages Fundamentals
-        'mortgages.fundamentals.fixed_vs_variable':        '{{ route("mortgages.fundamentals.fixed_vs_variable") }}',
-        'mortgages.fundamentals.amortization_structure':   '{{ route("mortgages.fundamentals.amortization_structure") }}',
-        'mortgages.fundamentals.underwriting':             '{{ route("mortgages.fundamentals.underwriting") }}',
-        'mortgages.fundamentals.ratio':                    '{{ route("mortgages.fundamentals.ratio") }}',
-        'mortgages.fundamentals.interest_rate':            '{{ route("mortgages.fundamentals.interest_rate") }}',
-        
-        // Mortgages Products
-        'mortgages.products.conventional':   '{{ route("mortgages.products.conventional") }}',
-        'mortgages.products.fha_va':         '{{ route("mortgages.products.fha_va") }}',
-        'mortgages.products.jumbo':          '{{ route("mortgages.products.jumbo") }}',
-        'mortgages.products.refinance':      '{{ route("mortgages.products.refinance") }}',
-        'mortgages.products.adjustable_rate':'{{ route("mortgages.products.adjustable_rate") }}',
-        
-        // Mortgages Analysis
-        'mortgages.analysis.price_trends': '{{ route("mortgages.analysis.price_trends") }}',
-        'mortgages.analysis.securities':   '{{ route("mortgages.analysis.securities") }}',
-        'mortgages.analysis.forecasting':  '{{ route("mortgages.analysis.forecasting") }}',
-        'mortgages.analysis.estate_cycles':'{{ route("mortgages.analysis.estate_cycles") }}',
-        'mortgages.analysis.regulatory':   '{{ route("mortgages.analysis.regulatory") }}',
+        // ── Mortgages ──────────────────────────────────────────
+        'mortgages.fundamentals.fixed_vs_variable':      '{{ route("mortgages.fundamentals.fixed_vs_variable") }}',
+        'mortgages.fundamentals.amortization_structure': '{{ route("mortgages.fundamentals.amortization_structure") }}',
+        'mortgages.fundamentals.underwriting':           '{{ route("mortgages.fundamentals.underwriting") }}',
+        'mortgages.fundamentals.ratio':                  '{{ route("mortgages.fundamentals.ratio") }}',
+        'mortgages.fundamentals.interest_rate':          '{{ route("mortgages.fundamentals.interest_rate") }}',
 
-        // Financial Planning
-        'finance.planning.budget':         '{{ route("finance.planning.budget") }}',
-        'finance.planning.emergency_fund': '{{ route("finance.planning.emergency_fund") }}',
-        'finance.planning.retirement':     '{{ route("finance.planning.retirement") }}',
-        'finance.planning.tax':            '{{ route("finance.planning.tax") }}',
-        'finance.planning.net_worth':      '{{ route("finance.planning.net_worth") }}',
-        'finance.planning.aarp_membership':'{{ route("finance.planning.aarp_membership") }}',
-        
-        // Financial Wealth Building
-        'finance.building.passive_income':   '{{ route("finance.building.passive_income") }}',
-        'finance.building.long_term':        '{{ route("finance.building.long_term") }}',
-        'finance.building.debt':             '{{ route("finance.building.debt") }}',
-        'finance.building.independence':     '{{ route("finance.building.independence") }}',
-        'finance.building.diversification':  '{{ route("finance.building.diversification") }}',
-        
-        // Financial Behavior
-        'finance.behavior.psychology':     '{{ route("finance.behavior.psychology") }}',
-        'finance.behavior.spending':       '{{ route("finance.behavior.spending") }}',
-        'finance.behavior.risk_tolerance': '{{ route("finance.behavior.risk_tolerance") }}',
-        'finance.behavior.decision_bias':  '{{ route("finance.behavior.decision_bias") }}',
-        'finance.behavior.consumer_trends':'{{ route("finance.behavior.consumer_trends") }}',
+        'mortgages.products.conventional':    '{{ route("mortgages.products.conventional") }}',
+        'mortgages.products.fha_va':          '{{ route("mortgages.products.fha_va") }}',
+        'mortgages.products.jumbo':           '{{ route("mortgages.products.jumbo") }}',
+        'mortgages.products.adjustable_rate': '{{ route("mortgages.products.adjustable_rate") }}',
+        'mortgages.products.refinance':       '{{ route("mortgages.products.refinance") }}',
+
+        'mortgages.analysis.price_trends':  '{{ route("mortgages.analysis.price_trends") }}',
+        'mortgages.analysis.estate_cycles': '{{ route("mortgages.analysis.estate_cycles") }}',
+        'mortgages.analysis.forecasting':   '{{ route("mortgages.analysis.forecasting") }}',
+        'mortgages.analysis.securities':    '{{ route("mortgages.analysis.securities") }}',
+        'mortgages.analysis.regulatory':    '{{ route("mortgages.analysis.regulatory") }}',
+
+        // ── Personal Finance ───────────────────────────────────
+        'finance.planning.budget':          '{{ route("finance.planning.budget") }}',
+        'finance.planning.emergency_fund':  '{{ route("finance.planning.emergency_fund") }}',
+        'finance.planning.net_worth':       '{{ route("finance.planning.net_worth") }}',
+        'finance.planning.retirement':      '{{ route("finance.planning.retirement") }}',
+        'finance.planning.tax':             '{{ route("finance.planning.tax") }}',
+        'finance.planning.aarp_membership': '{{ route("finance.planning.aarp_membership") }}',
+
+        'finance.building.debt':            '{{ route("finance.building.debt") }}',
+        'finance.building.passive_income':  '{{ route("finance.building.passive_income") }}',
+        'finance.building.long_term':       '{{ route("finance.building.long_term") }}',
+        'finance.building.diversification': '{{ route("finance.building.diversification") }}',
+        'finance.building.independence':    '{{ route("finance.building.independence") }}',
+
+        'finance.behavior.psychology':          '{{ route("finance.behavior.psychology") }}',
+        'finance.behavior.decision_bias':       '{{ route("finance.behavior.decision_bias") }}',
+        'finance.behavior.risk_tolerance':      '{{ route("finance.behavior.risk_tolerance") }}',
+        'finance.behavior.spending':            '{{ route("finance.behavior.spending") }}',
+        'finance.behavior.consumer_trends':     '{{ route("finance.behavior.consumer_trends") }}',
+        'finance.behavior.identity_protection': '{{ route("finance.behavior.identity_protection") }}',
     };
 
     const MENUS = {
-        insurance:{
-            c1:{title:'Insurance Fundamentals',items:[
-                {t:'Insurance Principles',        h:R['insurance.principles']},
-                {t:'Risk Assessment Models',      h:R['insurance.risk-assessment']},
-                {t:'Underwriting Process',        h:R['insurance.underwriting']},
-                {t:'Premium Calculation Methods', h:R['insurance.premium-calculation']},
-                {t:'Regulatory Framework',        h:R['insurance.regulatory']},
+
+        // ════════════════════════════════════════════════════════
+        insurance: {
+            c1: { title: 'Insurance Fundamentals', items: [
+                { t: 'Insurance Principles',        h: R['insurance.principles'] },
+                { t: 'Risk Assessment Models',      h: R['insurance.risk-assessment'] },
+                { t: 'Premium Calculation Methods', h: R['insurance.premium-calculation'] },
+                { t: 'Underwriting Process',        h: R['insurance.underwriting'] },
+                { t: 'Regulatory Framework',        h: R['insurance.regulatory'] },
             ]},
-            c2:{title:'Insurance Categories',items:[
-                {l:'Life Insurance Analysis',  h:R['insurance.categories.life']},
-                {l:'Health Insurance Systems', h:R['insurance.categories.health']},
-                {l:'Property & Casualty',      h:R['insurance.categories.property']},
-                {l:'Auto Insurance Market',    h:R['insurance.categories.auto']},
-                {l:'Reinsurance Structure',    h:R['insurance.categories.reinsurance']},
+            c2: { title: 'Insurance Categories', items: [
+                { l: 'Auto Insurance Market',    h: R['insurance.categories.auto'] },
+                { l: 'Health Insurance Systems', h: R['insurance.categories.health'] },
+                { l: 'Life Insurance Analysis',  h: R['insurance.categories.life'] },
+                { l: 'Property & Casualty',      h: R['insurance.categories.property'] },
+                { l: 'Reinsurance Structure',    h: R['insurance.categories.reinsurance'] },
             ]},
-            c3:{title:'Industry Insights',items:[
-                {l:'Insurance Market Trends',  h:R['insurance.insights.trends']},
-                {l:'InsurTech Innovations',    h:R['insurance.insights.insurtech']},
-                {l:'Global Insurance Reports', h:R['insurance.insights.reports']},
+            c3: { title: 'Industry Insights', items: [
+                { l: 'InsurTech Innovations',    h: R['insurance.insights.insurtech'] },
+                { l: 'Global Insurance Reports', h: R['insurance.insights.reports'] },
+                { l: 'Insurance Market Trends',  h: R['insurance.insights.trends'] },
             ]},
-            featured:[
+            featured: [
                 {
-                    badge:'TOP PICK',
-                    title:'Straight-Through Processing & Digital Underwriting',
-                    h:R['insurance.underwriting']+'#section-03',
-                    img:'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80'
+                    badge: 'TOP PICK',
+                    title: 'Straight-Through Processing & Digital Underwriting',
+                    h: R['insurance.underwriting'] + '#section-03',
+                    img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80'
                 },
                 {
-                    badge:null,
-                    title:'Insurance Market Trends & Analysis {{ now()->year }}',
-                    h:R['insurance.insights.trends'],
-                    img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80'
+                    badge: null,
+                    title: 'Insurance Market Trends & Analysis {{ now()->year }}',
+                    h: R['insurance.insights.trends'],
+                    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80'
                 },
             ]
         },
-        banking:{
-            c1:{title:'Banking Structure',items:[
-                {t:'Retail vs Commercial Banking',h:R['banking.structure.retail-commercial']},
-                {t:'Central Banking Systems',     h:R['banking.structure.central-banking']},
-                {t:'Digital Banking Evolution',   h:R['banking.structure.digital-evolution']},
-                {t:'Open Banking',                h:R['banking.structure.open-banking']},
+
+        // BANKING
+        banking: {
+            c1: { title: 'Banking Structure', items: [
+                { t: 'Retail vs Commercial Banking', h: R['banking.structure.retail-commercial'] },
+                { t: 'Central Banking Systems',      h: R['banking.structure.central-banking'] },
+                { t: 'Digital Banking Evolution',    h: R['banking.structure.digital-evolution'] },
+                { t: 'Open Banking',                 h: R['banking.structure.open-banking'] },
             ]},
-            c2:{title:'Banking Products',items:[
-                {l:'Deposit Products Analysis', h:R['banking.products.deposit']},
-                {l:'Lending Framework',         h:R['banking.products.lending']},
-                {l:'Corporate Banking Services',h:R['banking.products.corporate']},
-                {l:'Cross-border Payments',     h:R['banking.products.cross-border']},
-                {l:'Treasury Services',         h:R['banking.products.treasury']},
+            c2: { title: 'Banking Products', items: [
+                { l: 'Deposit Products Analysis',  h: R['banking.products.deposit'] },
+                { l: 'Lending Framework',          h: R['banking.products.lending'] },
+                { l: 'Cross-border Payments',      h: R['banking.products.cross-border'] },
+                { l: 'Corporate Banking Services', h: R['banking.products.corporate'] },
+                { l: 'Treasury Services',          h: R['banking.products.treasury'] },
             ]},
-            c3:{title:'Banking Industry Analysis',items:[
-                {l:'Profitability Metrics',       h:R['banking.analysis.profitability-metrics']},
-                {l:'NIM & Capital Ratios',        h:R['banking.analysis.nim-capital']},
-                {l:'Risk & Liquidity Management', h:R['banking.analysis.risk-liquidity']},
-                {l:'Global Banking Outlook',      h:R['banking.analysis.global-outlook']},
+            c3: { title: 'Banking Industry Analysis', items: [
+                { l: 'Profitability Metrics',       h: R['banking.analysis.profitability-metrics'] },
+                { l: 'NIM & Capital Ratios',        h: R['banking.analysis.nim-capital'] },
+                { l: 'Risk & Liquidity Management', h: R['banking.analysis.risk-liquidity'] },
+                { l: 'Global Banking Outlook',      h: R['banking.analysis.global-outlook'] },
             ]},
-            featured:[
+            featured: [
                 {
                     badge: 'DEEP DIVE',
                     title: 'Open Banking: APIs, PSD2 & the Platform Economy',
@@ -235,27 +236,29 @@
                 },
             ]
         },
-        'credit-cards':{
-            c1:{title:'Card Mechanics',items:[
-                {t:'Credit Scoring Models',     h:R['cards.mechanics.scoring']},
-                {t:'APR & Interest Calculation',h:R['cards.mechanics.apr']},
-                {t:'Interchange Fees',          h:R['cards.mechanics.interchange']},
-                {t:'Credit Limits',             h:R['cards.mechanics.credit']},
-                {t:'Risk-based Pricing',        h:R['cards.mechanics.risk_based']},
+
+        // CREDIT CARDS
+        'credit-cards': {
+            c1: { title: 'Card Mechanics', items: [
+                { t: 'Credit Scoring Models',      h: R['cards.mechanics.scoring'] },
+                { t: 'APR & Interest Calculation', h: R['cards.mechanics.apr'] },
+                { t: 'Credit Limits',              h: R['cards.mechanics.credit'] },
+                { t: 'Interchange Fees',           h: R['cards.mechanics.interchange'] },
+                { t: 'Risk-based Pricing',         h: R['cards.mechanics.risk_based'] },
             ]},
-             c2:{title:'Card Strategy',items:[
-                {l:'Reward Program Economics',   h:R['cards.strategy.reward']},
-                {l:'Cashback vs Points',         h:R['cards.strategy.cashback']},
-                {l:'Balance Transfer Analysis',  h:R['cards.strategy.analysis']},
-                {l:'Credit Utilization Strategy',h:R['cards.strategy.strategy']},
-                {l:'Card Churning Tactics',      h:R['cards.strategy.tactics']},
+            c2: { title: 'Card Strategy', items: [
+                { l: 'Reward Program Economics',    h: R['cards.strategy.reward'] },
+                { l: 'Cashback vs Points',          h: R['cards.strategy.cashback'] },
+                { l: 'Credit Utilization Strategy', h: R['cards.strategy.strategy'] },
+                { l: 'Balance Transfer Analysis',   h: R['cards.strategy.analysis'] },
+                { l: 'Card Churning Tactics',       h: R['cards.strategy.tactics'] },
             ]},
-            c3:{title:'Market & Regulation',items:[
-                {l:'Card Network Comparison',     h:R['cards.market.comparison']},
-                {l:'Consumer Protection Laws',    h:R['cards.market.consumer']},
-                {l:'Free FICO® Score — Experian', h:R['cards.market.experian_fico'] },
+            c3: { title: 'Market & Regulation', items: [
+                { l: 'Card Network Comparison',      h: R['cards.market.comparison'] },
+                { l: 'Consumer Protection Laws',     h: R['cards.market.consumer'] },
+                { l: 'Free FICO® Score — Experian',  h: R['cards.market.experian_fico'] },
             ]},
-            featured:[
+            featured: [
                 {
                     badge: 'MUST READ',
                     title: 'APR & Daily Compounding: The True Cost of Carrying a Balance',
@@ -264,29 +267,31 @@
                 },
             ]
         },
-        mortgages:{
-            c1:{title:'Mortgage Fundamentals',items:[
-                {t:'Fixed vs Variable Rate',   h:R['mortgages.fundamentals.fixed_vs_variable']},
-                {t:'Amortization Structure',   h:R['mortgages.fundamentals.amortization_structure']},
-                {t:'Mortgage Underwriting',    h:R['mortgages.fundamentals.underwriting']},
-                {t:'Loan-to-Value Ratio',      h:R['mortgages.fundamentals.ratio']},
-                {t:'Interest Rate Mechanisms', h:R['mortgages.fundamentals.interest_rate']},
+
+        // MORTGAGES
+        mortgages: {
+            c1: { title: 'Mortgage Fundamentals', items: [
+                { t: 'Fixed vs Variable Rate',    h: R['mortgages.fundamentals.fixed_vs_variable'] },
+                { t: 'Amortization Structure',    h: R['mortgages.fundamentals.amortization_structure'] },
+                { t: 'Loan-to-Value Ratio',       h: R['mortgages.fundamentals.ratio'] },
+                { t: 'Mortgage Underwriting',     h: R['mortgages.fundamentals.underwriting'] },
+                { t: 'Interest Rate Mechanisms',  h: R['mortgages.fundamentals.interest_rate'] },
             ]},
-            c2:{title:'Mortgage Products',items:[
-                {l:'Conventional Loans',        h:R['mortgages.products.conventional']},
-                {l:'FHA / VA Loans',            h:R['mortgages.products.fha_va']},
-                {l:'Jumbo Loans',               h:R['mortgages.products.jumbo']},
-                {l:'Refinance Strategies',      h:R['mortgages.products.refinance']},
-                {l:'Adjustable-Rate Mortgages', h:R['mortgages.products.adjustable_rate']},
+            c2: { title: 'Mortgage Products', items: [
+                { l: 'Conventional Loans',        h: R['mortgages.products.conventional'] },
+                { l: 'FHA / VA Loans',            h: R['mortgages.products.fha_va'] },
+                { l: 'Jumbo Loans',               h: R['mortgages.products.jumbo'] },
+                { l: 'Adjustable-Rate Mortgages', h: R['mortgages.products.adjustable_rate'] },
+                { l: 'Refinance Strategies',      h: R['mortgages.products.refinance'] },
             ]},
-            c3:{title:'Housing Market Analysis',items:[
-                {l:'Housing Price Trends',        h:R['mortgages.analysis.price_trends']},
-                {l:'Mortgage-backed Securities',  h:R['mortgages.analysis.securities']},
-                {l:'Rate Forecasting',            h:R['mortgages.analysis.forecasting']},
-                {l:'Real Estate Cycles',          h:R['mortgages.analysis.estate_cycles']},
-                {l:'Regulatory Impact',           h:R['mortgages.analysis.regulatory']},
+            c3: { title: 'Housing Market Analysis', items: [
+                { l: 'Housing Price Trends',       h: R['mortgages.analysis.price_trends'] },
+                { l: 'Real Estate Cycles',         h: R['mortgages.analysis.estate_cycles'] },
+                { l: 'Rate Forecasting',           h: R['mortgages.analysis.forecasting'] },
+                { l: 'Mortgage-backed Securities', h: R['mortgages.analysis.securities'] },
+                { l: 'Regulatory Impact',          h: R['mortgages.analysis.regulatory'] },
             ]},
-            featured:[
+            featured: [
                 {
                     badge: 'FUNDAMENTALS',
                     title: 'Loan-to-Value Ratio: Equity, PMI & What Lenders Really Look At',
@@ -295,30 +300,33 @@
                 },
             ]
         },
+
+        // PERSONAL FINANCE
         'personal-finance': {
             c1: { title: 'Financial Planning', items: [
                 { t: 'Budget Systems',          h: R['finance.planning.budget'] },
                 { t: 'Emergency Fund Modeling', h: R['finance.planning.emergency_fund'] },
+                { t: 'Net Worth Analysis',      h: R['finance.planning.net_worth'] },
                 { t: 'Retirement Planning',     h: R['finance.planning.retirement'] },
                 { t: 'Tax Planning Strategies', h: R['finance.planning.tax'] },
-                { t: 'Net Worth Analysis',      h: R['finance.planning.net_worth'] },
                 { t: 'AARP Membership Guide',   h: R['finance.planning.aarp_membership'] },
             ]},
             c2: { title: 'Wealth Building', items: [
+                { l: 'Debt Optimization',        h: R['finance.building.debt'] },
                 { l: 'Passive Income Models',    h: R['finance.building.passive_income'] },
                 { l: 'Long-term Compounding',    h: R['finance.building.long_term'] },
-                { l: 'Debt Optimization',        h: R['finance.building.debt'] },
-                { l: 'Financial Independence',   h: R['finance.building.independence'] },
                 { l: 'Income Diversification',   h: R['finance.building.diversification'] },
+                { l: 'Financial Independence',   h: R['finance.building.independence'] },
             ]},
             c3: { title: 'Financial Behavior', items: [
                 { l: 'Psychology of Money',      h: R['finance.behavior.psychology'] },
-                { l: 'Spending Patterns',        h: R['finance.behavior.spending'] },
-                { l: 'Risk Tolerance',           h: R['finance.behavior.risk_tolerance'] },
                 { l: 'Financial Decision Bias',  h: R['finance.behavior.decision_bias'] },
+                { l: 'Risk Tolerance',           h: R['finance.behavior.risk_tolerance'] },
+                { l: 'Spending Patterns',        h: R['finance.behavior.spending'] },
                 { l: 'Consumer Trends',          h: R['finance.behavior.consumer_trends'] },
+                { l: 'Identity Protection',      h: R['finance.behavior.identity_protection'] },
             ]},
-            featured:[
+            featured: [
                 {
                     badge: 'TAX SEASON',
                     title: 'Tax Strategy: Legal Frameworks to Minimise Your Lifetime Tax Bill',
@@ -344,22 +352,22 @@
     }
 
     function featuredHTML(items){
-    const hdr = `<p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#4f46e5] mb-4">Featured Reviews</p>`;
-    if(!items.length) return hdr+`<p class="text-[13px] text-[#9ca3af] px-2">Coming soon…</p>`;
-    return hdr + items.map(r=>`
-    <a href="${r.h}" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#eef2ff] transition-colors mb-1.5">
-        <div class="w-[66px] h-[50px] rounded-lg shrink-0 overflow-hidden">
-            ${r.img
-                ? `<img src="${r.img}" alt="" class="w-full h-full object-cover">`
-                : `<div class="w-full h-full flex items-center justify-center" style="background:#eef2ff"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>`
-            }
-        </div>
-        <div class="flex-1 min-w-0">
-            ${r.badge?`<span class="inline-block text-[9px] font-bold tracking-[0.12em] uppercase text-[#4f46e5] px-2 py-0.5 rounded-md mb-1.5" style="background:#eef2ff;border:1px solid rgba(79,70,229,.2)">${r.badge}</span>`:''}
-            <p class="text-[13px] font-semibold text-[#0f1f35] leading-snug m-0">${r.title}</p>
-        </div>
-    </a>`).join('');
-}
+        const hdr = `<p class="text-[10.5px] font-bold uppercase tracking-[0.14em] text-[#4f46e5] mb-4">Featured Reviews</p>`;
+        if(!items.length) return hdr+`<p class="text-[13px] text-[#9ca3af] px-2">Coming soon…</p>`;
+        return hdr + items.map(r=>`
+        <a href="${r.h}" class="flex items-start gap-3 p-2.5 rounded-xl hover:bg-[#eef2ff] transition-colors mb-1.5">
+            <div class="w-[66px] h-[50px] rounded-lg shrink-0 overflow-hidden">
+                ${r.img
+                    ? `<img src="${r.img}" alt="" class="w-full h-full object-cover">`
+                    : `<div class="w-full h-full flex items-center justify-center" style="background:#eef2ff"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg></div>`
+                }
+            </div>
+            <div class="flex-1 min-w-0">
+                ${r.badge?`<span class="inline-block text-[9px] font-bold tracking-[0.12em] uppercase text-[#4f46e5] px-2 py-0.5 rounded-md mb-1.5" style="background:#eef2ff;border:1px solid rgba(79,70,229,.2)">${r.badge}</span>`:''}
+                <p class="text-[13px] font-semibold text-[#0f1f35] leading-snug m-0">${r.title}</p>
+            </div>
+        </a>`).join('');
+    }
 
     function renderMenu(key){
         const d=MENUS[key]; if(!d) return;
@@ -374,40 +382,40 @@
     }
 
     /* ─── Toggle ─── */
-    const navbar=document.getElementById('siteNavbar');
-    const panel=document.getElementById('megaPanel');
-    const backdrop=document.getElementById('megaBackdrop');
-    const btns=document.querySelectorAll('.nav-btn');
-    let activeKey=null;
+    const navbar   = document.getElementById('siteNavbar');
+    const panel    = document.getElementById('megaPanel');
+    const backdrop = document.getElementById('megaBackdrop');
+    const btns     = document.querySelectorAll('.nav-btn');
+    let activeKey  = null;
 
-    navbar.style.position='sticky';
+    navbar.style.position = 'sticky';
     navbar.appendChild(panel);
 
-    function open(key,btn){
-        activeKey=key; renderMenu(key);
+    function open(key, btn){
+        activeKey = key; renderMenu(key);
         panel.classList.remove('hidden');
-        btns.forEach(b=>{
-            const on=b===btn;
-            b.classList.toggle('bg-[#eef2ff]',on);
-            b.classList.toggle('text-[#4f46e5]',on);
-            b.querySelector('[data-arr]').style.transform=on?'rotate(180deg)':'';
+        btns.forEach(b => {
+            const on = b === btn;
+            b.classList.toggle('bg-[#eef2ff]', on);
+            b.classList.toggle('text-[#4f46e5]', on);
+            b.querySelector('[data-arr]').style.transform = on ? 'rotate(180deg)' : '';
         });
     }
     function close(){
-        activeKey=null; panel.classList.add('hidden');
-        btns.forEach(b=>{
-            b.classList.remove('bg-[#eef2ff]','text-[#4f46e5]');
-            b.querySelector('[data-arr]').style.transform='';
+        activeKey = null; panel.classList.add('hidden');
+        btns.forEach(b => {
+            b.classList.remove('bg-[#eef2ff]', 'text-[#4f46e5]');
+            b.querySelector('[data-arr]').style.transform = '';
         });
     }
 
-    btns.forEach(btn=>btn.addEventListener('click',e=>{
+    btns.forEach(btn => btn.addEventListener('click', e => {
         e.stopPropagation();
-        const key=btn.dataset.menu;
-        activeKey===key?close():open(key,btn);
+        const key = btn.dataset.menu;
+        activeKey === key ? close() : open(key, btn);
     }));
-    backdrop.addEventListener('click',close);
-    document.addEventListener('keydown',e=>e.key==='Escape'&&close());
-    document.addEventListener('click',e=>{ if(!e.target.closest('#siteNavbar')) close(); });
+    backdrop.addEventListener('click', close);
+    document.addEventListener('keydown', e => e.key === 'Escape' && close());
+    document.addEventListener('click',  e => { if(!e.target.closest('#siteNavbar')) close(); });
 })();
 </script>
