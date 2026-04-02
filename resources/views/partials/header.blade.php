@@ -165,6 +165,8 @@
         'finance.behavior.spending':            '{{ route("finance.behavior.spending") }}',
         'finance.behavior.consumer_trends':     '{{ route("finance.behavior.consumer_trends") }}',
         'finance.behavior.identity_protection': '{{ route("finance.behavior.identity_protection") }}',
+        'finance.behavior.public_records':      '{{ route("finance.behavior.public_records") }}',
+        'finance.behavior.online_background':   '{{ route("finance.behavior.online_background") }}',
     };
 
     const MENUS = {
@@ -325,6 +327,8 @@
                 { l: 'Spending Patterns',        h: R['finance.behavior.spending'] },
                 { l: 'Consumer Trends',          h: R['finance.behavior.consumer_trends'] },
                 { l: 'Identity Protection',      h: R['finance.behavior.identity_protection'] },
+                { l: 'Public Records Lookup',    h: R['finance.behavior.public_records'] },
+                { l: 'Online Background Check',  h: R['finance.behavior.online_background'] },
             ]},
             featured: [
                 {

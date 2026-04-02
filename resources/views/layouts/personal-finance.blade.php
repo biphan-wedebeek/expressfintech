@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name='impact-site-verification' value='e4bf24d0-e930-4ad6-b364-a86751a3d024'>
+    <link rel="icon" type="image/png" href="{{ asset('expressfintech.png') }}">
     <title>@yield('title', 'Personal Finance') — Express Fintech</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
