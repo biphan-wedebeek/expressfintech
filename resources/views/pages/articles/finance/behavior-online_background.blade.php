@@ -44,17 +44,6 @@
                         Knowing what they see — and knowing the same about others — is simply informed decision-making.
                     </p>
                 </div>
-
-                <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                    <a href="{{ $url_button->isNotEmpty() ? $url_button->first()->tracking_url : 'https://www.truthfinder.com/?utm_source=RH7F&traffic%5Bsource%5D=RH7F&utm_medium=&traffic%5Bmedium%5D=&utm_' }}" target="_blank" rel="nofollow noopener"
-                        class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold uppercase tracking-widest px-6 py-3 rounded transition text-center">
-                        Run a Background Check →
-                    </a>
-                    <a href="{{ $url_button->isNotEmpty() ? $url_button->first()->tracking_url : 'https://www.truthfinder.com/?utm_source=RH7F&traffic%5Bsource%5D=RH7F&utm_medium=&traffic%5Bmedium%5D=&utm_' }}" target="_blank" rel="nofollow noopener"
-                        class="inline-block border border-emerald-600 text-emerald-700 hover:bg-emerald-50 text-sm font-semibold uppercase tracking-widest px-6 py-3 rounded transition text-center">
-                        Check Your Own Record →
-                    </a>
-                </div>
             </div>
 
             <div>
@@ -129,6 +118,37 @@
                 <div class="text-sm text-muted leading-relaxed">{{ $body }}</div>
             </div>
             @endforeach
+        </div>
+    </div>
+</section>
+
+<section class="border-b border-[var(--border)]">
+    <div class="block relative overflow-hidden group" style="min-height: 320px;">
+        <img src="{{ $url_button->isNotEmpty() ? $url_button->first()->image_url : 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=80' }}"
+            alt="Background Check"
+            class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0" style="background: linear-gradient(100deg, rgba(2,15,40,0.95) 40%, rgba(2,15,40,0.5) 80%, rgba(2,15,40,0.15) 100%);"></div>
+        <div class="relative max-w-7xl mx-auto px-8 lg:px-16 py-16 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div class="flex-1">
+                <div class="text-xs uppercase tracking-[0.28em] text-emerald-400 font-bold mb-4">
+                    ✦ Rated A+ by the BBB · 60,000+ Five-Star Reviews
+                </div>
+                <h3 class="fonttitle text-white! font-extrabold leading-tight mb-4" style="font-size: clamp(1.8rem, 4vw, 2.8rem);">
+                    Run a Full Background Check<br class="hidden md:block"> in Minutes — Not Days
+                </h3>
+                <p class="text-gray-300 text-sm max-w-lg leading-relaxed">
+                    Search billions of public records — criminal history, financial assets, address history,
+                    social media profiles and more. Confidential, secure, instant.
+                </p>
+            </div>
+            <div class="flex-shrink-0 text-center">
+                <a href="{{ $url_button->isNotEmpty() ? $url_button->first()->tracking_url : 'https://www.truthfinder.com/?utm_source=RH7F&traffic%5Bsource%5D=RH7F&utm_medium=&traffic%5Bmedium%5D=&utm_' }}"
+                    target="_blank" rel="nofollow noopener"
+                    class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold uppercase tracking-widest px-8 py-3 rounded text-center transition-all duration-300 transform hover:scale-105">
+                    Run a Background Check →
+                </a>
+                <div class="text-gray-400 text-xs mt-3">Confidential · Secure · Instant</div>
+            </div>
         </div>
     </div>
 </section>
