@@ -285,6 +285,33 @@
     </div>
 </section>
 
+<section class="bg-navy border-b border-[var(--border)] py-20">
+    <div class="max-w-3xl mx-auto px-6 lg:px-12 text-center">
+        <div class="text-xs uppercase tracking-[0.26em] text-emerald-400 font-bold mb-4">
+            Free Consultation
+        </div>
+        <h2 class="fonttitle text-white! text-2xl md:text-3xl mb-4 leading-snug">
+            Not Sure If AARP Is Right for You?
+        </h2>
+        <p class="text-gray-400 text-sm leading-relaxed mb-10 max-w-xl mx-auto">
+            Leave your email and our team will send you a personalised breakdown
+            of which AARP benefits match your household profile — no commitment required.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+            <input type="hidden" name="source" value="aarp-membership">
+            <input type="email" name="email" required placeholder="Enter your email address"
+                class="flex-1 px-5 py-3 rounded text-sm text-navy placeholder-gray-400 bg-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-emerald-400">
+            <button type="submit"
+                class="flex-shrink-0 bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-bold uppercase tracking-widest px-7 py-3 rounded transition-all duration-300 hover:scale-105">
+                Get Free Advice →
+            </button>
+        </form>
+        <p class="text-gray-500 text-xs mt-5">
+            No spam. No sales calls. One email with your personalised benefit summary.
+        </p>
+    </div>
+</section>
+
 @endsection
 @section('related')
 <section class="bg-white border-t border-[var(--border)] py-16">
