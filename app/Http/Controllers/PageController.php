@@ -147,4 +147,14 @@ class PageController extends Controller
             'url_button' => $this->bannerService->get('Personal Finance', 'Identity Protection'),
         ]);
     }
+    public function financeBehaviorPublicRecordsLookup() {
+        return view('pages.articles.finance.behavior-public_records',[
+            'url_button' => $this->bannerService->get('Personal Finance', 'Public Records Lookup'),
+        ]);
+    }
+    public function financeBehaviorOnlineBackground() {
+        return view('pages.articles.finance.behavior-online_background',[
+            'url_button' => $this->bannerService->get('Personal Finance', 'Online Background Check'),
+        ]);
+    }
 }

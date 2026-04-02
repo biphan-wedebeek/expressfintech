@@ -122,6 +122,8 @@ Route::get('/finance/behavior/risk-tolerance',     [PageController::class, 'fina
 Route::get('/finance/behavior/decision-bias',      [PageController::class, 'financeBehaviorDecisionBias'])->name('finance.behavior.decision_bias');
 Route::get('/finance/behavior/consumer-trends',    [PageController::class, 'financeBehaviorConsumerTrends'])->name('finance.behavior.consumer_trends');
 Route::get('/finance/behavior/identity-protection',[PageController::class, 'financeBehaviorIdentityProtection'])->name('finance.behavior.identity_protection');
+Route::get('/finance/behavior/public-records-lookup', [PageController::class, 'financeBehaviorPublicRecordsLookup'])->name('finance.behavior.public_records');
+Route::get('/finance/behavior/online-background-check', [PageController::class, 'financeBehaviorOnlineBackground'])->name('finance.behavior.online_background');
 // FORM
 
 // Offers
