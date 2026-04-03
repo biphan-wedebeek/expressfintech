@@ -1,5 +1,6 @@
 @php
-    $link = url('/click?offer_id=' . $getRecord()->id . '&affiliate_id={affiliate_id}');
+    $affiliateId = \App\Models\Affiliate::where('firstname', 'like', '%Wedebeek%')->value('id');
+    $link = url('/click?offer_id=' . $getRecord()->id . '&affiliate_id=' . $affiliateId);
 @endphp
 
 <button
