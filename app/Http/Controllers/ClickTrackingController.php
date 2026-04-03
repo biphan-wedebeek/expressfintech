@@ -63,7 +63,8 @@ class ClickTrackingController extends Controller
 
         $affSub = $this->buildAffSub($trackingFollow, [
             'click_id' => $clickId,
-            'pubid' => $affiliate->id,
+            // 'pubid' => $affiliate->id,
+            'pubid' => $request->query('s1'), // Override pubid with s1 from request (Wedebeek)
             's3' => (string) $request->query('s1', ''),
             's4' => (string) $request->query('s2', ''),
         ]);
