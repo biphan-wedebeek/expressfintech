@@ -78,9 +78,6 @@ class AffiliateResource extends Resource
         return $table
             ->recordUrl(null)
             ->columns([
-                Tables\Columns\TextColumn::make('id')
-                    ->label('ID')
-                    ->searchable(),
 
                 Tables\Columns\TextColumn::make('full_name')
                     ->label('Name')
